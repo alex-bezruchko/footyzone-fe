@@ -11,7 +11,7 @@ export function login(username, password, history) {
     return dispatch => {
         dispatch({ type: LOGIN_LOADING })
 
-        const endpoint = 'https://footyblog.herokuapp.com/auth/login';
+        const endpoint = 'https://footyzone-be.herokuapp.com/auth/login';
         const UserLogin = {
             username: username,
             password: password
@@ -51,7 +51,7 @@ export function loginStatus(username, token, history) {
                 type: LOGIN_STATUS_SUCCESS,
                 payload: user
             });
-            history.push('/')
+            // history.push('/')
         } else {
             dispatch({
                 type: LOGIN_STATUS_FAILURE,

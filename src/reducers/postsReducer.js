@@ -1,4 +1,4 @@
-import { LOADING, SUCCESS, FAILURE,  ADDING, ADDED, DELETING, DELETED, EDITING, EDITED, EDITFORM, FETCH_ALL_SUCCESS, SEARCH_RESULT, SET_SEARCH_TERM } from '../actions/postsActions';
+import { LOADING, SUCCESS, FAILURE,  ADDING, ADDED, DELETING, DELETED, EDITING, EDITED, EDITFORM, FETCH_ALL_SUCCESS, SEARCH_RESULT, SET_SEARCH_TERM, CATEGORY_SUCCESS, CATEGORY_LOADING, CATEGORY_FAILURE } from '../actions/postsActions';
 
 const initialState = {
     posts: [],
@@ -19,6 +19,56 @@ const initialState = {
 export const postsReducer = (state = initialState, action) => {
     switch (action.type){
 
+        case CATEGORY_FAILURE: 
+            return {
+                ...state,
+                posts: [],
+                loading: false,
+                error: 'Categories not available',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentPost: false,
+                editForm: true,
+                addForm: false,
+                post: {},
+        }
+        
+        case CATEGORY_LOADING: 
+            return {
+                ...state,
+                posts: [],
+                loading: true,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentPost: false,
+                editForm: true,
+                addForm: false,
+                post: {},
+        }
+        
+        case CATEGORY_SUCCESS: 
+            return {
+                ...state,
+                posts: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentPost: false,
+                editForm: true,
+                addForm: false,
+                post: {},
+        }
         case SEARCH_RESULT: 
             return {
                 ...state,

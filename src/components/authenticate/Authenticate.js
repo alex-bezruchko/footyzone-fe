@@ -82,7 +82,6 @@ class Authenticate extends React.Component {
 
 
 const MapStateToProps = ({ usersReducer: state }) => {
-  console.log(state)
     return {
         user: {
           username: state.user.username,

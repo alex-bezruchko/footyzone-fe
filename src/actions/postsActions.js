@@ -21,7 +21,7 @@ export function searchTerm(term) {
     return dispatch => {
         dispatch({ type: LOADING })
         axios
-            .get('https://footyblog.herokuapp.com/api/posts')
+            .get('https://footyzone-be.herokuapp.com/api/posts')
             .then(response => {
 
                 const lowercasedTerm = term.toLowerCase();
@@ -61,7 +61,7 @@ export function fetchPosts() {
     return dispatch => {
         dispatch({ type: LOADING })
         axios
-            .get('https://footyblog.herokuapp.com/api/posts')
+            .get('https://footyzone-be.herokuapp.com/api/posts')
             .then(response => {
                 dispatch({
                     type: SUCCESS,
@@ -81,8 +81,10 @@ export function fetchPostsByCategory(id) {
     return dispatch => {
         dispatch({ type: CATEGORY_LOADING })
         axios
-            .get(`https://footyblog.herokuapp.com/api/posts/category/${id}`)
+            .get(`https://footyzone-be.herokuapp.com/api/posts/category/${id}`)
             .then(response => {
+                console.log(id)
+                console.log(response.data)
                 dispatch({
                     type: CATEGORY_SUCCESS,
                     payload: response.data
@@ -101,7 +103,7 @@ export function viewPost(id) {
     return dispatch => {
         dispatch({ type: LOADING })
         axios
-            .get(`https://footyblog.herokuapp.com/api/posts/${id}`)
+            .get(`https://footyzone-be.herokuapp.com/api/posts/${id}`)
             .then(response => {
                 dispatch({
                     type: FETCH_ALL_SUCCESS,
@@ -126,7 +128,7 @@ export function addPost(post) {
     return dispatch => {
         dispatch({ type: ADDING })
         axios
-            .post(`https://footyblog.herokuapp.com/api/posts`, newPost)
+            .post(`https://footyzone-be.herokuapp.com/api/posts`, newPost)
             .then(response => {
                 dispatch({
                     type: ADDED,
@@ -146,7 +148,7 @@ export function deletePost(id) {
     return dispatch => {
         dispatch({ type: DELETING })
         axios
-            .delete(`https://footyblog.herokuapp.com/api/posts/${id}`)
+            .delete(`https://footyzone-be.herokuapp.com/api/posts/${id}`)
             .then(response => {
                 dispatch({
                     type: DELETED,
@@ -172,7 +174,7 @@ export function editPost(id, post) {
     return dispatch => {
         dispatch({ type: EDITING})
         axios
-            .put(`https://footyblog.herokuapp.com/api/posts/${id}`, post)
+            .put(`https://footyzone-be.herokuapp.com/api/posts/${id}`, post)
             .then(response => {
                 dispatch({
                     type: EDITED,
