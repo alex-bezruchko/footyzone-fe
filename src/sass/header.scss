@@ -1,0 +1,133 @@
+.top-navbar {
+  background-color: $blue;
+  a {
+    text-decoration: none;
+    display: flex;
+    color: $white;
+    align-items: center;
+  }
+  .login {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    span{
+      padding-right: 15px;
+      
+    }
+  }
+  .nav-account {
+    align-self: center;
+    font-family: $font_ubuntu;
+    text-transform: capitalize;
+    color: $white;
+    font-weight: 500;
+    padding-right: 8px;
+    span {
+      vertical-align: middle;
+    }
+    svg {
+      color: $white;
+      &:first-child {
+        margin-right: 15px;
+      }
+    }
+  }
+  .container {
+    display: flex;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    justify-content: space-between;
+  }
+  .nav {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    .container {
+      display: flex;
+      justify-content: space-between;
+
+      ul {
+        width: 100%;
+      }
+    }
+
+    // height: 150px;
+    width: 100%;
+    
+  }
+  .fanzone {
+    font-family: $font_bungee;
+    color: $white;
+    font-size: 40px;
+    padding-left: 15px;
+  }
+  
+  img {
+    height: 66px;
+    width: 66px;
+  }
+  
+}
+.bottom-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .list-group {
+    flex-direction: row;
+    .list-group-item {
+      align-self: center;
+      border: none;
+      &:first-child {
+        margin-left: 0px;
+        padding-left: 0px;
+      }
+    }
+  }
+  .btn .btn-secondary, .dropdown-toggle, .show > .btn-secondary.dropdown-toggle {
+    background-color: $white;
+    color: black;
+    box-shadow: none;
+    &:focus {
+      background-color: $white;
+      box-shadow: none;
+    }
+  }
+  button, a {
+    font-family: $font_ubuntu;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 17px 6px 14px;
+    letter-spacing: .5pt;
+    color: $black;
+    border: none;
+    &:hover {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+  .active {
+    border-bottom: 4px solid cadetblue;
+    color: black;
+  }
+  .search-form {
+    margin-left: 0px;
+    display: flex;
+    input, svg {
+      align-self: center;
+      // color: black;
+    }
+    input {
+      margin-bottom: 0px;
+      width: 255px;
+      border: none;
+      border-bottom: 3px solid black;
+      border-radius: 0px;
+      margin-right: 10px;
+    }
+    svg {
+      font-size: 20px;
+      color: black;
+    }
+  }
+}

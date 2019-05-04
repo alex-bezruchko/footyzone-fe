@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600|Ubuntu:300,400,500,700|Elsie:900|Bungee+Shade');
+@import "./sass/variables.scss";
+@import "./sass/login.scss";
+@import "./sass/header.scss";
+@import "./sass/welcome.scss";
+@import "./sass/blog.scss";
+@import "./sass/contact.scss";
+
+a {
+  // text-decoration: none;
+  &:hover {
+      text-decoration: none !important;
+  }
+}
+.content {
+  margin-top: 40px;
+  .body {
+      font-family: $font_sans;
+      line-height: 1.3;
+  }
+}
+.content.container {
+  margin-left: 0px;
+  padding-left: 0px;
+  .container {
+    padding-left: 0px;
+  }
+}
+.form {
+  h1 {
+    // margin: 20px auto 60px;
+  }
+  input, textarea {
+    margin-bottom: 22px;
+  }
+  button {
+    width: 100%;
+  }
+}
