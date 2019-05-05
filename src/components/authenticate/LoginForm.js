@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
                         value={this.state.username}
                     />
                     { this.state.usernameError ? <Alert color="danger">Username is required.</Alert> : null }
-                    {/* <Alert color="danger">{this.state.loginError}</Alert> */}
+
                     <Input
                         onChange={this.changeHandler}
                         placeholder="Password"
@@ -63,8 +63,8 @@ class LoginForm extends React.Component {
                         type="password"
                         value={this.state.password}
                     />
-
                     { this.state.passwordError ? <Alert color="danger">Password is required.</Alert> : null }
+                    
                     { this.props.loginError === true ? <Alert color="danger">These credentials do not match our records.</Alert> : null }
 
                     <button className="btn btn-info" type="submit">LogIn</button>
@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
                     <h4>
                         Don't have an account? 
                         <Link to={'/signup'}>
-                            <button className="btn btn-success">Sign Up</button>
+                            <button className="btn btn-success btn-sm">Sign Up</button>
                         </Link>
                     </h4>
                     

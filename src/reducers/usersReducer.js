@@ -23,6 +23,8 @@ export const usersReducer = (state = initialState, action) => {
                     token: '',
                     username: ''
                 },
+                loginError: false,
+
             }
 
         case SIGNUP_SUCCESS:
@@ -30,6 +32,7 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 signupLoading: false,
                 user: action.payload,
+                loginError: false,
             }
         
         case SIGNUP_FAILURE:
@@ -40,6 +43,7 @@ export const usersReducer = (state = initialState, action) => {
                     token: '',
                     username: ''
                 },
+                loginError: false,
             }
 
         case LOGIN_STATUS_CHECKING:

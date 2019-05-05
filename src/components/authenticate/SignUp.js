@@ -128,9 +128,7 @@ class SignUp extends React.Component {
 const MapStateToProps = ({ usersReducer: state }) => {
     return {
         username: state.user.username,
-        password: state.user.password,
-        // sign: state.loginError,
-        // loading: state.loading
+        password: state.user.password
     }
 }
 export default withRouter(connect(MapStateToProps, {signup})(SignUp));

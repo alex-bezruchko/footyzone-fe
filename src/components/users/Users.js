@@ -17,7 +17,6 @@ class Users extends React.Component {
         axios
             .get(endpoint, { headers })
             .then(res => {
-                // console.log(res)
                 this.setState({ users: res.data, isAuthorized: true })
             })
             .catch(e => {
@@ -31,7 +30,6 @@ class Users extends React.Component {
                     {this.state.isAuthorized ?
                     <ListGroup>
                         {this.state.users.map(u => {
-                            console.log(u);
                             return  <ListGroupItem department={u.department} key={u.id}>Username: <b>{u.username}</b> Department: <b>{u.department}</b> </ListGroupItem>
                         })}
                     </ListGroup>

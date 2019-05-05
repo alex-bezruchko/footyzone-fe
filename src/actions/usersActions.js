@@ -20,16 +20,14 @@ export function signup(username, password, history) {
             password: password,
             role_id: 1,
         }
-        console.log(newUser)
         axios
             .post(endpoint, newUser)
             .then(response => {
-                console.log(response)
                 dispatch({
                     type: SIGNUP_SUCCESS,
                     payload: response.data
                 });
-                history.push('/login')// this.props.history.push('/')
+                history.push('/login')
 
             })
             .catch(err => {
@@ -37,7 +35,6 @@ export function signup(username, password, history) {
                     type: SIGNUP_FAILURE,
                     payload: err
                 })
-                // history.push('/signup')
             })
     }
 }
@@ -54,14 +51,13 @@ export function login(username, password, history) {
         axios
             .post(endpoint, UserLogin)
             .then(response => {
-                console.log(response)
                 localStorage.setItem('jwt', response.data.token);
                 localStorage.setItem('username', response.data.username);
                 dispatch({
                     type: LOGIN_SUCCESS,
                     payload: response.data
                 });
-                history.push('/')// this.props.history.push('/')
+                history.push('/')
 
             })
             .catch(err => {

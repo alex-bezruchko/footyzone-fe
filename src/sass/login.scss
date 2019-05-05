@@ -1,7 +1,6 @@
 
 .sign-up, .login-form  {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     max-width: 400px;
     margin-left: auto;
@@ -12,7 +11,6 @@
     h4 {
         display: flex;
         justify-content: space-around;
-        align-self: center;
         align-items: center;
     }
     .btn {
