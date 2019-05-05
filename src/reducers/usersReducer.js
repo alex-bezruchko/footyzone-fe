@@ -23,7 +23,6 @@ export const usersReducer = (state = initialState, action) => {
                     username: ''
                 },
                 isLoggedIn: false,
-                loginError: false
             }
 
         case LOGIN_STATUS_SUCCESS:
@@ -32,7 +31,6 @@ export const usersReducer = (state = initialState, action) => {
                 loginLoading: false,
                 user: action.payload,
                 isLoggedIn: true,
-                loginError: false
             }
         
         case LOGIN_STATUS_FAILURE:
@@ -44,7 +42,6 @@ export const usersReducer = (state = initialState, action) => {
                     username: ''
                 },
                 isLoggedIn: false,
-                loginError: true
             }
 
         case LOGIN_LOADING: 
