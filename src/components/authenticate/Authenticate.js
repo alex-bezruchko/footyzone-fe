@@ -59,7 +59,7 @@ class Authenticate extends React.Component {
             <div>
                 <Header {...this.props} {...this.state} />
 
-                <Container>
+                <div className="container">
                     {this.props.isLoggedIn === true ?
                         <div>
                             <Route path="/" render={props =>
@@ -74,7 +74,7 @@ class Authenticate extends React.Component {
                             <LoginForm {...this.state} {...props} />
                         }/>
                     }
-                </Container>
+                </div>
             </div>
         )
     }
