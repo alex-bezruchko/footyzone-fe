@@ -40,7 +40,6 @@
 @import "./sass/contact.scss";
 
 a {
-  // text-decoration: none;
   &:hover {
       text-decoration: none !important;
   }
@@ -52,17 +51,7 @@ a {
       line-height: 1.3;
   }
 }
-// .content.container {
-//   margin-left: 0px;
-//   padding-left: 0px;
-//   .container {
-//     padding-left: 0px;
-//   }
-// }
 .form {
-  h1 {
-    // margin: 20px auto 60px;
-  }
   input, textarea {
     margin-bottom: 22px;
   }

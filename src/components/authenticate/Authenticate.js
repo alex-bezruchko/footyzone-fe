@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route ,withRouter } from 'react-router-dom';
-import { Container } from 'reactstrap';
+import SignUp from './SignUp';
 import { loginStatus } from './../../actions/usersActions';
 import LoginForm from './LoginForm';
 import Header from './../parts/Header';
@@ -70,9 +70,14 @@ class Authenticate extends React.Component {
                             }/>
                         </div>
                         :
+                        <>
                         <Route exact path="/login" render={props => 
                             <LoginForm {...this.state} {...props} />
                         }/>
+                        <Route exact path="/signup" render={props => 
+                            <SignUp {...this.state} {...props} />
+                        }/>
+                        </>
                     }
                 </div>
             </div>

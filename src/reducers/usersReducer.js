@@ -1,4 +1,4 @@
-import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE , LOGIN_STATUS_CHECKING, LOGIN_STATUS_SUCCESS, LOGIN_STATUS_FAILURE} from '../actions/usersActions';
+import { LOGIN_LOADING, LOGIN_SUCCESS, LOGIN_FAILURE , LOGIN_STATUS_CHECKING, LOGIN_STATUS_SUCCESS, LOGIN_STATUS_FAILURE, SIGNUP_LOADING, SIGNUP_SUCCESS, SIGNUP_FAILURE} from '../actions/usersActions';
 
 const initialState = {
     user: {
@@ -6,6 +6,7 @@ const initialState = {
         username: ''
     },
     loginLoading: false,
+    signupLoading: false,
     isLoggedIn: false,
     loginError: false,
     
@@ -13,6 +14,33 @@ const initialState = {
 
 export const usersReducer = (state = initialState, action) => {
     switch (action.type){
+
+        case SIGNUP_LOADING:
+            return {
+                ...state,
+                signupLoading: true,
+                user: {
+                    token: '',
+                    username: ''
+                },
+            }
+
+        case SIGNUP_SUCCESS:
+            return {
+                ...state,
+                signupLoading: false,
+                user: action.payload,
+            }
+        
+        case SIGNUP_FAILURE:
+            return {
+                ...state,
+                signupLoading: false,
+                user: {
+                    token: '',
+                    username: ''
+                },
+            }
 
         case LOGIN_STATUS_CHECKING:
             return {

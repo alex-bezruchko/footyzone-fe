@@ -9,6 +9,12 @@
 }
 .sign-up {
     padding: 15px 0px 15px;
+    h4 {
+        display: flex;
+        justify-content: space-around;
+        align-self: center;
+        align-items: center;
+    }
     .btn {
         margin-left: 15px;
     }

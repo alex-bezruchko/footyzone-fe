@@ -6,6 +6,41 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGIN_STATUS_CHECKING = "LOGIN_STATUS_CHECKING";
 export const LOGIN_STATUS_SUCCESS = "LOGIN_STATUS_SUCCESS";
 export const LOGIN_STATUS_FAILURE = "LOGIN_STATUS_FAILURE";
+export const SIGNUP_LOADING = "SIGNUP_LOADING";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+
+export function signup(username, password, history) {
+    return dispatch => {
+        dispatch({ type: SIGNUP_LOADING })
+
+        const endpoint = 'https://footyzone-be.herokuapp.com/auth/register';
+        const newUser = {
+            username: username,
+            password: password,
+            role_id: 1,
+        }
+        console.log(newUser)
+        axios
+            .post(endpoint, newUser)
+            .then(response => {
+                console.log(response)
+                dispatch({
+                    type: SIGNUP_SUCCESS,
+                    payload: response.data
+                });
+                history.push('/login')// this.props.history.push('/')
+
+            })
+            .catch(err => {
+                dispatch({
+                    type: SIGNUP_FAILURE,
+                    payload: err
+                })
+                // history.push('/signup')
+            })
+    }
+}
 
 export function login(username, password, history) {
     return dispatch => {
@@ -57,7 +92,12 @@ export function loginStatus(username, token, history) {
                 type: LOGIN_STATUS_FAILURE,
                 payload: {}
             });
-            history.push('/login')
+            if (history.location.pathname === '/signup') {
+                history.push('/signup')
+            }
+            else {
+                history.push('/login')
+            }
         }
        
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Form, Button, Alert, Container } from 'reactstrap';
+import { Input, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { login } from './../../actions/usersActions';
 import { withRouter, Link } from 'react-router-dom';
