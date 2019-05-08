@@ -29,18 +29,12 @@ export function searchTerm(term) {
 
                     const lowercasedTitle = post.title.toLowerCase();
                     const lowercasedBody = post.body? post.body.toLowerCase():'';
-                    // if (post.body) {
-                    //     const lowercasedBody = post.body.toString().toLowerCase();
+                    
                     if (lowercasedTitle.includes(lowercasedTerm) || lowercasedBody.includes(lowercasedTerm)) {
                         return true;
-                    }
-                    // } else if (lowercasedTitle.includes(lowercasedTerm)) {
-                    //     return true
-                    // }
-                    else {
+                    } else {
                         return false
                     }
-
                 });
                 
                 dispatch({
@@ -83,8 +77,6 @@ export function fetchPostsByCategory(id) {
         axios
             .get(`https://footyzone-be.herokuapp.com/api/posts/category/${id}`)
             .then(response => {
-                console.log(id)
-                console.log(response.data)
                 dispatch({
                     type: CATEGORY_SUCCESS,
                     payload: response.data

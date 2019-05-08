@@ -1,7 +1,29 @@
-.jumbotron {
-    background: url('./img/welcome.jpg');
-    min-height: 432px;
+.welcome-container {
+    // background: url('./img/welcome.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 610px;
+    max-height: 466px;
+    .carousel-container {
+        display: flex;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        max-height: 444px;
+        margin-bottom: 80px;
+        .carousel-post {
+            justify-content: center;
+            display: flex;
+        }
+        p {
+            font-weight: bold;
+            position: absolute;
+            align-self: center;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+    .control-next, .control-previous {
+        width: 200px;
+    }
 }
