@@ -1,29 +1,33 @@
-.welcome-container {
-    // background: url('./img/welcome.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-height: 466px;
-    .carousel-container {
-        display: flex;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
+.carousel-item {
+    max-height: 444px;
+    min-height: 444px;
+    display: flex;
+    align-items: center;
+    img {
         max-height: 444px;
-        margin-bottom: 80px;
-        .carousel-post {
-            justify-content: center;
-            display: flex;
+        min-height: 444px;
+        min-width: 100%;
+    } 
+}
+.small-carousel {
+    display: flex;
+    justify-content: space-between;
+    .small-carousel-post {
+        width: 100%;
+        padding: 5px;
+        margin: 33px 0px;
+        &:first-child {
+            padding-left: 0px;
         }
-        p {
-            font-weight: bold;
-            position: absolute;
-            align-self: center;
+        &:last-child {
+            padding-right: 0px;
         }
         img {
-            max-width: 100%;
+            max-height: 100px;
+            width: 100%;
         }
-    }
-    .control-next, .control-previous {
-        width: 200px;
+        p {
+            height: 30px;
+        }
     }
 }

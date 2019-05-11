@@ -44,7 +44,9 @@ a {
       text-decoration: none !important;
   }
 }
-.content {
+.content.container {
+  padding-left: 0px;
+  padding-right: 0px;
   margin-top: 40px;
   .body {
       font-family: $font_sans;

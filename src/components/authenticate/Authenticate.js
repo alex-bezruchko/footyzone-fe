@@ -64,21 +64,21 @@ class Authenticate extends React.Component {
                         <div>
                             <Route path="/" render={props =>
                                 <App {...props} 
-                                // isLoggedIn={this.state.isLoggedIn}
                                 logOutUser={this.logOutUser}
                                 />
                             }/>
                         </div>
                         :
-                        <>
-                        <Route exact path="/login" render={props => 
-                            <LoginForm {...this.state} {...props} />
-                        }/>
-                        <Route exact path="/signup" render={props => 
-                            <SignUp {...this.state} {...props} />
-                        }/>
-                        </>
+                        <div>
+                          <Route exact path="/login" render={props => 
+                              <LoginForm {...this.state} {...props} />
+                          }/>
+                          <Route exact path="/signup" render={props => 
+                              <SignUp {...this.state} {...props} />
+                          }/>
+                        </div>
                     }
+
                 </div>
             </div>
         )

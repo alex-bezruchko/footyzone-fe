@@ -1,18 +1,31 @@
 import React from 'react';
-import loading from './../../../src/loading.gif'
+import loading from './../../../src/loading.gif';
 import axios from 'axios';
+import { withRouter, Link } from 'react-router-dom';
 
+import {
+    Carousel,
+    CarouselItem,
+    CarouselControl,
+    CarouselIndicators,
+    CarouselCaption
+  } from 'reactstrap';
+  
 class Welcome extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            carousel: [],
-            activeSlide: {},
-            counter: 0,
+        this.state = { 
+            activeIndex: 0, 
+            posts: [], 
             loading: false,
             message: ''
-        }
+        };
+        this.next = this.next.bind(this);
+        this.previous = this.previous.bind(this);
+        this.goToIndex = this.goToIndex.bind(this);
+        this.onExiting = this.onExiting.bind(this);
+        this.onExited = this.onExited.bind(this);
     }
 
     componentDidMount() {
@@ -22,87 +35,100 @@ class Welcome extends React.Component {
         .get('https://footyzone-be.herokuapp.com/api/posts/welcome')
         .then(response => {
             if (response.data) {
-                this.setState({ message: '', loading: false, carousel: response.data, activeSlide: response.data[0], counter: 0 })
+                this.setState({ posts: response.data, loading: false, message: ''})
             } else {
-                this.setState({ message: 'Posts are not available.', loading: false, carousel: [], activeSlide: {}, counter: 0 })
+                this.setState({ posts: [], loading: false, message: 'No posts were found' })
             }
         })
         .catch(err => {
-            this.setState({ message: `${err}`, loading: false, carousel: [] })
+            this.setState({ message: `${err}`, loading: false, posts: [] })
         })
     }
 
-    previousPost = () => {
-        const currentCounter = this.state.counter;
-        const carousel = this.state.carousel;
-        const length = this.state.carousel.length; // 5
+    componentWillUnmount() {
+        this.setState({ loading: false, posts: [], message: '' })
+    }
+    onExiting() {
+        this.animating = true;
+    }
 
-        if (currentCounter !== 0) {
-            this.setState({
-                activeSlide: carousel[currentCounter - 1],
-                counter: currentCounter - 1
-            })
-        } else {
-            this.setState({
-                activeSlide: carousel[length - 1],
-                counter: length - 1
-            })
-        }
+    onExited() {
+    this.animating = false;
     }
-    nextPost = () => {
-        const currentCounter = this.state.counter;
-        const carousel = this.state.carousel;
-        const length = this.state.carousel.length; // 5
-        
-        if (currentCounter === 0 ) {
-            this.setState({
-               activeSlide: carousel[currentCounter + 1],
-               counter: currentCounter + 1
-            })
-        } else if (currentCounter === length - 1) {
-            this.setState({
-                activeSlide: carousel[0],
-                counter: 0
-            })
-        } else {
-            this.setState({
-               activeSlide: carousel[currentCounter + 1],
-               counter: currentCounter + 1
-           })
-        }
+
+    next() {
+        const postsLength = this.state.posts.length;
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === postsLength - 1 ? 0 : this.state.activeIndex + 1;
+    this.setState({ activeIndex: nextIndex });
     }
+
+    previous() {
+    if (this.animating) return;
+    const postsLength = this.state.posts.length;
+    const nextIndex = this.state.activeIndex === 0 ? postsLength - 1 : this.state.activeIndex - 1;
+    this.setState({ activeIndex: nextIndex });
+    }
+
+    goToIndex(newIndex) {
+    if (this.animating) return;
+    this.setState({ activeIndex: newIndex });
+    }
+
+    render() {
+        const { activeIndex } = this.state;
+        const currentPosts = this.state.posts.filter((post, index) => index !== activeIndex)
+
     
-    render = () => {
+        const slides = this.state.posts.map((post, index) => {
+          return (
+                <CarouselItem
+                    onExiting={this.onExiting}
+                    onExited={this.onExited}
+                    key={index}
+                >
+                    <img src={post.postMainImg} alt={post.title} />
+                    <CarouselCaption captionText={post.body} captionHeader={post.title} />
+                </CarouselItem>
+          );
+        });
+
         return (
-            <div className="welcome-container">
-                <h1>Home</h1>
-                
+            <div>
+
                 {this.state.loading ? 
-                    <div><img alt='Loading gif' src={loading} /></div>
+                    <img src={loading} alt="Loading gif"/>
                     :
-                    <div className="carousel-wrapper">
-                        <div className="carousel-large">
+                    <>
+                        <Carousel
+                            activeIndex={activeIndex}
+                            next={this.next}
+                            previous={this.previous}
+                            >
+                            <CarouselIndicators items={this.state.posts} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                            {slides}
+                            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+                            <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+                        </Carousel>
+                        
+                        <div className="small-carousel">
+                            {currentPosts.map((post, index) => {
+                                    return <div key={index} className="small-carousel-post">
+                                            <Link to={`/post/${post.id}`}>
+                                                <img src={post.postMainImg} alt={post.title} />
+                                                <p>{post.title}</p>
+                                            </Link>
+                                             </div>
+                            })}
 
-                            {this.state.carousel.length > 0 ? 
-                                <div className="carousel-container">
-
-                                    <button onClick={this.previousPost} className="controls control-previous btn btn-danger btn-sm">Previous</button>
-                                    <div className="carousel-post">
-                                        <p className="carousel-title">{this.state.activeSlide.title}</p>
-                                        <img alt={this.state.activeSlide.title} className="carousel-image" src="https://kinsta.com/wp-content/uploads/2017/04/change-wordpress-url-1.png"/>
-                                    </div>
-                                    <button onClick={this.nextPost} className="controls control-next btn btn-danger btn-sm">Next</button>
-                                        
-                                </div>
-                                :
-                                <div>No posts found</div>
-                            }
                         </div>
-                    </div>
+                    </>
                 }
             </div>
-        )
-    }
+          
+        );
+      }
 }
 
-export default Welcome;
+// export default Welcome;
+export default withRouter(Welcome);

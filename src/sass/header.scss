@@ -21,14 +21,17 @@
     text-transform: capitalize;
     color: $white;
     font-weight: 500;
-    padding-right: 8px;
     span {
       vertical-align: middle;
     }
     svg {
       color: $white;
-      &:first-child {
-        margin-right: 15px;
+    }
+    .btn {
+      padding-right: 0px;
+      text-align: right;
+      svg:hover {
+        color: #000;
       }
     }
   }
@@ -124,6 +127,9 @@
       border-bottom: 3px solid black;
       border-radius: 0px;
       margin-right: 10px;
+    }
+    button {
+      padding: 0px;
     }
     svg {
       font-size: 20px;
