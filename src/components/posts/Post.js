@@ -40,7 +40,8 @@ class Post extends React.Component {
 
 const MapStateToProps = ({ postsReducer: state }) => {
     return {
-        post: state.post
+        post: state.post,
+        loading: state.loading
     }
 }
 export default connect(MapStateToProps, {viewPost} )(Post);

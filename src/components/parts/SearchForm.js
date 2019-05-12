@@ -26,7 +26,7 @@ class SearchForm extends React.Component {
     }
     render() {
         return(
-            <Form className="search-form" onSubmit={this.searchTermHandler}>
+            <Form className="nav-search-form" onSubmit={this.searchTermHandler}>
                 <Input 
                     placeholder="Search"
                     value={this.state.term}
