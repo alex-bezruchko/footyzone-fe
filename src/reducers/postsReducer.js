@@ -3,6 +3,7 @@ import {
     FETCH_ONE_LOADING, FETCH_ONE_FAILURE,FETCH_ONE_SUCCESS, 
     ADDING_LOADING, ADDED_SUCCESS, ADDED_FAILURE, 
     CATEGORY_SUCCESS, CATEGORY_LOADING, CATEGORY_FAILURE,
+    FETCH_ALL_CATEGORIES_SUCCESS, FETCH_ALL_CATEGORIES_LOADING, FETCH_ALL_CATEGORIES_FAILURE,
     DELETING_LOADING, DELETED_SUCCESS, DELETED_FAILURE,
     EDITING_LOADING, EDITED_SUCCESS, EDITED_FAILURE,
     EDITFORM, SEARCH_SUCCESS, SET_SEARCH_TERM,  
@@ -10,6 +11,7 @@ import {
 
 const initialState = {
     posts: [],
+    categories: [],
     loading: true,
     error: '',
     adding: false,
@@ -27,6 +29,59 @@ const initialState = {
 export const postsReducer = (state = initialState, action) => {
     switch (action.type){
 
+        case FETCH_ALL_CATEGORIES_LOADING:
+            return {
+                ...state,
+                posts: [],
+                categories: [],
+                loading: true,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentPost: false,
+                editForm: false,
+                addForm: false,
+                editId: null
+            }
+        
+        case FETCH_ALL_CATEGORIES_SUCCESS: 
+            return {
+                ...state,
+                posts: [],
+                categories: action.payload,
+                loading: false,
+                error: '',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentPost: false,
+                editForm: true,
+                addForm: false,
+                post: {}
+            }
+
+        case FETCH_ALL_CATEGORIES_FAILURE: 
+            return {
+                ...state,
+                posts: [],
+                categories: [],
+                loading: false,
+                error: 'There are no available posts',
+                adding: false,
+                added: false,
+                editing: false,
+                edited: false,
+                deleting: false,
+                currentPost: false,
+                editForm: false,
+                addForm: false,
+                editId: null
+            }
         
         case FETCH_ALL_LOADING:
             return {

@@ -19,6 +19,9 @@ export const EDITFORM = "EDITFORM";
 export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
 export const SEARCH_FAILURE = "SEARCH_FAILURE";
 export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
+export const FETCH_ALL_CATEGORIES_LOADING = "FETCH_ALL_CATEGORIES_LOADING";
+export const FETCH_ALL_CATEGORIES_SUCCESS = "FETCH_ALL_CATEGORIES_SUCCESS";
+export const FETCH_ALL_CATEGORIES_FAILURE = "FETCH_ALL_CATEGORIES_FAILURE";
 export const CATEGORY_LOADING = "CATEGORY_LOADING";
 export const CATEGORY_SUCCESS = "CATEGORY_SUCCESS";
 export const CATEGORY_FAILURE = "CATEGORY_FAILURE";
@@ -57,6 +60,25 @@ export function searchTerm(term) {
     }
 }
 
+export function fetchAllCategories() {
+    return dispatch => {
+        dispatch({ type: FETCH_ALL_CATEGORIES_LOADING })
+        axios
+            .get('https://footyzone-be.herokuapp.com/api/posts/categories')
+            .then(response => {
+                dispatch({
+                    type: FETCH_ALL_CATEGORIES_SUCCESS,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FETCH_ALL_CATEGORIES_FAILURE,
+                    payload: err
+                })
+            })
+    }
+}
 export function fetchPosts() {
     return dispatch => {
         dispatch({ type: FETCH_ALL_LOADING })

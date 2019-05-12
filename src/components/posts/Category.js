@@ -3,30 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import loading from './../../../src/loading.gif';
 import { Link } from 'react-router-dom';
-import { fetchPostsByCategory } from '../../actions/postsActions';
+import { fetchPostsByCategory, fetchAllCategories } from '../../actions/postsActions';
 
 import { Container } from 'reactstrap';
-import axios from 'axios';
 
 class Category extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            categories: []
-        }
-    }
     componentDidMount() {
         const id = this.props.match.params.id;
+        this.props.fetchAllCategories()
         this.props.fetchPostsByCategory(id);
-        axios
-        .get('https://footyzone-be.herokuapp.com/api/posts/categories')
-        .then(res => {
-            this.setState({ categories: res.data})
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -41,9 +28,10 @@ class Category extends React.Component {
     
     render() {
         const category_id = this.props.match.params.id;
-        const Categories = this.state.categories;
-        const catName = Categories.find(function(cat) {
-            return cat.id == category_id;
+        // const Categories = this.state.categories;
+        console.log(this.props);
+        const catName = this.props.categories.find(function(cat) {
+            return Number(cat.id) === Number(category_id);
           });
         return(
 
@@ -87,11 +75,12 @@ class Category extends React.Component {
 const mapStateToProps = ({ postsReducer: state }) => {
     return {
         posts: state.posts,
-        loading: state.loading
+        loading: state.loading,
+        categories: state.categories
     };
   };
 
 export default withRouter(connect(
     mapStateToProps,
-    {fetchPostsByCategory}
+    {fetchPostsByCategory, fetchAllCategories}
 )(Category));
