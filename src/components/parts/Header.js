@@ -1,13 +1,14 @@
 import React from 'react';
 import { Nav, ListGroup, ListGroupItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Container, Button } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import $ from 'jquery';
+import { findDOMNode } from 'react-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import logo from './../../img/logo.png';
 import { loginStatus } from './../../actions/usersActions';
 import { FaUserAlt, FaSignOutAlt, FaSignInAlt  } from 'react-icons/fa';
 import SearchForm from './SearchForm';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 
 class Header extends React.Component {
     constructor(props) {
@@ -16,13 +17,39 @@ class Header extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.state = {
           dropdownOpen: false,
+          categories: []
         }
     }
     
     componentDidMount() {
+        
         const username = localStorage.getItem('username')
         const token = localStorage.getItem('jwt');
         this.props.loginStatus(username, token, this.props.history)
+        axios
+        .get('https://footyzone-be.herokuapp.com/api/posts/categories')
+        .then(res => {
+            this.setState({categories: res.data})
+        })
+        .catch(err => {
+            console.log(err);
+            this.setState({ categories: []})
+        })
+
+
+        $(window).scroll(function (e) {
+
+            if ($(window).scrollTop() > 110) {
+                $('#navigation').addClass('fixed-navbar');
+                $('.top-navbar').addClass('hidden');
+                // $('#navigation').removeClass('appear');
+            } else {
+                $('#navigation').removeClass('fixed-navbar');
+                $('.top-navbar').removeClass('hidden');
+                // $('#search-nav').removeClass('disappear');
+            }
+        });
+
     }
     toggle() {
         this.setState(prevState => ({
@@ -38,8 +65,10 @@ class Header extends React.Component {
         this.props.loginStatus(username, token, this.props.history)
     }
     render() {
+
+        
         return(
-            <div className="navbar-wrapper">
+            <div id="navigation" className="navbar-wrapper">
                 <div className="top-navbar">
                     <Container>
                         <Link to={'/'}>
@@ -68,25 +97,19 @@ class Header extends React.Component {
                         <ListGroup>
                             <ListGroupItem >
                                 <NavLink exact to={'/'} >Home</NavLink>
-
                             </ListGroupItem>
 
                             <ListGroupItem>
-
                                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                     <DropdownToggle caret>
                                     News
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem>
-                                            <NavLink to={'/category/1'}>EPL</NavLink>
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            <NavLink to={'/category/2'} >UEFA CL</NavLink>
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            <NavLink to={'/category/3'} >LA LIGA</NavLink>
-                                        </DropdownItem>
+                                        {this.state.categories.map((cat, index) => {
+                                            return  <DropdownItem key={index}>
+                                                        <NavLink to={`/category/${cat.id}`}>{cat.name}</NavLink>
+                                                    </DropdownItem>
+                                        })}
                                     </DropdownMenu>
                                 </Dropdown>
                             </ListGroupItem>

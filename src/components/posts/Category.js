@@ -21,15 +21,14 @@ class Category extends React.Component {
         const id = this.props.match.params.id;
 
         if (id !== prevProps.match.params.id) {
-          this.props.fetchPostsByCategory(id);
+            // this.props.fetchAllCategories()
+            this.props.fetchPostsByCategory(id);
         }
     }
     
     
     render() {
         const category_id = this.props.match.params.id;
-        // const Categories = this.state.categories;
-        console.log(this.props);
         const catName = this.props.categories.find(function(cat) {
             return Number(cat.id) === Number(category_id);
           });
@@ -37,7 +36,7 @@ class Category extends React.Component {
 
             <div className="col-md-8 post-list">
 
-                {this.props.posts.length === null ? 
+                {this.props.loading ? 
 
                     <div>
                         <img alt='Loading gif' src={loading} />
@@ -50,7 +49,7 @@ class Category extends React.Component {
                         <h1>{catName? <span> {catName.name}</span> : <span></span> }</h1>
                         {this.props.posts.map((post, index) => {
                             return (
-                                <div key={index} id={post.id} post={post}>
+                                <div key={index} id={post.id} post={post} className="category-list">
                                     <Link to={`/post/${post.id}`}>
                                         <h2>
                                             {post.title}

@@ -32,7 +32,6 @@ export const postsReducer = (state = initialState, action) => {
         case FETCH_ALL_CATEGORIES_LOADING:
             return {
                 ...state,
-                posts: [],
                 categories: [],
                 loading: true,
                 error: '',
@@ -50,7 +49,6 @@ export const postsReducer = (state = initialState, action) => {
         case FETCH_ALL_CATEGORIES_SUCCESS: 
             return {
                 ...state,
-                posts: [],
                 categories: action.payload,
                 loading: false,
                 error: '',
@@ -68,7 +66,6 @@ export const postsReducer = (state = initialState, action) => {
         case FETCH_ALL_CATEGORIES_FAILURE: 
             return {
                 ...state,
-                posts: [],
                 categories: [],
                 loading: false,
                 error: 'There are no available posts',

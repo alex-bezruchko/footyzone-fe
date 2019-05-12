@@ -94,7 +94,7 @@ class Welcome extends React.Component {
         });
 
         return (
-            <div>
+            <div className="welcome-container">
 
                 {this.state.loading ? 
                     <img src={loading} alt="Loading gif"/>

@@ -60,25 +60,6 @@ export function searchTerm(term) {
     }
 }
 
-export function fetchAllCategories() {
-    return dispatch => {
-        dispatch({ type: FETCH_ALL_CATEGORIES_LOADING })
-        axios
-            .get('https://footyzone-be.herokuapp.com/api/posts/categories')
-            .then(response => {
-                dispatch({
-                    type: FETCH_ALL_CATEGORIES_SUCCESS,
-                    payload: response.data
-                });
-            })
-            .catch(err => {
-                dispatch({
-                    type: FETCH_ALL_CATEGORIES_FAILURE,
-                    payload: err
-                })
-            })
-    }
-}
 export function fetchPosts() {
     return dispatch => {
         dispatch({ type: FETCH_ALL_LOADING })
@@ -113,6 +94,26 @@ export function fetchPostsByCategory(id) {
             .catch(err => {
                 dispatch({
                     type: CATEGORY_FAILURE,
+                    payload: err
+                })
+            })
+    }
+}
+
+export function fetchAllCategories() {
+    return dispatch => {
+        dispatch({ type: FETCH_ALL_CATEGORIES_LOADING })
+        axios
+            .get('https://footyzone-be.herokuapp.com/api/posts/categories')
+            .then(response => {
+                dispatch({
+                    type: FETCH_ALL_CATEGORIES_SUCCESS,
+                    payload: response.data
+                });
+            })
+            .catch(err => {
+                dispatch({
+                    type: FETCH_ALL_CATEGORIES_FAILURE,
                     payload: err
                 })
             })
