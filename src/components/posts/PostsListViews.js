@@ -16,14 +16,14 @@ class PostsListViews extends React.Component {
                         <div><img alt='Loading gif' src={loading} /></div>
 
                         :
-                        <div className="post-detail-card">
+                        <>
                         {this.props.posts.length > 0 ? 
                             <PostsList posts={this.props.posts} />
                             :
                             <div>No posts found</div>
                         }
                         
-                        </div>
+                        </>
                     }
 
                 </div>
