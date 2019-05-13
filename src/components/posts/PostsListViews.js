@@ -8,7 +8,7 @@ class PostsListViews extends React.Component {
 
     render() {
         return(
-            <div className="col-md-8 post-list">
+            <div className="col-md-8">
                 <div className="container">
                     <h1>Blog</h1>
                     

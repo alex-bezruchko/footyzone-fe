@@ -5,8 +5,6 @@ import loading from './../../../src/loading.gif';
 import { Link } from 'react-router-dom';
 import { fetchPostsByCategory, fetchAllCategories } from '../../actions/postsActions';
 
-import { Container } from 'reactstrap';
-
 class Category extends React.Component {
 
     componentDidMount() {
@@ -34,7 +32,7 @@ class Category extends React.Component {
           });
         return(
 
-            <div className="col-md-8">
+            <div className="col-md-4">
 
                 {this.props.loading ? 
 
@@ -44,24 +42,21 @@ class Category extends React.Component {
 
                     :
 
-                    <div className="category-list">
+                    <div className="sidebar-list">
 
-                        <h1>{catName? <span> {catName.name}</span> : <span></span> }</h1>
+                        <h2>Related</h2>
+
                         {this.props.posts.map((post, index) => {
                             return (
-                                <div key={index} id={post.id} post={post} className="category-post">
-                                    <Link to={`/post/${post.id}`}>
-                                        <h2>
-                                            {post.title}
-                                        </h2>
+                                <Link key={index} to={`/post/${post.id}`}>
+                                    <div id={post.id} post={post} className="sidebar-list-post">
                                         <img src={post.postMainImg} alt=""/>
-                                        <div className="body">
-                                            {post.body}
-                                        </div>
-                                    </Link>
-                                </div>   
+                                        <p>{post.title}</p>
+                                    </div>
+                                </Link>
                             )  
                         })}
+
                     </div>
 
                 }

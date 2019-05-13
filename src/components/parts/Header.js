@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav, ListGroup, ListGroupItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Container, Button } from 'reactstrap';
 import $ from 'jquery';
-import { findDOMNode } from 'react-dom';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import logo from './../../img/logo.png';
 import { loginStatus } from './../../actions/usersActions';
@@ -32,21 +31,18 @@ class Header extends React.Component {
             this.setState({categories: res.data})
         })
         .catch(err => {
-            console.log(err);
             this.setState({ categories: []})
         })
 
 
         $(window).scroll(function (e) {
 
-            if ($(window).scrollTop() > 110) {
+            if ($(window).scrollTop() > 75) {
                 $('#navigation').addClass('fixed-navbar');
                 $('.top-navbar').addClass('hidden');
-                // $('#navigation').removeClass('appear');
             } else {
                 $('#navigation').removeClass('fixed-navbar');
                 $('.top-navbar').removeClass('hidden');
-                // $('#search-nav').removeClass('disappear');
             }
         });
 
