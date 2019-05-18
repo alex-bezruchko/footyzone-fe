@@ -3,16 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import loading from "./../../../src/loading.gif";
 import { Link } from "react-router-dom";
-import {
-  fetchPostsByCategory,
-  fetchAllCategories,
-} from "../../actions/postsActions";
+import { fetchUsersPosts } from "../../actions/postsActions";
 
-class Category extends React.Component {
+class UsersPosts extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.props.fetchAllCategories();
-    this.props.fetchPostsByCategory(id);
+    this.props.fetchUsersPosts(id);
   }
 
   componentDidUpdate(prevProps) {
@@ -21,7 +17,7 @@ class Category extends React.Component {
 
     if (id !== prevProps.match.params.id) {
       // this.props.fetchAllCategories()
-      this.props.fetchPostsByCategory(id);
+      this.props.fetchUsersPosts(id);
     }
   }
 
@@ -72,6 +68,6 @@ const mapStateToProps = ({ postsReducer: state }) => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchPostsByCategory, fetchAllCategories }
-  )(Category)
+    { fetchUsersPosts }
+  )(UsersPosts)
 );
