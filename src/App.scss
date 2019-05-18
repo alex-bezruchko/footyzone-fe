@@ -60,6 +60,12 @@ a {
 }
 
 .form {
+  display: flex;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
   input,
   textarea {
     margin-bottom: 22px;
