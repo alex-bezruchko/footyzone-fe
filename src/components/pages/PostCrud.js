@@ -40,7 +40,7 @@ class PostCrud extends React.Component {
       <div className="form post-crud">
         <h1>Add Post</h1>
 
-        {this.props.loading ? (
+        {this.props.adding ? (
           <img src={loading} alt="PostForm form is loading gif" />
         ) : (
           <FormGroup onClick={this.addPostHandler}>
@@ -57,6 +57,14 @@ class PostCrud extends React.Component {
               value={this.state.post.summary}
               onChange={this.changeHandler}
             />
+            <Input
+              placeholder="Body"
+              type="textarea"
+              row="40"
+              value={this.state.post.body}
+              onChange={this.changeHandler}
+            />
+
             <Button color="success" type="submit">
               Send
             </Button>
@@ -70,7 +78,7 @@ class PostCrud extends React.Component {
 const MapStateToProps = ({ usersReducer: state }) => {
   return {
     post: state.post,
-    loading: state.loading,
+    adding: state.adding,
   };
 };
 export default withRouter(
