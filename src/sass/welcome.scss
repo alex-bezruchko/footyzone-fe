@@ -1,37 +1,38 @@
 .welcome-container {
-    margin-bottom: 300px;
+  margin-bottom: 300px;
+  width: 100%;
 }
 .carousel-item {
+  max-height: 444px;
+  min-height: 444px;
+  display: flex;
+  align-items: center;
+  img {
     max-height: 444px;
     min-height: 444px;
-    display: flex;
-    align-items: center;
-    img {
-        max-height: 444px;
-        min-height: 444px;
-        width: 100%;
-        height: auto;
-    } 
+    width: 100%;
+    height: auto;
+  }
 }
 .small-carousel {
-    display: flex;
-    justify-content: space-between;
-    .small-carousel-post {
-        width: 100%;
-        padding: 5px;
-        margin: 33px 0px;
-        &:first-child {
-            padding-left: 0px;
-        }
-        &:last-child {
-            padding-right: 0px;
-        }
-        img {
-            max-height: 100px;
-            width: 100%;
-        }
-        p {
-            height: 30px;
-        }
+  display: flex;
+  justify-content: space-between;
+  .small-carousel-post {
+    width: 100%;
+    padding: 5px;
+    margin: 33px 0px;
+    &:first-child {
+      padding-left: 0px;
     }
+    &:last-child {
+      padding-right: 0px;
+    }
+    img {
+      max-height: 100px;
+      width: 100%;
+    }
+    p {
+      height: 30px;
+    }
+  }
 }

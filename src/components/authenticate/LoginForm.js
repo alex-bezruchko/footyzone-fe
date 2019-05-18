@@ -54,7 +54,11 @@ class LoginForm extends React.Component {
     return (
       <div className="login">
         {this.props.loginLoading ? (
-          <img src={loading} alt="PostForm form is loading gif" />
+          <img
+            src={loading}
+            className="loading"
+            alt="PostForm form is loading gif"
+          />
         ) : (
           <form className="form login-form" onSubmit={this.loginHandler}>
             <h1>Login</h1>
