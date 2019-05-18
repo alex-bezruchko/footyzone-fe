@@ -3,6 +3,7 @@ import { Input, Alert } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "./../../actions/usersActions";
 import { withRouter, Link } from "react-router-dom";
+import loading from "./../../../src/loading.gif";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -52,40 +53,44 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login">
-        <form className="form login-form" onSubmit={this.loginHandler}>
-          <h1>Login</h1>
-          <Input
-            onChange={this.changeHandler}
-            placeholder="Username"
-            name="username"
-            type="text"
-            value={this.state.username}
-          />
-          {this.state.usernameError ? (
-            <Alert color="danger">Username is required.</Alert>
-          ) : null}
+        {this.props.loginLoading ? (
+          <img src={loading} alt="PostForm form is loading gif" />
+        ) : (
+          <form className="form login-form" onSubmit={this.loginHandler}>
+            <h1>Login</h1>
+            <Input
+              onChange={this.changeHandler}
+              placeholder="Username"
+              name="username"
+              type="text"
+              value={this.state.username}
+            />
+            {this.state.usernameError ? (
+              <Alert color="danger">Username is required.</Alert>
+            ) : null}
 
-          <Input
-            onChange={this.changeHandler}
-            placeholder="Password"
-            name="password"
-            type="password"
-            value={this.state.password}
-          />
-          {this.state.passwordError ? (
-            <Alert color="danger">Password is required.</Alert>
-          ) : null}
+            <Input
+              onChange={this.changeHandler}
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+            />
+            {this.state.passwordError ? (
+              <Alert color="danger">Password is required.</Alert>
+            ) : null}
 
-          {this.props.loginError === true ? (
-            <Alert color="danger">
-              These credentials do not match our records.
-            </Alert>
-          ) : null}
+            {this.props.loginError === true ? (
+              <Alert color="danger">
+                These credentials do not match our records.
+              </Alert>
+            ) : null}
 
-          <button className="btn btn-info" type="submit">
-            LogIn
-          </button>
-        </form>
+            <button className="btn btn-info" type="submit">
+              LogIn
+            </button>
+          </form>
+        )}
         <div className="sign-up">
           <h4>
             Don't have an account?
@@ -102,7 +107,7 @@ const MapStateToProps = ({ usersReducer: state }) => {
   return {
     username: state.user.username,
     loginError: state.loginError,
-    // loading: state.loading
+    loginLoading: state.loginLoading,
   };
 };
 export default withRouter(
