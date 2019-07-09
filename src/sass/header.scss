@@ -10,9 +10,10 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-    span{
+    span {
       padding-right: 15px;
-      
+      display: flex;
+      flex-direction: row;
     }
   }
   .nav-account {
@@ -21,14 +22,17 @@
     text-transform: capitalize;
     color: $white;
     font-weight: 500;
+    display: flex;
+    align-items: center;
     span {
-      vertical-align: middle;
+      display: flex;
     }
     svg {
       color: $white;
+      margin: 0px 8px;
     }
     .btn {
-      padding-right: 0px;
+      padding: 0px;
       text-align: right;
       svg:hover {
         color: #000;
@@ -56,7 +60,6 @@
 
     // height: 150px;
     width: 100%;
-    
   }
   .fanzone {
     font-family: $font_bungee;
@@ -64,12 +67,11 @@
     font-size: 40px;
     padding-left: 15px;
   }
-  
+
   img {
     height: 66px;
     width: 66px;
   }
-  
 }
 .bottom-navbar {
   display: flex;
@@ -87,7 +89,9 @@
       }
     }
   }
-  .btn .btn-secondary, .dropdown-toggle, .show > .btn-secondary.dropdown-toggle {
+  .btn .btn-secondary,
+  .dropdown-toggle,
+  .show > .btn-secondary.dropdown-toggle {
     background-color: $white;
     color: black;
     box-shadow: none;
@@ -96,13 +100,14 @@
       box-shadow: none;
     }
   }
-  button, a {
+  button,
+  a {
     font-family: $font_ubuntu;
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: 500;
     padding: 14px 0px;
-    letter-spacing: .5pt;
+    letter-spacing: 0.5pt;
     color: $black;
     border: none;
     &:hover {
@@ -117,7 +122,8 @@
   .nav-search-form {
     margin-left: 0px;
     display: flex;
-    input, svg {
+    input,
+    svg {
       align-self: center;
       // color: black;
     }

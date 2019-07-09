@@ -53,15 +53,6 @@ export const postsReducer = (state = initialState, action) => {
         categories: [],
         loading: true,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        editId: null,
       };
 
     case FETCH_ALL_CATEGORIES_SUCCESS:
@@ -70,14 +61,6 @@ export const postsReducer = (state = initialState, action) => {
         categories: action.payload,
         loading: false,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: true,
-        addForm: false,
       };
 
     case FETCH_ALL_CATEGORIES_FAILURE:
@@ -86,15 +69,6 @@ export const postsReducer = (state = initialState, action) => {
         categories: [],
         loading: false,
         error: "There are no available categories",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        editId: null,
       };
 
     case USERS_POSTS_LOADING:
@@ -103,15 +77,6 @@ export const postsReducer = (state = initialState, action) => {
         posts: [],
         loading: true,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        editId: null,
       };
 
     case USERS_POSTS_SUCCESS:
@@ -120,15 +85,6 @@ export const postsReducer = (state = initialState, action) => {
         posts: action.payload,
         loading: false,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        post: {},
       };
 
     case USERS_POSTS_FAILURE:
@@ -137,32 +93,14 @@ export const postsReducer = (state = initialState, action) => {
         posts: [],
         loading: false,
         error: "There are no available posts",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        editId: null,
-        post: {},
       };
+
     case FETCH_ALL_LOADING:
       return {
         ...state,
         posts: [],
         loading: true,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        editId: null,
       };
 
     case FETCH_ALL_SUCCESS:
@@ -171,15 +109,6 @@ export const postsReducer = (state = initialState, action) => {
         posts: action.payload,
         loading: false,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        post: {},
       };
 
     case FETCH_ALL_FAILURE:
@@ -188,118 +117,60 @@ export const postsReducer = (state = initialState, action) => {
         posts: [],
         loading: false,
         error: "There are no available posts",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        editId: null,
-        post: {},
       };
 
     case FETCH_ONE_LOADING:
       return {
         ...state,
         loading: true,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
         post: {},
+        error: "",
       };
 
     case FETCH_ONE_SUCCESS:
       return {
         ...state,
         loading: false,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
         post: action.payload,
+        error: "",
       };
 
     case FETCH_ONE_FAILURE:
       return {
         ...state,
         loading: false,
-        error: "We had a trouble finding this",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
         post: {},
+        error: "We had a trouble finding this post",
       };
 
     case ADDING_LOADING:
       return {
         ...state,
-        posts: [],
         loading: true,
         error: "",
         adding: true,
         added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
+        post: {},
       };
 
     case ADDED_SUCCESS:
       return {
         ...state,
-        posts: action.payload,
         loading: false,
         error: "",
         adding: false,
         added: true,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
+        post: action.payload,
       };
 
     case ADDED_FAILURE:
       return {
         ...state,
-        posts: [],
         loading: false,
         error: "All information is required.",
         adding: false,
         added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
+        post: {},
       };
 
     case CATEGORY_LOADING:
@@ -308,14 +179,6 @@ export const postsReducer = (state = initialState, action) => {
         posts: [],
         loading: true,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: true,
-        addForm: false,
       };
 
     case CATEGORY_SUCCESS:
@@ -324,15 +187,6 @@ export const postsReducer = (state = initialState, action) => {
         posts: action.payload,
         loading: false,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: true,
-        addForm: false,
-        post: {},
       };
 
     case CATEGORY_FAILURE:
@@ -341,32 +195,16 @@ export const postsReducer = (state = initialState, action) => {
         posts: [],
         loading: false,
         error: "Categories not available",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: false,
-        post: {},
       };
 
     case DELETING_LOADING:
       return {
         ...state,
         posts: [],
-        loading: false,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
+        loading: true,
         deleting: true,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
+        deleted: false,
+        error: "",
       };
 
     case DELETED_SUCCESS:
@@ -374,17 +212,9 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: action.payload,
         loading: false,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
         deleting: false,
         deleted: true,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
+        error: "",
       };
 
     case DELETED_FAILURE:
@@ -392,17 +222,9 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: [],
         loading: false,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
         deleting: false,
         deleted: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
-        editId: null,
+        error: "We couldn't delete this post",
       };
 
     case SEARCH_SUCCESS:
@@ -411,67 +233,29 @@ export const postsReducer = (state = initialState, action) => {
         posts: action.payload,
         loading: false,
         error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: true,
-        addForm: false,
-        post: {},
       };
 
     case SET_SEARCH_TERM:
       return {
         ...state,
-        posts: [],
-        loading: false,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
-        editForm: true,
-        addForm: false,
-        post: {},
         term: action.payload,
       };
 
     case EDITFORM:
       return {
         ...state,
-        posts: [],
-        loading: false,
-        error: "",
-        adding: false,
-        added: false,
-        editing: false,
-        edited: false,
-        deleting: false,
-        currentPost: false,
         editForm: true,
-        addForm: false,
-        post: action.payload,
       };
 
     case EDITING_LOADING:
       return {
         ...state,
-        posts: [],
         loading: false,
-        error: "",
-        adding: false,
-        added: false,
         editing: true,
         edited: false,
-        deleting: false,
-        currentPost: false,
         editForm: true,
-        addForm: false,
-        editId: null,
+        error: "",
+        post: {},
       };
 
     case EDITED_SUCCESS:
@@ -479,15 +263,10 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: [],
         loading: false,
-        error: "",
-        adding: false,
-        added: false,
         editing: false,
         edited: true,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
+        editForm: true,
+        error: "",
         post: action.payload,
       };
 
@@ -496,15 +275,9 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: [],
         loading: false,
-        error: "",
-        adding: false,
-        added: false,
         editing: false,
         edited: true,
-        deleting: false,
-        currentPost: false,
-        editForm: false,
-        addForm: true,
+        error: "We couldn't edit this post.",
         post: {},
       };
 

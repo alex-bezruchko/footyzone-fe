@@ -36,9 +36,10 @@
 @import "./sass/login.scss";
 @import "./sass/header.scss";
 @import "./sass/welcome.scss";
-@import "./sass/blog.scss";
-@import "./sass/contact.scss";
 @import "./sass/sidebar.scss";
+@import "./sass/blog.scss";
+@import "./sass/post.scss";
+@import "./sass/contact.scss";
 
 a {
   &:hover {
@@ -59,6 +60,12 @@ a {
 }
 
 .form {
+  display: flex;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
   input,
   textarea {
     margin-bottom: 22px;
