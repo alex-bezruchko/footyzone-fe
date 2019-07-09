@@ -164,20 +164,22 @@ export function viewPost(id) {
   };
 }
 
-export function addPost(post) {
-  const newPost = {
-    title: post.title,
-    body: post.body,
+export function addPost(newPost, history) {
+  // console.log(history);
+  const token = localStorage.getItem("jwt");
+  var config = {
+    headers: { Authorization: token },
   };
   return dispatch => {
     dispatch({ type: ADDING_LOADING });
     axios
-      .post(`https://footyzone-be.herokuapp.com/api/posts`, newPost)
+      .post(`https://footyzone-be.herokuapp.com/api/posts`, newPost, config)
       .then(response => {
         dispatch({
           type: ADDED_SUCCESS,
           payload: response.data,
         });
+        history.push(`/post/${response.data.addedPost.id}`);
       })
       .catch(err => {
         dispatch({

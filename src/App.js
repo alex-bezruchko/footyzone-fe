@@ -10,9 +10,9 @@ import Welcome from "./components/pages/Welcome";
 import Contact from "./components/pages/Contact";
 import Users from "./components/users/Users";
 import UsersPosts from "./components/users/UsersPosts";
+import PostCrud from "./components/pages/PostCrud";
 
 import "./App.scss";
-import PostCrud from "./components/pages/PostCrud";
 
 class App extends React.Component {
   render() {

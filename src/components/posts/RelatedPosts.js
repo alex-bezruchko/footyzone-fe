@@ -37,7 +37,7 @@ class Category extends React.Component {
           $(".content.container").css({ flexDirection: "column" });
           $(".col-md-4").css({
             width: `${width.clientWidth}`,
-            marginTop: `80px`,
+            marginTop: `-180px`,
             position: `fixed`,
             alignSelf: `flex-end`,
           });
