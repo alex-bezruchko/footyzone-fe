@@ -1,0 +1,20 @@
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 25px;
+}
+.SocialMediaShareButton {
+  margin-right: 5px;
+  svg {
+    border-radius: 50%;
+    outline: none;
+    &:focus,
+    rect {
+      outline: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

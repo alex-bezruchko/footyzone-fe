@@ -150,6 +150,7 @@ export function viewPost(id) {
     axios
       .get(`https://footyzone-be.herokuapp.com/api/posts/${id}`)
       .then(response => {
+        console.log(response);
         dispatch({
           type: FETCH_ONE_SUCCESS,
           payload: response.data,
