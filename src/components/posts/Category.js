@@ -11,6 +11,7 @@ import {
 class Category extends React.Component {
   componentDidMount() {
     const category_name = this.props.match.params.category_name;
+
     this.props.fetchPostsByCategory(category_name);
   }
 
@@ -37,22 +38,33 @@ class Category extends React.Component {
                 <span />
               )}
             </h1>
-            {this.props.posts.map((post, index) => {
-              return (
-                <div
-                  key={index}
-                  id={post.id}
-                  post={post}
-                  className="category-post"
-                >
-                  <Link to={`/post/${post.id}`}>
-                    <h2>{post.title}</h2>
-                    <img src={post.postMainImg} alt="" />
-                    <div className="body">{post.body}</div>
-                  </Link>
-                </div>
-              );
-            })}
+            {this.props.posts.length > 0 ? (
+              <>
+                {this.props.posts.map((post, index) => {
+                  console.log(post);
+                  return (
+                    <div
+                      key={index}
+                      id={post.id}
+                      post={post}
+                      className="category-post"
+                    >
+                      <Link
+                        to={`/${this.props.match.params.category_name}/${
+                          post.subcat_slug
+                        }/${post.id}`}
+                      >
+                        <h2>{post.title}</h2>
+                        <img src={post.postMainImg} alt="" />
+                        <div className="body">{post.body}</div>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         )}
       </div>

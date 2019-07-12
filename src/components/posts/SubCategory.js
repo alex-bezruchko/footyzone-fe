@@ -43,6 +43,7 @@ class SubCategory extends React.Component {
               )}
             </h1>
             {this.props.posts.map((post, index) => {
+              console.log(post);
               return (
                 <div
                   key={index}
@@ -50,7 +51,11 @@ class SubCategory extends React.Component {
                   post={post}
                   className="category-post"
                 >
-                  <Link to={`/post/${post.id}`}>
+                  <Link
+                    to={`/${this.props.match.params.category_name}/${
+                      this.props.match.params.subcat_name
+                    }/${post.id}`}
+                  >
                     <h2>{post.title}</h2>
                     <img src={post.postMainImg} alt="" />
                     <div className="body">{post.body}</div>

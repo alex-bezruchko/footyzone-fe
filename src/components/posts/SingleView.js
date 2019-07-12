@@ -18,7 +18,10 @@ import {
 class SingleView extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.props.viewPost(id);
+    const category_name = this.props.match.params.category_name;
+    const subcat_name = this.props.match.params.subcat_name;
+    console.log();
+    this.props.viewPost(category_name, subcat_name, id);
     console.log(this.props);
   }
 
@@ -48,35 +51,35 @@ class SingleView extends React.Component {
                 <div className="socials">
                   <FacebookShareButton
                     url={window.location.href}
-                    quote={this.props.post.title}
+                    media={this.props.post.title}
                     className="button"
                   >
                     <FacebookIcon size={32} round={false} />
                   </FacebookShareButton>
                   <TwitterShareButton
                     url={window.location.href}
-                    quote={this.props.post.title}
+                    media={this.props.post.title}
                     className="button"
                   >
                     <TwitterIcon size={32} round={false} />
                   </TwitterShareButton>
                   <PinterestShareButton
                     url={window.location.href}
-                    quote={this.props.post.title}
+                    media={this.props.post.title}
                     className="button"
                   >
                     <PinterestIcon size={32} round={false} />
                   </PinterestShareButton>
                   <WhatsappShareButton
                     url={window.location.href}
-                    quote={this.props.post.title}
+                    media={this.props.post.title}
                     className="button"
                   >
                     <WhatsappIcon size={32} round={false} />
                   </WhatsappShareButton>
                   <RedditShareButton
                     url={window.location.href}
-                    quote={this.props.post.title}
+                    media={this.props.post.title}
                     className="button"
                   >
                     <RedditIcon size={32} round={false} />

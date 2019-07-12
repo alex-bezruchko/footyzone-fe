@@ -90,6 +90,7 @@ export function fetchPostsByCategory(category_name) {
     axios
       .get(`https://footyzone-be.herokuapp.com/api/${category_name}`)
       .then(response => {
+        console.log(response);
         dispatch({
           type: CATEGORY_SUCCESS,
           payload: response.data,
@@ -166,11 +167,13 @@ export function fetchAllCategories() {
   };
 }
 
-export function viewPost(id) {
+export function viewPost(category_name, subcat_name, id) {
   return dispatch => {
     dispatch({ type: FETCH_ONE_LOADING });
     axios
-      .get(`https://footyzone-be.herokuapp.com/api/posts/${id}`)
+      .get(
+        `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}/${id}`
+      )
       .then(response => {
         console.log(response);
         dispatch({

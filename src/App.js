@@ -27,6 +27,11 @@ class App extends React.Component {
               path="/:category_name/:subcat_name"
               component={SubCategory}
             />
+            <Route
+              exact
+              path="/:category_name/:subcat_name/:id"
+              component={SingleView}
+            />
             <Route exact path="/:category_name/" component={Category} />
             <Route
               exact
