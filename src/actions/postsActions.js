@@ -84,11 +84,11 @@ export function fetchPosts() {
   };
 }
 
-export function fetchPostsByCategory(id) {
+export function fetchPostsByCategory(category_name) {
   return dispatch => {
     dispatch({ type: CATEGORY_LOADING });
     axios
-      .get(`https://footyzone-be.herokuapp.com/api/posts/category/${id}`)
+      .get(`https://footyzone-be.herokuapp.com/api/${category_name}`)
       .then(response => {
         dispatch({
           type: CATEGORY_SUCCESS,
@@ -103,13 +103,13 @@ export function fetchPostsByCategory(id) {
       });
   };
 }
+
 export function fetchUsersPosts(id) {
   return dispatch => {
     dispatch({ type: USERS_POSTS_LOADING });
     axios
       .get(`https://footyzone-be.herokuapp.com/api/users/${id}/posts`)
       .then(response => {
-        console.log(response);
         dispatch({
           type: USERS_POSTS_SUCCESS,
           payload: response.data,

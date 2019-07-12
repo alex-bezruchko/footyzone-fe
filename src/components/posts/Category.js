@@ -10,26 +10,18 @@ import {
 
 class Category extends React.Component {
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.props.fetchAllCategories();
-    this.props.fetchPostsByCategory(id);
+    const category_name = this.props.match.params.category_name;
+    this.props.fetchPostsByCategory(category_name);
   }
 
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    const id = this.props.match.params.id;
-
-    if (id !== prevProps.match.params.id) {
-      // this.props.fetchAllCategories()
-      this.props.fetchPostsByCategory(id);
+    const category_name = this.props.match.params.category_name;
+    if (category_name !== prevProps.match.params.category_name) {
+      this.props.fetchPostsByCategory(category_name);
     }
   }
 
   render() {
-    const category_id = this.props.match.params.id;
-    const catName = this.props.categories.find(function(cat) {
-      return Number(cat.id) === Number(category_id);
-    });
     return (
       <div className="col-md-8">
         {this.props.loading ? (
@@ -38,7 +30,13 @@ class Category extends React.Component {
           </div>
         ) : (
           <div className="category-list">
-            <h1>{catName ? <span> {catName.name}</span> : <span />}</h1>
+            <h1>
+              {this.props.match.params.category_name ? (
+                <span> {this.props.match.params.category_name}</span>
+              ) : (
+                <span />
+              )}
+            </h1>
             {this.props.posts.map((post, index) => {
               return (
                 <div
