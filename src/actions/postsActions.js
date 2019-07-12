@@ -104,6 +104,28 @@ export function fetchPostsByCategory(category_name) {
   };
 }
 
+export function fetchPostsBySubCategory(category_name, subcat_name) {
+  return dispatch => {
+    dispatch({ type: CATEGORY_LOADING });
+    axios
+      .get(
+        `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}`
+      )
+      .then(response => {
+        dispatch({
+          type: CATEGORY_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: CATEGORY_FAILURE,
+          payload: err,
+        });
+      });
+  };
+}
+
 export function fetchUsersPosts(id) {
   return dispatch => {
     dispatch({ type: USERS_POSTS_LOADING });

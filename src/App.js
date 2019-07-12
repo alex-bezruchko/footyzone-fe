@@ -3,6 +3,7 @@ import { Route, withRouter } from "react-router-dom";
 import { Container } from "reactstrap";
 import SingleView from "./components/posts/SingleView";
 import Category from "./components/posts/Category";
+import SubCategory from "./components/posts/SubCategory";
 import RelatedPosts from "./components/posts/RelatedPosts";
 import BlogPage from "./components/pages/BlogPage";
 import SearchResultsList from "./components/pages/SearchResultsList";
@@ -21,11 +22,11 @@ class App extends React.Component {
         <section>
           <Container className="content">
             <Route exact path="/" component={Welcome} />
-            {/* <Route
+            <Route
               exact
-              path="/:category_name/:subcat_slug"
-              component={Category}
-            /> */}
+              path="/:category_name/:subcat_name"
+              component={SubCategory}
+            />
             <Route exact path="/:category_name/" component={Category} />
             <Route
               exact
