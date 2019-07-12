@@ -90,7 +90,6 @@ export function fetchPostsByCategory(category_name) {
     axios
       .get(`https://footyzone-be.herokuapp.com/api/${category_name}`)
       .then(response => {
-        console.log(response);
         dispatch({
           type: CATEGORY_SUCCESS,
           payload: response.data,
@@ -175,7 +174,6 @@ export function viewPost(category_name, subcat_name, id) {
         `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}/${id}`
       )
       .then(response => {
-        console.log(response);
         dispatch({
           type: FETCH_ONE_SUCCESS,
           payload: response.data,

@@ -18,12 +18,17 @@ class SubCategory extends React.Component {
 
   componentDidUpdate(prevProps) {
     const category_name = this.props.match.params.category_name;
-    if (category_name !== prevProps.match.params.category_name) {
-      this.props.fetchPostsBySubCategory(category_name);
+    const subcat_name = this.props.match.params.subcat_name;
+    if (
+      category_name !== prevProps.match.params.category_name ||
+      subcat_name !== prevProps.match.params.subcat_name
+    ) {
+      this.props.fetchPostsBySubCategory(category_name, subcat_name);
     }
   }
 
   render() {
+    console.log(this.props.posts);
     return (
       <div className="col-md-8">
         {this.props.loading ? (
@@ -43,7 +48,6 @@ class SubCategory extends React.Component {
               )}
             </h1>
             {this.props.posts.map((post, index) => {
-              console.log(post);
               return (
                 <div
                   key={index}

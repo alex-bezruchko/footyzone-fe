@@ -6,22 +6,24 @@ import loading from "./../../../src/loading.gif";
 import { Link } from "react-router-dom";
 import {
   fetchPostsByCategory,
+  fetchPostsBySubCategory,
   fetchAllCategories,
   fetchPosts,
 } from "../../actions/postsActions";
 
-class Category extends React.Component {
+class RelatedPosts extends React.Component {
   componentDidMount() {
-    const id = this.props.match.params.id;
-    if (id) {
+    const category_name = this.props.match.params.category_name;
+    const subcat_name = this.props.match.params.subcat_name;
+
+    if (category_name && subcat_name) {
       this.props.fetchAllCategories();
-      this.props.fetchPostsByCategory(id);
+      this.props.fetchPostsBySubCategory(category_name, subcat_name);
     } else {
-      this.props.fetchPosts();
+      this.props.fetchPostsByCategory(category_name);
     }
 
     $(window).scroll(function(e) {
-      //   console.log(e);
       const width = document.getElementById("aside");
       $(".content.container").css({ flexDirection: "row" });
       if (width) {
@@ -56,19 +58,21 @@ class Category extends React.Component {
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    const id = this.props.match.params.id;
+    const category_name = this.props.match.params.category_name;
+    const subcat_name = this.props.match.params.subcat_name;
 
-    if (id !== prevProps.match.params.id) {
-      // this.props.fetchAllCategories()
-      this.props.fetchPostsByCategory(id);
+    if (category_name && subcat_name) {
+      if (subcat_name !== prevProps.match.params.subcat_name) {
+        this.props.fetchPostsBySubCategory(category_name, subcat_name);
+      }
+    } else {
+      if (category_name !== prevProps.match.params.category_name) {
+        this.props.fetchPostsByCategory(category_name);
+      }
     }
   }
 
   render() {
-    // const category_id = this.props.match.params.id;
-    // const catName = this.props.categories.find(function(cat) {
-    //   return Number(cat.id) === Number(category_id);
-    // });
     return (
       <div id="aside" className="col-md-4">
         {this.props.loading ? (
@@ -106,6 +110,11 @@ const mapStateToProps = ({ postsReducer: state }) => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchPostsByCategory, fetchAllCategories, fetchPosts }
-  )(Category)
+    {
+      fetchPostsByCategory,
+      fetchPostsBySubCategory,
+      fetchAllCategories,
+      fetchPosts,
+    }
+  )(RelatedPosts)
 );

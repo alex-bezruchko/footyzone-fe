@@ -40,7 +40,7 @@ class Header extends React.Component {
     const token = localStorage.getItem("jwt");
     this.props.loginStatus(username, token, this.props.history);
     axios
-      .get("https://footyzone-be.herokuapp.com/api/posts/categories")
+      .get("https://footyzone-be.herokuapp.com/api/news/categories")
       .then(res => {
         this.setState({ categories: res.data });
       })
@@ -117,11 +117,14 @@ class Header extends React.Component {
                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                   <DropdownToggle caret>News</DropdownToggle>
                   <DropdownMenu>
+                    <DropdownItem>
+                      <Link to={"/news"}>All News</Link>
+                    </DropdownItem>
                     {this.state.categories.map((cat, index) => {
                       return (
                         <DropdownItem key={index}>
-                          <NavLink to={`/category/${cat.id}`}>
-                            {cat.name}
+                          <NavLink to={`/news/${cat.subcat_slug}/`}>
+                            {cat.subcat_name}
                           </NavLink>
                         </DropdownItem>
                       );
