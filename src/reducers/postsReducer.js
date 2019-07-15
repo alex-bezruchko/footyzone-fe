@@ -11,9 +11,15 @@ import {
   CATEGORY_SUCCESS,
   CATEGORY_LOADING,
   CATEGORY_FAILURE,
+  SUBCATEGORY_SUCCESS,
+  SUBCATEGORY_LOADING,
+  SUBCATEGORY_FAILURE,
   FETCH_ALL_CATEGORIES_SUCCESS,
   FETCH_ALL_CATEGORIES_LOADING,
   FETCH_ALL_CATEGORIES_FAILURE,
+  FETCH_ALL_SUBCATEGORIES_SUCCESS,
+  FETCH_ALL_SUBCATEGORIES_LOADING,
+  FETCH_ALL_SUBCATEGORIES_FAILURE,
   USERS_POSTS_LOADING,
   USERS_POSTS_SUCCESS,
   USERS_POSTS_FAILURE,
@@ -31,6 +37,7 @@ import {
 const initialState = {
   posts: [],
   categories: [],
+  subcategories: [],
   loading: true,
   error: "",
   adding: false,
@@ -47,6 +54,30 @@ const initialState = {
 
 export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_ALL_SUBCATEGORIES_LOADING:
+      return {
+        ...state,
+        subcategories: [],
+        loading: true,
+        error: "",
+      };
+
+    case FETCH_ALL_SUBCATEGORIES_SUCCESS:
+      return {
+        ...state,
+        subcategories: action.payload,
+        loading: false,
+        error: "",
+      };
+
+    case FETCH_ALL_SUBCATEGORIES_FAILURE:
+      return {
+        ...state,
+        subcategories: [],
+        loading: false,
+        error: "There are no available categories",
+      };
+
     case FETCH_ALL_CATEGORIES_LOADING:
       return {
         ...state,
@@ -190,6 +221,30 @@ export const postsReducer = (state = initialState, action) => {
       };
 
     case CATEGORY_FAILURE:
+      return {
+        ...state,
+        posts: [],
+        loading: false,
+        error: "Categories not available",
+      };
+
+    case SUBCATEGORY_LOADING:
+      return {
+        ...state,
+        posts: [],
+        loading: true,
+        error: "",
+      };
+
+    case SUBCATEGORY_SUCCESS:
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false,
+        error: "",
+      };
+
+    case SUBCATEGORY_FAILURE:
       return {
         ...state,
         posts: [],

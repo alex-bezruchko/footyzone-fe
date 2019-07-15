@@ -2,72 +2,144 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import loading from "./../../../src/loading.gif";
-import { Link } from "react-router-dom";
+import Newslist from "./../news/Newslist";
+import Bloglist from "./../blog/Bloglist";
 import {
   fetchPostsByCategory,
   fetchAllCategories,
 } from "../../actions/postsActions";
 
 class Category extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: "news",
+      isCategory: false,
+      categories: ["news", "blog", "videos", "old-school"],
+    };
+  }
   componentDidMount() {
-    const category_name = this.props.match.params.category_name;
+    let category_name = this.props.match.params.cat_name;
+    // let isCategory = this.state.isCategory;
+    let categories = this.state.categories;
+    // console.log(this.props.match);
+    if (category_name && category_name.length > 0) {
+      let filter = categories.filter(cat => cat === category_name);
+      if (filter && filter.length > 0) {
+        this.setState({
+          isCategory: true,
+        });
+      } else {
+        this.setState({
+          isCategory: false,
+        });
+      }
+    } else {
+      this.setState({
+        isCategory: false,
+      });
+    }
+    console.log(category_name);
+    if (this.state.isCategory === true) {
+      this.setState({
+        // category: category_name,
+        isCategory: true,
+      });
+      this.props.fetchPostsByCategory(category_name);
+      // console.log("true");
+      // } else {
+      //   this.setState({
+      //     // category: "news",
+      //     isCategory: true,
+      //   });
+      //   this.props.fetchPostsByCategory("news");
 
-    this.props.fetchPostsByCategory(category_name);
+      // console.log("false");
+    } else {
+      this.props.fetchPostsByCategory(category_name);
+    }
+    // if (category_name === "news" || category_name === "videos") {
+    //   this.setState({
+    //     isCategory: true,
+    //   });
+    //   this.props.fetchPostsByCategory(category_name);
+    // } else {
+    //   this.setState({
+    //     isCategory: false,
+    //   });
+    // }
   }
 
   componentDidUpdate(prevProps) {
-    const category_name = this.props.match.params.category_name;
-    if (category_name !== prevProps.match.params.category_name) {
-      this.props.fetchPostsByCategory(category_name);
+    let category_name = this.props.match.params.cat_name;
+
+    if (category_name !== prevProps.match.params.cat_name) {
+      // let isCategory = this.state.isCategory;
+      let categories = this.state.categories;
+      // console.log(this.props.match);
+      if (category_name.length > 0) {
+        let filter = categories.filter(cat => cat === category_name);
+        if (filter && filter.length > 0) {
+          this.setState({
+            isCategory: true,
+          });
+        } else {
+          this.setState({
+            isCategory: false,
+          });
+        }
+      }
+      if (this.state.isCategory === true) {
+        this.props.fetchPostsByCategory(category_name);
+        this.setState({
+          // category: category_name,
+        });
+        // console.log("true");
+      } else {
+        // this.setState({
+        //   category: "news",
+        // });
+        // console.log("false");
+      }
     }
   }
 
   render() {
+    // console.log(this.state.category);
     return (
-      <div className="col-md-8">
-        {this.props.loading ? (
-          <div>
-            <img alt="Loading gif" src={loading} />
-          </div>
+      <>
+        {!this.state.isCategory ? (
+          <></>
         ) : (
-          <div className="category-list">
-            <h1>
-              {this.props.match.params.category_name ? (
-                <span> {this.props.match.params.category_name}</span>
-              ) : (
-                <span />
-              )}
-            </h1>
-            {this.props.posts.length > 0 ? (
-              <>
-                {this.props.posts.map((post, index) => {
-                  console.log(post);
-                  return (
-                    <div
-                      key={index}
-                      id={post.id}
-                      post={post}
-                      className="category-post"
-                    >
-                      <Link
-                        to={`/${this.props.match.params.category_name}/${
-                          post.subcat_slug
-                        }/${post.id}`}
-                      >
-                        <h2>{post.title}</h2>
-                        <img src={post.postMainImg} alt="" />
-                        <div className="body">{post.body}</div>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </>
+          <div className="col-xs-12 col-md-8">
+            {this.props.loading ? (
+              <div>
+                <img alt="Loading gif" src={loading} />
+              </div>
             ) : (
-              <></>
+              <div className="category-list">
+                {/* <h1>{this.state.category}</h1> */}
+                {/* <Newslist /> */}
+                {this.state.category === "news" ? (
+                  <Newslist news={this.props.posts} />
+                ) : (
+                  <></>
+                )}
+                {this.state.category === "news" ? (
+                  <Bloglist blog={this.props.posts} />
+                ) : (
+                  <></>
+                )}
+                {/* {this.state.category === "blog" && (
+                  <Bloglist blog={this.props.posts} />
+                )} */}
+                {/* {this.state.category === "videos" && <Videolist />}
+                {this.state.category === "old-school" && <OldSchoollist />} */}
+              </div>
             )}
           </div>
         )}
-      </div>
+      </>
     );
   }
 }

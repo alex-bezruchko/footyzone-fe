@@ -10,27 +10,68 @@ import {
 
 class SubCategory extends React.Component {
   componentDidMount() {
-    const category_name = this.props.match.params.category_name;
-    const subcat_name = this.props.match.params.subcat_name;
-
-    this.props.fetchPostsBySubCategory(category_name, subcat_name);
+    let category_name = this.props.match.params.category_name;
+    let subcat_name = this.props.match.params.subcat_name;
+    console.log(subcat_name);
+    console.log(this.props.match);
+    if (
+      subcat_name ===
+        ("blog" ||
+          "oldschool" ||
+          "laliga" ||
+          "epl" ||
+          "goals" ||
+          "interviews" ||
+          "highlights") &&
+      category_name === ("news" || "videos")
+    ) {
+      this.setState({
+        isCategory: true,
+      });
+      this.props.fetchPostsBySubCategory(category_name, subcat_name);
+      // this.props.fetchPostsByCategory(category_name);
+    } else {
+      this.setState({
+        isCategory: false,
+      });
+    }
+    // this.props.fetchPostsBySubCategory(category_name, subcat_name);
   }
 
   componentDidUpdate(prevProps) {
-    const category_name = this.props.match.params.category_name;
-    const subcat_name = this.props.match.params.subcat_name;
+    let category_name = this.props.match.params.category_name;
+    let subcat_name = this.props.match.params.subcat_name;
     if (
       category_name !== prevProps.match.params.category_name ||
       subcat_name !== prevProps.match.params.subcat_name
     ) {
-      this.props.fetchPostsBySubCategory(category_name, subcat_name);
+      if (
+        subcat_name ===
+          ("blog" ||
+            "oldschool" ||
+            "laliga" ||
+            "epl" ||
+            "goals" ||
+            "interviews" ||
+            "highlights") &&
+        category_name === ("news" || "videos")
+      ) {
+        this.setState({
+          isCategory: true,
+        });
+        this.props.fetchPostsBySubCategory(category_name, subcat_name);
+        // this.props.fetchPostsByCategory(category_name);
+      } else {
+        this.setState({
+          isCategory: false,
+        });
+      }
     }
   }
 
   render() {
-    console.log(this.props.posts);
     return (
-      <div className="col-md-8">
+      <div className="col-xs-12 col-md-8">
         {this.props.loading ? (
           <div>
             <img alt="Loading gif" src={loading} />
@@ -38,7 +79,7 @@ class SubCategory extends React.Component {
         ) : (
           <div className="category-list">
             <h1>
-              {this.props.match.params.category_name ? (
+              {this.props.match.params.subcat_name ? (
                 <span>
                   {" "}
                   {this.props.match.params.subcat_name.split(" ").join("")}

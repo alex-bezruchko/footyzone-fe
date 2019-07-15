@@ -22,24 +22,26 @@ class App extends React.Component {
         <section>
           <Container className="content">
             <Route exact path="/" component={Welcome} />
-            <Route exact path="/:category_name/" component={Category} />
-            <Route exact path="/:category_name" component={RelatedPosts} />
-
+            <Route exact path="/:cat_name/" component={Category} />
             <Route
               exact
-              path="/:category_name/:subcat_name"
+              path="/:cat_name/:subcat_name"
               component={SubCategory}
             />
+
+            {/* <Route exact path="/news" component={RelatedPosts} />
+            <Route exact path="/videos" component={RelatedPosts} /> */}
+
             <Route
               exact
               path="/:category_name/:subcat_name/:id"
               component={SingleView}
             />
-            <Route
+            {/* <Route
               exact
               path="/:category_name/:subcat_name/"
               component={RelatedPosts}
-            />
+            /> */}
 
             <Route
               exact
@@ -51,7 +53,7 @@ class App extends React.Component {
             {/* <Route exact path="/blog" component={BlogPage} /> */}
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/users" component={Users} />
-            <Route exact path="/category/:id" component={RelatedPosts} />
+            {/* <Route exact path="/category/:id" component={RelatedPosts} /> */}
           </Container>
         </section>
       </div>

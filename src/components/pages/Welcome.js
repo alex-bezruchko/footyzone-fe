@@ -30,7 +30,7 @@ class Welcome extends React.Component {
   componentDidMount() {
     this.setState({ loading: true });
     axios
-      .get("https://footyzone-be.herokuapp.com/api/posts/welcome")
+      .get("https://footyzone-be.herokuapp.com/api/news/welcome")
       .then(response => {
         if (response.data) {
           this.setState({ posts: response.data, loading: false, message: "" });

@@ -32,6 +32,7 @@ class Header extends React.Component {
     this.state = {
       dropdownOpen: false,
       categories: [],
+      subcategories: [],
     };
   }
 
@@ -46,6 +47,14 @@ class Header extends React.Component {
       })
       .catch(err => {
         this.setState({ categories: [] });
+      });
+    axios
+      .get("https://footyzone-be.herokuapp.com/api/news/subcategories")
+      .then(res => {
+        this.setState({ subcategories: res.data });
+      })
+      .catch(err => {
+        this.setState({ subcategories: [] });
       });
 
     // $(window).scroll(function(e) {
@@ -120,7 +129,18 @@ class Header extends React.Component {
                     <DropdownItem>
                       <Link to={"/news"}>All News</Link>
                     </DropdownItem>
-                    {this.state.categories.map((cat, index) => {
+                    <DropdownItem>
+                      <Link to={"/news/epl"}>Premier League</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={"/news/laliga"}>La Liga</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={"/news/uefacl"}>Champions League</Link>
+                    </DropdownItem>
+
+                    {/* {this.state.subcategories.filter((cat, index) => {
+                      if (cat === )
                       return (
                         <DropdownItem key={index}>
                           <NavLink to={`/news/${cat.subcat_slug}/`}>
@@ -128,7 +148,7 @@ class Header extends React.Component {
                           </NavLink>
                         </DropdownItem>
                       );
-                    })}
+                    })} */}
                   </DropdownMenu>
                 </Dropdown>
               </ListGroupItem>

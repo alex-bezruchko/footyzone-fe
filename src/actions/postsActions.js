@@ -22,9 +22,18 @@ export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
 export const FETCH_ALL_CATEGORIES_LOADING = "FETCH_ALL_CATEGORIES_LOADING";
 export const FETCH_ALL_CATEGORIES_SUCCESS = "FETCH_ALL_CATEGORIES_SUCCESS";
 export const FETCH_ALL_CATEGORIES_FAILURE = "FETCH_ALL_CATEGORIES_FAILURE";
+export const FETCH_ALL_SUBCATEGORIES_LOADING =
+  "FETCH_ALL_SUBCATEGORIES_LOADING";
+export const FETCH_ALL_SUBCATEGORIES_SUCCESS =
+  "FETCH_ALL_SUBCATEGORIES_SUCCESS";
+export const FETCH_ALL_SUBCATEGORIES_FAILURE =
+  "FETCH_ALL_SUBCATEGORIES_FAILURE";
 export const CATEGORY_LOADING = "CATEGORY_LOADING";
 export const CATEGORY_SUCCESS = "CATEGORY_SUCCESS";
 export const CATEGORY_FAILURE = "CATEGORY_FAILURE";
+export const SUBCATEGORY_LOADING = "SUBCATEGORY_LOADING";
+export const SUBCATEGORY_SUCCESS = "SUBCATEGORY_SUCCESS";
+export const SUBCATEGORY_FAILURE = "SUBCATEGORY_FAILURE";
 export const USERS_POSTS_LOADING = "USERS_POSTS_LOADING";
 export const USERS_POSTS_SUCCESS = "USERS_POSTS_SUCCESS";
 export const USERS_POSTS_FAILURE = "USERS_POSTS_FAILURE";
@@ -68,7 +77,7 @@ export function fetchPosts() {
   return dispatch => {
     dispatch({ type: FETCH_ALL_LOADING });
     axios
-      .get("https://footyzone-be.herokuapp.com/api/posts")
+      .get("https://footyzone-be.herokuapp.com/api/news")
       .then(response => {
         dispatch({
           type: FETCH_ALL_SUCCESS,
@@ -85,11 +94,13 @@ export function fetchPosts() {
 }
 
 export function fetchPostsByCategory(category_name) {
+  console.log(`https://footyzone-be.herokuapp.com/api/${category_name}`);
   return dispatch => {
     dispatch({ type: CATEGORY_LOADING });
     axios
       .get(`https://footyzone-be.herokuapp.com/api/${category_name}`)
       .then(response => {
+        // console.log(response);
         dispatch({
           type: CATEGORY_SUCCESS,
           payload: response.data,
@@ -106,20 +117,20 @@ export function fetchPostsByCategory(category_name) {
 
 export function fetchPostsBySubCategory(category_name, subcat_name) {
   return dispatch => {
-    dispatch({ type: CATEGORY_LOADING });
+    dispatch({ type: SUBCATEGORY_LOADING });
     axios
       .get(
         `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}`
       )
       .then(response => {
         dispatch({
-          type: CATEGORY_SUCCESS,
+          type: SUBCATEGORY_SUCCESS,
           payload: response.data,
         });
       })
       .catch(err => {
         dispatch({
-          type: CATEGORY_FAILURE,
+          type: SUBCATEGORY_FAILURE,
           payload: err,
         });
       });
@@ -150,7 +161,7 @@ export function fetchAllCategories() {
   return dispatch => {
     dispatch({ type: FETCH_ALL_CATEGORIES_LOADING });
     axios
-      .get("https://footyzone-be.herokuapp.com/api/posts/categories")
+      .get("https://footyzone-be.herokuapp.com/api/news/categories")
       .then(response => {
         dispatch({
           type: FETCH_ALL_CATEGORIES_SUCCESS,
@@ -160,6 +171,26 @@ export function fetchAllCategories() {
       .catch(err => {
         dispatch({
           type: FETCH_ALL_CATEGORIES_FAILURE,
+          payload: err,
+        });
+      });
+  };
+}
+
+export function fetchAllSubCategories() {
+  return dispatch => {
+    dispatch({ type: FETCH_ALL_SUBCATEGORIES_LOADING });
+    axios
+      .get(`https://footyzone-be.herokuapp.com/api/news/subcategories`)
+      .then(response => {
+        dispatch({
+          type: FETCH_ALL_SUBCATEGORIES_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCH_ALL_SUBCATEGORIES_FAILURE,
           payload: err,
         });
       });
