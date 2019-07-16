@@ -8,7 +8,7 @@ import {
   fetchPostsByCategory,
   fetchPostsBySubCategory,
   fetchAllCategories,
-  fetchPosts,
+  fetchAllPosts,
 } from "../../actions/postsActions";
 
 class RelatedPosts extends React.Component {
@@ -114,7 +114,7 @@ export default withRouter(
       fetchPostsByCategory,
       fetchPostsBySubCategory,
       fetchAllCategories,
-      fetchPosts,
+      fetchAllPosts,
     }
   )(RelatedPosts)
 );

@@ -127,7 +127,7 @@ class Header extends React.Component {
                   <DropdownToggle caret>News</DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem>
-                      <Link to={"/news"}>All News</Link>
+                      <Link to={"/news"}>Latest</Link>
                     </DropdownItem>
                     <DropdownItem>
                       <Link to={"/news/epl"}>Premier League</Link>

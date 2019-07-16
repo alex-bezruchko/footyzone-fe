@@ -38,46 +38,11 @@ export const USERS_POSTS_LOADING = "USERS_POSTS_LOADING";
 export const USERS_POSTS_SUCCESS = "USERS_POSTS_SUCCESS";
 export const USERS_POSTS_FAILURE = "USERS_POSTS_FAILURE";
 
-export function searchTerm(term) {
+export function fetchAllNews() {
   return dispatch => {
     dispatch({ type: FETCH_ALL_LOADING });
     axios
-      .get("https://footyzone-be.herokuapp.com/api/posts")
-      .then(response => {
-        const lowercasedTerm = term.toLowerCase();
-        const searchPosts = response.data.filter(post => {
-          const lowercasedTitle = post.title.toLowerCase();
-          const lowercasedBody = post.body ? post.body.toLowerCase() : "";
-
-          if (
-            lowercasedTitle.includes(lowercasedTerm) ||
-            lowercasedBody.includes(lowercasedTerm)
-          ) {
-            return true;
-          } else {
-            return false;
-          }
-        });
-
-        dispatch({
-          type: SEARCH_SUCCESS,
-          payload: searchPosts,
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: SEARCH_FAILURE,
-          payload: err,
-        });
-      });
-  };
-}
-
-export function fetchAllPosts() {
-  return dispatch => {
-    dispatch({ type: FETCH_ALL_LOADING });
-    axios
-      .get("https://footyzone-be.herokuapp.com/api/blog")
+      .get("https://footyzone-be.herokuapp.com/api/news")
       .then(response => {
         dispatch({
           type: FETCH_ALL_SUCCESS,
@@ -93,39 +58,11 @@ export function fetchAllPosts() {
   };
 }
 
-export function fetchPostsByCategory(category_name) {
-  console.log(`https://footyzone-be.herokuapp.com/api/${category_name}`);
-  return dispatch => {
-    dispatch({ type: CATEGORY_LOADING });
-    axios
-      .get(`https://footyzone-be.herokuapp.com/api/${category_name}`)
-      .then(response => {
-        // console.log(response);
-        dispatch({
-          type: CATEGORY_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: CATEGORY_FAILURE,
-          payload: err,
-        });
-      });
-  };
-}
-
-export function fetchPostsBySubCategory(category_name, subcat_name) {
-  console.log(
-    `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}/`
-  );
-
+export function fetchNewsBySubCategory(subcat_name) {
   return dispatch => {
     dispatch({ type: SUBCATEGORY_LOADING });
     axios
-      .get(
-        `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}`
-      )
+      .get(`https://footyzone-be.herokuapp.com/api/news/${subcat_name}`)
       .then(response => {
         dispatch({
           type: SUBCATEGORY_SUCCESS,
@@ -141,11 +78,11 @@ export function fetchPostsBySubCategory(category_name, subcat_name) {
   };
 }
 
-export function fetchUsersPosts(id) {
+export function fetchUsersNews(id) {
   return dispatch => {
     dispatch({ type: USERS_POSTS_LOADING });
     axios
-      .get(`https://footyzone-be.herokuapp.com/api/users/${id}/posts`)
+      .get(`https://footyzone-be.herokuapp.com/api/users/${id}/news`)
       .then(response => {
         dispatch({
           type: USERS_POSTS_SUCCESS,
@@ -161,47 +98,7 @@ export function fetchUsersPosts(id) {
   };
 }
 
-export function fetchAllCategories() {
-  return dispatch => {
-    dispatch({ type: FETCH_ALL_CATEGORIES_LOADING });
-    axios
-      .get("https://footyzone-be.herokuapp.com/api/news/categories")
-      .then(response => {
-        dispatch({
-          type: FETCH_ALL_CATEGORIES_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: FETCH_ALL_CATEGORIES_FAILURE,
-          payload: err,
-        });
-      });
-  };
-}
-
-export function fetchAllSubCategories() {
-  return dispatch => {
-    dispatch({ type: FETCH_ALL_SUBCATEGORIES_LOADING });
-    axios
-      .get(`https://footyzone-be.herokuapp.com/api/news/subcategories`)
-      .then(response => {
-        dispatch({
-          type: FETCH_ALL_SUBCATEGORIES_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: FETCH_ALL_SUBCATEGORIES_FAILURE,
-          payload: err,
-        });
-      });
-  };
-}
-
-export function viewPost(category_name, subcat_name, id) {
+export function viewNews(category_name, subcat_name, id) {
   return dispatch => {
     dispatch({ type: FETCH_ONE_LOADING });
     axios
@@ -223,7 +120,7 @@ export function viewPost(category_name, subcat_name, id) {
   };
 }
 
-export function addPost(newPost, history) {
+export function addNews(newNews, history) {
   // console.log(history);
   const token = localStorage.getItem("jwt");
   var config = {
@@ -232,13 +129,13 @@ export function addPost(newPost, history) {
   return dispatch => {
     dispatch({ type: ADDING_LOADING });
     axios
-      .post(`https://footyzone-be.herokuapp.com/api/posts`, newPost, config)
+      .post(`https://footyzone-be.herokuapp.com/api/news`, newNews, config)
       .then(response => {
         dispatch({
           type: ADDED_SUCCESS,
           payload: response.data,
         });
-        history.push(`/post/${response.data.addedPost.id}`);
+        history.push(`/news/${response.data.addedNews.id}`);
       })
       .catch(err => {
         dispatch({
@@ -249,11 +146,11 @@ export function addPost(newPost, history) {
   };
 }
 
-export function editPost(id, post) {
+export function editNews(id, news) {
   return dispatch => {
     dispatch({ type: EDITING_LOADING });
     axios
-      .put(`https://footyzone-be.herokuapp.com/api/posts/${id}`, post)
+      .put(`https://footyzone-be.herokuapp.com/api/news/${id}`, news)
       .then(response => {
         dispatch({
           type: EDITED_SUCCESS,
@@ -269,11 +166,11 @@ export function editPost(id, post) {
   };
 }
 
-export function deletePost(id) {
+export function deleteNews(id) {
   return dispatch => {
     dispatch({ type: DELETING_LOADING });
     axios
-      .delete(`https://footyzone-be.herokuapp.com/api/posts/${id}`)
+      .delete(`https://footyzone-be.herokuapp.com/api/news/${id}`)
       .then(response => {
         dispatch({
           type: DELETED_SUCCESS,

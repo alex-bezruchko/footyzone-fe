@@ -16,7 +16,7 @@ class Welcome extends React.Component {
     super(props);
     this.state = {
       activeIndex: 0,
-      posts: [],
+      news: [],
       loading: false,
       message: "",
     };
@@ -33,22 +33,22 @@ class Welcome extends React.Component {
       .get("https://footyzone-be.herokuapp.com/api/news/welcome")
       .then(response => {
         if (response.data) {
-          this.setState({ posts: response.data, loading: false, message: "" });
+          this.setState({ news: response.data, loading: false, message: "" });
         } else {
           this.setState({
-            posts: [],
+            news: [],
             loading: false,
-            message: "No posts were found",
+            message: "No news were found",
           });
         }
       })
       .catch(err => {
-        this.setState({ message: `${err}`, loading: false, posts: [] });
+        this.setState({ message: `${err}`, loading: false, news: [] });
       });
   }
 
   componentWillUnmount() {
-    this.setState({ loading: false, posts: [], message: "" });
+    this.setState({ loading: false, news: [], message: "" });
   }
   onExiting() {
     this.animating = true;
@@ -59,10 +59,10 @@ class Welcome extends React.Component {
   }
 
   next() {
-    const postsLength = this.state.posts.length;
+    const newsLength = this.state.news.length;
     if (this.animating) return;
     const nextIndex =
-      this.state.activeIndex === postsLength - 1
+      this.state.activeIndex === newsLength - 1
         ? 0
         : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
@@ -70,10 +70,10 @@ class Welcome extends React.Component {
 
   previous() {
     if (this.animating) return;
-    const postsLength = this.state.posts.length;
+    const newsLength = this.state.news.length;
     const nextIndex =
       this.state.activeIndex === 0
-        ? postsLength - 1
+        ? newsLength - 1
         : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
@@ -85,19 +85,19 @@ class Welcome extends React.Component {
 
   render() {
     const { activeIndex } = this.state;
-    const currentPosts = this.state.posts.filter(
-      (post, index) => index !== activeIndex
+    const currentNews = this.state.news.filter(
+      (news, index) => index !== activeIndex
     );
 
-    const slides = this.state.posts.map((post, index) => {
+    const slides = this.state.news.map((news, index) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={index}
         >
-          <img src={post.postMainImg} alt={post.title} />
-          <CarouselCaption captionText={post.body} captionHeader={post.title} />
+          <img src={news.newsMainImg} alt={news.title} />
+          <CarouselCaption captionText={news.body} captionHeader={news.title} />
         </CarouselItem>
       );
     });
@@ -114,7 +114,7 @@ class Welcome extends React.Component {
               previous={this.previous}
             >
               <CarouselIndicators
-                items={this.state.posts}
+                items={this.state.news}
                 activeIndex={activeIndex}
                 onClickHandler={this.goToIndex}
               />
@@ -132,12 +132,12 @@ class Welcome extends React.Component {
             </Carousel>
 
             <div className="small-carousel">
-              {currentPosts.map((post, index) => {
+              {currentNews.map((news, index) => {
                 return (
                   <div key={index} className="small-carousel-post">
-                    <Link to={`/post/${post.id}`}>
-                      <img src={post.postMainImg} alt={post.title} />
-                      <p>{post.title}</p>
+                    <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+                      <img src={news.newsMainImg} alt={news.title} />
+                      <p>{news.title}</p>
                     </Link>
                   </div>
                 );

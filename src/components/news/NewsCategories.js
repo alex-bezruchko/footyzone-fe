@@ -3,26 +3,33 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import loading from "./../../../src/loading.gif";
 
-import { fetchAllNews } from "../../actions/newsActions";
+import { fetchNewsBySubCategory } from "../../actions/newsActions";
 import { Link } from "react-router-dom";
 
-class Newslist extends React.Component {
+class NewsCategories extends React.Component {
   componentDidMount() {
-    this.props.fetchAllNews();
+    this.props.fetchNewsBySubCategory(this.props.match.params.subcat_name);
   }
+  componentDidUpdate(prevProps) {
+    let category_name = this.props.match.params.subcat_name;
+
+    if (category_name !== prevProps.match.params.subcat_name) {
+      this.props.fetchNewsBySubCategory(category_name);
+    }
+  }
+
   render() {
     return (
-      <div className="news-list col-sm-12 col-md-7">
+      <div className="news-list">
         {this.props.loading ? (
           <div className="container">
-            <img alt="Loading gif" src={loading} />
+            <img className="img-responsive" alt="Loading gif" src={loading} />
           </div>
         ) : (
-          <div className="container">
+          <div>
             {this.props.news.length > 0 ? (
-              <>
-                <h1>Latest Scoop</h1>
-
+              <div className="col-xs-12 col-md-7">
+                <h1>{this.props.news[0].subcat_name}</h1>
                 {this.props.news.map((news, index) => {
                   return (
                     <div
@@ -43,7 +50,7 @@ class Newslist extends React.Component {
                     </div>
                   );
                 })}
-              </>
+              </div>
             ) : (
               <></>
             )}
@@ -65,6 +72,7 @@ const mapStateToProps = ({ newsReducer: state }) => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { fetchAllNews }
-  )(Newslist)
+    { fetchNewsBySubCategory }
+  )(NewsCategories)
 );
+// export default NewsCategories;
