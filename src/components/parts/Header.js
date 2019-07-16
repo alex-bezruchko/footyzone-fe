@@ -28,9 +28,11 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
+    this.toggleNews = this.toggleNews.bind(this);
+    this.toggleOld = this.toggleOld.bind(this);
     this.state = {
       dropdownOpen: false,
+      dropdownSchool: false,
       categories: [],
       subcategories: [],
     };
@@ -67,9 +69,14 @@ class Header extends React.Component {
     //   }
     // });
   }
-  toggle() {
+  toggleNews() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen,
+    }));
+  }
+  toggleOld() {
+    this.setState(prevState => ({
+      dropdownSchool: !prevState.dropdownSchool,
     }));
   }
   logOutUser = e => {
@@ -123,7 +130,10 @@ class Header extends React.Component {
               </ListGroupItem>
 
               <ListGroupItem>
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <Dropdown
+                  isOpen={this.state.dropdownOpen}
+                  toggle={this.toggleNews}
+                >
                   <DropdownToggle caret>News</DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem>
@@ -138,23 +148,35 @@ class Header extends React.Component {
                     <DropdownItem>
                       <Link to={"/news/uefacl"}>Champions League</Link>
                     </DropdownItem>
-
-                    {/* {this.state.subcategories.filter((cat, index) => {
-                      if (cat === )
-                      return (
-                        <DropdownItem key={index}>
-                          <NavLink to={`/news/${cat.subcat_slug}/`}>
-                            {cat.subcat_name}
-                          </NavLink>
-                        </DropdownItem>
-                      );
-                    })} */}
                   </DropdownMenu>
                 </Dropdown>
               </ListGroupItem>
 
               <ListGroupItem>
                 <NavLink to={"/blog"}> Blog</NavLink>
+              </ListGroupItem>
+
+              <ListGroupItem>
+                <Dropdown
+                  isOpen={this.state.dropdownSchool}
+                  toggle={this.toggleOld}
+                >
+                  <DropdownToggle caret>Old School</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <Link to={"/old-school"}>Latest</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={"/old-school/players"}>Players</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={"/old-school/teams"}>Teams</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={"/old-school/coaches"}>Coaches</Link>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
               </ListGroupItem>
 
               <ListGroupItem>

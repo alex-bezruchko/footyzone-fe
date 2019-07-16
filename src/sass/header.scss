@@ -164,3 +164,22 @@
   z-index: 999;
   background-color: $white;
 }
+.dropdown-menu.show {
+  width: 333px;
+  margin-left: -20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 0px;
+  .dropdown-item,
+  .dropdown-item a:hover {
+    background: #fff;
+    color: $blue;
+  }
+}
+.button.dropdown-toggle.btn.btn-secondary.active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn.btn-secondary:hover,
+.btn.btn-secondary.active {
+  background-color: #fff;
+  color: $black;
+}
