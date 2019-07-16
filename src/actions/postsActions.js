@@ -201,13 +201,11 @@ export function fetchAllSubCategories() {
   };
 }
 
-export function viewPost(category_name, subcat_name, id) {
+export function viewPost(category_name, id) {
   return dispatch => {
     dispatch({ type: FETCH_ONE_LOADING });
     axios
-      .get(
-        `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}/${id}`
-      )
+      .get(`https://footyzone-be.herokuapp.com/api/${category_name}/${id}`)
       .then(response => {
         dispatch({
           type: FETCH_ONE_SUCCESS,

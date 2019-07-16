@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, withRouter } from "react-router-dom";
 import { Container } from "reactstrap";
-import SingleView from "./components/posts/SingleView";
+import SingleNews from "./components/news/SingleNews";
+import SingleBlog from "./components/blog/SingleBlog";
+
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
 import RelatedPosts from "./components/posts/RelatedPosts";
@@ -25,11 +27,9 @@ class App extends React.Component {
             <Route exact path="/news/" component={Newslist} />
             <Route exact path="/blog/" component={Bloglist} />
             <Route exact path="/news/:subcat_name" component={NewsCategories} />
-            <Route
-              exact
-              path="/:category_name/:subcat_name/:id"
-              component={SingleView}
-            />
+            <Route exact path="/news/:subcat_name/:id" component={SingleNews} />
+            <Route exact path="/blog/:id" component={SingleBlog} />
+
             <Route exact path="/posts/add" component={PostCrud} />
             <Route exact path="/users/:id/posts" component={UsersPosts} />
             <Route exact path="/contact" component={Contact} />

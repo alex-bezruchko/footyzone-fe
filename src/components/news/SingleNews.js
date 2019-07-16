@@ -1,5 +1,5 @@
 import React from "react";
-import { viewPost } from "../../actions/postsActions";
+import { viewNews } from "../../actions/newsActions";
 import { connect } from "react-redux";
 import loading from "./../../../src/loading.gif";
 import {
@@ -15,22 +15,25 @@ import {
   PinterestIcon,
 } from "react-share";
 
-class SingleView extends React.Component {
+class SingleNews extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
-    const category_name = this.props.match.params.category_name;
     const subcat_name = this.props.match.params.subcat_name;
     console.log();
-    this.props.viewPost(category_name, subcat_name, id);
+    this.props.viewNews("news", subcat_name, id);
     console.log(this.props);
   }
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     const id = this.props.match.params.id;
+    const subcat_name = this.props.match.params.subcat_name;
 
-    if (id !== prevProps.match.params.id) {
-      this.props.viewPost(id);
+    if (
+      id !== prevProps.match.params.id ||
+      subcat_name !== prevProps.match.params.subcat_name
+    ) {
+      this.props.viewNews("news", subcat_name, id);
     }
   }
   render() {
@@ -40,56 +43,56 @@ class SingleView extends React.Component {
           <img src={loading} alt="Post is loading gif" />
         ) : (
           <div className="card">
-            {this.props.post && (
+            {this.props.singleNews && (
               <>
                 {" "}
-                <h1>{this.props.post.title}</h1>
+                <h1>{this.props.singleNews.title}</h1>
                 <img
-                  src={this.props.post.postMainImg}
-                  alt={this.props.post.title}
+                  src={this.props.singleNews.newsMainImg}
+                  alt={this.props.singleNews.title}
                 />
                 <div className="socials">
                   <FacebookShareButton
                     url={window.location.href}
-                    media={this.props.post.title}
+                    media={this.props.singleNews.title}
                     className="button"
                   >
                     <FacebookIcon size={32} round={false} />
                   </FacebookShareButton>
                   <TwitterShareButton
                     url={window.location.href}
-                    media={this.props.post.title}
+                    media={this.props.singleNews.title}
                     className="button"
                   >
                     <TwitterIcon size={32} round={false} />
                   </TwitterShareButton>
                   <PinterestShareButton
                     url={window.location.href}
-                    media={this.props.post.title}
+                    media={this.props.singleNews.title}
                     className="button"
                   >
                     <PinterestIcon size={32} round={false} />
                   </PinterestShareButton>
                   <WhatsappShareButton
                     url={window.location.href}
-                    media={this.props.post.title}
+                    media={this.props.singleNews.title}
                     className="button"
                   >
                     <WhatsappIcon size={32} round={false} />
                   </WhatsappShareButton>
                   <RedditShareButton
                     url={window.location.href}
-                    media={this.props.post.title}
+                    media={this.props.singleNews.title}
                     className="button"
                   >
                     <RedditIcon size={32} round={false} />
                   </RedditShareButton>
                 </div>
                 <div className="author">
-                  Submitted by: {this.props.post.username} on{" "}
-                  {new Date(this.props.post.published).toDateString()}
+                  Submitted by: {this.props.singleNews.username} on{" "}
+                  {new Date(this.props.singleNews.published).toDateString()}
                 </div>
-                <div className="body">{this.props.post.body}</div>
+                <div className="body">{this.props.singleNews.body}</div>
               </>
             )}
           </div>
@@ -99,13 +102,13 @@ class SingleView extends React.Component {
   }
 }
 
-const MapStateToProps = ({ postsReducer: state }) => {
+const MapStateToProps = ({ newsReducer: state }) => {
   return {
-    post: state.post,
+    singleNews: state.singleNews,
     loading: state.loading,
   };
 };
 export default connect(
   MapStateToProps,
-  { viewPost }
-)(SingleView);
+  { viewNews }
+)(SingleNews);
