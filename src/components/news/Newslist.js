@@ -12,7 +12,7 @@ class Newslist extends React.Component {
   }
   render() {
     return (
-      <div className="news-list col-sm-12 col-md-7">
+      <div className="news-list col-sm-12 col-md-8">
         {this.props.loading ? (
           <div className="container">
             <img alt="Loading gif" src={loading} />
@@ -21,7 +21,7 @@ class Newslist extends React.Component {
           <div className="container">
             {this.props.news.length > 0 ? (
               <>
-                <h1>Latest Scoop</h1>
+                <h1 className="category-header">Latest Scoop</h1>
 
                 {this.props.news.map((news, index) => {
                   return (

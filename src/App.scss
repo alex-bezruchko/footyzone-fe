@@ -38,6 +38,7 @@
 @import "./sass/welcome.scss";
 @import "./sass/sidebar.scss";
 @import "./sass/blog.scss";
+@import "./sass/news.scss";
 @import "./sass/post.scss";
 @import "./sass/contact.scss";
 
@@ -59,6 +60,15 @@ a {
   min-width: 100%;
 }
 
+.category-header {
+  font-family: $font_bungee;
+  // width: 75%;
+  border-bottom: 2px solid $black;
+  // display: flex;
+  // justify-content: center;
+  margin: 14px 0px 66px !important;
+  padding-bottom: 8px;
+}
 .form {
   display: flex;
   width: 80%;

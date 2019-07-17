@@ -28,6 +28,7 @@ class App extends React.Component {
             <Route exact path="/blog/" component={Bloglist} />
             <Route exact path="/news/:subcat_name" component={NewsCategories} />
             <Route exact path="/news/:subcat_name/:id" component={SingleNews} />
+            {/* <Route path="/news/:subcat_name" component={RelatedPosts} /> */}
             <Route exact path="/blog/:id" component={SingleBlog} />
 
             <Route exact path="/posts/add" component={PostCrud} />
@@ -35,8 +36,7 @@ class App extends React.Component {
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/users" component={Users} />
 
-            {/* <Route exact path="/news" component={RelatedPosts} />
-            <Route exact path="/videos" component={RelatedPosts} />
+            {/* <Route exact path="/videos" component={RelatedPosts} />
             <Route
               exact
               path="/:category_name/:subcat_name/"

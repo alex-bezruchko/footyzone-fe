@@ -14,6 +14,7 @@ class Bloglist extends React.Component {
   render() {
     return (
       <div className="blog-list">
+        <h1 className="category-header">Blog</h1>
         {this.props.posts.length > 0 ? (
           <>
             {this.props.posts.map((blog, index) => {

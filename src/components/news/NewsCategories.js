@@ -20,7 +20,7 @@ class NewsCategories extends React.Component {
 
   render() {
     return (
-      <div className="news-list">
+      <div className="news-list col-sm-12 col-md-8">
         {this.props.loading ? (
           <div className="container">
             <img className="img-responsive" alt="Loading gif" src={loading} />
@@ -28,8 +28,10 @@ class NewsCategories extends React.Component {
         ) : (
           <div>
             {this.props.news.length > 0 ? (
-              <div className="col-xs-12 col-md-7">
-                <h1>{this.props.news[0].subcat_name}</h1>
+              <div className="container">
+                <h1 className="category-header">
+                  {this.props.news[0].subcat_name}
+                </h1>
                 {this.props.news.map((news, index) => {
                   return (
                     <div
