@@ -10,7 +10,7 @@ import {
   Container,
   Button,
 } from "reactstrap";
-import $ from "jquery";
+// import $ from "jquery";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import logo from "./../../img/logo.png";
 import { loginStatus } from "./../../actions/usersActions";

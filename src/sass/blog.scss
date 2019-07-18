@@ -6,16 +6,24 @@
     padding-bottom: 8px;
   }
 }
+.category-header {
+  align-self: center;
+}
+
+h2 {
+  font-family: $font_oswald;
+  font-size: 40px;
+}
+a {
+  color: $black !important;
+  &:hover {
+    color: teal !important;
+  }
+}
 .col-md-8 {
   text-align: left;
   padding-left: 0px;
 
-  a {
-    color: $black;
-    &:hover {
-      color: teal;
-    }
-  }
   .container {
     padding-left: 0px;
     display: flex;
@@ -31,10 +39,6 @@
     line-height: 1;
     letter-spacing: -0.5pt;
     margin: 15px 0px;
-  }
-  h2 {
-    font-family: $font_oswald;
-    font-size: 40px;
   }
   img {
     min-width: 100%;
@@ -53,4 +57,19 @@
   img {
     margin-bottom: 33px;
   }
+}
+.blog-list {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  .category-blog {
+    margin-bottom: 28px;
+  }
+  img {
+    width: 100%;
+    margin: 5px 0px 15px;
+  }
+  text-align: left;
 }

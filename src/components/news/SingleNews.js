@@ -22,7 +22,6 @@ class SingleNews extends React.Component {
     const id = this.props.match.params.id;
     const subcat_name = this.props.match.params.subcat_name;
     this.props.viewNews("news", subcat_name, id);
-    let mainBody = document.getElementsByClassName("single-main");
     $(window).scroll(function(e) {
       if ($(window).scrollTop() > 800) {
         $(".single-main aside").addClass("aside-fixed");
@@ -32,9 +31,6 @@ class SingleNews extends React.Component {
         $(".single-body").removeClass("body-fixed");
       }
     });
-
-    // console.log(mainBody[0]);
-    // console.log(mainBody.getBoundingClientRect());
   }
 
   componentDidUpdate(prevProps) {

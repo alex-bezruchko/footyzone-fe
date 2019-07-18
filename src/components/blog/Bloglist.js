@@ -14,7 +14,7 @@ class Bloglist extends React.Component {
   render() {
     return (
       <div className="blog-list">
-        <h1 className="category-header">Blog</h1>
+        <h2 className="category-header">Blog</h2>
         {this.props.posts.length > 0 ? (
           <>
             {this.props.posts.map((blog, index) => {
@@ -28,7 +28,16 @@ class Bloglist extends React.Component {
                   <Link to={`/blog/${blog.id}`}>
                     <h2>{blog.title}</h2>
                     <img src={blog.postMainImg} alt="" />
-                    <div className="body">{blog.body}</div>
+                    {/* <div className="body">{blog.body}</div> */}
+                    <div className="body">
+                      De Ligt is yet to clarify his future but appears to have
+                      his sights set on Juventus after revealing the club are
+                      interested and a desire to play alongside some of their
+                      defenders. Marco Silva is intent on adding a reliable
+                      goalscorer this summer and appears to have centred on
+                      Wilson. De Ligt is yet to clarify his future but appears
+                      to have{" "}
+                    </div>
                   </Link>
                 </div>
               );
