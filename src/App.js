@@ -6,9 +6,9 @@ import SingleBlog from "./components/blog/SingleBlog";
 
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
-import RelatedPosts from "./components/posts/RelatedPosts";
+// import RelatedPosts from "./components/posts/RelatedPosts";
 import Bloglist from "./components/blog/Bloglist";
-import SearchResultsList from "./components/pages/SearchResultsList";
+// import SearchResultsList from "./components/pages/SearchResultsList";
 import Welcome from "./components/pages/Welcome";
 import Contact from "./components/pages/Contact";
 import Users from "./components/users/Users";

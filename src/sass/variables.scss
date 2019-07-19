@@ -1,15 +1,19 @@
-$bg_color: #EFF1F3;
+$bg_color: #eff1f3;
 $black: #272727;
 $white: #fff;
-$blue: #009FB7;
+$blue: #009fb7;
 $orange: #ff6e08;
 $green: #12b856;
-$grey: #292F33;
-$wheat: rgba(252,239,222, .97);
+$grey: #292f33;
+$wheat: rgba(252, 239, 222, 0.97);
 
 $font_bungee: "Bungee Shade", sans-serif;
 $font_ubuntu: "Ubuntu", Arial, sans-serif;
 $font_oswald: "Oswald", Arial, sans-serif;
 
-$font_elsie : "Elsie", sans-serif;
-$font_sans: 'Open Sans', sans-serif;
+$font_elsie: "Elsie", sans-serif;
+$font_sans: "Open Sans", sans-serif;
+
+$large: "(min-width: 992px)";
+$desktop: "(min-width: 768px) and (max-width: 991px)";
+$mobile: "(max-width: 767px)";

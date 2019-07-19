@@ -145,7 +145,11 @@
     }
   }
 }
-
+.navbar {
+  width: 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 .disappear {
   opacity: 0;
   transition-duration: 0.3s;

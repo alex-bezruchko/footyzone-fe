@@ -8,6 +8,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   Container,
+  NavbarToggler,
+  Navbar,
+  Collapse,
   Button,
 } from "reactstrap";
 // import $ from "jquery";
@@ -30,11 +33,14 @@ class Header extends React.Component {
 
     this.toggleNews = this.toggleNews.bind(this);
     this.toggleOld = this.toggleOld.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
+
     this.state = {
       dropdownOpen: false,
       dropdownSchool: false,
       categories: [],
       subcategories: [],
+      isOpen: false,
     };
   }
 
@@ -79,6 +85,11 @@ class Header extends React.Component {
       dropdownSchool: !prevState.dropdownSchool,
     }));
   }
+  toggleNav() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
   logOutUser = e => {
     e.preventDefault();
     localStorage.setItem("jwt", "");
@@ -108,6 +119,7 @@ class Header extends React.Component {
                 <Button color="black" onClick={this.logOutUser}>
                   <FaSignOutAlt />
                 </Button>
+                <NavbarToggler onClick={this.toggleNav} />
               </div>
             ) : (
               <div className="login">
@@ -121,71 +133,74 @@ class Header extends React.Component {
         </div>
 
         <Container className="bottom-navbar">
-          <Nav>
-            <ListGroup>
-              <ListGroupItem>
-                <NavLink exact to={"/"}>
-                  Home
-                </NavLink>
-              </ListGroupItem>
+          <Navbar expand="md">
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav>
+                <ListGroup>
+                  <ListGroupItem>
+                    <NavLink exact to={"/"}>
+                      Home
+                    </NavLink>
+                  </ListGroupItem>
 
-              <ListGroupItem>
-                <Dropdown
-                  isOpen={this.state.dropdownOpen}
-                  toggle={this.toggleNews}
-                >
-                  <DropdownToggle caret>News</DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>
-                      <Link to={"/news"}>Latest</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to={"/news/epl"}>Premier League</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to={"/news/laliga"}>La Liga</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to={"/news/uefacl"}>Champions League</Link>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </ListGroupItem>
+                  <ListGroupItem>
+                    <Dropdown
+                      isOpen={this.state.dropdownOpen}
+                      toggle={this.toggleNews}
+                    >
+                      <DropdownToggle caret>News</DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>
+                          <Link to={"/news"}>Latest</Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to={"/news/epl"}>Premier League</Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to={"/news/laliga"}>La Liga</Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to={"/news/uefacl"}>Champions League</Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                  </ListGroupItem>
 
-              <ListGroupItem>
-                <NavLink to={"/blog"}> Blog</NavLink>
-              </ListGroupItem>
+                  <ListGroupItem>
+                    <NavLink to={"/blog"}> Blog</NavLink>
+                  </ListGroupItem>
 
-              <ListGroupItem>
-                <Dropdown
-                  isOpen={this.state.dropdownSchool}
-                  toggle={this.toggleOld}
-                >
-                  <DropdownToggle caret>Old School</DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>
-                      <Link to={"/old-school"}>Latest</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to={"/old-school/players"}>Players</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to={"/old-school/teams"}>Teams</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to={"/old-school/coaches"}>Coaches</Link>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </ListGroupItem>
+                  <ListGroupItem>
+                    <Dropdown
+                      isOpen={this.state.dropdownSchool}
+                      toggle={this.toggleOld}
+                    >
+                      <DropdownToggle caret>Old School</DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>
+                          <Link to={"/old-school"}>Latest</Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to={"/old-school/players"}>Players</Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to={"/old-school/teams"}>Teams</Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to={"/old-school/coaches"}>Coaches</Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                  </ListGroupItem>
 
-              <ListGroupItem>
-                <NavLink to={"/contact"}> Contact</NavLink>
-              </ListGroupItem>
-            </ListGroup>
-          </Nav>
-
-          <SearchForm />
+                  <ListGroupItem>
+                    <NavLink to={"/contact"}> Contact</NavLink>
+                  </ListGroupItem>
+                </ListGroup>
+              </Nav>
+              <SearchForm />
+            </Collapse>
+          </Navbar>
         </Container>
       </div>
     );

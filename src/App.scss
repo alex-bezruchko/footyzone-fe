@@ -89,3 +89,30 @@ a {
     width: 100%;
   }
 }
+.bg-light,
+nav,
+.navbar-expand-md .navbar-collapse,
+.nav-search-form {
+  background-color: #fff !important;
+}
+.navbar-expand-md .navbar-collapse {
+  justify-content: space-between;
+}
+@media #{$mobile} {
+  .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .blog-list {
+    width: 100%;
+  }
+  .top-navbar {
+    img {
+      height: 50px;
+      width: 50px;
+    }
+    .fanzone {
+      font-size: 33px;
+    }
+  }
+}
