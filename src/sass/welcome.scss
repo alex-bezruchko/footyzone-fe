@@ -1,6 +1,9 @@
 .welcome-container {
   margin-bottom: 300px;
   width: 100%;
+  .latest {
+    font-family: $font_bungee;
+  }
 }
 .carousel-item {
   max-height: 444px;
@@ -12,6 +15,74 @@
     min-height: 444px;
     width: 100%;
     height: auto;
+  }
+}
+.carousel-indicators li {
+  height: 18px !important;
+  background-color: $blue !important;
+  border: 2px solid $white !important;
+}
+@media #{$mobile} {
+  .carousel-item img,
+  .carousel-item {
+    max-height: 300px;
+    min-height: 300px;
+  }
+
+  .small-carousel .small-carousel-post p {
+    font-size: 14px;
+  }
+  .latest {
+    margin: 20px 0px 28px;
+  }
+}
+@media #{$large} {
+  // .carousel {
+  .latest {
+    width: 33%;
+    position: absolute;
+    text-align: left;
+    padding: 20px 0px 0px 0px;
+  }
+  .carousel-item img {
+    max-height: 444px;
+    min-height: 444px;
+    width: 50%;
+    margin-left: 50%;
+  }
+  .carousel-caption {
+    bottom: 0px !important;
+    text-align: left;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    h3 {
+      font-family: $font_oswald;
+      font-weight: 400;
+      min-height: 80px;
+    }
+    p {
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+      min-height: 100px;
+      font-family: $font_sans;
+    }
+  }
+
+  .carousel-indicators {
+    margin-left: 67% !important;
+  }
+
+  .carousel-caption.d-none.d-md-block {
+    width: 50%;
+    left: 0;
+    color: $black;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: left;
+    padding-bottom: 0px;
+    padding-right: 15px;
   }
 }
 .small-carousel {
@@ -28,11 +99,16 @@
       padding-right: 0px;
     }
     img {
-      max-height: 100px;
+      max-height: 133px;
+      min-height: 133px;
       width: 100%;
+      margin-bottom: 7px;
     }
     p {
       height: 30px;
+      text-align: left;
+      font-family: $font_sans;
+      line-height: 1.23;
     }
   }
 }

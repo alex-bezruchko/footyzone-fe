@@ -19,6 +19,8 @@ class Welcome extends React.Component {
       news: [],
       loading: false,
       message: "",
+      summary:
+        "However, speaking on behalf of his father, director Kroenke rejected claims Arsenal desperately needed to restructure in order to achieve long-term success, and said the club already had 'developed a modern infrastructure' following Arsene Wenger's departure from the club as manager last summer.",
     };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
@@ -97,8 +99,9 @@ class Welcome extends React.Component {
           key={index}
         >
           <img src={news.newsMainImg} alt={news.title} />
+          {/* <h1>Latest</h1> */}
           <CarouselCaption
-            captionText={news.title}
+            captionText={this.state.summary}
             captionHeader={news.title}
           />
         </CarouselItem>
@@ -111,6 +114,8 @@ class Welcome extends React.Component {
           <img className="loading" src={loading} alt="Loading gif" />
         ) : (
           <>
+            <h1 className="latest">Latest</h1>
+
             <Carousel
               activeIndex={activeIndex}
               next={this.next}

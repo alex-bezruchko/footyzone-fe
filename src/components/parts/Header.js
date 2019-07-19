@@ -80,9 +80,16 @@ class Header extends React.Component {
     }));
   }
   toggleNav() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
+    let body = document.getElementsByTagName("body");
+    let width = 600;
+    if (body[0]) {
+      width = body[0].clientWidth;
+    }
+    if (width < 600) {
+      this.setState({
+        isOpen: !this.state.isOpen,
+      });
+    }
   }
   logOutUser = e => {
     e.preventDefault();
@@ -118,7 +125,7 @@ class Header extends React.Component {
                   aria-controls="basic-navbar-nav"
                   onClick={this.toggleNav}
                 >
-                  <img src={burger} alt="toggle" />
+                  <img onClick={this.toggleNav} src={burger} alt="toggle" />
                 </NavbarToggler>
                 {/* </button> */}
               </div>
@@ -139,9 +146,9 @@ class Header extends React.Component {
               <Nav>
                 <ListGroup>
                   <ListGroupItem>
-                    <NavLink onClick={this.toggleNav} exact to={"/"}>
+                    <Link onClick={this.toggleNav} to={"/"}>
                       Home
-                    </NavLink>
+                    </Link>
                   </ListGroupItem>
 
                   <ListGroupItem>
@@ -152,34 +159,34 @@ class Header extends React.Component {
                       <DropdownToggle caret>News</DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem>
-                          <NavLink onClick={this.toggleNav} exact to={"/news"}>
+                          <Link onClick={this.toggleNav} to={"/news"}>
                             Latest
-                          </NavLink>
+                          </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <NavLink onClick={this.toggleNav} to={"/news/epl"}>
+                          <Link onClick={this.toggleNav} to={"/news/epl"}>
                             Premier League
-                          </NavLink>
+                          </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <NavLink onClick={this.toggleNav} to={"/news/laliga"}>
+                          <Link onClick={this.toggleNav} to={"/news/laliga"}>
                             La Liga
-                          </NavLink>
+                          </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <NavLink onClick={this.toggleNav} to={"/news/uefacl"}>
+                          <Link onClick={this.toggleNav} to={"/news/uefacl"}>
                             Champions League
-                          </NavLink>
+                          </Link>
                         </DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
                   </ListGroupItem>
 
                   <ListGroupItem>
-                    <NavLink onClick={this.toggleNav} name="link" to={"/blog"}>
+                    <Link onClick={this.toggleNav} to={"/blog"}>
                       {" "}
                       Blog
-                    </NavLink>
+                    </Link>
                   </ListGroupItem>
 
                   <ListGroupItem>
@@ -223,10 +230,10 @@ class Header extends React.Component {
                   </ListGroupItem>
 
                   <ListGroupItem>
-                    <NavLink onClick={this.toggleNav} to={"/contact"}>
+                    <Link onClick={this.toggleNav} to={"/contact"}>
                       {" "}
                       Contact
-                    </NavLink>
+                    </Link>
                   </ListGroupItem>
                 </ListGroup>
               </Nav>

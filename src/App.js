@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <section>
-          <Container className="content">
+          <div className="content-fluid">
             <Route exact path="/" component={Welcome} />
             <Route exact path="/news/" component={Newslist} />
             <Route exact path="/blog/" component={Bloglist} />
@@ -47,7 +47,7 @@ class App extends React.Component {
               path="/search"
               render={props => <SearchResultsList {...props} />}
             /> */}
-          </Container>
+          </div>
         </section>
       </div>
     );
