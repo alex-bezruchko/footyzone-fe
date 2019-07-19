@@ -13,7 +13,7 @@ class Bloglist extends React.Component {
   }
   render() {
     return (
-      <div className="blog-list">
+      <div className="blog-list col-md-8">
         <h2 className="category-header">Blog</h2>
         {this.props.posts.length > 0 ? (
           <>

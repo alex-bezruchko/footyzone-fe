@@ -97,7 +97,10 @@ class Welcome extends React.Component {
           key={index}
         >
           <img src={news.newsMainImg} alt={news.title} />
-          <CarouselCaption captionText={news.body} captionHeader={news.title} />
+          <CarouselCaption
+            captionText={news.title}
+            captionHeader={news.title}
+          />
         </CarouselItem>
       );
     });
