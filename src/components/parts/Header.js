@@ -9,6 +9,7 @@ import {
   DropdownMenu,
   Container,
   NavbarToggler,
+  NavbarProps,
   Navbar,
   Collapse,
   Button,
@@ -16,6 +17,8 @@ import {
 // import $ from "jquery";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import logo from "./../../img/logo.png";
+import burger from "./../../img/burger.png";
+
 import { loginStatus } from "./../../actions/usersActions";
 import {
   FaUserAlt,
@@ -48,6 +51,7 @@ class Header extends React.Component {
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("jwt");
     this.props.loginStatus(username, token, this.props.history);
+
     axios
       .get("https://footyzone-be.herokuapp.com/api/news/categories")
       .then(res => {
@@ -111,7 +115,7 @@ class Header extends React.Component {
               <div className="nav-account">
                 <FaUserAlt />
                 <span>
-                  Hi, {this.props.user.username}
+                  {this.props.user.username}
                   <NavLink to={"/posts/add"}>
                     <FaPlusCircle />
                   </NavLink>
@@ -119,7 +123,14 @@ class Header extends React.Component {
                 <Button color="black" onClick={this.logOutUser}>
                   <FaSignOutAlt />
                 </Button>
-                <NavbarToggler onClick={this.toggleNav} />
+                {/* <button id="toggler"> */}
+                <NavbarToggler
+                  aria-controls="basic-navbar-nav"
+                  onClick={this.toggleNav}
+                >
+                  <img src={burger} />
+                </NavbarToggler>
+                {/* </button> */}
               </div>
             ) : (
               <div className="login">

@@ -48,7 +48,7 @@ a {
   }
 }
 .content.container {
-  padding: 40px 0px 0px 0px;
+  padding: 40px 0px 0px 0px !important;
   display: flex;
   align-items: center;
   // justify-content: center;
@@ -105,14 +105,5 @@ nav,
   }
   .blog-list {
     width: 100%;
-  }
-  .top-navbar {
-    img {
-      height: 50px;
-      width: 50px;
-    }
-    .fanzone {
-      font-size: 33px;
-    }
   }
 }
