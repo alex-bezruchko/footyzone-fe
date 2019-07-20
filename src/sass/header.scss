@@ -68,8 +68,8 @@
   }
 
   img {
-    height: 58px;
-    width: 58px;
+    height: 40px;
+    width: 40px;
   }
 }
 
@@ -99,6 +99,7 @@
         align-self: center;
         border: none;
         margin-bottom: 0px;
+        padding: 6px 1.25rem;
         &:first-child {
           margin-left: 0px;
           padding-left: 0px;
@@ -130,6 +131,9 @@
       display: flex;
       height: 60px;
     }
+  }
+  .dropdown-menu.show {
+    z-index: 99999;
   }
   .btn .btn-secondary,
   .dropdown-toggle,
@@ -228,9 +232,13 @@
     left: 18px !important;
   }
 }
-@media #{$large} {
+@media #{$desktop} {
   .navbar-toggler {
     display: none !important;
+  }
+  .navbar {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
   }
 }
 .navbar-toggler {

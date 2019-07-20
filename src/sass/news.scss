@@ -71,3 +71,8 @@
     }
   }
 }
+@media #{$mobile} {
+  .author {
+    justify-content: space-between;
+  }
+}

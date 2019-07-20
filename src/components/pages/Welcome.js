@@ -98,7 +98,11 @@ class Welcome extends React.Component {
           onExited={this.onExited}
           key={index}
         >
-          <img src={news.newsMainImg} alt={news.title} />
+          <div className="news-image">
+            <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+              <img src={news.newsMainImg} alt={news.title} />
+            </Link>
+          </div>
           {/* <h1>Latest</h1> */}
           <CarouselCaption
             captionText={this.state.summary}
@@ -109,17 +113,17 @@ class Welcome extends React.Component {
     });
 
     return (
-      <div className="welcome-container">
+      <div className="welcome-container container-row">
         {this.state.loading ? (
           <img className="loading" src={loading} alt="Loading gif" />
         ) : (
-          <>
+          <div className="container carousel-container">
             <h1 className="latest">Latest</h1>
-
             <Carousel
               activeIndex={activeIndex}
               next={this.next}
               previous={this.previous}
+              interval={30000000}
             >
               <CarouselIndicators
                 items={this.state.news}
@@ -127,31 +131,37 @@ class Welcome extends React.Component {
                 onClickHandler={this.goToIndex}
               />
               {slides}
-              <CarouselControl
-                direction="prev"
-                directionText="Previous"
-                onClickHandler={this.previous}
-              />
-              <CarouselControl
-                direction="next"
-                directionText="Next"
-                onClickHandler={this.next}
-              />
+              <div className="controllers">
+                <div className="wrapper">
+                  <CarouselControl
+                    direction="prev"
+                    directionText="Previous"
+                    onClickHandler={this.previous}
+                  />
+                  <CarouselControl
+                    direction="next"
+                    directionText="Next"
+                    onClickHandler={this.next}
+                  />
+                </div>
+              </div>
             </Carousel>
 
             <div className="small-carousel">
               {currentNews.map((news, index) => {
                 return (
                   <div key={index} className="small-carousel-post">
-                    <Link to={`/news/${news.subcat_slug}/${news.id}`}>
-                      <img src={news.newsMainImg} alt={news.title} />
-                      <p>{news.title}</p>
-                    </Link>
+                    <div className="post-wrapper">
+                      <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+                        <img src={news.newsMainImg} alt={news.title} />
+                      </Link>
+                    </div>
+                    <p>{news.title}</p>
                   </div>
                 );
               })}
             </div>
-          </>
+          </div>
         )}
       </div>
     );
