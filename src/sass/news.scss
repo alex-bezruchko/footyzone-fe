@@ -1,7 +1,6 @@
 .news,
 .news-list {
   .author {
-    padding-bottom: 15px;
     padding-top: 18px;
     display: flex;
     align-items: center;
@@ -13,9 +12,17 @@
       border-radius: 50%;
       margin-left: 33px;
     }
+    p {
+      margin-bottom: 0px;
+      font-family: $font_ubuntu;
+      font-weight: 400;
+    }
   }
   img {
     min-width: 100%;
+  }
+  .body {
+    font-family: $font_sans;
   }
   .category-news {
     margin-top: 15px;
