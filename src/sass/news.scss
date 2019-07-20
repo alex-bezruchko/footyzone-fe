@@ -3,6 +3,16 @@
   .author {
     padding-bottom: 15px;
     padding-top: 18px;
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 66px;
+      max-height: 66px;
+      min-height: 66px;
+      min-width: 66px;
+      border-radius: 50%;
+      margin-left: 33px;
+    }
   }
   img {
     min-width: 100%;

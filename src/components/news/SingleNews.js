@@ -58,8 +58,11 @@ class SingleNews extends React.Component {
                   {" "}
                   <h2>{this.props.singleNews.title}</h2>
                   <div className="author">
-                    Submitted by: {this.props.singleNews.username} on{" "}
-                    {new Date(this.props.singleNews.published).toDateString()}
+                    <p>
+                      Submitted on{" "}
+                      {new Date(this.props.singleNews.published).toDateString()}
+                    </p>
+                    <img alt="author" src={this.props.singleNews.avatar} />
                   </div>
                   <img
                     src={this.props.singleNews.newsMainImg}
