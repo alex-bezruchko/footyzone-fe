@@ -8,6 +8,7 @@ import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
 // import RelatedPosts from "./components/posts/RelatedPosts";
 import Bloglist from "./components/blog/Bloglist";
+import WelcomeBloglist from "./components/blog/WelcomeBloglist";
 // import SearchResultsList from "./components/pages/SearchResultsList";
 import Welcome from "./components/pages/Welcome";
 import Contact from "./components/pages/Contact";
@@ -24,6 +25,7 @@ class App extends React.Component {
         <section>
           <div className="content-row">
             <Route exact path="/" component={Welcome} />
+            <Route exact path="/" component={WelcomeBloglist} />
             <Route exact path="/news/" component={Newslist} />
             <Route exact path="/blog/" component={Bloglist} />
             <Route exact path="/news/:subcat_name" component={NewsCategories} />

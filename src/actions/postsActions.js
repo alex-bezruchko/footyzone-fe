@@ -3,6 +3,9 @@ import axios from "axios";
 export const FETCH_ALL_SUCCESS = "FETCH_ALL_SUCCESS";
 export const FETCH_ALL_FAILURE = "FETCH_ALL_FAILURE";
 export const FETCH_ALL_LOADING = "FETCH_ALL_LOADING";
+export const FETCH_WELCOME_SUCCESS = "FETCH_WELCOME_SUCCESS";
+export const FETCH_WELCOME_FAILURE = "FETCH_WELCOME_FAILURE";
+export const FETCH_WELCOME_LOADING = "FETCH_WELCOME_LOADING";
 export const FETCH_ONE_SUCCESS = "FETCH_ONE_SUCCESS";
 export const FETCH_ONE_FAILURE = "FETCH_ONE_FAILURE";
 export const FETCH_ONE_LOADING = "FETCH_ONE_LOADING";
@@ -87,6 +90,25 @@ export function fetchAllPosts() {
       .catch(err => {
         dispatch({
           type: FETCH_ALL_FAILURE,
+          payload: err,
+        });
+      });
+  };
+}
+export function fetchLatestPosts() {
+  return dispatch => {
+    dispatch({ type: FETCH_WELCOME_LOADING });
+    axios
+      .get("https://footyzone-be.herokuapp.com/api/blog/welcome")
+      .then(response => {
+        dispatch({
+          type: FETCH_WELCOME_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCH_WELCOME_FAILURE,
           payload: err,
         });
       });

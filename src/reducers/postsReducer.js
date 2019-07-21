@@ -2,6 +2,9 @@ import {
   FETCH_ALL_LOADING,
   FETCH_ALL_SUCCESS,
   FETCH_ALL_FAILURE,
+  FETCH_WELCOME_LOADING,
+  FETCH_WELCOME_SUCCESS,
+  FETCH_WELCOME_FAILURE,
   FETCH_ONE_LOADING,
   FETCH_ONE_FAILURE,
   FETCH_ONE_SUCCESS,
@@ -143,6 +146,30 @@ export const postsReducer = (state = initialState, action) => {
       };
 
     case FETCH_ALL_FAILURE:
+      return {
+        ...state,
+        posts: [],
+        loading: false,
+        error: "There are no available posts",
+      };
+
+    case FETCH_WELCOME_LOADING:
+      return {
+        ...state,
+        posts: [],
+        loading: true,
+        error: "",
+      };
+
+    case FETCH_WELCOME_SUCCESS:
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false,
+        error: "",
+      };
+
+    case FETCH_WELCOME_FAILURE:
       return {
         ...state,
         posts: [],
