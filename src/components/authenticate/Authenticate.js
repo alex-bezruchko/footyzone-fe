@@ -56,7 +56,7 @@ class Authenticate extends React.Component {
       <>
         <Header {...this.props} {...this.state} />
 
-        <div className="container-row">
+        <div className="container-row content">
           {this.props.isLoggedIn === true ? (
             <div>
               <Route

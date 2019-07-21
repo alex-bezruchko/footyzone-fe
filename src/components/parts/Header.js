@@ -110,9 +110,9 @@ class Header extends React.Component {
             </Link>
             {this.props.isLoggedIn ? (
               <div className="nav-account">
-                <FaUserAlt />
                 <span>
                   {this.props.user.username}
+                  <FaUserAlt />
                   <NavLink to={"/posts/add"}>
                     <FaPlusCircle />
                   </NavLink>

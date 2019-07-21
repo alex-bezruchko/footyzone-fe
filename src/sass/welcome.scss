@@ -22,7 +22,9 @@ a .carousel-control-next-icon {
   color: $blue !important;
   font-size: 14px;
 }
-
+.post-wrapper:hover {
+  color: $wheat;
+}
 .small-carousel {
   display: flex;
   justify-content: space-between;
@@ -94,6 +96,10 @@ a .carousel-control-next-icon {
     text-align: left;
     padding-bottom: 0px;
     padding-right: 15px;
+
+    &:hover {
+      color: $wheat;
+    }
     h3 {
       line-height: 1.1;
       font-family: $font_oswald;
@@ -130,15 +136,14 @@ a .carousel-control-next-icon {
   overflow: hidden;
   width: 100%;
   z-index: 9999;
-  // border: 1.5px solid #ffffcd;
-  // box-shadow: 1px 1px 3px #888888;
   margin: 33px 0px;
   display: flex;
   flex-direction: column;
   border: none;
-  // &:hover {
-  //   overflow: hidden;
-  // }
+
+  &:hover {
+    color: $wheat;
+  }
   &:hover img {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -158,8 +163,6 @@ a .carousel-control-next-icon {
     overflow: hidden;
     max-height: 166px;
     min-height: 166px;
-    // border: 1.5px solid #ffffcd;
-    // box-shadow: 1px 1px 3px #888888;
   }
   p {
     margin-top: 10px;
@@ -172,7 +175,6 @@ a .carousel-control-next-icon {
   height: 388px;
   max-height: 388px;
   min-height: 388px;
-  // z-index: 9999;
   width: 50%;
   margin-left: 50%;
   border: 1.5px solid $wheat !important;
@@ -267,7 +269,6 @@ a .carousel-control-next-icon {
     .body {
       display: flex;
       flex-direction: row;
-      // padding-top: 15px;
       img {
         max-width: 100px;
         max-height: 100px;
@@ -304,7 +305,6 @@ a .carousel-control-next-icon {
   .category-blog {
     background-color: #fff;
     margin-bottom: 27px;
-    // margin: 0px 5%;
     h2 {
       line-height: 1.1;
       font-size: 23px;
