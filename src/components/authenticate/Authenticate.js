@@ -7,9 +7,12 @@ import LoginForm from "./LoginForm";
 import Header from "./../parts/Header";
 import App from "./../../App.js";
 import axios from "axios";
+import Footer from "./../parts/Footer";
 
 class Authenticate extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("jwt");
     this.props.loginStatus(username, token, this.props.history);
@@ -78,6 +81,7 @@ class Authenticate extends React.Component {
             </div>
           )}
         </div>
+        <Footer />
       </>
     );
   }

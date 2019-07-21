@@ -42,9 +42,7 @@ class WelcomeBloglist extends React.Component {
                           De Ligt is yet to clarify his future but appears to
                           have his sights set on Juventus after revealing the
                           club are interested and a desire to play alongside
-                          some of their defenders. Marco Silva is intent on
-                          adding a reliable goalscorer this summer and appears
-                          to have centred on Wilson.
+                          some of their defenders.
                         </p>
                       </div>
                     </Link>

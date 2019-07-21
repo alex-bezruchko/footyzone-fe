@@ -3,7 +3,6 @@ import { Route, withRouter } from "react-router-dom";
 import { Container } from "reactstrap";
 import SingleNews from "./components/news/SingleNews";
 import SingleBlog from "./components/blog/SingleBlog";
-
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
 // import RelatedPosts from "./components/posts/RelatedPosts";

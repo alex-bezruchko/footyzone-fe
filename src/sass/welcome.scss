@@ -47,10 +47,11 @@ a .carousel-control-next-icon {
       margin-bottom: 7px;
     }
     p {
-      height: 30px;
+      font-size: 22px;
       text-align: left;
       font-family: $font_sans;
-      line-height: 1.23;
+      font-weight: lighter;
+      line-height: 1;
       color: $white;
     }
   }
@@ -100,6 +101,9 @@ a .carousel-control-next-icon {
     p {
       padding-top: 20px;
       margin-bottom: 0px;
+      font-family: $font_sans;
+      font-size: 22px;
+      line-height: 1.1;
     }
   }
 }
@@ -263,7 +267,7 @@ a .carousel-control-next-icon {
     .body {
       display: flex;
       flex-direction: row;
-      padding-top: 15px;
+      // padding-top: 15px;
       img {
         max-width: 100px;
         max-height: 100px;
@@ -275,7 +279,11 @@ a .carousel-control-next-icon {
         align-self: baseline;
       }
       p {
+        font-family: $font_sans;
         margin: 0px;
+        font-size: 22px;
+        line-height: 1.2;
+        align-self: center;
       }
     }
   }
@@ -297,6 +305,12 @@ a .carousel-control-next-icon {
     background-color: #fff;
     margin-bottom: 27px;
     // margin: 0px 5%;
+    h2 {
+      line-height: 1.1;
+      font-size: 23px;
+      min-height: 50px;
+      margin-bottom: 0px;
+    }
   }
   .col-md-6 {
     flex: 0 0 45%;

@@ -20,7 +20,7 @@ class Welcome extends React.Component {
       loading: false,
       message: "",
       summary:
-        "However, speaking on behalf of his father, director Kroenke rejected claims Arsenal desperately needed to restructure in order to achieve long-term success, and said the club already had 'developed a modern infrastructure' following Arsene Wenger's departure from the club as manager last summer.",
+        "However, speaking on behalf of his father, director Kroenke rejected claims Arsenal desperately needed to restructure in order to achieve long-term success, and said the club already had 'developed a modern infrastructure' following Arsene Wenger's departure.",
     };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
@@ -30,6 +30,8 @@ class Welcome extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     this.setState({ loading: true });
     axios
       .get("https://footyzone-be.herokuapp.com/api/news/welcome")

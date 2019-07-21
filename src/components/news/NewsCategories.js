@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 class NewsCategories extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     this.props.fetchNewsBySubCategory(this.props.match.params.subcat_name);
   }
   componentDidUpdate(prevProps) {
