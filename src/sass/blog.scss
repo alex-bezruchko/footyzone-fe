@@ -69,6 +69,11 @@ a {
   flex-direction: column;
   .category-blog {
     margin-bottom: 28px;
+
+    h2 {
+      line-height: 1.1;
+      font-weight: 500;
+    }
   }
   img {
     width: 100%;
