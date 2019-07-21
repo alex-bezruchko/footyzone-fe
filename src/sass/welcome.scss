@@ -216,6 +216,12 @@
   .navbar {
     padding: 0px !important;
   }
+  .container-row.welcome-blog {
+    .col-md-6 {
+      min-width: 100%;
+      margin-bottom: 66px !important;
+    }
+  }
 }
 .container-row.welcome-blog {
   background: url("../src/img/blog.jpeg");
