@@ -13,43 +13,45 @@ class Newslist extends React.Component {
   }
   render() {
     return (
-      <div className="news-list col-sm-12 col-md-8">
-        {this.props.loading ? (
-          <div className="container">
-            <img alt="Loading gif" src={loading} />
-          </div>
-        ) : (
-          <div className="container">
-            {this.props.news.length > 0 ? (
-              <>
-                <h1 className="category-header">Latest Scoop</h1>
+      <div className="container-row news">
+        <div className="news-list container">
+          {this.props.loading ? (
+            <div className="container">
+              <img alt="Loading gif" src={loading} />
+            </div>
+          ) : (
+            <div className="col-sm-12 col-md-8">
+              {this.props.news.length > 0 ? (
+                <>
+                  <h1 className="category-header">Latest Scoop</h1>
 
-                {this.props.news.map((news, index) => {
-                  return (
-                    <div
-                      key={index}
-                      id={news.id}
-                      news={news}
-                      className="category-news"
-                    >
-                      <Link to={`/news/${news.subcat_slug}/${news.id}`}>
-                        <h2>{news.title}</h2>
-                        <img
-                          className="img-responsive"
-                          src={news.newsMainImg}
-                          alt=""
-                        />
-                        <div className="body">{news.body}</div>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
-        )}
+                  {this.props.news.map((news, index) => {
+                    return (
+                      <div
+                        key={index}
+                        id={news.id}
+                        news={news}
+                        className="category-news"
+                      >
+                        <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+                          <h2>{news.title}</h2>
+                          <img
+                            className="img-responsive"
+                            src={news.newsMainImg}
+                            alt=""
+                          />
+                          <div className="body">{news.body}</div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

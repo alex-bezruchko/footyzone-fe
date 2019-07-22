@@ -1,3 +1,18 @@
+.news .container {
+  background-color: transparent;
+  .col-sm-12 {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+  }
+
+  .col-md-8 h1,
+  .category-header {
+    align-self: center;
+    margin: 53px auto 20px !important;
+  }
+}
 .news,
 .news-list {
   .author {
@@ -29,6 +44,10 @@
     min-width: 100%;
   }
 }
+.news-list .body {
+  font-size: 20px;
+  line-height: 1.2;
+}
 .single {
   padding: 5px;
   .single-main {
@@ -57,8 +76,9 @@
     padding-left: 25px;
     width: 70%;
     // margin-left: 30%;
-    body {
+    .body {
       padding-top: 15px;
+      font-size: 20px;
     }
   }
   ul {
