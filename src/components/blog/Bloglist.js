@@ -16,7 +16,7 @@ class Bloglist extends React.Component {
   render() {
     return (
       <div className="container-row blog">
-        <div className="blog-list col-xs-12 col-md-6">
+        <div className="blog-list col-xs-12 col-md-7">
           <h1>Blog</h1>
           {this.props.posts.length > 0 ? (
             <>

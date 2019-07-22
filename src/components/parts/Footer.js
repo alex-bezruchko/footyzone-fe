@@ -1,60 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Nav,
-  ListGroup,
-  ListGroupItem,
-  DropdownItem,
-  Container,
-} from "reactstrap";
+import { Nav, ListGroup, ListGroupItem, Container } from "reactstrap";
 
 class Footer extends React.Component {
   render() {
     return (
       <footer>
         <Container className="">
+          <hr className="footer-hr" />
+
           <Nav>
             <ListGroup>
-              <DropdownItem>
-                <Link to={"/"}>Home</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/news"}>Latest</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/news/epl"}>Premier League</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/news/laliga"}>La Liga</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/news/uefacl"}>Champions League</Link>
-              </DropdownItem>
+              <Link to={"/"}>Home</Link>
+              <Link to={"/news"}>Latest News</Link>
+              <Link to={"/news/epl"}>Premier League</Link>
+              <Link to={"/news/laliga"}>La Liga</Link>
+              <Link to={"/news/uefacl"}>Champions League</Link>
             </ListGroup>
 
             <ListGroup>
-              <DropdownItem>
-                <Link to={"/blog"}> Blog</Link>
-              </DropdownItem>
-
-              <DropdownItem>
-                <Link to={"/old-school"}>Latest</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/old-school/players"}>Players</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/old-school/teams"}>Teams</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to={"/old-school/coaches"}>Coaches</Link>
-              </DropdownItem>
+              <Link to={"/blog"}> Blog</Link>
+              <Link to={"/old-school"}>Old School</Link>
+              <Link to={"/old-school/players"}>Players</Link>
+              <Link to={"/old-school/teams"}>Teams</Link>
+              <Link to={"/old-school/coaches"}>Coaches</Link>
+            </ListGroup>
+            <ListGroup>
+              <Link to={"/videos"}> Videos</Link>
+              <Link to={"/videos"}>Latest</Link>
+              <Link to={"/videos/highlights"}>Highlights</Link>
+              <Link to={"/videos/goals"}>Goals</Link>
+              <Link to={"/videos/interviews"}>Interviews</Link>
             </ListGroup>
 
-            <ListGroupItem>
+            <ListGroup>
               <Link to={"/contact"}> Contact</Link>
-            </ListGroupItem>
+              <Link to={"/contact"}> About</Link>
+              <Link to={"/contact"}> Privacy</Link>
+              <Link to={"/contact"}> Employment</Link>
+            </ListGroup>
           </Nav>
+          <hr className="footer-hr" />
+          <p>
+            <span>Fanzone</span> <span>| </span>Copyright 2019
+          </p>
         </Container>
       </footer>
     );

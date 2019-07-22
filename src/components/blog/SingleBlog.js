@@ -17,10 +17,10 @@ import {
 
 class SingleView extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const id = this.props.match.params.id;
-    console.log();
     this.props.viewPost("blog", id);
-    console.log(this.props);
   }
 
   componentDidUpdate(prevProps) {
@@ -33,62 +33,75 @@ class SingleView extends React.Component {
   }
   render() {
     return (
-      <div className="container post">
+      <div className="container-row blog">
         {this.props.loading ? (
           <img src={loading} alt="Post is loading gif" />
         ) : (
-          <div className="card">
+          <div className="container single-wrapper">
             {this.props.post && (
-              <>
+              <div className="single col-md-8">
                 {" "}
-                <h1>{this.props.post.title}</h1>
+                <h2>{this.props.post.title}</h2>
                 <img
                   src={this.props.post.postMainImg}
                   alt={this.props.post.title}
+                  className="blog-main-image"
                 />
-                <div className="socials">
-                  <FacebookShareButton
-                    url={window.location.href}
-                    media={this.props.post.title}
-                    className="button"
-                  >
-                    <FacebookIcon size={32} round={false} />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    url={window.location.href}
-                    media={this.props.post.title}
-                    className="button"
-                  >
-                    <TwitterIcon size={32} round={false} />
-                  </TwitterShareButton>
-                  <PinterestShareButton
-                    url={window.location.href}
-                    media={this.props.post.title}
-                    className="button"
-                  >
-                    <PinterestIcon size={32} round={false} />
-                  </PinterestShareButton>
-                  <WhatsappShareButton
-                    url={window.location.href}
-                    media={this.props.post.title}
-                    className="button"
-                  >
-                    <WhatsappIcon size={32} round={false} />
-                  </WhatsappShareButton>
-                  <RedditShareButton
-                    url={window.location.href}
-                    media={this.props.post.title}
-                    className="button"
-                  >
-                    <RedditIcon size={32} round={false} />
-                  </RedditShareButton>
-                </div>
-                <div className="author">
-                  Submitted by: {this.props.post.username} on{" "}
-                  {new Date(this.props.post.published).toDateString()}
+                <div className="single-info">
+                  <div className="single-share">
+                    <div className="socials">
+                      <FacebookShareButton
+                        url={window.location.href}
+                        media={this.props.post.title}
+                        className="button"
+                      >
+                        <FacebookIcon size={32} round={false} />
+                      </FacebookShareButton>
+                      <TwitterShareButton
+                        url={window.location.href}
+                        media={this.props.post.title}
+                        className="button"
+                      >
+                        <TwitterIcon size={32} round={false} />
+                      </TwitterShareButton>
+                      <PinterestShareButton
+                        url={window.location.href}
+                        media={this.props.post.title}
+                        className="button"
+                      >
+                        <PinterestIcon size={32} round={false} />
+                      </PinterestShareButton>
+                      <WhatsappShareButton
+                        url={window.location.href}
+                        media={this.props.post.title}
+                        className="button"
+                      >
+                        <WhatsappIcon size={32} round={false} />
+                      </WhatsappShareButton>
+                      <RedditShareButton
+                        url={window.location.href}
+                        media={this.props.post.title}
+                        className="button"
+                      >
+                        <RedditIcon size={32} round={false} />
+                      </RedditShareButton>
+                    </div>
+                    <div className="author">
+                      Submitted by: {this.props.post.username} on{" "}
+                      {new Date(this.props.post.published).toDateString()}
+                    </div>
+                  </div>
+                  <img
+                    className="avatar"
+                    src={this.props.post.avatar}
+                    alt="avatar"
+                  />
                 </div>
                 <div className="body">{this.props.post.body}</div>
-              </>
+                <div className="body">
+                  <p>{this.props.post.body}</p>
+                </div>
+              </div>
             )}
           </div>
         )}
