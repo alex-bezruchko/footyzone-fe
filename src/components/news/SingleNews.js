@@ -38,8 +38,6 @@ class SingleNews extends React.Component {
     });
     $(window).scroll(function(e) {
       let article = document.getElementsByClassName("single-news");
-      // let container = document.getElementsByClassName("single-news-wrapper");
-      // let aside = document.getElementsByClassName("col-md-4 ");
       if (article[0]) {
         let height = article[0].clientHeight;
         if (
@@ -49,6 +47,9 @@ class SingleNews extends React.Component {
           $(".col-md-4 .twitter").addClass("twitter-fixed");
         } else {
           $(".col-md-4 .twitter").removeClass("twitter-fixed");
+          $(".single-main aside").removeClass("aside-fixed");
+
+          $(".single-body").removeClass("body-fixed");
         }
       }
     });
