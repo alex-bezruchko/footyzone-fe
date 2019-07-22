@@ -37,7 +37,7 @@ class SingleView extends React.Component {
         {this.props.loading ? (
           <img src={loading} alt="Post is loading gif" />
         ) : (
-          <div className="container single-wrapper">
+          <div className="container single-blog-wrapper">
             {this.props.post && (
               <div className="single col-md-8">
                 {" "}
