@@ -22,44 +22,46 @@ class NewsCategories extends React.Component {
 
   render() {
     return (
-      <div className="news-list col-sm-12 col-md-8">
-        {this.props.loading ? (
-          <div className="container">
-            <img className="img-responsive" alt="Loading gif" src={loading} />
-          </div>
-        ) : (
-          <div>
-            {this.props.news.length > 0 ? (
-              <div className="container">
-                <h1 className="category-header">
-                  {this.props.news[0].subcat_name}
-                </h1>
-                {this.props.news.map((news, index) => {
-                  return (
-                    <div
-                      key={index}
-                      id={news.id}
-                      news={news}
-                      className="category-news"
-                    >
-                      <Link to={`/news/${news.subcat_slug}/${news.id}`}>
-                        <h2>{news.title}</h2>
-                        <img
-                          className="img-responsive"
-                          src={news.newsMainImg}
-                          alt=""
-                        />
-                        <div className="body">{news.body}</div>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-        )}
+      <div className="container-row news">
+        <div className="news-list container">
+          {this.props.loading ? (
+            <div className="container">
+              <img className="img-responsive" alt="Loading gif" src={loading} />
+            </div>
+          ) : (
+            <div className="col-sm-12 col-md-8">
+              {this.props.news.length > 0 ? (
+                <div className="container">
+                  <h1 className="category-header">
+                    {this.props.news[0].subcat_name}
+                  </h1>
+                  {this.props.news.map((news, index) => {
+                    return (
+                      <div
+                        key={index}
+                        id={news.id}
+                        news={news}
+                        className="category-news"
+                      >
+                        <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+                          <h2>{news.title}</h2>
+                          <img
+                            className="img-responsive"
+                            src={news.newsMainImg}
+                            alt=""
+                          />
+                          <div className="body">{news.body}</div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

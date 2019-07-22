@@ -51,9 +51,8 @@ a {
 .col-md-8 {
   text-align: left;
   padding-left: 0px;
-
   .container {
-    padding-left: 0px;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
