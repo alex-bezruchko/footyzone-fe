@@ -1,5 +1,6 @@
 .news .container {
   background-color: transparent;
+  display: flex;
   .col-sm-12 {
     background-color: $white;
     display: flex;
@@ -12,6 +13,20 @@
     align-self: center;
     margin: 53px auto 20px !important;
   }
+}
+@media #{$mobile} {
+  .news .container {
+    flex-direction: column;
+  }
+  .news .container {
+    .col-md-4.col-xs-12 {
+      margin-top: 50px;
+      padding: 0px;
+    }
+  }
+}
+iframe .timeline-Widget {
+  border-radius: 0px !important;
 }
 .news,
 .news-list {
@@ -29,8 +44,9 @@
     }
     p {
       margin-bottom: 0px;
-      font-family: $font_ubuntu;
-      font-weight: 400;
+      font-family: $font_sans;
+      font-size: 20px;
+      font-weight: 500;
     }
   }
   img {
@@ -62,17 +78,34 @@
     margin-top: 30px;
     height: 80%;
   }
-  .aside-fixed {
-    margin-top: 80px;
-    width: 30%;
-    position: fixed;
-    top: 0;
+
+  .related h4 {
+    font-family: $font_oswald;
   }
-  .body-fixed {
-    width: 100%;
-    padding-left: 0px;
-    margin-left: 30%;
+  aside ul {
+    li {
+      margin-bottom: 0px;
+      margin-top: 10px;
+      font-family: $font_sans;
+      font-size: 20px;
+      display: flex;
+    }
+
+    a {
+      border: 1px solid $blue;
+      border-radius: 30px;
+      padding: 0px 10px 2px;
+      height: 100%;
+      font-weight: 500;
+      align-self: center;
+    }
+    a:hover {
+      background-color: $blue;
+      color: #fff !important;
+      border: 1px solid rgba(50, 200, 200, 0.8);
+    }
   }
+
   .single-body {
     padding-left: 25px;
     width: 70%;
@@ -92,8 +125,65 @@
     }
   }
 }
+
+@media #{$desktop} {
+  .twitter-fixed {
+    margin-top: 33px;
+    position: fixed !important;
+    // right: 75px;
+    top: 0px;
+    // width: 370px !important;
+  }
+  .twitter {
+    width: 370px;
+  }
+  .col-md-8 {
+    position: relative;
+  }
+  .col-md-4.col-xs-12 {
+    height: 100%;
+  }
+  .single-news {
+    position: relative;
+    .single-body {
+      padding-left: 0px;
+    }
+    .aside-fixed {
+      margin-top: 33px;
+      width: 30%;
+      position: fixed;
+      top: 0;
+    }
+    .body-fixed {
+      width: 100%;
+      padding-left: 0px;
+      margin-left: 30%;
+    }
+  }
+}
+
 @media #{$mobile} {
   .author {
     justify-content: space-between;
+  }
+  .single-news {
+    .single-body {
+      padding-left: 0px;
+      width: 100%;
+    }
+    .related {
+      display: none;
+    }
+    .single-main {
+      flex-direction: column;
+    }
+    aside {
+      margin-top: 0px;
+      width: 100%;
+    }
+    .socials {
+      justify-content: center;
+      padding-bottom: 10px;
+    }
   }
 }
