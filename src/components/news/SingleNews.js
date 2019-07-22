@@ -38,44 +38,19 @@ class SingleNews extends React.Component {
     });
     $(window).scroll(function(e) {
       let article = document.getElementsByClassName("single-news");
-      let container = document.getElementsByClassName("single-news-wrapper");
-      let aside = document.getElementsByClassName("col-md-4 ");
+      // let container = document.getElementsByClassName("single-news-wrapper");
+      // let aside = document.getElementsByClassName("col-md-4 ");
       if (article[0]) {
-        // let width = window
-        //   .getComputedStyle(container[0], null)
-        //   .getPropertyValue("margin-left");
-
-        //   // console.log(width);
         let height = article[0].clientHeight;
-        //   if (height && article[0]) {
-        //     console.log(
-        //       window.getComputedStyle(aside[0], null).getPropertyValue("width")
-        //     );
         if (
           $(window).scrollTop() > 150 &&
           $(window).scrollTop() < (height * 8.5) / 10
         ) {
           $(".col-md-4 .twitter").addClass("twitter-fixed");
-          // $(".twitter-fixed").css({
-          //   right: width,
-          //   width: window
-          //     .getComputedStyle(aside[0], null)
-          //     .getPropertyValue("width"),
-          // });
         } else {
           $(".col-md-4 .twitter").removeClass("twitter-fixed");
-          // $(".twitter-fixed").css({
-          //   right: window
-          //     .getComputedStyle(container[0], null)
-          //     .getPropertyValue("margin-left"),
-          //   width: window
-          //     .getComputedStyle(aside[0], null)
-          //     .getPropertyValue("width"),
-          // });
         }
       }
-      // }
-      // }
     });
   }
 
@@ -92,6 +67,12 @@ class SingleNews extends React.Component {
     }
   }
   render() {
+    // const disqusShortname = "example";
+    const disqusConfig = {
+      url: window.location.href,
+      identifier: this.props.singleNews.id,
+      title: this.props.singleNews.title,
+    };
     return (
       <div className="container-row news">
         <div className="container single-news-wrapper">
