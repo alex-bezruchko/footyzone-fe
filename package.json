@@ -6,7 +6,6 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "cors": "^2.8.5",
-    "disqus-react": "^1.0.6",
     "jquery": "^3.4.1",
     "node-sass": "^4.11.0",
     "react": "^16.8.4",

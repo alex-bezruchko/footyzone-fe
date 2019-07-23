@@ -230,9 +230,22 @@ a .carousel-control-next-icon {
     }
   }
   .small-carousel .small-carousel-post p {
-    font-size: 14px;
+    font-size: 19px;
     margin-bottom: 0px;
     height: auto;
+  }
+  .small-carousel {
+    .small-carousel-post:nth-child(1) {
+      margin-right: 5px;
+    }
+    .small-carousel-post:nth-child(2) {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    .small-carousel-post:nth-child(3) {
+      margin-left: 5px;
+      margin-right: 0px;
+    }
   }
   .latest {
     margin: 20px 0px 28px;
