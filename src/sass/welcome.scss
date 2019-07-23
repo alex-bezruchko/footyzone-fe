@@ -2,7 +2,9 @@
 .news {
   width: 100%;
   background: rgba(2, 22, 22, 0.9);
-  padding: 50px 0px 0px;
+  .container {
+    padding: 50px 0px 0px;
+  }
   .latest {
     font-family: $font_bungee;
     color: $white;

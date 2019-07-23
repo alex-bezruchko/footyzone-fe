@@ -17,7 +17,7 @@ class WelcomeBloglist extends React.Component {
         <div className="container header">
           <h1>Blog</h1>
         </div>
-        <div className="container">
+        <div className="container col-md-10">
           {this.props.posts.length > 0 ? (
             <>
               {this.props.posts.map((blog, index) => {

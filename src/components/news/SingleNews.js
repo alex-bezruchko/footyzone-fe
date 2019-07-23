@@ -68,7 +68,6 @@ class SingleNews extends React.Component {
     }
   }
   render() {
-    // const disqusShortname = "example";
     const disqusConfig = {
       url: window.location.href,
       identifier: this.props.singleNews.id,
@@ -142,20 +141,26 @@ class SingleNews extends React.Component {
                         </div>
                         <div className="related">
                           <h4>Related Topics</h4>
-                          <ul>
-                            <li>
-                              <Link to="/">Manchester United</Link>
-                            </li>
-                            <li>
-                              <Link to="/">EPL</Link>
-                            </li>
-                            <li>
-                              <Link to="/">Transfers</Link>
-                            </li>
-                            <li>
-                              <Link to="/">De Gea</Link>
-                            </li>
-                          </ul>
+                          {this.props.singleNews.tags ? (
+                            <ul>
+                              {this.props.singleNews.tags.map((tag, index) => {
+                                return (
+                                  <li
+                                    key={index}
+                                    className="category-tag col-md-6 col-xs-12"
+                                  >
+                                    <Link
+                                      to={`/${tag.tag_slug}/${tag.subtag_slug}`}
+                                    >
+                                      {tag.subtag_name}
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </aside>
                       <div className="single-body">

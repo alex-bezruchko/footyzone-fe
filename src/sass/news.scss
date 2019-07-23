@@ -64,6 +64,7 @@ iframe .timeline-Widget {
   font-size: 20px;
   line-height: 1.2;
 }
+
 .single-news {
   padding: 5px;
   background-color: $white;
@@ -89,6 +90,8 @@ iframe .timeline-Widget {
       font-family: $font_sans;
       font-size: 20px;
       display: flex;
+      padding-left: 0px;
+      min-width: 100%;
     }
 
     a {
@@ -135,7 +138,7 @@ iframe .timeline-Widget {
     // width: 370px !important;
   }
   .twitter {
-    width: 370px;
+    width: 355px;
   }
   .col-md-8 {
     position: relative;
