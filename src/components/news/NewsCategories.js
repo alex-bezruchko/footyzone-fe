@@ -7,6 +7,15 @@ import { fetchNewsBySubCategory } from "../../actions/newsActions";
 import { Link } from "react-router-dom";
 
 class NewsCategories extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      news: [],
+      currentPage: 1,
+      newsPerPage: 5,
+    };
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
 
