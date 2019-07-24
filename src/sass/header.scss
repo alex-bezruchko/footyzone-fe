@@ -89,6 +89,31 @@
     }
   }
 }
+.nav-search-form {
+  margin-left: 0px;
+  display: flex;
+  input,
+  svg {
+    align-self: center;
+    // color: black;
+  }
+  input {
+    margin-bottom: 0px;
+    width: 255px;
+    border: none;
+    border-bottom: 3px solid black;
+    border-radius: 0px;
+    margin-right: 10px;
+    font-family: $font_ubuntu;
+  }
+  button {
+    padding: 0px;
+  }
+  svg {
+    font-size: 20px;
+    color: black;
+  }
+}
 .bottom-navbar {
   display: flex;
   flex-direction: row;
@@ -176,31 +201,6 @@
   .active {
     border-bottom: 4px solid cadetblue;
     color: black;
-  }
-  .nav-search-form {
-    margin-left: 0px;
-    display: flex;
-    input,
-    svg {
-      align-self: center;
-      // color: black;
-    }
-    input {
-      margin-bottom: 0px;
-      width: 255px;
-      border: none;
-      border-bottom: 3px solid black;
-      border-radius: 0px;
-      margin-right: 10px;
-      font-family: $font_ubuntu;
-    }
-    button {
-      padding: 0px;
-    }
-    svg {
-      font-size: 20px;
-      color: black;
-    }
   }
 }
 .navbar {
