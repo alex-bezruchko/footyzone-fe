@@ -26,6 +26,7 @@ class Footer extends React.Component {
             <ListGroup>
               <Link to={"/"}>Home</Link>
               <Link to={"/news"}>Latest News</Link>
+              <Link to={"/news/transfer"}>Transfers</Link>
               <Link to={"/news/epl"}>Premier League</Link>
               <Link to={"/news/laliga"}>La Liga</Link>
               <Link to={"/news/uefacl"}>Champions League</Link>
