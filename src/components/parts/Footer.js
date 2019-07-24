@@ -97,7 +97,7 @@ class Footer extends React.Component {
                 // onSubmit={this.searchTermHandler}
               >
                 <Input
-                  placeholder="Sign-up"
+                  placeholder="Subscribe"
                   // value={this.state.term}
                   name="subscribe"
                   // onChange={this.changeHandler}

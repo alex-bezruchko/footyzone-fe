@@ -19,15 +19,31 @@ footer {
       width: 60px;
     }
   }
+  @media #{$mobile} {
+    .nav-search-form input.form-control {
+      height: auto;
+      padding-top: 5px;
+      outline: none;
+      &:focus {
+        outline: none;
+      }
+      button.btn.btn-white {
+        width: 60px;
+      }
+    }
+
+    .list-group:last-child {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
   .nav-search-form svg {
     font-size: 50px;
     padding: 7px;
     margin-left: 8px;
-  }
-  .list-group {
-    // margin-right: 33px;
-    // padding-right: 50px;
-    // min-width: 150px;
   }
   li,
   button,
