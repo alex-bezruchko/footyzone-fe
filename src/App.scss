@@ -49,7 +49,7 @@ a {
   }
 }
 .content {
-  min-height: 1000px;
+  // min-height: 1000px;
 }
 
 .SocialMediaShareButton {
@@ -106,6 +106,9 @@ nav,
 .navbar-expand-md .navbar-collapse {
   justify-content: space-between;
 }
+ul.pagination {
+  justify-content: center;
+}
 @media #{$mobile} {
   .container {
     padding-left: 10px !important;
@@ -114,4 +117,8 @@ nav,
   .blog-list {
     width: 100%;
   }
+}
+.active-page {
+  background-color: $blue !important;
+  color: $white !important;
 }

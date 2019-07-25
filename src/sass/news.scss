@@ -17,6 +17,7 @@
 @media #{$mobile} {
   .news .container {
     flex-direction: column;
+    padding-bottom: 50px;
   }
   .news .container {
     .col-md-4.col-xs-12 {

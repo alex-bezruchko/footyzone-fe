@@ -1,71 +1,47 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import {
-  fetchAllPosts,
-  // fetchAllCategories,
-} from "../../actions/postsActions";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Pagination from "./Pagination";
+import axios from "axios";
+import Postslist from "./Postslist";
 
-class Bloglist extends React.Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
+const Bloglist = props => {
+  window.scrollTo(0, 0);
 
-    this.props.fetchAllPosts();
-  }
-  render() {
-    return (
-      <div className="container-row blog">
-        <div className="blog-list col-xs-12 col-md-7">
-          <h1>Blog</h1>
-          {this.props.posts.length > 0 ? (
-            <>
-              {this.props.posts.map((blog, index) => {
-                return (
-                  <div
-                    key={index}
-                    id={blog.id}
-                    blog={blog}
-                    className="category-blog"
-                  >
-                    <Link to={`/blog/${blog.id}`}>
-                      <h2>{blog.title}</h2>
-                      <img src={blog.postMainImg} alt="" />
-                      {/* <div className="body">{blog.body}</div> */}
-                      <div className="body">
-                        De Ligt is yet to clarify his future but appears to have
-                        his sights set on Juventus after revealing the club are
-                        interested and a desire to play alongside some of their
-                        defenders. Marco Silva is intent on adding a reliable
-                        goalscorer this summer and appears to have centred on
-                        Wilson. De Ligt is yet to clarify his future but appears
-                        to have{" "}
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
-      </div>
-    );
-  }
-}
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
 
-const mapStateToProps = ({ postsReducer: state }) => {
-  return {
-    posts: state.posts,
-    loading: state.loading,
-    //   categories: state.categories,
-  };
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get(
+        `https://footyzone-be.herokuapp.com/api/blog/`
+      );
+      setPosts(res.data);
+      setLoading(false);
+    };
+
+    fetchPosts();
+  }, []);
+  const indexOfLastPosts = currentPage * postsPerPage;
+  const indexOfFirstPosts = indexOfLastPosts - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPosts, indexOfLastPosts);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  console.log(posts[0]);
+  // render() {
+  return (
+    <div className="container-row blog">
+      <Postslist posts={currentPosts} loading={loading} />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
+    </div>
+  );
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { fetchAllPosts }
-  )(Bloglist)
-);
+export default Bloglist;

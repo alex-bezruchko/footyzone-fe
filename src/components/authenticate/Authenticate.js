@@ -11,7 +11,7 @@ import Footer from "./../parts/Footer";
 
 class Authenticate extends React.Component {
   componentDidMount() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("jwt");

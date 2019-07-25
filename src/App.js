@@ -18,9 +18,7 @@ import PostCrud from "./components/pages/PostCrud";
 import "./App.scss";
 
 class App extends React.Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
+  componentDidMount() {}
   render() {
     return (
       <div className="App">
@@ -30,6 +28,7 @@ class App extends React.Component {
             <Route exact path="/" component={WelcomeBloglist} />
             <Route exact path="/news/" component={Newslist} />
             <Route exact path="/blog/" component={Bloglist} />
+            {/* <Route exact path="/blog/page/:id" component={Bloglist} /> */}
             <Route exact path="/news/:subcat_name" component={NewsCategories} />
             <Route exact path="/news/:subcat_name/:id" component={SingleNews} />
             {/* <Route path="/news/:subcat_name" component={RelatedPosts} /> */}
