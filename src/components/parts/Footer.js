@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Nav, ListGroup, Input, Form, Button, Container } from "reactstrap";
-import { FaSearch, FaEnvelope } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 
 import {
   FacebookShareButton,
@@ -33,7 +33,7 @@ class Footer extends React.Component {
             </ListGroup>
 
             <ListGroup>
-              <Link to={"/blog"}> Blog</Link>
+              <Link to={"/blog/page/1"}> Blog</Link>
               <Link to={"/pundits"}> Pundits</Link>
               <Link to={"/old-school"}>Old School</Link>
               <Link to={"/old-school/players"}>Players</Link>

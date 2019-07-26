@@ -13,7 +13,7 @@ import {
   Collapse,
   Button,
 } from "reactstrap";
-import $ from "jquery";
+// import $ from "jquery";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import logo from "./../../img/logo.png";
 import burger from "./../../img/burger.png";
@@ -183,7 +183,7 @@ class Header extends React.Component {
                   </ListGroupItem>
 
                   <ListGroupItem>
-                    <Link onClick={this.toggleNav} to={"/blog"}>
+                    <Link onClick={this.toggleNav} to={"/blog/page/1"}>
                       {" "}
                       Blog
                     </Link>

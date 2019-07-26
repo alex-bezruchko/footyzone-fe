@@ -1,11 +1,15 @@
 import React from "react";
-import loading from "./../../../src/loading.gif";
+import loadingImage from "./../../../src/loading.gif";
 
 import { Link } from "react-router-dom";
 
-const PostsList = ({ posts, loading }) => {
+const PostsList = ({ currentPage, posts, loading, props }) => {
   if (loading) {
-    return <img src={loading} alt="loading" />;
+    return (
+      <div className="container">
+        <img src={loadingImage} alt="loading" />
+      </div>
+    );
   }
 
   return (
@@ -13,7 +17,7 @@ const PostsList = ({ posts, loading }) => {
       <h1 className="category-header">Blog</h1>
 
       {posts.map(post => (
-        <div posts={posts} className="category-blog">
+        <div posts={posts} key={post.id} className="category-blog">
           <Link to={`/blog/${post.id}`}>
             <h2>{post.title}</h2>
             <img className="img-responsive" src={post.postMainImg} alt="" />

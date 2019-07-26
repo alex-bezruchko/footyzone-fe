@@ -68,6 +68,11 @@ footer {
     display: flex;
     flex-direction: row;
     padding: 10px 0px 20px;
+
+    path:hover {
+      fill: $white;
+      border: 1px solid $grey;
+    }
     rect {
       fill: $grey;
     }

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import loading from "./../../../src/loading.gif";
 import Pagination from "./Pagination";
 import axios from "axios";
 import NewsCatList from "./NewsCatList";
-import { fetchNewsBySubCategory } from "../../actions/newsActions";
-import { Link } from "react-router-dom";
+// import { fetchNewsBySubCategory } from "../../actions/newsActions";
+// import { Link } from "react-router-dom";
 
 const NewsCategories = props => {
   window.scrollTo(0, 0);

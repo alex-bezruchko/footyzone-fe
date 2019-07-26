@@ -68,11 +68,6 @@ class SingleNews extends React.Component {
     }
   }
   render() {
-    const disqusConfig = {
-      url: window.location.href,
-      identifier: this.props.singleNews.id,
-      title: this.props.singleNews.title,
-    };
     return (
       <div className="container-row news">
         <div className="container single-news-wrapper">

@@ -29,7 +29,7 @@ const Pagination = ({
           <li key={number} className="page-item">
             <Link
               onClick={() => paginate(number)}
-              to={`/blog/`}
+              to={`/blog/page/${number}`}
               className="page-link"
               id={`page-${number}`}
             >
