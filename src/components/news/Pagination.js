@@ -22,7 +22,7 @@ const Pagination = ({
     link.className = "page-link active-page";
   }
   return (
-    <nav>
+    <div className="col-md-8">
       <div className="pagination">
         {pageNumbers.map(number => (
           <li key={number} className="page-item">
@@ -37,7 +37,7 @@ const Pagination = ({
           </li>
         ))}
       </div>
-    </nav>
+    </div>
   );
 };
 

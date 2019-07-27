@@ -32,13 +32,22 @@ iframe .timeline-Widget {
 .news-list.container {
   padding-top: 0px;
 }
+.news {
+  padding-top: 50px;
+}
 .news,
 .news-list {
   .container {
-    padding-top: 50px;
     padding-left: 0px;
     padding-right: 0px;
   }
+}
+.container.pagination .col-md-8 {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 33px;
 }
 .news,
 .news-list {

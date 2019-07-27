@@ -48,14 +48,15 @@ const NewsCategories = props => {
           subcat_name={props.match.params.subcat_name}
           className="container"
         />
-
-        <Pagination
-          newsPerPage={newsPerPage}
-          totalNews={news.length}
-          paginate={paginate}
-          subcat_name={props.match.params.subcat_name}
-          currentPage={currentPage}
-        />
+        <div className="container pagination">
+          <Pagination
+            newsPerPage={newsPerPage}
+            totalNews={news.length}
+            paginate={paginate}
+            subcat_name={props.match.params.subcat_name}
+            currentPage={currentPage}
+          />
+        </div>
       </div>
 
       {/* </div> */}
