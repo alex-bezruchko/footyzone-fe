@@ -2,9 +2,6 @@
 .news {
   width: 100%;
   background: rgba(2, 22, 22, 0.9);
-  .container {
-    padding: 50px 0px 0px;
-  }
   .latest {
     font-family: $font_bungee;
     color: $white;
@@ -14,7 +11,11 @@
     box-shadow: 1px 1px 3px #888888;
   }
 }
-
+.welcome-container {
+  .container {
+    padding: 50px 0px 0px;
+  }
+}
 .carousel-indicators li {
   height: 18px !important;
   background-color: $blue !important;

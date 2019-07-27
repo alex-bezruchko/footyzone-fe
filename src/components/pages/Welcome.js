@@ -100,16 +100,15 @@ class Welcome extends React.Component {
           onExited={this.onExited}
           key={index}
         >
-          <div className="news-image">
-            <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+          <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+            <div className="news-image">
               <img src={news.newsMainImg} alt={news.title} />
-            </Link>
-          </div>
-          {/* <h1>Latest</h1> */}
-          <CarouselCaption
-            captionText={this.state.summary}
-            captionHeader={news.title}
-          />
+            </div>
+            <CarouselCaption
+              captionText={this.state.summary}
+              captionHeader={news.title}
+            />
+          </Link>
         </CarouselItem>
       );
     });
@@ -117,7 +116,9 @@ class Welcome extends React.Component {
     return (
       <div className="welcome-container container-row">
         {this.state.loading ? (
-          <img className="loading" src={loading} alt="Loading gif" />
+          <div className="container carousel-container">
+            <img className="loading" src={loading} alt="Loading gif" />
+          </div>
         ) : (
           <div className="container carousel-container">
             <h1 className="latest">Latest</h1>

@@ -35,23 +35,31 @@ const NewsCategories = props => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
     <div className="container-row news">
-      <div className="news-list container">
+      {/* <div className="news-list "> */}
+      <div className="container">
         <div className="col-sm-12 col-md-8">
           <h1 className="category-header">{props.match.params.subcat_name}</h1>
-          <NewsCatList
-            news={currentNews}
-            loading={loading}
-            subcat_name={props.match.params.subcat_name}
-          />
-          <Pagination
-            newsPerPage={newsPerPage}
-            totalNews={news.length}
-            paginate={paginate}
-            subcat_name={props.match.params.subcat_name}
-            currentPage={currentPage}
-          />
         </div>
       </div>
+      <div className="container-row">
+        <NewsCatList
+          news={currentNews}
+          loading={loading}
+          subcat_name={props.match.params.subcat_name}
+          className="container"
+        />
+
+        <Pagination
+          newsPerPage={newsPerPage}
+          totalNews={news.length}
+          paginate={paginate}
+          subcat_name={props.match.params.subcat_name}
+          currentPage={currentPage}
+        />
+      </div>
+
+      {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };

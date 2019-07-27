@@ -52,6 +52,13 @@ a {
   // min-height: 1000px;
 }
 
+.loading {
+  width: 80%;
+  min-height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 100px 300px 300px;
+}
 .SocialMediaShareButton {
   outline: none;
 }
@@ -69,10 +76,6 @@ a {
 .card {
   border: none !important;
 }
-.loading {
-  min-width: 100%;
-}
-
 .category-header {
   font-family: $font_bungee;
   // width: 75%;

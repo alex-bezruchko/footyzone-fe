@@ -1,5 +1,5 @@
 .news .container {
-  background-color: transparent;
+  // background-color: $grey;
   display: flex;
   .col-sm-12 {
     background-color: $white;
@@ -28,6 +28,17 @@
 }
 iframe .timeline-Widget {
   border-radius: 0px !important;
+}
+.news-list.container {
+  padding-top: 0px;
+}
+.news,
+.news-list {
+  .container {
+    padding-top: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 .news,
 .news-list {
@@ -84,7 +95,8 @@ iframe .timeline-Widget {
   .related h4 {
     font-family: $font_oswald;
   }
-  aside ul {
+  aside ul,
+  .related-bottom {
     li {
       margin-bottom: 0px;
       margin-top: 10px;
@@ -92,7 +104,6 @@ iframe .timeline-Widget {
       font-size: 20px;
       display: flex;
       padding-left: 0px;
-      min-width: 100%;
     }
 
     a {
@@ -102,6 +113,7 @@ iframe .timeline-Widget {
       height: 100%;
       font-weight: 500;
       align-self: center;
+      font-size: 18px;
     }
     a:hover {
       background-color: $blue;
@@ -109,7 +121,9 @@ iframe .timeline-Widget {
       border: 1px solid rgba(50, 200, 200, 0.8);
     }
   }
-
+  aside ul li {
+    min-width: 100%;
+  }
   .single-body {
     padding-left: 25px;
     width: 70%;
@@ -127,6 +141,9 @@ iframe .timeline-Widget {
     li {
       list-style: none;
     }
+  }
+  .related-bottom {
+    display: none;
   }
 }
 
@@ -187,6 +204,10 @@ iframe .timeline-Widget {
     }
     .single-main {
       flex-direction: column;
+      margin-top: 5px;
+      .body {
+        padding-top: 0px;
+      }
     }
     aside {
       margin-top: 0px;
@@ -195,6 +216,25 @@ iframe .timeline-Widget {
     .socials {
       justify-content: center;
       padding-bottom: 10px;
+    }
+
+    .related-bottom {
+      display: flex;
+      flex-direction: column;
+      h4 {
+        margin-bottom: 0px;
+        margin-top: 10px;
+      }
+      ul {
+        display: flex;
+        flex-direction: row;
+        min-width: 100%;
+        margin: 10px 0px 22px;
+        li {
+          display: inline;
+          margin-right: 15px;
+        }
+      }
     }
   }
 }

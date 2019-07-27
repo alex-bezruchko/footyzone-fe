@@ -72,7 +72,13 @@ class SingleNews extends React.Component {
       <div className="container-row news">
         <div className="container single-news-wrapper">
           {this.props.loading ? (
-            <img src={loading} alt="Post is loading gif" />
+            <div className="container">
+              <img
+                className="loading"
+                src={loading}
+                alt="Post is loading gif"
+              />
+            </div>
           ) : (
             <>
               {this.props.singleNews && (
@@ -224,6 +230,26 @@ class SingleNews extends React.Component {
                             marginalised and called for the US billionaire to
                             reinvigorate the club.
                           </p>
+                        </div>
+                        <div className="related related-bottom">
+                          <h4>Related Topics</h4>
+                          {this.props.singleNews.tags ? (
+                            <ul>
+                              {this.props.singleNews.tags.map((tag, index) => {
+                                return (
+                                  <li key={index} className="category-tag">
+                                    <Link
+                                      to={`/${tag.tag_slug}/${tag.subtag_slug}`}
+                                    >
+                                      {tag.subtag_name}
+                                    </Link>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </div>
                     </div>

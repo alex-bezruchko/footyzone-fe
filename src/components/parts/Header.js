@@ -140,7 +140,7 @@ class Header extends React.Component {
           </Container>
         </div>
 
-        <Container className="bottom-navbar">
+        <div className="bottom-navbar container">
           <Navbar expand="md">
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav>
@@ -240,7 +240,7 @@ class Header extends React.Component {
               <SearchForm />
             </Collapse>
           </Navbar>
-        </Container>
+        </div>
       </div>
     );
   }

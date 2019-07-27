@@ -17,7 +17,7 @@ class Newslist extends React.Component {
         <div className="news-list container">
           {this.props.loading ? (
             <div className="container">
-              <img alt="Loading gif" src={loading} />
+              <img className="loading" alt="Loading gif" src={loading} />
             </div>
           ) : (
             <div className="col-sm-12 col-md-8">

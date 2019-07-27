@@ -7,7 +7,7 @@ const PostsList = ({ currentPage, posts, loading, props }) => {
   if (loading) {
     return (
       <div className="container">
-        <img src={loadingImage} alt="loading" />
+        <img className="loading" src={loadingImage} alt="loading" />
       </div>
     );
   }

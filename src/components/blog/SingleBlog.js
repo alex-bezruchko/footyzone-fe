@@ -35,7 +35,9 @@ class SingleView extends React.Component {
     return (
       <div className="container-row blog">
         {this.props.loading ? (
-          <img src={loading} alt="Post is loading gif" />
+          <div className="container">
+            <img className="loading" src={loading} alt="Post is loading gif" />
+          </div>
         ) : (
           <div className="container single-blog-wrapper">
             {this.props.post && (
