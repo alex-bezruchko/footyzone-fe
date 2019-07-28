@@ -32,6 +32,7 @@ class SingleView extends React.Component {
     }
   }
   render() {
+    console.log(this.props.post);
     return (
       <div className="container-row blog">
         {this.props.loading ? (
@@ -109,6 +110,33 @@ class SingleView extends React.Component {
                 <div className="body">{this.props.post.body}</div>
                 <div className="body">
                   <p>{this.props.post.body}</p>
+                </div>
+                <hr />
+                <div className="comments">
+                  <h4>Comments</h4>
+                  <hr className="comment-separator" />
+                  <div>
+                    {this.props.post && this.props.post.comments.length > 0 ? (
+                      <>
+                        {this.props.post.comments.map(comment => {
+                          return (
+                            <div className="comment-body" key={comment.id}>
+                              <div className="comment-avatar">
+                                <img src={comment.avatar} />
+                                {/* <span>{comment.username}</span> */}
+                              </div>
+                              <div className="comment-text">
+                                {comment.comment}
+                              </div>
+                              <hr />
+                            </div>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
