@@ -52,41 +52,47 @@ class SingleView extends React.Component {
                 <div className="single-info">
                   <div className="single-share">
                     <div className="socials">
-                      <FacebookShareButton
-                        url={window.location.href}
-                        media={this.props.post.title}
-                        className="button"
-                      >
-                        <FacebookIcon size={32} round={false} />
-                      </FacebookShareButton>
-                      <TwitterShareButton
-                        url={window.location.href}
-                        media={this.props.post.title}
-                        className="button"
-                      >
-                        <TwitterIcon size={32} round={false} />
-                      </TwitterShareButton>
-                      <PinterestShareButton
-                        url={window.location.href}
-                        media={this.props.post.title}
-                        className="button"
-                      >
-                        <PinterestIcon size={32} round={false} />
-                      </PinterestShareButton>
-                      <WhatsappShareButton
-                        url={window.location.href}
-                        media={this.props.post.title}
-                        className="button"
-                      >
-                        <WhatsappIcon size={32} round={false} />
-                      </WhatsappShareButton>
-                      <RedditShareButton
-                        url={window.location.href}
-                        media={this.props.post.title}
-                        className="button"
-                      >
-                        <RedditIcon size={32} round={false} />
-                      </RedditShareButton>
+                      {this.props.post.title.length > 0 ? (
+                        <>
+                          <FacebookShareButton
+                            url={window.location.href}
+                            media={this.props.post.title}
+                            className="button"
+                          >
+                            <FacebookIcon size={32} round={false} />
+                          </FacebookShareButton>
+                          <TwitterShareButton
+                            url={window.location.href}
+                            media={this.props.post.title}
+                            className="button"
+                          >
+                            <TwitterIcon size={32} round={false} />
+                          </TwitterShareButton>
+                          <PinterestShareButton
+                            url={window.location.href}
+                            media={this.props.post.title}
+                            className="button"
+                          >
+                            <PinterestIcon size={32} round={false} />
+                          </PinterestShareButton>
+                          <WhatsappShareButton
+                            url={window.location.href}
+                            media={this.props.post.title}
+                            className="button"
+                          >
+                            <WhatsappIcon size={32} round={false} />
+                          </WhatsappShareButton>
+                          <RedditShareButton
+                            url={window.location.href}
+                            media={this.props.post.title}
+                            className="button"
+                          >
+                            <RedditIcon size={32} round={false} />
+                          </RedditShareButton>
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                     <div className="author">
                       Submitted by: {this.props.post.username} on{" "}

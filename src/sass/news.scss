@@ -17,7 +17,22 @@
 @media #{$mobile} {
   .news .container {
     flex-direction: column;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
+  }
+  .news .container {
+    .col-md-4.col-xs-12 {
+      margin-top: 50px;
+      padding: 0px;
+    }
+  }
+}
+@media #{$tablet} {
+  .news .container {
+    flex-direction: column;
+    padding-bottom: 0px;
+    .col-md-8 {
+      min-width: 100%;
+    }
   }
   .news .container {
     .col-md-4.col-xs-12 {
@@ -169,7 +184,7 @@ iframe .timeline-Widget {
     // width: 370px !important;
   }
   .twitter {
-    width: 355px;
+    max-width: 355px;
   }
   .col-md-8 {
     position: relative;

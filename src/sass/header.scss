@@ -129,7 +129,7 @@
       font-size: 23px;
     }
   }
-  @media #{$large} {
+  @media #{$desktop} {
     .list-group {
       flex-direction: row;
       .list-group-item {
@@ -276,4 +276,35 @@
 .btn.btn-secondary.active {
   background-color: #fff;
   color: $black;
+}
+
+@media #{$tablet} {
+  .navbar-toggler {
+    display: none;
+  }
+  .collapse.navbar-collapse {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav,
+  .list-group {
+    width: 100%;
+  }
+  .list-group {
+    display: flex;
+    flex-direction: row !important;
+    padding-left: 0;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    li {
+      border: none;
+      &:first-child {
+        padding-left: 0px;
+      }
+      &:last-child {
+        padding-right: 0px;
+      }
+    }
+  }
 }

@@ -148,41 +148,47 @@ const SingleNews = props => {
                   <div className="single-main">
                     <aside>
                       <div className="socials">
-                        <FacebookShareButton
-                          url={window.location.href}
-                          media={singleNews.title}
-                          className="button"
-                        >
-                          <FacebookIcon size={32} round={false} />
-                        </FacebookShareButton>
-                        <TwitterShareButton
-                          url={window.location.href}
-                          media={singleNews.title}
-                          className="button"
-                        >
-                          <TwitterIcon size={32} round={false} />
-                        </TwitterShareButton>
-                        <PinterestShareButton
-                          url={window.location.href}
-                          media={singleNews.title}
-                          className="button"
-                        >
-                          <PinterestIcon size={32} round={false} />
-                        </PinterestShareButton>
-                        <WhatsappShareButton
-                          url={window.location.href}
-                          media={singleNews.title}
-                          className="button"
-                        >
-                          <WhatsappIcon size={32} round={false} />
-                        </WhatsappShareButton>
-                        <RedditShareButton
-                          url={window.location.href}
-                          media={singleNews.title}
-                          className="button"
-                        >
-                          <RedditIcon size={32} round={false} />
-                        </RedditShareButton>
+                        {singleNews.title ? (
+                          <>
+                            <FacebookShareButton
+                              url={window.location.href}
+                              media={singleNews.title}
+                              className="button"
+                            >
+                              <FacebookIcon size={32} round={false} />
+                            </FacebookShareButton>
+                            <TwitterShareButton
+                              url={window.location.href}
+                              media={singleNews.title}
+                              className="button"
+                            >
+                              <TwitterIcon size={32} round={false} />
+                            </TwitterShareButton>
+                            <PinterestShareButton
+                              url={window.location.href}
+                              media={singleNews.title}
+                              className="button"
+                            >
+                              <PinterestIcon size={32} round={false} />
+                            </PinterestShareButton>
+                            <WhatsappShareButton
+                              url={window.location.href}
+                              media={singleNews.title}
+                              className="button"
+                            >
+                              <WhatsappIcon size={32} round={false} />
+                            </WhatsappShareButton>
+                            <RedditShareButton
+                              url={window.location.href}
+                              media={singleNews.title}
+                              className="button"
+                            >
+                              <RedditIcon size={32} round={false} />
+                            </RedditShareButton>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </div>
                       <div className="related">
                         <h4>Related Topics</h4>

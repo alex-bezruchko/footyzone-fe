@@ -120,6 +120,51 @@ ul.pagination {
   .blog-list {
     width: 100%;
   }
+  .carousel-caption.d-none.d-md-block {
+    display: flex !important;
+    flex-direction: column;
+    bottom: 0px;
+    right: 3px;
+    left: 3px;
+    justify-content: flex-end;
+    height: 300px;
+    text-align: left;
+    padding-bottom: 0px;
+
+    h3 {
+      align-self: center;
+      font-family: $font_oswald;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 15px 10px;
+      margin-bottom: 50px;
+      font-size: 20px;
+      color: $wheat;
+    }
+    p {
+      display: none;
+    }
+  }
+  .controllers {
+    display: none !important;
+  }
+}
+@media #{$desktop} {
+  .carousel-caption.d-none.d-md-block {
+    width: 50%;
+    left: 0;
+    padding-right: 20px;
+    text-align: left;
+    bottom: 0px;
+    padding-bottom: 0px;
+    p {
+      margin-bottom: 0px;
+    }
+  }
+  .carousel-indicators {
+    width: 50%;
+    margin-left: 50% !important;
+    padding-bottom: 20px;
+  }
 }
 .active-page {
   background-color: $blue !important;

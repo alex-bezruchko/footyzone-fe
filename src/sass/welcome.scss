@@ -4,7 +4,6 @@
   background: rgba(2, 22, 22, 0.9);
   .latest {
     font-family: $font_bungee;
-    color: $white;
   }
   .carousel-item img {
     border: 1.5px solid $wheat !important;
@@ -63,7 +62,7 @@ a .carousel-control-next-icon {
   }
 }
 
-@media #{$large} {
+@media #{$desktop} {
   .controllers {
     width: 50%;
     display: flex;
@@ -77,6 +76,8 @@ a .carousel-control-next-icon {
     width: 33%;
     position: absolute;
     text-align: left;
+    color: $white;
+
     padding: 20px 0px 0px 0px;
   }
   span {
@@ -173,25 +174,28 @@ a .carousel-control-next-icon {
     font-size: 15px;
   }
 }
-.carousel-item .news-image {
-  position: relative;
-  overflow: hidden;
-  height: 388px;
-  max-height: 388px;
-  min-height: 388px;
-  width: 50%;
-  margin-left: 50%;
-  border: 1.5px solid $wheat !important;
-  box-shadow: 1px 1px 3px #888888;
-}
-.carousel-item .news-image img {
-  transition: all 0.8s;
-  overflow: hidden;
-  max-height: 388px;
-  min-height: 388px;
-  width: 100%;
-  margin-left: 0%;
-  border: none;
+@media #{$desktop} {
+  .carousel-item .news-image {
+    position: relative;
+    overflow: hidden;
+    height: 388px;
+    max-height: 388px;
+    min-height: 388px;
+    width: 50%;
+    margin-left: 50%;
+    border: 1.5px solid $wheat !important;
+    box-shadow: 1px 1px 3px #888888;
+  }
+
+  .carousel-item .news-image img {
+    transition: all 0.8s;
+    overflow: hidden;
+    max-height: 388px;
+    min-height: 388px;
+    width: 100%;
+    margin-left: 0%;
+    border: none;
+  }
 }
 .carousel-item .news-image:hover {
   overflow: hidden;
@@ -212,6 +216,7 @@ a .carousel-control-next-icon {
   .carousel-item {
     max-height: 300px;
     min-height: 300px;
+    width: 100%;
   }
   .carousel-item .news-image {
     z-index: 1;
@@ -250,9 +255,6 @@ a .carousel-control-next-icon {
       margin-right: 0px;
     }
   }
-  .latest {
-    padding: 0px 0px 15px;
-  }
   .navbar {
     padding: 0px !important;
   }
@@ -262,6 +264,11 @@ a .carousel-control-next-icon {
       margin-bottom: 66px !important;
     }
   }
+}
+
+h1.latest {
+  padding: 0px 0px 15px;
+  color: $wheat;
 }
 .container-row.welcome-blog {
   background: url("../src/img/blog.jpeg");
@@ -332,6 +339,51 @@ a .carousel-control-next-icon {
   .col-md-6 {
     flex: 0 0 45%;
     max-width: 45%;
+    padding: 10px;
+    margin-bottom: 100px;
+    border: 1px solid $wheat !important;
+  }
+}
+
+@media #{$tablet} {
+  .carousel-caption {
+    width: 100%;
+    left: 0% !important;
+    right: 0% !important;
+    padding: 0px 2px;
+    h3 {
+      font-family: $font_oswald;
+      background: rgba(0, 0, 0, 0.8);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: $wheat;
+    }
+    p {
+      display: none;
+    }
+  }
+  .carousel-item .news-image {
+    z-index: 1;
+    width: 100%;
+    margin-left: 0%;
+    height: 388px;
+    max-height: 388px;
+    min-height: 388px;
+  }
+  .carousel-item .news-image img {
+    max-height: 388px;
+    min-height: 388px;
+    width: 100%;
+  }
+  .carousel-item .news-image:hover {
+    border: 1.5px solid $wheat !important;
+    img {
+      border: 1.5px solid $wheat !important;
+    }
+  }
+  .col-md-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
     padding: 10px;
     margin-bottom: 100px;
     border: 1px solid $wheat !important;
