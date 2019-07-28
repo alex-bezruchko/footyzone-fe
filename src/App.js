@@ -17,7 +17,12 @@ import PostCrud from "./components/pages/PostCrud";
 import "./App.scss";
 
 class App extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div className="App">

@@ -52,7 +52,8 @@ class SingleView extends React.Component {
                 <div className="single-info">
                   <div className="single-share">
                     <div className="socials">
-                      {this.props.post.title.length > 0 ? (
+                      {this.props.post.title &&
+                      this.props.post.title.length > 0 ? (
                         <>
                           <FacebookShareButton
                             url={window.location.href}

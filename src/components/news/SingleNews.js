@@ -21,23 +21,11 @@ import {
 
 const SingleNews = props => {
   // componentDidMount() {
-  window.scrollTo(0, 0);
   const [singleNews, setSingleNews] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [newsPerPage] = useState(5);
-
   useEffect(() => {
     const fetchSingle = async () => {
       setLoading(true);
-      // if (props.match.params.subcat_name === ("epl" || "laliga" || "epl")) {
-      //   props.history.push(
-      //     `/news/${props.match.params.subcat_name}/page/${
-      //       props.match.params.page_id
-      //     }`
-      //   );
-      //   setLoading(false);
-      // } else {
       const id = props.match.params.id;
       const subcat_name = props.match.params.subcat_name;
       const res = await axios.get(
@@ -45,30 +33,24 @@ const SingleNews = props => {
       );
       setSingleNews(res.data);
       setLoading(false);
-
-      console.log(res.data);
-      // if (
-      //   props.match.params.page_id === 1 ||
-      //   props.match.params.page_id === undefined
-      // ) {
-      //   props.history.push(`/news/page/1`);
-      //   setCurrentPage(1);
-      //   setLoading(false);
-      // } else {
-      //   props.history.push(`/news/page/${props.match.params.page_id}`);
-      //   setCurrentPage(props.match.params.page_id);
-      //   setLoading(false);
-      // }
-      // }
+      window.scrollTo(0, 0);
     };
     fetchSingle();
   }, [props.match.params.id, props.match.params.subcat_name]);
 
-  // if (
-  //   props.match.params.subcat_name === ("uefacl" || "epl" || "laliga") &&
-  //   props.match.params.id
-  // ) {
-  // this.props.viewNews("news", subcat_name, id);
+  let client = document.getElementsByTagName("section");
+  if (client[0] && client[0].clientWidth > 992) {
+    let element = document.getElementsByClassName("twitter");
+    $.when(element).then(function() {
+      let width = element[0].clientWidth;
+      $(".twitter").css("width", width);
+      $(".twitter .twitter-fixed").css("width", width);
+    });
+  } else {
+    $(".twitter").css("min-width", "100%");
+    $(".twitter .twitter-fixed").css("min-width", "100%");
+  }
+
   $(window).scroll(function(e) {
     if ($(window).scrollTop() > 800) {
       $(".single-main aside").addClass("aside-fixed");
@@ -80,6 +62,7 @@ const SingleNews = props => {
   });
   $(window).scroll(function(e) {
     let article = document.getElementsByClassName("single-news");
+
     if (article[0]) {
       let height = article[0].clientHeight;
       if (
@@ -95,28 +78,6 @@ const SingleNews = props => {
       }
     }
   });
-  // } else {
-  //   // this.props.history.push("/news/page/1");
-  // }
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   // Typical usage (don't forget to compare props):
-  //   const id = this.props.match.params.id;
-  //   const subcat_name = this.props.match.params.subcat_name;
-
-  //   if (
-  //     id !== prevProps.match.params.id ||
-  //     subcat_name !== prevProps.match.params.subcat_name
-  //   ) {
-  //     // if (subcat_name === "page") {
-  //     //   this.props.history.push("/news/page/1");
-  //     // } else {
-  //     this.props.viewNews("news", subcat_name, id);
-  //     // }
-  //   }
-  // }
-  // render() {
   return (
     <div className="container-row news">
       <div className="container single-news-wrapper">
@@ -306,7 +267,7 @@ const SingleNews = props => {
                 </div>
                 <div className="col-md-4 col-xs-12">
                   <div className="twitter">
-                    <TwitterSidebar />
+                    <TwitterSidebar props={props} />
                   </div>
                 </div>
               </>
@@ -316,17 +277,6 @@ const SingleNews = props => {
       </div>
     </div>
   );
-  // }
 };
 
-// const MapStateToProps = ({ newsReducer: state }) => {
-//   return {
-//     singleNews: state.singleNews,
-//     loading: state.loading,
-//   };
-// };
-// export default connect(
-//   MapStateToProps,
-//   { viewNews }
-// )(SingleNews);
 export default SingleNews;
