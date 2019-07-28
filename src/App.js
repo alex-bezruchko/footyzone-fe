@@ -25,11 +25,14 @@ class App extends React.Component {
           <div className="content-row">
             <Route exact path="/" component={Welcome} />
             <Route exact path="/" component={WelcomeBloglist} />
-            <Route exact path="/news/" component={Newslist} />
-            {/* <Route exact path="/blog/page/1" component={Bloglist} /> */}
-            <Route exact path="/blog/page/:page_id" component={Bloglist} />
-            <Route exact path="/news/:subcat_name" component={NewsCategories} />
+            <Route exact path="/news/:page_id" component={Newslist} />
             <Route exact path="/news/:subcat_name/:id" component={SingleNews} />
+            <Route exact path="/blog/page/:page_id" component={Bloglist} />
+            <Route
+              exact
+              path="/news/:subcat_name/page/:page_id"
+              component={NewsCategories}
+            />
             {/* <Route path="/news/:subcat_name" component={RelatedPosts} /> */}
             <Route exact path="/blog/:id" component={SingleBlog} />
 

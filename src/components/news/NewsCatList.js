@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import imgLoading from "./../../../src/loading.gif";
 
 const NewsCatList = ({ news, loading, subcat_name }) => {
+  window.scrollTo(0, 0);
+
   if (loading) {
     return (
       <div className="container">

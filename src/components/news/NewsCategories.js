@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Pagination from "./Pagination";
+import NewsCatPagination from "./NewsCatPagination";
 import axios from "axios";
 import NewsCatList from "./NewsCatList";
 // import { fetchNewsBySubCategory } from "../../actions/newsActions";
@@ -16,13 +16,33 @@ const NewsCategories = props => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get(
-        `https://footyzone-be.herokuapp.com/api/news/${
-          props.match.params.subcat_name
-        }`
-      );
-      setNews(res.data);
-      setLoading(false);
+      if (props.match.params.subcat_name === "page") {
+        props.history.push(`/news/page/1`);
+        setLoading(false);
+      } else {
+        const res = await axios.get(
+          `https://footyzone-be.herokuapp.com/api/news/${
+            props.match.params.subcat_name
+          }`
+        );
+        setNews(res.data);
+        if (
+          props.match.params.page_id === 1 ||
+          props.match.params.page_id === undefined
+        ) {
+          props.history.push(`/news/${props.match.params.subcat_name}/page/1`);
+          setCurrentPage(1);
+          setLoading(false);
+        } else {
+          props.history.push(
+            `/news/${props.match.params.subcat_name}/page/${
+              props.match.params.page_id
+            }`
+          );
+          setCurrentPage(props.match.params.page_id);
+          setLoading(false);
+        }
+      }
     };
 
     fetchPosts();
@@ -35,7 +55,6 @@ const NewsCategories = props => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
     <div className="container-row news">
-      {/* <div className="news-list "> */}
       <div className="container">
         <div className="col-sm-12 col-md-8">
           <h1 className="category-header">{props.match.params.subcat_name}</h1>
@@ -49,18 +68,16 @@ const NewsCategories = props => {
           className="container"
         />
         <div className="container pagination">
-          <Pagination
+          <NewsCatPagination
             newsPerPage={newsPerPage}
             totalNews={news.length}
             paginate={paginate}
             subcat_name={props.match.params.subcat_name}
             currentPage={currentPage}
+            props={props}
           />
         </div>
       </div>
-
-      {/* </div> */}
-      {/* </div> */}
     </div>
   );
 };

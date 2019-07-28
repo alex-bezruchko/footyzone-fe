@@ -159,22 +159,31 @@ class Header extends React.Component {
                       <DropdownToggle caret>News</DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem>
-                          <Link onClick={this.toggleNav} to={"/news"}>
+                          <Link onClick={this.toggleNav} to={"/news/1"}>
                             Latest
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <Link onClick={this.toggleNav} to={"/news/epl"}>
+                          <Link
+                            onClick={this.toggleNav}
+                            to={"/news/epl/page/1"}
+                          >
                             Premier League
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <Link onClick={this.toggleNav} to={"/news/laliga"}>
+                          <Link
+                            onClick={this.toggleNav}
+                            to={"/news/laliga/page/1"}
+                          >
                             La Liga
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <Link onClick={this.toggleNav} to={"/news/uefacl"}>
+                          <Link
+                            onClick={this.toggleNav}
+                            to={"/news/uefacl/page/1"}
+                          >
                             Champions League
                           </Link>
                         </DropdownItem>

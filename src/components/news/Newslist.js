@@ -1,31 +1,60 @@
-import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import loading from "./../../../src/loading.gif";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import NewsPagination from "./NewsPagination";
+import imgLoading from "./../../../src/loading.gif";
 
-import { fetchAllNews } from "../../actions/newsActions";
 import { Link } from "react-router-dom";
 
-class Newslist extends React.Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    this.props.fetchAllNews();
-  }
-  render() {
-    return (
-      <div className="container-row news">
-        <div className="news-list container">
-          {this.props.loading ? (
-            <div className="container">
-              <img className="loading" alt="Loading gif" src={loading} />
-            </div>
-          ) : (
+const Newslist = props => {
+  window.scrollTo(0, 0);
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [newsPerPage] = useState(5);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get(
+        `https://footyzone-be.herokuapp.com/api/news/`
+      );
+      setNews(res.data);
+      if (
+        props.match.params.page_id === 1 ||
+        props.match.params.page_id === undefined
+      ) {
+        props.history.push(`/news/1`);
+        setCurrentPage(1);
+        setLoading(false);
+      } else {
+        props.history.push(`/news/${props.match.params.page_id}`);
+        setCurrentPage(props.match.params.page_id);
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, [props.match.params.page_id]);
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  return (
+    <div className="container-row news">
+      {loading ? (
+        <div className="container">
+          <img className="loading" alt="Loading gif" src={imgLoading} />
+        </div>
+      ) : (
+        <div className="container-row">
+          <div className="news-list container">
             <div className="col-sm-12 col-md-8">
-              {this.props.news.length > 0 ? (
-                <>
+              {currentNews.length > 0 ? (
+                <div className="list-wrapper">
                   <h1 className="category-header">Latest Scoop</h1>
 
-                  {this.props.news.map((news, index) => {
+                  {currentNews.map((news, index) => {
                     return (
                       <div
                         key={index}
@@ -45,29 +74,26 @@ class Newslist extends React.Component {
                       </div>
                     );
                   })}
-                </>
+                </div>
               ) : (
                 <></>
               )}
             </div>
-          )}
+          </div>
+          <div className="container pagination">
+            <NewsPagination
+              newsPerPage={newsPerPage}
+              totalNews={news.length}
+              paginate={paginate}
+              props={props}
+              subcat_name={props.match.params.subcat_name}
+              currentPage={currentPage}
+            />
+          </div>
         </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ newsReducer: state }) => {
-  return {
-    news: state.news,
-    loading: state.loading,
-    //   categories: state.categories,
-  };
+      )}
+    </div>
+  );
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { fetchAllNews }
-  )(Newslist)
-);
+export default Newslist;
