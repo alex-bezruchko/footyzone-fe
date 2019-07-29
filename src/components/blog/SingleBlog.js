@@ -143,8 +143,13 @@ class SingleView extends React.Component {
                             </div>
                           );
                         })}
-                        <form>
-                          <input placeholder="Add a comment" />
+                        <form className="comment-form">
+                          <img
+                            src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1563589016/vaeq5qshowwit6iubhxm.png"
+                            alt="currentUser"
+                          />
+                          <textarea placeholder="Add a comment" />
+                          <button>Submit</button>
                         </form>
                       </>
                     ) : (
