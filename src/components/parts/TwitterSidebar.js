@@ -38,12 +38,14 @@ class TwitterSidebar extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <TwitterTimelineEmbed
-        sourceType="profile"
-        screenName={this.state.profile}
-        options={{ height: 375 }}
-        noScrollbar
-      />
+      <div className="twitter-wrapper">
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName={this.state.profile}
+          options={{ height: 375 }}
+          noScrollbar
+        />
+      </div>
     );
   }
 }

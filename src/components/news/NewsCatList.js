@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import imgLoading from "./../../../src/loading.gif";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
+import TwitterSidebar from "../parts/TwitterSidebar";
 
-const NewsCatList = ({ news, loading, subcat_name }) => {
+const NewsCatList = ({ news, loading, subcat_name, props }) => {
   window.scrollTo(0, 0);
 
   if (loading) {
@@ -18,6 +20,8 @@ const NewsCatList = ({ news, loading, subcat_name }) => {
   return (
     <div className="news-list container">
       <div className="col-sm-12 col-md-8">
+        <h1 className="category-header">{props.match.params.subcat_name}</h1>
+        {/* </div> */}
         <div news={news} className="category-news">
           {news.map(news => (
             <Link to={`/news/${news.subcat_slug}/${news.id}`}>
@@ -26,6 +30,11 @@ const NewsCatList = ({ news, loading, subcat_name }) => {
               <div className="body">{news.body}</div>
             </Link>
           ))}
+        </div>
+      </div>
+      <div className="col-md-4 col-xs-12">
+        <div className="twitter">
+          <TwitterSidebar props={props} />
         </div>
       </div>
     </div>

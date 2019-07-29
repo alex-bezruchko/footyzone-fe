@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NewsCatPagination from "./NewsCatPagination";
 import axios from "axios";
 import NewsCatList from "./NewsCatList";
+import $ from "jquery";
 // import { fetchNewsBySubCategory } from "../../actions/newsActions";
 // import { Link } from "react-router-dom";
 
@@ -53,19 +54,55 @@ const NewsCategories = props => {
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  let client = document.getElementsByTagName("section");
+  if (client[0] && client[0].clientWidth > 992) {
+    let element = document.getElementsByClassName("twitter");
+    $.when(element).then(function() {
+      let width = element[0].clientWidth;
+      $(".twitter").css("width", width);
+      $(".twitter .twitter-fixed").css("width", width);
+    });
+  } else {
+    $(".twitter").css("min-width", "100%");
+    $(".twitter .twitter-fixed").css("min-width", "100%");
+  }
+
+  $(window).scroll(function(e) {
+    if ($(window).scrollTop() > 800) {
+      $(".single-main aside").addClass("aside-fixed");
+      $(".single-body").addClass("body-fixed");
+    } else {
+      $(".single-main aside").removeClass("aside-fixed");
+      $(".single-body").removeClass("body-fixed");
+    }
+  });
+  $(window).scroll(function(e) {
+    let article = document.getElementsByClassName("category-news");
+
+    if (article[0]) {
+      let height = article[0].clientHeight;
+      if (
+        $(window).scrollTop() > 150 &&
+        $(window).scrollTop() < (height * 8.5) / 10
+      ) {
+        $(".col-md-4 .twitter").addClass("twitter-fixed");
+      } else {
+        $(".col-md-4 .twitter").removeClass("twitter-fixed");
+        $(".single-main aside").removeClass("aside-fixed");
+
+        $(".single-body").removeClass("body-fixed");
+      }
+    }
+  });
   return (
     <div className="container-row news">
-      <div className="container">
-        <div className="col-sm-12 col-md-8">
-          <h1 className="category-header">{props.match.params.subcat_name}</h1>
-        </div>
-      </div>
       <div className="container-row">
         <NewsCatList
           news={currentNews}
           loading={loading}
           subcat_name={props.match.params.subcat_name}
           className="container"
+          props={props}
         />
         <div className="container pagination">
           <NewsCatPagination

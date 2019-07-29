@@ -85,10 +85,10 @@ iframe .timeline-Widget {
       margin-left: 33px;
     }
     p {
+      font-size: 17px;
+      font-weight: 400;
+      font-family: $font_ubuntu;
       margin-bottom: 0px;
-      font-family: $font_sans;
-      font-size: 20px;
-      font-weight: 500;
     }
   }
   img {
@@ -103,7 +103,7 @@ iframe .timeline-Widget {
   }
 }
 .news-list .body {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.2;
 }
 
@@ -187,7 +187,7 @@ iframe .timeline-Widget {
     position: fixed !important;
     // right: 75px;
     top: 0px;
-    min-width: 333px !important;
+    min-width: 290px !important;
   }
   .twitter {
     // max-width: 355px;

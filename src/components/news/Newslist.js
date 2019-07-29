@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NewsPagination from "./NewsPagination";
 import imgLoading from "./../../../src/loading.gif";
-
+import $ from "jquery";
 import { Link } from "react-router-dom";
+import PopularNews from "./PopularNews";
 
 const Newslist = props => {
   window.scrollTo(0, 0);
@@ -39,7 +40,35 @@ const Newslist = props => {
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  let aside = document.getElementsByClassName("col-md-4 col-xs-12");
+  let client = document.getElementsByTagName("section");
+  if (client[0] && client[0].clientWidth > 992) {
+    let element = document.getElementsByClassName("popular");
+    $.when(element).then(function() {
+      let width = element[0].clientWidth;
+      $(".popular").css("width", width);
+      $(".popular .twitter-fixed").css("width", width);
+    });
+  } else {
+    $(".popular").css("min-width", "100%");
+    $(".popular .twitter-fixed").css("min-width", "100%");
+  }
 
+  $(window).scroll(function(e) {
+    let article = document.getElementsByClassName("news-list");
+
+    if (article[0]) {
+      let height = article[0].clientHeight;
+      if (
+        $(window).scrollTop() > 150 &&
+        $(window).scrollTop() < (height * 8.5) / 10
+      ) {
+        $(".col-md-4 .popular").addClass("twitter-fixed");
+      } else {
+        $(".col-md-4 .popular").removeClass("twitter-fixed");
+      }
+    }
+  });
   return (
     <div className="container-row news">
       {loading ? (
@@ -78,6 +107,11 @@ const Newslist = props => {
               ) : (
                 <></>
               )}
+            </div>
+            <div className="col-md-4 col-xs-12">
+              <div className="popular">
+                <PopularNews />
+              </div>
             </div>
           </div>
           <div className="container pagination">

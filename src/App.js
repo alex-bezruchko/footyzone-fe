@@ -4,7 +4,7 @@ import SingleNews from "./components/news/SingleNews";
 import SingleBlog from "./components/blog/SingleBlog";
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
-// import RelatedPosts from "./components/posts/RelatedPosts";
+import RelatedPosts from "./components/posts/RelatedPosts";
 import Bloglist from "./components/blog/Bloglist";
 import WelcomeBloglist from "./components/blog/WelcomeBloglist";
 // import SearchResultsList from "./components/pages/SearchResultsList";
@@ -38,7 +38,7 @@ class App extends React.Component {
               path="/news/:subcat_name/page/:page_id"
               component={NewsCategories}
             />
-            {/* <Route path="/news/:subcat_name" component={RelatedPosts} /> */}
+            {/* <Route exact path="/news/:page_id" component={RelateNews} /> */}
             <Route exact path="/blog/:id" component={SingleBlog} />
 
             <Route exact path="/posts/add" component={PostCrud} />

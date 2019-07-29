@@ -3,6 +3,9 @@ import axios from "axios";
 export const FETCH_ALL_SUCCESS = "FETCH_ALL_SUCCESS";
 export const FETCH_ALL_FAILURE = "FETCH_ALL_FAILURE";
 export const FETCH_ALL_LOADING = "FETCH_ALL_LOADING";
+export const FETCH_POPULAR_SUCCESS = "FETCH_POPULAR_SUCCESS";
+export const FETCH_POPULAR_FAILURE = "FETCH_POPULAR_FAILURE";
+export const FETCH_POPULAR_LOADING = "FETCH_POPULAR_LOADING";
 export const FETCH_ONE_SUCCESS = "FETCH_ONE_SUCCESS";
 export const FETCH_ONE_FAILURE = "FETCH_ONE_FAILURE";
 export const FETCH_ONE_LOADING = "FETCH_ONE_LOADING";
@@ -37,6 +40,31 @@ export const SUBCATEGORY_FAILURE = "SUBCATEGORY_FAILURE";
 export const USERS_POSTS_LOADING = "USERS_POSTS_LOADING";
 export const USERS_POSTS_SUCCESS = "USERS_POSTS_SUCCESS";
 export const USERS_POSTS_FAILURE = "USERS_POSTS_FAILURE";
+
+export function fetchPopular() {
+  return dispatch => {
+    dispatch({ type: FETCH_POPULAR_LOADING });
+    axios
+      .get("https://footyzone-be.herokuapp.com/api/news")
+      .then(response => {
+        let currentPopular = response.data.slice(0, 20);
+        let bobo = currentPopular.sort(
+          (a, b) => b.likes.length - a.likes.length
+        );
+        let mostest = bobo.slice(0, 5);
+        dispatch({
+          type: FETCH_POPULAR_SUCCESS,
+          payload: mostest,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCH_POPULAR_FAILURE,
+          payload: err,
+        });
+      });
+  };
+}
 
 export function fetchAllNews() {
   return dispatch => {

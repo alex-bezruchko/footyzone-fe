@@ -33,7 +33,6 @@ const SingleNews = props => {
       );
       setSingleNews(res.data);
       setLoading(false);
-      window.scrollTo(0, 0);
     };
     fetchSingle();
   }, [props.match.params.id, props.match.params.subcat_name]);
@@ -78,6 +77,8 @@ const SingleNews = props => {
       }
     }
   });
+  window.scrollTo(0, 0);
+
   return (
     <div className="container-row news">
       <div className="container single-news-wrapper">
