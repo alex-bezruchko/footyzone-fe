@@ -28,8 +28,22 @@
     line-height: 1.3;
     border-bottom: 1px solid rgba(2, 2, 2, 0.1);
   }
-  h4 {
-    font-family: $font_oswald;
+  h4,
+  .likes {
+    font-family: $font_ubuntu;
+    font-size: 1.3rem;
+    color: $grey;
+    font-weight: 500;
+    align-items: center;
+    display: flex;
+    svg {
+      margin-right: 8px;
+    }
+  }
+  .post-interaction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   .comment-avatar {
     display: flex;
@@ -46,10 +60,21 @@
     }
     span {
       padding-top: 5px;
+      font-family: $font_ubuntu;
+      font-size: 14px;
+      text-align: center;
     }
   }
   .comment-text {
     align-self: start;
+    display: flex;
+    flex-direction: column;
+    span {
+      padding: 8px 0px 0px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: $font_ubuntu;
+    }
   }
 }
 .single-info {

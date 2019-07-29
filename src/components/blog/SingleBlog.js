@@ -2,6 +2,7 @@ import React from "react";
 import { viewPost } from "../../actions/postsActions";
 import { connect } from "react-redux";
 import loading from "./../../../src/loading.gif";
+import moment from "moment";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -14,7 +15,7 @@ import {
   PinterestShareButton,
   PinterestIcon,
 } from "react-share";
-
+import { FaThumbsUp, FaComments } from "react-icons/fa";
 class SingleView extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -113,25 +114,38 @@ class SingleView extends React.Component {
                 </div>
                 <hr />
                 <div className="comments">
-                  <h4>Comments</h4>
-                  <hr className="comment-separator" />
                   <div>
-                    {this.props.post && this.props.post.comments.length > 0 ? (
+                    {this.props.post.likes && this.props.post.comments ? (
                       <>
+                        <div className="post-interaction">
+                          <h4>
+                            <FaComments /> ({this.props.post.comments.length})
+                          </h4>
+                          <div className="likes">
+                            <FaThumbsUp /> {this.props.post.likes.length}
+                          </div>
+                        </div>
+                        <hr className="comment-separator" />{" "}
                         {this.props.post.comments.map(comment => {
                           return (
                             <div className="comment-body" key={comment.id}>
                               <div className="comment-avatar">
                                 <img src={comment.avatar} />
-                                {/* <span>{comment.username}</span> */}
+                                <span>{comment.username}</span>
                               </div>
                               <div className="comment-text">
                                 {comment.comment}
+                                <span>
+                                  {moment(comment.date).format("lll")}
+                                </span>
                               </div>
                               <hr />
                             </div>
                           );
                         })}
+                        <form>
+                          <input placeholder="Add a comment" />
+                        </form>
                       </>
                     ) : (
                       <></>
