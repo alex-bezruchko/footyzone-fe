@@ -46,8 +46,14 @@ a .carousel-control-next-icon {
   .small-carousel-post {
     width: 100%;
     z-index: 9999;
-    margin: 33px 0px;
+    margin: 33px 0px 5px;
 
+    &:hover {
+      p {
+        color: $wheat;
+        cursor: pointer;
+      }
+    }
     img {
       margin-bottom: 7px;
     }

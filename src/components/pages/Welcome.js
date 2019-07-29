@@ -159,7 +159,9 @@ class Welcome extends React.Component {
                         <img src={news.newsMainImg} alt={news.title} />
                       </Link>
                     </div>
-                    <p>{news.title}</p>
+                    <Link to={`/news/${news.subcat_slug}/${news.id}`}>
+                      <p>{news.title}</p>
+                    </Link>
                   </div>
                 );
               })}
