@@ -89,6 +89,9 @@ a .carousel-control-next-icon {
   span {
     padding: 16px;
   }
+  .category-blog h2 {
+    min-height: 50px;
+  }
 
   .carousel-indicators {
     margin-left: 67% !important;
@@ -218,6 +221,9 @@ a .carousel-control-next-icon {
   }
 }
 @media #{$mobile} {
+  .category-blog h2 {
+    min-height: 40px;
+  }
   .carousel-item img,
   .carousel-item {
     max-height: 300px;
@@ -338,7 +344,6 @@ h1.latest {
     h2 {
       line-height: 1.1;
       font-size: 23px;
-      min-height: 50px;
       margin-bottom: 0px;
     }
   }
