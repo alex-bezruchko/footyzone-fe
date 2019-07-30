@@ -42,7 +42,7 @@ class SingleView extends React.Component {
           </div>
         ) : (
           <div className="container single-blog-wrapper">
-            {this.props.post && this.props.post.title ?(
+            {this.props.post && this.props.post.title ? (
               <div className="single col-md-8">
                 {" "}
                 <h2>{this.props.post.title}</h2>
@@ -158,6 +158,8 @@ class SingleView extends React.Component {
                   </div>
                 </div>
               </div>
+            ) : (
+              <></>
             )}
           </div>
         )}
