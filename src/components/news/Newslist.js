@@ -72,8 +72,10 @@ const Newslist = props => {
   return (
     <div className="container-row news">
       {loading ? (
-        <div className="container">
-          <img className="loading" alt="Loading gif" src={imgLoading} />
+        <div className="container blog-list">
+          <div className="col-md-8">
+            <img className="loading" alt="Loading gif" src={imgLoading} />
+          </div>
         </div>
       ) : (
         <div className="container-row">
