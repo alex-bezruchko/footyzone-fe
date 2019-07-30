@@ -4,7 +4,6 @@ import SingleNews from "./components/news/SingleNews";
 import SingleBlog from "./components/blog/SingleBlog";
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
-import RelatedPosts from "./components/posts/RelatedPosts";
 import Bloglist from "./components/blog/Bloglist";
 import WelcomeBloglist from "./components/blog/WelcomeBloglist";
 // import SearchResultsList from "./components/pages/SearchResultsList";

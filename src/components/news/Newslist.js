@@ -40,7 +40,6 @@ const Newslist = props => {
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
   const paginate = pageNumber => setCurrentPage(pageNumber);
-  let aside = document.getElementsByClassName("col-md-4 col-xs-12");
   let client = document.getElementsByTagName("section");
   if (client[0] && client[0].clientWidth > 992) {
     let element = document.getElementsByClassName("popular");

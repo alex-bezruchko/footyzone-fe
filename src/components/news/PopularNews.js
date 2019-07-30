@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import $ from "jquery";
+// import $ from "jquery";
 import { withRouter } from "react-router-dom";
-import loading from "./../../../src/loading.gif";
+// import loading from "./../../../src/loading.gif";
 import { Link } from "react-router-dom";
 import { fetchPopular } from "../../actions/newsActions";
 

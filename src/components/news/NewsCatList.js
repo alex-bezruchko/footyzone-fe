@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import imgLoading from "./../../../src/loading.gif";
-import { TwitterTimelineEmbed } from "react-twitter-embed";
 import TwitterSidebar from "../parts/TwitterSidebar";
 
 const NewsCatList = ({ news, loading, subcat_name, props }) => {

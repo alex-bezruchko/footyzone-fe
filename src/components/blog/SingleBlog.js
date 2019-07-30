@@ -17,6 +17,17 @@ import {
 } from "react-share";
 import { FaThumbsUp, FaComments } from "react-icons/fa";
 class SingleView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newComment: {
+        message: "",
+        user_id: "",
+        post_id: "",
+      },
+      commentError: false,
+    };
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
 
@@ -33,61 +44,62 @@ class SingleView extends React.Component {
     }
   }
   render() {
-    console.log(this.props.post);
+    console.log(this.props);
     return (
       <div className="container-row blog">
-        {this.props.loading ? (
+        {this.props.postsReducer.loading ? (
           <div className="container">
             <img className="loading" src={loading} alt="Post is loading gif" />
           </div>
         ) : (
           <div className="container single-blog-wrapper">
-            {this.props.post && this.props.post.title ? (
+            {this.props.postsReducer.post &&
+            this.props.postsReducer.post.title ? (
               <div className="single col-md-8">
                 {" "}
-                <h2>{this.props.post.title}</h2>
+                <h2>{this.props.postsReducer.post.title}</h2>
                 <img
-                  src={this.props.post.postMainImg}
-                  alt={this.props.post.title}
+                  src={this.props.postsReducer.post.postMainImg}
+                  alt={this.props.postsReducer.post.title}
                   className="blog-main-image"
                 />
                 <div className="single-info">
                   <div className="single-share">
                     <div className="socials">
-                      {this.props.post.title &&
-                      this.props.post.title.length > 0 ? (
+                      {this.props.postsReducer.post.title &&
+                      this.props.postsReducer.post.title.length > 0 ? (
                         <>
                           <FacebookShareButton
                             url={window.location.href}
-                            media={this.props.post.title}
+                            media={this.props.postsReducer.post.title}
                             className="button"
                           >
                             <FacebookIcon size={32} round={false} />
                           </FacebookShareButton>
                           <TwitterShareButton
                             url={window.location.href}
-                            media={this.props.post.title}
+                            media={this.props.postsReducer.post.title}
                             className="button"
                           >
                             <TwitterIcon size={32} round={false} />
                           </TwitterShareButton>
                           <PinterestShareButton
                             url={window.location.href}
-                            media={this.props.post.title}
+                            media={this.props.postsReducer.post.title}
                             className="button"
                           >
                             <PinterestIcon size={32} round={false} />
                           </PinterestShareButton>
                           <WhatsappShareButton
                             url={window.location.href}
-                            media={this.props.post.title}
+                            media={this.props.postsReducer.post.title}
                             className="button"
                           >
                             <WhatsappIcon size={32} round={false} />
                           </WhatsappShareButton>
                           <RedditShareButton
                             url={window.location.href}
-                            media={this.props.post.title}
+                            media={this.props.postsReducer.post.title}
                             className="button"
                           >
                             <RedditIcon size={32} round={false} />
@@ -98,35 +110,40 @@ class SingleView extends React.Component {
                       )}
                     </div>
                     <div className="author">
-                      Submitted by: {this.props.post.username} on{" "}
-                      {new Date(this.props.post.published).toDateString()}
+                      Submitted by: {this.props.postsReducer.post.username} on{" "}
+                      {new Date(
+                        this.props.postsReducer.post.published
+                      ).toDateString()}
                     </div>
                   </div>
                   <img
                     className="avatar"
-                    src={this.props.post.avatar}
+                    src={this.props.postsReducer.post.avatar}
                     alt="avatar"
                   />
                 </div>
-                <div className="body">{this.props.post.body}</div>
+                <div className="body">{this.props.postsReducer.post.body}</div>
                 <div className="body">
-                  <p>{this.props.post.body}</p>
+                  <p>{this.props.postsReducer.post.body}</p>
                 </div>
                 <hr />
                 <div className="comments">
                   <div>
-                    {this.props.post.likes && this.props.post.comments ? (
+                    {this.props.postsReducer.post.likes &&
+                    this.props.postsReducer.post.comments ? (
                       <>
                         <div className="post-interaction">
                           <h4>
-                            <FaComments /> ({this.props.post.comments.length})
+                            <FaComments /> (
+                            {this.props.postsReducer.post.comments.length})
                           </h4>
                           <div className="likes">
-                            <FaThumbsUp /> {this.props.post.likes.length}
+                            <FaThumbsUp />{" "}
+                            {this.props.postsReducer.post.likes.length}
                           </div>
                         </div>
                         <hr className="comment-separator" />{" "}
-                        {this.props.post.comments.map(comment => {
+                        {this.props.postsReducer.post.comments.map(comment => {
                           return (
                             <div className="comment-body" key={comment.id}>
                               <div className="comment-avatar">
@@ -148,6 +165,7 @@ class SingleView extends React.Component {
                             src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1563589016/vaeq5qshowwit6iubhxm.png"
                             alt="currentUser"
                           />
+                          {this.props.usersReducer.user.username}
                           <textarea placeholder="Add a comment" />
                           <button>Submit</button>
                         </form>
@@ -168,10 +186,10 @@ class SingleView extends React.Component {
   }
 }
 
-const MapStateToProps = ({ postsReducer: state }) => {
+const MapStateToProps = ({ postsReducer, usersReducer }) => {
   return {
-    post: state.post,
-    loading: state.loading,
+    postsReducer,
+    usersReducer,
   };
 };
 export default connect(
