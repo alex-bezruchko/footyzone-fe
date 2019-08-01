@@ -1,4 +1,7 @@
 import {
+  ADD_COMMENT_SUCCESS,
+  ADD_COMMENT_FAILURE,
+  ADD_COMMENT_LOADING,
   FETCH_ALL_LOADING,
   FETCH_ALL_SUCCESS,
   FETCH_ALL_FAILURE,
@@ -39,8 +42,10 @@ import {
 
 const initialState = {
   posts: [],
+  comments: [],
   categories: [],
   subcategories: [],
+  comment_loading: false,
   loading: true,
   error: "",
   adding: false,
@@ -129,6 +134,30 @@ export const postsReducer = (state = initialState, action) => {
         error: "There are no available posts",
       };
 
+    case ADD_COMMENT_LOADING:
+      return {
+        ...state,
+        comments: [],
+        // comment_loading: true,
+        error: "",
+      };
+
+    case ADD_COMMENT_SUCCESS:
+      return {
+        ...state,
+        comments: action.payload.comments,
+        // comment_loading: false,
+        error: "",
+      };
+
+    case ADD_COMMENT_FAILURE:
+      return {
+        ...state,
+        comments: [],
+        // comment_loading: false,
+        error: "There are no available posts",
+      };
+
     case FETCH_ALL_LOADING:
       return {
         ...state,
@@ -182,6 +211,7 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         post: {},
+        comments: [],
         error: "",
       };
 
@@ -190,6 +220,7 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         post: action.payload,
+        comments: action.payload.comments,
         error: "",
       };
 
@@ -198,6 +229,7 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         post: {},
+        comments: [],
         error: "We had a trouble finding this post",
       };
 

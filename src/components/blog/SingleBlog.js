@@ -1,8 +1,9 @@
 import React from "react";
-import { viewPost } from "../../actions/postsActions";
+import { viewPost, addComment } from "../../actions/postsActions";
 import { connect } from "react-redux";
 import loading from "./../../../src/loading.gif";
 import moment from "moment";
+
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -21,18 +22,70 @@ class SingleView extends React.Component {
     super(props);
     this.state = {
       newComment: {
-        message: "",
+        comment: "",
         user_id: "",
         post_id: "",
       },
       commentError: false,
     };
   }
+  submitCommentHandler = e => {
+    e.preventDefault();
+    this.setState({
+      newComment: {
+        comment: "",
+      },
+    });
+  };
+  // changeHandler = e => {
+  //       this.setState({
+  //           note: {
+  //               ...this.state.note,
+  //               [e.target.name]: e.target.value
+  //           }
+  //       })
+  //   }
+
+  newCommentOnChange = e => {
+    
+    this.setState({
+      newComment: {
+        ...this.state.newComment,
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(this.state.newComment.comment)
+  };
+  addCommentHandler = e => {
+    e.preventDefault();
+    console.log(`user_id: ${this.state.newComment.user_id}`)
+    
+    if (this.state.newComment.user_id) {
+      let sentComment = {};
+      sentComment.post_id = Number(this.props.match.params.id);
+      sentComment.user_id = Number(this.state.newComment.user_id);
+      sentComment.date = new Date().toISOString();
+      sentComment.comment = this.state.newComment.comment;
+      this.props.addComment(sentComment, this.props.history)
+      this.setState({
+        newComment: {
+          comment: ""
+        }
+      })
+    }
+    
+  };
   componentDidMount() {
     window.scrollTo(0, 0);
-
     const id = this.props.match.params.id;
     this.props.viewPost("blog", id);
+    
+      this.setState({
+        newComment: {
+          user_id: this.props.usersReducer.user.user_id,
+          post_id: this.props.postsReducer.post.post_id,
+        },
+      });
   }
 
   componentDidUpdate(prevProps) {
@@ -40,11 +93,18 @@ class SingleView extends React.Component {
     const id = this.props.match.params.id;
 
     if (id !== prevProps.match.params.id) {
+    window.scrollTo(0, 0);
+
       this.props.viewPost("blog", id);
+      this.setState({
+        newComment: {
+          user_id: this.props.usersReducer.user.user_id,
+          post_id: this.props.postsReducer.post.post_id,
+        },
+      });
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="container-row blog">
         {this.props.postsReducer.loading ? (
@@ -130,12 +190,12 @@ class SingleView extends React.Component {
                 <div className="comments">
                   <div>
                     {this.props.postsReducer.post.likes &&
-                    this.props.postsReducer.post.comments ? (
+                    this.props.postsReducer.comments ? (
                       <>
                         <div className="post-interaction">
                           <h4>
                             <FaComments /> (
-                            {this.props.postsReducer.post.comments.length})
+                            {this.props.postsReducer.comments.length})
                           </h4>
                           <div className="likes">
                             <FaThumbsUp />{" "}
@@ -143,32 +203,58 @@ class SingleView extends React.Component {
                           </div>
                         </div>
                         <hr className="comment-separator" />{" "}
-                        {this.props.postsReducer.post.comments.map(comment => {
-                          return (
-                            <div className="comment-body" key={comment.id}>
-                              <div className="comment-avatar">
-                                <img src={comment.avatar} />
-                                <span>{comment.username}</span>
+                        
+                        {this.props.postsReducer.comments.map(
+                          (comment, index) => {
+                            return (
+                              <div className="comment-body" key={index}>
+                                <div className="comment-avatar">
+                                {comment.avatar && comment.avatar.length > 0 ?
+                                <img
+                                    src={comment.avatar}
+                                    alt="user's avatar"
+                                  />
+                                  : <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png"/>
+                                }
+                                  
+                                  <span>{comment.username}</span>
+                                </div>
+                                <div className="comment-text">
+                                  {comment.comment}
+                                  <span>
+                                    {moment(comment.date).format("lll")}
+                                  </span>
+                                </div>
+                                <hr />
                               </div>
-                              <div className="comment-text">
-                                {comment.comment}
-                                <span>
-                                  {moment(comment.date).format("lll")}
-                                </span>
-                              </div>
-                              <hr />
-                            </div>
-                          );
-                        })}
-                        <form className="comment-form">
-                          <img
-                            src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1563589016/vaeq5qshowwit6iubhxm.png"
-                            alt="currentUser"
+                            );
+                          }
+                        )}
+                        <div className="new-comment">
+                        <div className="commentator">
+                          {this.props.usersReducer.user.avatar && this.props.usersReducer.user.avatar.length > 0 ?
+                            <img
+                              src={this.props.usersReducer.user.avatar}
+                              alt="user's avatar"
+                            />
+                            : <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png"/>
+                          }
+                          <span>{this.props.usersReducer.user.username}</span>
+                        </div>
+                        <form className="comment-form" onSubmit={this.addCommentHandler}>
+                          
+                          <textarea
+                            placeholder="Add a comment"
+                            name="comment"
+                            value={this.state.newComment.comment}
+                            onChange={this.newCommentOnChange}
                           />
-                          {this.props.usersReducer.user.username}
-                          <textarea placeholder="Add a comment" />
-                          <button>Submit</button>
+                          <button type="submit">Submit</button>
                         </form>
+                        </div>
+                        
+                       
+                        
                       </>
                     ) : (
                       <></>
@@ -194,5 +280,5 @@ const MapStateToProps = ({ postsReducer, usersReducer }) => {
 };
 export default connect(
   MapStateToProps,
-  { viewPost }
+  { viewPost, addComment }
 )(SingleView);

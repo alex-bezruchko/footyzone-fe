@@ -3,6 +3,9 @@ import axios from "axios";
 export const FETCH_ALL_SUCCESS = "FETCH_ALL_SUCCESS";
 export const FETCH_ALL_FAILURE = "FETCH_ALL_FAILURE";
 export const FETCH_ALL_LOADING = "FETCH_ALL_LOADING";
+export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
+export const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
+export const ADD_COMMENT_LOADING = "ADD_COMMENT_LOADING";
 export const FETCH_WELCOME_SUCCESS = "FETCH_WELCOME_SUCCESS";
 export const FETCH_WELCOME_FAILURE = "FETCH_WELCOME_FAILURE";
 export const FETCH_WELCOME_LOADING = "FETCH_WELCOME_LOADING";
@@ -76,6 +79,34 @@ export function searchTerm(term) {
   };
 }
 
+export function addComment(comment, history) {
+  console.log(comment)
+  const token = localStorage.getItem("jwt");
+    var config = {
+    headers: { Authorization: token },
+    };
+  return dispatch => {
+    dispatch({ type: ADD_COMMENT_LOADING });
+    
+    axios
+      .post("https://footyzone-be.herokuapp.com/api/blog/comments", comment)
+      .then(response => {
+        console.log(response.data)
+        dispatch({
+          type: ADD_COMMENT_SUCCESS,
+          payload: response.data,
+        });
+        // history.push(`/blog/${response.data.id}`);
+      })
+      .catch(err => {
+        dispatch({
+          type: ADD_COMMENT_FAILURE,
+          payload: err,
+        });
+      });
+  };
+  
+}
 export function fetchAllPosts() {
   return dispatch => {
     dispatch({ type: FETCH_ALL_LOADING });

@@ -16,6 +16,7 @@ class SignUp extends React.Component {
       passwordError: false,
       passRepeatError: false,
       notMatchingPassError: false,
+      signupError: false
     };
   }
   componentDidMount() {
@@ -27,6 +28,7 @@ class SignUp extends React.Component {
       passwordError: false,
       passRepeatError: false,
       notMatchingPassError: false,
+      signupError: false
     });
   }
   changeHandler = e => {
@@ -113,8 +115,8 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="login">
-        {this.props.signupLoading ? (
+      <div className="container login">
+        {this.props.usersReducer.loginLoading === true ? (
           <img
             src={loading}
             className="loading"
@@ -161,6 +163,10 @@ class SignUp extends React.Component {
                 <Alert color="danger">Passwords do not match.</Alert>
               ) : null}
 
+
+              {this.props.usersReducer.signupError === true ? (
+                <Alert color="danger">This username already exists.</Alert>
+              ) : null}
               <button className="btn btn-info" type="submit">
                 Sign Up
               </button>
@@ -179,11 +185,9 @@ class SignUp extends React.Component {
     );
   }
 }
-const MapStateToProps = ({ usersReducer: state }) => {
+const MapStateToProps = ({ usersReducer }) => {
   return {
-    username: state.user.username,
-    password: state.user.password,
-    signupLoading: state.signupLoading,
+    usersReducer
   };
 };
 export default withRouter(

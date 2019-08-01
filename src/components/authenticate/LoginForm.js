@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Alert } from "reactstrap";
+import { Input, Alert, UncontrolledAlert } from "reactstrap";
 import { connect } from "react-redux";
 import { login } from "./../../actions/usersActions";
 import { withRouter, Link } from "react-router-dom";
@@ -52,13 +52,15 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login">
-        {this.props.loginLoading ? (
-          <img
-            src={loading}
-            className="loading"
-            alt="PostForm form is loading gif"
-          />
+      <div className="container login">
+        {this.props.loginLoading === true ? (
+          // <div className="loading">
+            <img
+              src={loading}
+              className="loading"
+              alt="PostForm form is loading gif"
+            />
+          // </div>
         ) : (
           <form className="form login-form" onSubmit={this.loginHandler}>
             <h1>Login</h1>
@@ -83,6 +85,11 @@ class LoginForm extends React.Component {
             {this.state.passwordError ? (
               <Alert color="danger">Password is required.</Alert>
             ) : null}
+
+            {this.props.signupError === false ? (
+              <UncontrolledAlert color="success">User was registered.</UncontrolledAlert>
+            ) : null}
+
 
             {this.props.loginError === true ? (
               <Alert color="danger">

@@ -34,6 +34,7 @@ export function signup(username, password, history) {
           type: SIGNUP_FAILURE,
           payload: err,
         });
+        history.push("/signup");
       });
   };
 }
@@ -54,6 +55,8 @@ export function login(username, password, history) {
         localStorage.setItem("jwt", response.data.token);
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("user_id", response.data.user_id);
+        localStorage.setItem("avatar", response.data.avatar);
+
         dispatch({
           type: LOGIN_SUCCESS,
           payload: response.data,
@@ -61,6 +64,7 @@ export function login(username, password, history) {
         history.push("/");
       })
       .catch(err => {
+        console.log(err)
         dispatch({
           type: LOGIN_FAILURE,
           payload: err,
@@ -69,15 +73,17 @@ export function login(username, password, history) {
   };
 }
 
-export function loginStatus(username, token, history) {
+export function loginStatus(username, token, user_id, avatar, history) {
   return dispatch => {
     dispatch({ type: LOGIN_STATUS_CHECKING });
     const user = {
       username: username,
       token: token,
+      user_id: user_id,
+      avatar: avatar
     };
 
-    if (user && token) {
+    if (user && token && user_id) {
       dispatch({
         type: LOGIN_STATUS_SUCCESS,
         payload: user,
@@ -88,11 +94,11 @@ export function loginStatus(username, token, history) {
         type: LOGIN_STATUS_FAILURE,
         payload: {},
       });
-      if (history.location.pathname === "/signup") {
-        history.push("/signup");
-      } else {
+      // if (history.location.pathname === "/signup") {
+      //   history.push("/signup");
+      // } else {
         history.push("/login");
-      }
+      // }
     }
   };
 }

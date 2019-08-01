@@ -15,7 +15,10 @@ class Authenticate extends React.Component {
 
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("jwt");
-    this.props.loginStatus(username, token, this.props.history);
+    const user_id = localStorage.getItem("user_id");
+    const avatar = localStorage.getItem("avatar");
+
+    this.props.loginStatus(username, token, user_id, avatar, this.props.history);
   }
 
   searchTerm = term => {
@@ -92,6 +95,7 @@ const MapStateToProps = ({ usersReducer: state }) => {
     user: {
       username: state.user.username,
       token: state.user.token,
+      user_id: state.user.user_id
     },
     isLoggedIn: state.isLoggedIn,
     loginLoading: state.loginLoading,

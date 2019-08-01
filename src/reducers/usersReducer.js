@@ -14,11 +14,14 @@ const initialState = {
   user: {
     token: "",
     username: "",
+    user_id: "",
+    avatar: "",
   },
   loginLoading: false,
-  signupLoading: false,
+  loginLoading: false,
   isLoggedIn: false,
   loginError: false,
+  signupError: false
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -26,31 +29,38 @@ export const usersReducer = (state = initialState, action) => {
     case SIGNUP_LOADING:
       return {
         ...state,
-        signupLoading: true,
+        loginLoading: true,
         user: {
           token: "",
           username: "",
+          user_id: "",
+          avatar: "",
         },
         loginError: false,
+        signupError: false
       };
 
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        signupLoading: false,
+        loginLoading: false,
         user: action.payload,
         loginError: false,
+        signupError: false
       };
 
     case SIGNUP_FAILURE:
       return {
         ...state,
-        signupLoading: false,
+        loginLoading: false,
         user: {
           token: "",
           username: "",
+          user_id: "",
+          avatar: ""
         },
         loginError: false,
+        signupError: true
       };
 
     case LOGIN_STATUS_CHECKING:
@@ -60,8 +70,12 @@ export const usersReducer = (state = initialState, action) => {
         user: {
           token: "",
           username: "",
+          user_id: "",
+          avatar: ""
         },
         isLoggedIn: false,
+        signupError: false
+
       };
 
     case LOGIN_STATUS_SUCCESS:
@@ -70,6 +84,7 @@ export const usersReducer = (state = initialState, action) => {
         loginLoading: false,
         user: action.payload,
         isLoggedIn: true,
+        signupError: false
       };
 
     case LOGIN_STATUS_FAILURE:
@@ -79,8 +94,12 @@ export const usersReducer = (state = initialState, action) => {
         user: {
           token: "",
           username: "",
+          user_id: "",
+          avatar: ""
         },
         isLoggedIn: false,
+        signupError: false,
+        loginError: false,
       };
 
     case LOGIN_LOADING:
@@ -90,9 +109,12 @@ export const usersReducer = (state = initialState, action) => {
         user: {
           token: "",
           username: "",
+          user_id: "",
+          avatar: ""
         },
         isLoggedIn: false,
-        loginError: false,
+        signupError: false,
+        loginError: false
       };
 
     case LOGIN_SUCCESS:
@@ -102,6 +124,7 @@ export const usersReducer = (state = initialState, action) => {
         user: action.payload,
         isLoggedIn: true,
         loginError: false,
+        signupError: false
       };
 
     case LOGIN_FAILURE:
@@ -111,9 +134,12 @@ export const usersReducer = (state = initialState, action) => {
         user: {
           token: "",
           username: "",
+          user_id: "",
+          avatar: ""
         },
         isLoggedIn: false,
         loginError: true,
+        signupError: false
       };
 
     default:
