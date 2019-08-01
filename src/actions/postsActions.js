@@ -90,14 +90,11 @@ export function deleteComment(id, post_id) {
     axios
       .delete(`https://footyzone-be.herokuapp.com/api/blog/${post_id}/comments/${id}`)
       .then(response => {
-        console.log(response.data)
-        // const newNotes = this.state.notes.filter(note => note._id !== id);
 
         dispatch({
           type: DELETE_COMMENT_SUCCESS,
           payload: response.data.deleted,
         });
-        // history.push(`/blog/${response.data.id}`);
       })
       .catch(err => {
         dispatch({
@@ -110,7 +107,6 @@ export function deleteComment(id, post_id) {
 }
 
 export function addComment(comment, history) {
-  console.log(comment)
   const token = localStorage.getItem("jwt");
     var config = {
     headers: { Authorization: token },
@@ -121,12 +117,10 @@ export function addComment(comment, history) {
     axios
       .post("https://footyzone-be.herokuapp.com/api/blog/comments", comment)
       .then(response => {
-        console.log(response.data)
         dispatch({
           type: ADD_COMMENT_SUCCESS,
           payload: response.data,
         });
-        // history.push(`/blog/${response.data.id}`);
       })
       .catch(err => {
         dispatch({
@@ -177,7 +171,6 @@ export function fetchLatestPosts() {
 }
 
 export function fetchPostsByCategory(category_name) {
-  console.log(`https://footyzone-be.herokuapp.com/api/${category_name}`);
   return dispatch => {
     dispatch({ type: CATEGORY_LOADING });
     axios
@@ -199,10 +192,7 @@ export function fetchPostsByCategory(category_name) {
 }
 
 export function fetchPostsBySubCategory(category_name, subcat_name) {
-  console.log(
-    `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}/`
-  );
-
+ 
   return dispatch => {
     dispatch({ type: SUBCATEGORY_LOADING });
     axios
@@ -305,7 +295,6 @@ export function viewPost(category_name, id) {
 }
 
 export function addPost(newPost, history) {
-  // console.log(history);
   const token = localStorage.getItem("jwt");
   var config = {
     headers: { Authorization: token },
