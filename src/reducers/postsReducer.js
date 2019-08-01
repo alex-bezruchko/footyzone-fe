@@ -2,6 +2,9 @@ import {
   ADD_COMMENT_SUCCESS,
   ADD_COMMENT_FAILURE,
   ADD_COMMENT_LOADING,
+  DELETE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAILURE,
+  DELETE_COMMENT_LOADING,
   FETCH_ALL_LOADING,
   FETCH_ALL_SUCCESS,
   FETCH_ALL_FAILURE,
@@ -151,6 +154,30 @@ export const postsReducer = (state = initialState, action) => {
       };
 
     case ADD_COMMENT_FAILURE:
+      return {
+        ...state,
+        comments: [],
+        // comment_loading: false,
+        error: "There are no available posts",
+      };
+
+     case DELETE_COMMENT_LOADING:
+      return {
+        ...state,
+        comments: [],
+        // comment_loading: true,
+        error: "",
+      };
+
+    case DELETE_COMMENT_SUCCESS:
+      return {
+        ...state,
+        comments: action.payload,
+        // comment_loading: false,
+        error: "",
+      };
+
+    case DELETE_COMMENT_FAILURE:
       return {
         ...state,
         comments: [],

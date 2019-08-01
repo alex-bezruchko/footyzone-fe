@@ -6,6 +6,9 @@ export const FETCH_ALL_LOADING = "FETCH_ALL_LOADING";
 export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
 export const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
 export const ADD_COMMENT_LOADING = "ADD_COMMENT_LOADING";
+export const DELETE_COMMENT_SUCCESS = "DELETE_COMMENT_SUCCESS";
+export const DELETE_COMMENT_FAILURE = "DELETE_COMMENT_FAILURE";
+export const DELETE_COMMENT_LOADING = "DELETE_COMMENT_LOADING";
 export const FETCH_WELCOME_SUCCESS = "FETCH_WELCOME_SUCCESS";
 export const FETCH_WELCOME_FAILURE = "FETCH_WELCOME_FAILURE";
 export const FETCH_WELCOME_LOADING = "FETCH_WELCOME_LOADING";
@@ -77,6 +80,33 @@ export function searchTerm(term) {
         });
       });
   };
+}
+
+export function deleteComment(id, post_id) {
+  console.log(id)
+  return dispatch => {
+    dispatch({ type: DELETE_COMMENT_LOADING });
+    
+    axios
+      .delete(`https://footyzone-be.herokuapp.com/api/blog/${post_id}/comments/${id}`)
+      .then(response => {
+        console.log(response.data)
+        // const newNotes = this.state.notes.filter(note => note._id !== id);
+
+        dispatch({
+          type: DELETE_COMMENT_SUCCESS,
+          payload: response.data.deleted,
+        });
+        // history.push(`/blog/${response.data.id}`);
+      })
+      .catch(err => {
+        dispatch({
+          type: DELETE_COMMENT_FAILURE,
+          payload: err,
+        });
+      });
+  };
+  
 }
 
 export function addComment(comment, history) {

@@ -1,6 +1,7 @@
 import React from "react";
-import { viewPost, addComment } from "../../actions/postsActions";
+import { viewPost, addComment, deleteComment } from "../../actions/postsActions";
 import { connect } from "react-redux";
+import { Trash } from "react-icons/fa";
 import loading from "./../../../src/loading.gif";
 import moment from "moment";
 
@@ -75,6 +76,10 @@ class SingleView extends React.Component {
     }
     
   };
+  // deleteHandler = e => {
+  //   e.preventDefault();
+  //   console.log(e.target);
+  // }
   componentDidMount() {
     window.scrollTo(0, 0);
     const id = this.props.match.params.id;
@@ -204,8 +209,11 @@ class SingleView extends React.Component {
                         </div>
                         <hr className="comment-separator" />{" "}
                         
+                        {this.props.postsReducer.comments.length > 0 ?
+                        <> 
                         {this.props.postsReducer.comments.map(
                           (comment, index) => {
+                            console.log(comment)
                             return (
                               <div className="comment-body" key={index}>
                                 <div className="comment-avatar">
@@ -220,16 +228,24 @@ class SingleView extends React.Component {
                                   <span>{comment.username}</span>
                                 </div>
                                 <div className="comment-text">
-                                  {comment.comment}
+                                  <p>{comment.comment}</p>
+                                  <div>
                                   <span>
                                     {moment(comment.date).format("lll")}
                                   </span>
+                                  {Number(this.props.usersReducer.user.user_id) === Number(comment.user_id) ?
+                                  
+                                  <button onClick={() => this.props.deleteComment(comment.id, this.props.postsReducer.post.id)}>Delete</button> : null
+                                  
+                                  }
+                                  </div>
+                                  
                                 </div>
                                 <hr />
                               </div>
                             );
                           }
-                        )}
+                        )} </> : null }
                         <div className="new-comment">
                         <div className="commentator">
                           {this.props.usersReducer.user.avatar && this.props.usersReducer.user.avatar.length > 0 ?
@@ -280,5 +296,5 @@ const MapStateToProps = ({ postsReducer, usersReducer }) => {
 };
 export default connect(
   MapStateToProps,
-  { viewPost, addComment }
+  { viewPost, addComment, deleteComment }
 )(SingleView);
