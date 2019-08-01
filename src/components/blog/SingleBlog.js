@@ -43,14 +43,6 @@ class SingleView extends React.Component {
       },
     });
   };
-  // changeHandler = e => {
-  //       this.setState({
-  //           note: {
-  //               ...this.state.note,
-  //               [e.target.name]: e.target.value
-  //           }
-  //       })
-  //   }
 
   newCommentOnChange = e => {
     this.setState({
@@ -63,7 +55,6 @@ class SingleView extends React.Component {
   };
   addCommentHandler = e => {
     e.preventDefault();
-    console.log(`user_id: ${this.state.newComment.user_id}`);
 
     if (this.state.newComment.user_id) {
       let sentComment = {};
@@ -75,14 +66,13 @@ class SingleView extends React.Component {
       this.setState({
         newComment: {
           comment: "",
+          user_id: sentComment.user_id,
+          post_id: sentComment.post_id,
+          date: "",
         },
       });
     }
   };
-  // deleteHandler = e => {
-  //   e.preventDefault();
-  //   console.log(e.target);
-  // }
   componentDidMount() {
     window.scrollTo(0, 0);
     const id = this.props.match.params.id;
