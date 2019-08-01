@@ -15,9 +15,10 @@
   margin-top: 20px;
 }
 .single {
-  .comment-avatar, .commentator {
-      margin-right: 25px;
-       span {
+  .comment-avatar,
+  .commentator {
+    margin-right: 25px;
+    span {
       padding-top: 5px;
       font-family: $font_ubuntu;
       font-size: 14px;
@@ -65,7 +66,7 @@
   .comment-form {
     display: flex;
     width: 100%;
-        justify-content: space-between;
+    justify-content: space-between;
     button {
       align-self: start;
       margin-top: 15px;
@@ -120,10 +121,23 @@
       margin-bottom: 0px;
     }
   }
+  .delete-comment {
+    display: flex;
+    justify-content: space-between;
+    button {
+      background: transparent;
+      border: none;
+      svg {
+        font-size: 25px;
+      }
+      &:hover {
+        color: coral;
+      }
+    }
+  }
   .comment-avatar {
     display: flex;
     flex-direction: column;
-   
   }
   .comment-text {
     align-self: start;

@@ -1,7 +1,11 @@
 import React from "react";
-import { viewPost, addComment, deleteComment } from "../../actions/postsActions";
+import {
+  viewPost,
+  addComment,
+  deleteComment,
+} from "../../actions/postsActions";
 import { connect } from "react-redux";
-import { Trash } from "react-icons/fa";
+// import Tr from "react-icons/fa";
 import loading from "./../../../src/loading.gif";
 import moment from "moment";
 
@@ -17,7 +21,8 @@ import {
   PinterestShareButton,
   PinterestIcon,
 } from "react-share";
-import { FaThumbsUp, FaComments } from "react-icons/fa";
+import { FaThumbsUp, FaComments, FaTrashAlt } from "react-icons/fa";
+
 class SingleView extends React.Component {
   constructor(props) {
     super(props);
@@ -48,33 +53,31 @@ class SingleView extends React.Component {
   //   }
 
   newCommentOnChange = e => {
-    
     this.setState({
       newComment: {
         ...this.state.newComment,
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.newComment.comment)
+    console.log(this.state.newComment.comment);
   };
   addCommentHandler = e => {
     e.preventDefault();
-    console.log(`user_id: ${this.state.newComment.user_id}`)
-    
+    console.log(`user_id: ${this.state.newComment.user_id}`);
+
     if (this.state.newComment.user_id) {
       let sentComment = {};
       sentComment.post_id = Number(this.props.match.params.id);
       sentComment.user_id = Number(this.state.newComment.user_id);
       sentComment.date = new Date().toISOString();
       sentComment.comment = this.state.newComment.comment;
-      this.props.addComment(sentComment, this.props.history)
+      this.props.addComment(sentComment, this.props.history);
       this.setState({
         newComment: {
-          comment: ""
-        }
-      })
+          comment: "",
+        },
+      });
     }
-    
   };
   // deleteHandler = e => {
   //   e.preventDefault();
@@ -84,13 +87,13 @@ class SingleView extends React.Component {
     window.scrollTo(0, 0);
     const id = this.props.match.params.id;
     this.props.viewPost("blog", id);
-    
-      this.setState({
-        newComment: {
-          user_id: this.props.usersReducer.user.user_id,
-          post_id: this.props.postsReducer.post.post_id,
-        },
-      });
+
+    this.setState({
+      newComment: {
+        user_id: this.props.usersReducer.user.user_id,
+        post_id: this.props.postsReducer.post.post_id,
+      },
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -98,7 +101,7 @@ class SingleView extends React.Component {
     const id = this.props.match.params.id;
 
     if (id !== prevProps.match.params.id) {
-    window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
 
       this.props.viewPost("blog", id);
       this.setState({
@@ -208,69 +211,81 @@ class SingleView extends React.Component {
                           </div>
                         </div>
                         <hr className="comment-separator" />{" "}
-                        
-                        {this.props.postsReducer.comments.length > 0 ?
-                        <> 
-                        {this.props.postsReducer.comments.map(
-                          (comment, index) => {
-                            console.log(comment)
-                            return (
-                              <div className="comment-body" key={index}>
-                                <div className="comment-avatar">
-                                {comment.avatar && comment.avatar.length > 0 ?
-                                <img
-                                    src={comment.avatar}
-                                    alt="user's avatar"
-                                  />
-                                  : <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png"/>
-                                }
-                                  
-                                  <span>{comment.username}</span>
-                                </div>
-                                <div className="comment-text">
-                                  <p>{comment.comment}</p>
-                                  <div>
-                                  <span>
-                                    {moment(comment.date).format("lll")}
-                                  </span>
-                                  {Number(this.props.usersReducer.user.user_id) === Number(comment.user_id) ?
-                                  
-                                  <button onClick={() => this.props.deleteComment(comment.id, this.props.postsReducer.post.id)}>Delete</button> : null
-                                  
-                                  }
+                        {this.props.postsReducer.comments.length > 0 ? (
+                          <>
+                            {this.props.postsReducer.comments.map(
+                              (comment, index) => {
+                                console.log(comment);
+                                return (
+                                  <div className="comment-body" key={index}>
+                                    <div className="comment-avatar">
+                                      {comment.avatar &&
+                                      comment.avatar.length > 0 ? (
+                                        <img
+                                          src={comment.avatar}
+                                          alt="user's avatar"
+                                        />
+                                      ) : (
+                                        <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png" />
+                                      )}
+
+                                      <span>{comment.username}</span>
+                                    </div>
+                                    <div className="comment-text">
+                                      <p>{comment.comment}</p>
+                                      <div className="delete-comment">
+                                        <span>
+                                          {moment(comment.date).format("lll")}
+                                        </span>
+                                        {Number(
+                                          this.props.usersReducer.user.user_id
+                                        ) === Number(comment.user_id) ? (
+                                          <button
+                                            onClick={() =>
+                                              this.props.deleteComment(
+                                                comment.id,
+                                                this.props.postsReducer.post.id
+                                              )
+                                            }
+                                          >
+                                            <FaTrashAlt />
+                                          </button>
+                                        ) : null}
+                                      </div>
+                                    </div>
+                                    <hr />
                                   </div>
-                                  
-                                </div>
-                                <hr />
-                              </div>
-                            );
-                          }
-                        )} </> : null }
+                                );
+                              }
+                            )}{" "}
+                          </>
+                        ) : null}
                         <div className="new-comment">
-                        <div className="commentator">
-                          {this.props.usersReducer.user.avatar && this.props.usersReducer.user.avatar.length > 0 ?
-                            <img
-                              src={this.props.usersReducer.user.avatar}
-                              alt="user's avatar"
+                          <div className="commentator">
+                            {this.props.usersReducer.user.avatar &&
+                            this.props.usersReducer.user.avatar.length > 0 ? (
+                              <img
+                                src={this.props.usersReducer.user.avatar}
+                                alt="user's avatar"
+                              />
+                            ) : (
+                              <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png" />
+                            )}
+                            <span>{this.props.usersReducer.user.username}</span>
+                          </div>
+                          <form
+                            className="comment-form"
+                            onSubmit={this.addCommentHandler}
+                          >
+                            <textarea
+                              placeholder="Add a comment"
+                              name="comment"
+                              value={this.state.newComment.comment}
+                              onChange={this.newCommentOnChange}
                             />
-                            : <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png"/>
-                          }
-                          <span>{this.props.usersReducer.user.username}</span>
+                            <button type="submit">Submit</button>
+                          </form>
                         </div>
-                        <form className="comment-form" onSubmit={this.addCommentHandler}>
-                          
-                          <textarea
-                            placeholder="Add a comment"
-                            name="comment"
-                            value={this.state.newComment.comment}
-                            onChange={this.newCommentOnChange}
-                          />
-                          <button type="submit">Submit</button>
-                        </form>
-                        </div>
-                        
-                       
-                        
                       </>
                     ) : (
                       <></>

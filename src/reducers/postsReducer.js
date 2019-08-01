@@ -161,7 +161,7 @@ export const postsReducer = (state = initialState, action) => {
         error: "There are no available posts",
       };
 
-     case DELETE_COMMENT_LOADING:
+    case DELETE_COMMENT_LOADING:
       return {
         ...state,
         comments: [],

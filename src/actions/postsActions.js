@@ -83,14 +83,15 @@ export function searchTerm(term) {
 }
 
 export function deleteComment(id, post_id) {
-  console.log(id)
+  console.log(id);
   return dispatch => {
     dispatch({ type: DELETE_COMMENT_LOADING });
-    
-    axios
-      .delete(`https://footyzone-be.herokuapp.com/api/blog/${post_id}/comments/${id}`)
-      .then(response => {
 
+    axios
+      .delete(
+        `https://footyzone-be.herokuapp.com/api/blog/${post_id}/comments/${id}`
+      )
+      .then(response => {
         dispatch({
           type: DELETE_COMMENT_SUCCESS,
           payload: response.data.deleted,
@@ -103,17 +104,16 @@ export function deleteComment(id, post_id) {
         });
       });
   };
-  
 }
 
 export function addComment(comment, history) {
   const token = localStorage.getItem("jwt");
-    var config = {
+  var config = {
     headers: { Authorization: token },
-    };
+  };
   return dispatch => {
     dispatch({ type: ADD_COMMENT_LOADING });
-    
+
     axios
       .post("https://footyzone-be.herokuapp.com/api/blog/comments", comment)
       .then(response => {
@@ -129,7 +129,6 @@ export function addComment(comment, history) {
         });
       });
   };
-  
 }
 export function fetchAllPosts() {
   return dispatch => {
@@ -192,7 +191,6 @@ export function fetchPostsByCategory(category_name) {
 }
 
 export function fetchPostsBySubCategory(category_name, subcat_name) {
- 
   return dispatch => {
     dispatch({ type: SUBCATEGORY_LOADING });
     axios
