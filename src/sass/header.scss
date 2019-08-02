@@ -27,10 +27,14 @@
     span {
       display: flex;
       align-items: center;
+      p {
+        margin-bottom: 0px;
+        margin-right: 9px;
+      }
     }
     svg {
       color: $white;
-      margin: 0px 8px;
+      margin: 0px 0px 0px 10px;
     }
     .btn {
       padding: 0px;
@@ -69,8 +73,9 @@
   }
 
   img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
   }
 }
 
@@ -84,6 +89,11 @@
       padding-right: 8px;
     }
   }
+  .bottom-navbar img {
+    img {
+      border-radius: 50%;
+    }
+  }
 
   .top-navbar {
     .nav-account .hidden-xs,
@@ -95,10 +105,6 @@
     }
     .nav-account {
       align-items: flex-end;
-    }
-    img {
-      height: 40px;
-      width: 40px;
     }
     .fanzone {
       font-size: 27px;

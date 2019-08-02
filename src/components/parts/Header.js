@@ -133,8 +133,8 @@ class Header extends React.Component {
             {this.props.isLoggedIn ? (
               <div className="nav-account">
                 <span className=" hidden-xs">
-                  {this.props.user.username}
-                  <FaUserAlt />
+                  <p>Hi, {this.props.user.username}!</p>
+                  <img src={this.props.user.avatar} alt="avatar" />
                   <NavLink to={"/posts/add"}>
                     <FaPlusCircle />
                   </NavLink>

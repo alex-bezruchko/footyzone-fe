@@ -55,14 +55,21 @@ class LoginForm extends React.Component {
       <div className="container login">
         {this.props.loginLoading === true ? (
           // <div className="loading">
-            <img
-              src={loading}
-              className="loading"
-              alt="PostForm form is loading gif"
-            />
-          // </div>
+          <img
+            src={loading}
+            className="loading"
+            alt="PostForm form is loading gif"
+          />
         ) : (
+          // </div>
           <form className="form login-form" onSubmit={this.loginHandler}>
+            <div className="container">
+              {this.props.signupSuccess === true ? (
+                <UncontrolledAlert color="success">
+                  User was successfully registered.
+                </UncontrolledAlert>
+              ) : null}
+            </div>
             <h1>Login</h1>
             <Input
               onChange={this.changeHandler}
@@ -85,11 +92,6 @@ class LoginForm extends React.Component {
             {this.state.passwordError ? (
               <Alert color="danger">Password is required.</Alert>
             ) : null}
-
-            {this.props.signupError === false ? (
-              <UncontrolledAlert color="success">User was registered.</UncontrolledAlert>
-            ) : null}
-
 
             {this.props.loginError === true ? (
               <Alert color="danger">
@@ -119,6 +121,7 @@ const MapStateToProps = ({ usersReducer: state }) => {
     username: state.user.username,
     loginError: state.loginError,
     loginLoading: state.loginLoading,
+    signupSuccess: state.signupSuccess,
   };
 };
 export default withRouter(
