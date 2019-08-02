@@ -24,6 +24,9 @@ import {
   FaSignOutAlt,
   FaSignInAlt,
   FaPlusCircle,
+  FaDoorClosed,
+  FaUserLock,
+  FaLockOpen,
 } from "react-icons/fa";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
@@ -51,7 +54,13 @@ class Header extends React.Component {
     const token = localStorage.getItem("jwt");
     const user_id = localStorage.getItem("user_id");
     const avatar = localStorage.getItem("avatar");
-    this.props.loginStatus(username, token, user_id, avatar, this.props.history);
+    this.props.loginStatus(
+      username,
+      token,
+      user_id,
+      avatar,
+      this.props.history
+    );
 
     axios
       .get("https://footyzone-be.herokuapp.com/api/news/categories")
@@ -104,7 +113,13 @@ class Header extends React.Component {
     const token = localStorage.getItem("jwt");
     const avatar = localStorage.getItem("avatar");
     const user_id = localStorage.getItem("user_id");
-    this.props.loginStatus(username, token, user_id, avatar, this.props.history);
+    this.props.loginStatus(
+      username,
+      token,
+      user_id,
+      avatar,
+      this.props.history
+    );
   };
   render() {
     return (
@@ -117,15 +132,19 @@ class Header extends React.Component {
             </Link>
             {this.props.isLoggedIn ? (
               <div className="nav-account">
-                <span>
+                <span className=" hidden-xs">
                   {this.props.user.username}
                   <FaUserAlt />
                   <NavLink to={"/posts/add"}>
                     <FaPlusCircle />
                   </NavLink>
                 </span>
-                <Button color="black" onClick={this.logOutUser}>
-                  <FaSignOutAlt />
+                <Button
+                  className=" hidden-xs"
+                  color="black"
+                  onClick={this.logOutUser}
+                >
+                  <FaLockOpen />
                 </Button>
                 {/* <button id="toggler"> */}
                 <NavbarToggler
@@ -150,6 +169,7 @@ class Header extends React.Component {
         <div className="bottom-navbar container">
           <Navbar expand="md">
             <Collapse isOpen={this.state.isOpen} navbar>
+              {/* Mobile User Info */}
               <Nav>
                 <ListGroup>
                   <ListGroupItem>
@@ -252,6 +272,31 @@ class Header extends React.Component {
                     </Link>
                   </ListGroupItem>
                 </ListGroup>
+                <ListGroup className="visible-xs">
+                  {this.props.isLoggedIn ? (
+                    <div className="nav-account">
+                      <div className="hidden-xs">
+                        <p>Hi, {this.props.user.username}!</p>
+                        <img src={this.props.user.avatar} alt="avatar" />
+                        <NavLink to={"/posts/add"}>
+                          Add a Post
+                          <FaPlusCircle />
+                        </NavLink>
+                      </div>
+                      <Button color="black" onClick={this.logOutUser}>
+                        Log Out
+                        <FaLockOpen />
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="login">
+                      <NavLink to={"/login"}>
+                        <span>Log in </span>
+                        <FaSignInAlt />
+                      </NavLink>
+                    </div>
+                  )}
+                </ListGroup>
               </Nav>
               <SearchForm />
             </Collapse>
@@ -266,6 +311,7 @@ const MapStateToProps = ({ usersReducer: state }) => {
     user: {
       username: state.user.username,
       token: state.user.token,
+      avatar: state.user.avatar,
     },
     isLoggedIn: state.isLoggedIn,
   };
