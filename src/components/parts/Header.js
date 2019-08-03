@@ -20,13 +20,10 @@ import burger from "./../../img/burger.png";
 
 import { loginStatus } from "./../../actions/usersActions";
 import {
-  FaUserAlt,
-  FaSignOutAlt,
   FaSignInAlt,
   FaPlusCircle,
-  FaDoorClosed,
-  FaUserLock,
   FaLockOpen,
+  FaUserPlus,
 } from "react-icons/fa";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
@@ -135,8 +132,8 @@ class Header extends React.Component {
                 <span className=" hidden-xs">
                   <p>Hi, {this.props.user.username}!</p>
                   <img src={this.props.user.avatar} alt="avatar" />
-                  <NavLink to={"/posts/add"}>
-                    <FaPlusCircle />
+                  <NavLink to={"/blog/add"}>
+                    <FaUserPlus />
                   </NavLink>
                 </span>
                 <Button

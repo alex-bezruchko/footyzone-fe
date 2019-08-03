@@ -18,3 +18,35 @@
     }
   }
 }
+.container.post-crud {
+  padding: 0px;
+  .col-md-8 {
+    padding: 0px;
+  }
+  h2 {
+    margin-bottom: 33px;
+    margin-top: 50px;
+  }
+  textarea {
+    min-height: 300px;
+  }
+  input,
+  textarea {
+    padding: 5px;
+    border-radius: 2.5px;
+    border: 1px solid skyblue;
+    margin-bottom: 20px;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue;
+    }
+  }
+  button {
+    width: 100%;
+  }
+  input[type="file"] {
+    font-family: $font_ubuntu;
+    padding-right: 5px;
+    width: 100%;
+  }
+}

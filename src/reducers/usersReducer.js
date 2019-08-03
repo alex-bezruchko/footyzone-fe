@@ -18,7 +18,6 @@ const initialState = {
     avatar: "",
   },
   loginLoading: false,
-  loginLoading: false,
   isLoggedIn: false,
   loginError: false,
   signupError: false,

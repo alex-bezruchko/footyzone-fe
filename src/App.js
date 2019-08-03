@@ -40,7 +40,7 @@ class App extends React.Component {
             {/* <Route exact path="/news/:page_id" component={RelateNews} /> */}
             <Route exact path="/blog/:id" component={SingleBlog} />
 
-            <Route exact path="/posts/add" component={PostCrud} />
+            <Route exact path="/blog/add" component={PostCrud} />
             <Route exact path="/users/:id/posts" component={UsersPosts} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/users" component={Users} />

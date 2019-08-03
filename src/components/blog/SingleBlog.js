@@ -107,7 +107,7 @@ class SingleView extends React.Component {
       <div className="container-row blog">
         {this.props.postsReducer.loading ? (
           <div className="container">
-            <img className="loading" src={loading} alt="Post is loading gif" />
+            <img className="loading" src={loading} alt="Post is loading" />
           </div>
         ) : (
           <div className="container single-blog-wrapper">
@@ -119,7 +119,7 @@ class SingleView extends React.Component {
                 <img
                   src={this.props.postsReducer.post.postMainImg}
                   alt={this.props.postsReducer.post.title}
-                  className="blog-main-image"
+                  className="article Cover"
                 />
                 <div className="single-info">
                   <div className="single-share">
@@ -213,10 +213,13 @@ class SingleView extends React.Component {
                                       comment.avatar.length > 0 ? (
                                         <img
                                           src={comment.avatar}
-                                          alt="user's avatar"
+                                          alt="user avatar"
                                         />
                                       ) : (
-                                        <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png" />
+                                        <img
+                                          src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png"
+                                          alt="user avatar"
+                                        />
                                       )}
 
                                       <span>{comment.username}</span>
@@ -256,10 +259,13 @@ class SingleView extends React.Component {
                             this.props.usersReducer.user.avatar.length > 0 ? (
                               <img
                                 src={this.props.usersReducer.user.avatar}
-                                alt="user's avatar"
+                                alt="user avatar"
                               />
                             ) : (
-                              <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png" />
+                              <img
+                                src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1564598526/fwwckvx64nj7tjzxiyne.png"
+                                alt="user avatar"
+                              />
                             )}
                             <span>{this.props.usersReducer.user.username}</span>
                           </div>
@@ -273,7 +279,9 @@ class SingleView extends React.Component {
                               value={this.state.newComment.comment}
                               onChange={this.newCommentOnChange}
                             />
-                            <button type="submit">Submit</button>
+                            <button className="blue" type="submit">
+                              Submit
+                            </button>
                           </form>
                         </div>
                       </>

@@ -148,6 +148,31 @@ ul.pagination {
     display: none !important;
   }
 }
+.bungee {
+  font-family: $font_bungee;
+}
+.blue {
+  align-self: start;
+  margin-top: 15px;
+  // margin-left: 15px;
+  padding: 8px 28px;
+  text-transform: uppercase;
+  font-family: $font_ubuntu;
+  background-color: $blue;
+  color: $white;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 2px;
+  letter-spacing: 1.2pt;
+  &:hover {
+    background-color: $white;
+    color: $blue;
+    border: 1px solid $blue;
+  }
+  &:focus {
+    outline: none !important;
+  }
+}
 @media #{$desktop} {
   .carousel-caption.d-none.d-md-block {
     width: 50%;

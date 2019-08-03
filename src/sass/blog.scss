@@ -67,28 +67,6 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    button {
-      align-self: start;
-      margin-top: 15px;
-      margin-left: 15px;
-      padding: 8px 28px;
-      text-transform: uppercase;
-      font-family: $font_ubuntu;
-      background-color: $blue;
-      color: $white;
-      font-weight: 600;
-      font-size: 12px;
-      border-radius: 2px;
-      letter-spacing: 1.2pt;
-      &:hover {
-        background-color: $white;
-        color: $blue;
-        border: 1px solid $blue;
-      }
-      &:focus {
-        outline: none !important;
-      }
-    }
   }
   .comment-form textarea {
     height: 125px;
@@ -96,7 +74,7 @@
     display: flex;
     justify-content: flex-start;
     padding: 0px 15px 0px 6px;
-    margin: 15px 0px 15px 0px;
+    margin: 15px 15px 15px 0px;
     border: 1px solid rgba(2, 2, 2, 0.05);
     color: rgba(2, 2, 2, 0.7);
     font-family: $font_sans;
@@ -239,7 +217,7 @@ a {
     min-height: 100px;
     max-width: 100px;
     max-height: 100px;
-    border-radius: 33%;
+    border-radius: 50%;
   }
   .single-info {
     align-self: start;

@@ -1,9 +1,10 @@
 import React from "react";
-import { Input, Button } from "reactstrap";
+import { Button } from "reactstrap";
 import loading from "./../../../src/loading.gif";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addPost } from "../../actions/postsActions";
+import axios from "axios";
 
 class PostCrud extends React.Component {
   constructor(props) {
@@ -13,10 +14,10 @@ class PostCrud extends React.Component {
         title: "",
         summary: "",
         body: "",
-        user_id: null,
-        category: "",
+        user_id: "",
+        published: "",
       },
-      postMainImg: null,
+      postMainImg: "",
     };
   }
 
@@ -24,7 +25,7 @@ class PostCrud extends React.Component {
     const currentUserId = localStorage.getItem("user_id");
     this.setState({
       post: {
-        user_id: currentUserId,
+        user_id: Number(currentUserId),
       },
     });
   }
@@ -32,66 +33,103 @@ class PostCrud extends React.Component {
   changeHandler = e => {
     this.setState({
       post: {
+        ...this.state.post,
         [e.target.name]: e.target.value,
       },
     });
   };
 
-  imageHandler = e => {
+  imageFileHandler = e => {
     e.preventDefault();
-    this.setState({
-      postMainImg: e.target.files[0],
-    });
-    console.log(this.state.postMainImg);
+    const formData = new FormData();
+    let file = e.target.files[0];
+    formData.append("file", file);
+    formData.append("upload_preset", "sm7zid93");
+    formData.append("api_key", "915419188456665");
+
+    let headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: "M7938KD1Akyo8XBTmf7jF68jiHA",
+    };
+    axios
+      .post(
+        "https://api.cloudinary.com/v1_1/htg1iqq1p/upload",
+        formData,
+        headers
+      )
+      .then(response => {
+        this.setState({ postMainImg: response.data.secure_url });
+      })
+      .catch(err => {
+        this.setState({ postMainImg: "" });
+      });
   };
 
+  imageSubmitHandler = e => {
+    e.preventDefault();
+  };
   addPostHandler = e => {
     e.preventDefault();
-    const fd = new FormData();
-    fd.append(
-      "postMainImg",
-      this.state.postMainImg,
-      this.state.postMainImg.name
-    );
-    this.props.addPost(this.state.post, this.props.history, fd);
+    let stamp = new Date().toISOString();
+    let currentPost = this.state.post;
+    let currentImage = this.state.postMainImg;
+
+    currentPost.published = stamp;
+    currentPost.postMainImg = currentImage;
+
+    this.props.addPost(currentPost, this.props.history);
   };
 
   render() {
+    const { title, body, summary } = this.state.post;
+
     return (
-      <div className="form post-crud">
-        <h1>Add Post</h1>
-
+      <div className="container post-crud">
         {this.props.adding ? (
-          <img src={loading} alt="PostForm form is loading gif" />
+          <img src={loading} alt="PostForm form is loading" />
         ) : (
-          <form onSubmit={this.addPostHandler}>
-            <Input
-              placeholder="Title"
-              name="title"
-              type="text"
-              value={this.state.post.title}
-              onChange={this.changeHandler}
-            />
-            <Input type="file" onChange={this.imageHandler} />
-            <Input
-              placeholder="Summary"
-              name="summary"
-              type="textarea"
-              value={this.state.post.summary}
-              onChange={this.changeHandler}
-            />
-            <Input
-              placeholder="Body"
-              name="body"
-              type="textarea"
-              value={this.state.post.body}
-              onChange={this.changeHandler}
-            />
+          <>
+            <form onSubmit={this.addPostHandler} className="col-md-8 post-crud">
+              <h2 className="bungee">Add Post</h2>
 
-            <Button color="success" type="submit">
-              Add Post
-            </Button>
-          </form>
+              <input
+                placeholder="Title"
+                name="title"
+                type="text"
+                className="input-group"
+                value={title}
+                onChange={this.changeHandler}
+              />
+
+              <input
+                id="file-upload"
+                type="file"
+                onChange={this.imageFileHandler}
+              />
+              <input
+                placeholder="Summary"
+                className="input-group"
+                name="summary"
+                type="text"
+                value={summary}
+                onChange={this.changeHandler}
+              />
+              <textarea
+                placeholder="Body"
+                className="input-group"
+                name="body"
+                type="text"
+                value={body}
+                onChange={this.changeHandler}
+              />
+
+              <button className="blue" type="submit">
+                Add Post
+              </button>
+            </form>
+            <div className="col-md-4" />
+          </>
         )}
       </div>
     );
