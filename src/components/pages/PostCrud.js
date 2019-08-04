@@ -128,7 +128,7 @@ class PostCrud extends React.Component {
                 />
 
                 <button className="blue" type="submit">
-                  Add Post
+                  Your new Blog
                 </button>
               </form>
             </div>

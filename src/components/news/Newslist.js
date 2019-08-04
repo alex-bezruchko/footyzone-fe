@@ -11,7 +11,7 @@ const Newslist = props => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [newsPerPage] = useState(5);
+  const [newsPerPage] = useState(7);
 
   useEffect(() => {
     const fetchPosts = async () => {
