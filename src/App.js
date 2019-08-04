@@ -13,6 +13,7 @@ import Contact from "./components/pages/Contact";
 import Users from "./components/users/Users";
 import UsersPosts from "./components/users/UsersPosts";
 import PostCrud from "./components/pages/PostCrud";
+import NewsCrud from "./components/news/NewsCrud";
 
 import "./App.scss";
 
@@ -42,11 +43,12 @@ class App extends React.Component {
             <Route exact path="/blog/:id" component={SingleBlog} />
 
             <Route exact path="/:username/create-post" component={PostCrud} />
+            <Route exact path="/:username/create-news" component={NewsCrud} />
+
             <Route exact path="/users/:id/posts" component={UsersPosts} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/users" component={Users} />
 
-            {/* <Route exact path="/blog/add" component={RelatedPosts} /> */}
             {/* <Route
               exact
               path="/:category_name/:subcat_name/"
