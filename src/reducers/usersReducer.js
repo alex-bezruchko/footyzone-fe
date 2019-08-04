@@ -78,6 +78,8 @@ export const usersReducer = (state = initialState, action) => {
         },
         isLoggedIn: false,
         signupError: false,
+        signupSuccess: false,
+        loginError: false,
       };
 
     case LOGIN_STATUS_SUCCESS:
@@ -87,6 +89,8 @@ export const usersReducer = (state = initialState, action) => {
         user: action.payload,
         isLoggedIn: true,
         signupError: false,
+        signupSuccess: false,
+        loginError: false,
       };
 
     case LOGIN_STATUS_FAILURE:
@@ -101,6 +105,7 @@ export const usersReducer = (state = initialState, action) => {
         },
         isLoggedIn: false,
         signupError: false,
+        signupSuccess: false,
         loginError: false,
       };
 
@@ -129,6 +134,7 @@ export const usersReducer = (state = initialState, action) => {
         loginError: false,
         signupError: false,
         signupSuccess: false,
+        loginError: false,
       };
 
     case LOGIN_FAILURE:
