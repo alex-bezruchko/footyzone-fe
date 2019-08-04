@@ -5,6 +5,7 @@ import SingleBlog from "./components/blog/SingleBlog";
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
 import Bloglist from "./components/blog/Bloglist";
+
 import WelcomeBloglist from "./components/blog/WelcomeBloglist";
 // import SearchResultsList from "./components/pages/SearchResultsList";
 import Welcome from "./components/pages/Welcome";
@@ -40,13 +41,13 @@ class App extends React.Component {
             {/* <Route exact path="/news/:page_id" component={RelateNews} /> */}
             <Route exact path="/blog/:id" component={SingleBlog} />
 
-            <Route exact path="/blog/add" component={PostCrud} />
+            <Route exact path="/:username/create-post" component={PostCrud} />
             <Route exact path="/users/:id/posts" component={UsersPosts} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/users" component={Users} />
 
-            {/* <Route exact path="/videos" component={RelatedPosts} />
-            <Route
+            {/* <Route exact path="/blog/add" component={RelatedPosts} /> */}
+            {/* <Route
               exact
               path="/:category_name/:subcat_name/"
               component={RelatedPosts}

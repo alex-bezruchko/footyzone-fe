@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addPost } from "../../actions/postsActions";
 import axios from "axios";
+import UsersList from "./../blog/UsersList";
 
 class PostCrud extends React.Component {
   constructor(props) {
@@ -90,45 +91,48 @@ class PostCrud extends React.Component {
           <img src={loading} alt="PostForm form is loading" />
         ) : (
           <>
-            <form onSubmit={this.addPostHandler} className="col-md-8 post-crud">
-              <h2 className="bungee">Add Post</h2>
+            <div className="col-md-8 post-crud">
+              <form onSubmit={this.addPostHandler}>
+                <h2 className="bungee">Add Post</h2>
 
-              <input
-                placeholder="Title"
-                name="title"
-                type="text"
-                className="input-group"
-                value={title}
-                onChange={this.changeHandler}
-              />
+                <input
+                  placeholder="Title"
+                  name="title"
+                  type="text"
+                  onChange={this.changeHandler}
+                  className="input-group"
+                  value={title}
+                />
 
-              <input
-                id="file-upload"
-                type="file"
-                onChange={this.imageFileHandler}
-              />
-              <input
-                placeholder="Summary"
-                className="input-group"
-                name="summary"
-                type="text"
-                value={summary}
-                onChange={this.changeHandler}
-              />
-              <textarea
-                placeholder="Body"
-                className="input-group"
-                name="body"
-                type="text"
-                value={body}
-                onChange={this.changeHandler}
-              />
+                <input
+                  id="file-upload"
+                  onChange={this.imageFileHandler}
+                  type="file"
+                  name="file"
+                />
+                <input
+                  placeholder="Summary"
+                  className="input-group"
+                  name="summary"
+                  onChange={this.changeHandler}
+                  type="text"
+                  value={summary}
+                />
+                <textarea
+                  placeholder="Body"
+                  className="input-group"
+                  name="body"
+                  onChange={this.changeHandler}
+                  type="text"
+                  value={body}
+                />
 
-              <button className="blue" type="submit">
-                Add Post
-              </button>
-            </form>
-            <div className="col-md-4" />
+                <button className="blue" type="submit">
+                  Add Post
+                </button>
+              </form>
+            </div>
+            <UsersList />
           </>
         )}
       </div>

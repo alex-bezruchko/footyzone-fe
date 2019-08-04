@@ -20,6 +20,11 @@
 }
 .container.post-crud {
   padding: 0px;
+  display: flex;
+  flex-direction: row;
+  .form {
+    width: 80%;
+  }
   .col-md-8 {
     padding: 0px;
   }

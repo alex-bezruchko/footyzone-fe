@@ -132,7 +132,7 @@ class Header extends React.Component {
                 <span className=" hidden-xs">
                   <p>Hi, {this.props.user.username}!</p>
                   <img src={this.props.user.avatar} alt="avatar" />
-                  <NavLink to={"/blog/add"}>
+                  <NavLink to={`/${this.props.user.username}/create-post`}>
                     <FaUserPlus />
                   </NavLink>
                 </span>
