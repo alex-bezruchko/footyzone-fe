@@ -3,10 +3,20 @@ import { Button } from "reactstrap";
 import loading from "./../../../src/loading.gif";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import UsersList from "./../blog/UsersList";
 import { addNews } from "../../actions/newsActions";
 import axios from "axios";
-// import { WithContext as ReactTags } from "react-input-tag";
-import UsersList from "./../blog/UsersList";
+import { WithContext as ReactTags } from "react-tag-input";
+import { WithContext } from "react-tag-input";
+// const ReactTags = WithContext;
+// const ReactTags = require("react-tag-input").WithOutContext;
+
+const KeyCodes = {
+  comma: 188,
+  enter: 13,
+};
+
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class NewsCrud extends React.Component {
   constructor(props) {
@@ -20,8 +30,32 @@ class NewsCrud extends React.Component {
         published: "",
       },
       newsMainImg: "",
+      suggestions: [],
+      tags: [],
     };
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleAddition = this.handleAddition.bind(this);
+    // this.handleDrag = this.handleDrag.bind(this);
   }
+  handleAddition(tag) {
+    this.setState(state => ({ tags: [...state.tags, tag] }));
+  }
+  handleDelete(i) {
+    const { tags } = this.state;
+    this.setState({
+      tags: tags.filter((tag, index) => index !== i),
+    });
+  }
+  // handleDrag(tag, currPos, newPos) {
+  //   const tags = [...this.state.tags];
+  //   const newTags = tags.slice();
+
+  //   newTags.splice(currPos, 1);
+  //   newTags.splice(newPos, 0, tag);
+
+  //   // re-render
+  //   this.setState({ tags: newTags });
+  // }
 
   componentDidMount() {
     const currentUserId = localStorage.getItem("user_id");
@@ -30,6 +64,30 @@ class NewsCrud extends React.Component {
         user_id: Number(currentUserId),
       },
     });
+
+    axios
+      .get("https://footyzone-be.herokuapp.com/api/news/subtags")
+      .then(response => {
+        console.log(response.data);
+        let currentSuggestions = [];
+        for (let i = 0; i < response.data.length; i++) {
+          console.log(response.data[i]);
+          let tagObject = {};
+          tagObject.id = response.data[i].subtag_name;
+          tagObject.text = response.data[i].subtag_name;
+          currentSuggestions.push(tagObject);
+        }
+        this.setState({
+          suggestions: currentSuggestions,
+        });
+      })
+      .catch(err => {
+        this.setState({
+          suggestions: [],
+        });
+      });
+
+    // console.log(this.state.tag)
   }
 
   changeHandler = e => {
@@ -85,6 +143,7 @@ class NewsCrud extends React.Component {
 
   render() {
     const { title, body, summary } = this.state.news;
+    const { tags, suggestions } = this.state;
 
     return (
       <div className="container post-crud">
@@ -128,8 +187,25 @@ class NewsCrud extends React.Component {
                   value={body}
                 />
 
+                {suggestions && suggestions.length > 0 ? (
+                  <>
+                    <h3 className="bungee">Tags</h3>
+                    <ReactTags
+                      tags={tags}
+                      suggestions={suggestions}
+                      // handleDrag={this.handleDrag}
+                      handleDelete={this.handleDelete}
+                      handleAddition={this.handleAddition}
+                      allowDragDrop={false}
+                      inputFieldPosition="top"
+                      delimiters={delimiters}
+                    />
+                  </>
+                ) : (
+                  <></>
+                )}
                 <button className="blue" type="submit">
-                  Latest News
+                  Post News
                 </button>
               </form>
             </div>
