@@ -2,32 +2,39 @@
 .news {
   width: 100%;
   background: rgba(2, 22, 22, 0.9);
+
   .latest {
     font-family: $font_bungee;
   }
+
   .carousel-item img {
     border: 1.5px solid $wheat !important;
     box-shadow: 1px 1px 3px #888888;
   }
 }
+
 .welcome-container {
   .container {
     padding: 50px 0px 0px;
   }
 }
+
 .carousel-indicators li {
   height: 18px !important;
   background-color: $blue !important;
   border: 2px solid $wheat !important;
 }
+
 a .carousel-control-prev-icon,
 a .carousel-control-next-icon {
   color: $blue !important;
   font-size: 14px;
 }
+
 .post-wrapper:hover {
   color: $wheat;
 }
+
 .small-carousel {
   display: flex;
   justify-content: space-between;
@@ -35,14 +42,17 @@ a .carousel-control-next-icon {
   .small-carousel-post:nth-child(1) {
     margin-right: 10px;
   }
+
   .small-carousel-post:nth-child(2) {
     margin-left: 10px;
     margin-right: 10px;
   }
+
   .small-carousel-post:nth-child(3) {
     margin-left: 10px;
     margin-right: 0px;
   }
+
   .small-carousel-post {
     width: 100%;
     z-index: 9999;
@@ -54,9 +64,11 @@ a .carousel-control-next-icon {
         cursor: pointer;
       }
     }
+
     img {
       margin-bottom: 7px;
     }
+
     p {
       font-size: 22px;
       text-align: left;
@@ -78,6 +90,7 @@ a .carousel-control-next-icon {
     margin-bottom: 50px;
     bottom: 50px;
   }
+
   .latest {
     width: 33%;
     position: absolute;
@@ -86,9 +99,11 @@ a .carousel-control-next-icon {
 
     padding: 20px 0px 0px 0px;
   }
+
   span {
     padding: 16px;
   }
+
   .category-blog h2 {
     min-height: 50px;
   }
@@ -96,9 +111,11 @@ a .carousel-control-next-icon {
   .carousel-indicators {
     margin-left: 67% !important;
   }
+
   .carousel-caption {
     bottom: 0px !important;
   }
+
   .carousel-caption.d-none.d-md-block {
     width: 50%;
     left: 0;
@@ -114,10 +131,12 @@ a .carousel-control-next-icon {
     &:hover {
       color: $wheat;
     }
+
     h3 {
       line-height: 1.1;
       font-family: $font_oswald;
     }
+
     p {
       padding-top: 20px;
       margin-bottom: 0px;
@@ -127,12 +146,14 @@ a .carousel-control-next-icon {
     }
   }
 }
+
 .carousel-item {
   max-height: 388px;
   min-height: 388px;
   display: flex;
   align-items: center;
 }
+
 .post-wrapper {
   display: flex;
   flex-direction: column;
@@ -145,6 +166,7 @@ a .carousel-control-next-icon {
   height: 166px;
   max-height: 166px;
 }
+
 .small-carousel-post {
   position: relative;
   overflow: hidden;
@@ -158,6 +180,7 @@ a .carousel-control-next-icon {
   &:hover {
     color: $wheat;
   }
+
   &:hover img {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -168,6 +191,7 @@ a .carousel-control-next-icon {
     height: 166px;
     max-width: 100%;
   }
+
   img {
     max-width: 100%;
     width: 100%;
@@ -178,11 +202,13 @@ a .carousel-control-next-icon {
     max-height: 166px;
     min-height: 166px;
   }
+
   p {
     margin-top: 10px;
     font-size: 15px;
   }
 }
+
 @media #{$desktop} {
   .carousel-item .news-image {
     position: relative;
@@ -206,9 +232,11 @@ a .carousel-control-next-icon {
     border: none;
   }
 }
+
 .carousel-item .news-image:hover {
   overflow: hidden;
   max-width: 100%;
+
   img {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -220,16 +248,23 @@ a .carousel-control-next-icon {
     max-width: 100%;
   }
 }
+
 @media #{$mobile} {
+  .welcome-container .container {
+    padding-bottom: 15px;
+  }
+
   .category-blog h2 {
     min-height: 40px;
   }
+
   .carousel-item img,
   .carousel-item {
     max-height: 300px;
     min-height: 300px;
     width: 100%;
   }
+
   .carousel-item .news-image {
     z-index: 1;
     width: 100%;
@@ -238,10 +273,12 @@ a .carousel-control-next-icon {
     max-height: 300px;
     min-height: 300px;
   }
+
   .carousel-item .news-image img {
     max-height: 300px;
     min-height: 300px;
   }
+
   .carousel-item .news-image:hover {
     img {
       max-height: 300px;
@@ -249,27 +286,33 @@ a .carousel-control-next-icon {
       height: 300px;
     }
   }
+
   .small-carousel .small-carousel-post p {
     font-size: 19px;
     margin-bottom: 0px;
     height: auto;
   }
+
   .small-carousel {
     .small-carousel-post:nth-child(1) {
       margin-right: 5px;
     }
+
     .small-carousel-post:nth-child(2) {
       margin-left: 5px;
       margin-right: 5px;
     }
+
     .small-carousel-post:nth-child(3) {
       margin-left: 5px;
       margin-right: 0px;
     }
   }
+
   .navbar {
     padding: 0px !important;
   }
+
   .container-row.welcome-blog {
     .col-md-6 {
       min-width: 100%;
@@ -282,6 +325,7 @@ h1.latest {
   padding: 0px 0px 15px;
   color: $wheat;
 }
+
 .container-row.welcome-blog {
   background: url("../src/img/blog.jpeg");
   background-attachment: fixed;
@@ -289,11 +333,13 @@ h1.latest {
 
   background-repeat: no-repeat;
   background-size: cover;
+
   .container {
     display: flex;
     flex-wrap: wrap;
     text-align: left;
     justify-content: space-between;
+
     img {
       max-width: 100%;
       min-width: 100%;
@@ -301,10 +347,13 @@ h1.latest {
       min-height: 288px;
       margin-bottom: 10px;
     }
+
     color: wheat;
+
     .body {
       display: flex;
       flex-direction: row;
+
       img {
         max-width: 100px;
         max-height: 100px;
@@ -315,6 +364,7 @@ h1.latest {
         border-radius: 33%;
         align-self: baseline;
       }
+
       p {
         font-family: $font_sans;
         margin: 0px;
@@ -324,12 +374,14 @@ h1.latest {
       }
     }
   }
+
   .container.header {
     display: flex;
     font-family: $font_bungee;
     justify-content: center;
     color: #fff;
     padding: 54px 0px 45px;
+
     h1 {
       align-self: center;
       padding: 5px 12px 10px;
@@ -338,15 +390,18 @@ h1.latest {
       color: black;
     }
   }
+
   .category-blog {
     background-color: #fff;
     margin-bottom: 27px;
+
     h2 {
       line-height: 1.1;
       font-size: 23px;
       margin-bottom: 0px;
     }
   }
+
   .col-md-6 {
     flex: 0 0 45%;
     max-width: 45%;
@@ -362,6 +417,7 @@ h1.latest {
     left: 0% !important;
     right: 0% !important;
     padding: 0px 2px;
+
     h3 {
       font-family: $font_oswald;
       background: rgba(0, 0, 0, 0.8);
@@ -369,10 +425,12 @@ h1.latest {
       margin-bottom: 20px;
       color: $wheat;
     }
+
     p {
       display: none;
     }
   }
+
   .carousel-item .news-image {
     z-index: 1;
     width: 100%;
@@ -381,17 +439,21 @@ h1.latest {
     max-height: 388px;
     min-height: 388px;
   }
+
   .carousel-item .news-image img {
     max-height: 388px;
     min-height: 388px;
     width: 100%;
   }
+
   .carousel-item .news-image:hover {
     border: 1.5px solid $wheat !important;
+
     img {
       border: 1.5px solid $wheat !important;
     }
   }
+
   .col-md-6 {
     flex: 0 0 100% !important;
     max-width: 100% !important;

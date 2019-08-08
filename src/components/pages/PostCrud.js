@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "reactstrap";
 import loading from "./../../../src/loading.gif";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";

@@ -22,8 +22,12 @@
   padding: 0px;
   display: flex;
   flex-direction: row;
+
   form {
     width: 90%;
+    font-family: $font_sans;
+    font-size: 21px;
+    line-height: 1.1;
   }
   .react-tags-wrapper span {
     margin: 18px 12px 18px 0px;

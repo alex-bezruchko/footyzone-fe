@@ -134,6 +134,7 @@ export function viewNews(category_name, subcat_name, id) {
         `https://footyzone-be.herokuapp.com/api/${category_name}/${subcat_name}/${id}`
       )
       .then(response => {
+        console.log(response);
         dispatch({
           type: FETCH_ONE_SUCCESS,
           payload: response.data,
@@ -159,11 +160,16 @@ export function addNews(newNews, history) {
     axios
       .post(`https://footyzone-be.herokuapp.com/api/news`, newNews, config)
       .then(response => {
+        console.log(response.data.addedNews);
         dispatch({
           type: ADDED_SUCCESS,
           payload: response.data,
         });
-        history.push(`/news/${response.data.addedNews.id}`);
+        history.push(
+          `/news/${response.data.addedNews.subcat_slug}/${
+            response.data.addedNews.id
+          }`
+        );
       })
       .catch(err => {
         dispatch({

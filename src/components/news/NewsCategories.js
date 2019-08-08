@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect
+} from "react";
 import NewsCatPagination from "./NewsCatPagination";
 import axios from "axios";
 import NewsCatList from "./NewsCatList";
@@ -23,7 +26,7 @@ const NewsCategories = props => {
       } else {
         const res = await axios.get(
           `https://footyzone-be.herokuapp.com/api/news/${
-            props.match.params.subcat_name
+          props.match.params.subcat_name
           }`
         );
         setNews(res.data);
@@ -31,13 +34,13 @@ const NewsCategories = props => {
           props.match.params.page_id === 1 ||
           props.match.params.page_id === undefined
         ) {
-          props.history.push(`/news/${props.match.params.subcat_name}/page/1`);
+          props.history.push(`/leagues/${props.match.params.subcat_name}/page/1`);
           setCurrentPage(1);
           setLoading(false);
         } else {
           props.history.push(
-            `/news/${props.match.params.subcat_name}/page/${
-              props.match.params.page_id
+            `/leagues/${props.match.params.subcat_name}/page/${
+            props.match.params.page_id
             }`
           );
           setCurrentPage(props.match.params.page_id);
@@ -57,7 +60,7 @@ const NewsCategories = props => {
   let client = document.getElementsByTagName("section");
   if (client[0] && client[0].clientWidth > 992) {
     let element = document.getElementsByClassName("twitter");
-    $.when(element).then(function() {
+    $.when(element).then(function () {
       let width = element[0].clientWidth;
       $(".twitter").css("width", width);
       $(".twitter .twitter-fixed").css("width", width);
@@ -67,7 +70,7 @@ const NewsCategories = props => {
     $(".twitter .twitter-fixed").css("min-width", "100%");
   }
 
-  $(window).scroll(function(e) {
+  $(window).scroll(function (e) {
     if ($(window).scrollTop() > 800) {
       $(".single-main aside").addClass("aside-fixed");
       $(".single-body").addClass("body-fixed");
@@ -76,7 +79,7 @@ const NewsCategories = props => {
       $(".single-body").removeClass("body-fixed");
     }
   });
-  $(window).scroll(function(e) {
+  $(window).scroll(function (e) {
     let article = document.getElementsByClassName("category-news");
 
     if (article[0]) {
@@ -94,29 +97,50 @@ const NewsCategories = props => {
       }
     }
   });
-  return (
-    <div className="container-row news">
-      <div className="container-row">
-        <NewsCatList
-          news={currentNews}
-          loading={loading}
-          subcat_name={props.match.params.subcat_name}
-          className="container"
-          props={props}
-        />
-        <div className="container pagination">
-          <NewsCatPagination
-            newsPerPage={newsPerPage}
-            totalNews={news.length}
-            paginate={paginate}
-            subcat_name={props.match.params.subcat_name}
-            currentPage={currentPage}
-            props={props}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
+  return (<
+    div className="container-row news" >
+    <
+    div className="container-row" >
+      <
+        NewsCatList news={
+          currentNews
+        }
+        loading={
+          loading
+        }
+        subcat_name={
+          props.match.params.subcat_name
+        }
+        className="container"
+        props={
+          props
+        }
+      /> <
+    div className="container pagination" >
+        <
+          NewsCatPagination newsPerPage={
+            newsPerPage
+          }
+          totalNews={
+            news.length
+          }
+          paginate={
+            paginate
+          }
+          subcat_name={
+            props.match.params.subcat_name
+          }
+          currentPage={
+            currentPage
+          }
+          props={
+            props
+          }
+        /> <
+    /div> <
+    /div> <
+    /div>
+          );
+        };
+        
 export default NewsCategories;

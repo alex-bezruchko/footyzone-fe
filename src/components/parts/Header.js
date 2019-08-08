@@ -153,13 +153,13 @@ class Header extends React.Component {
                 {/* </button> */}
               </div>
             ) : (
-              <div className="login">
-                <NavLink to={"/login"}>
-                  <span>Log in </span>
-                  <FaSignInAlt />
-                </NavLink>
-              </div>
-            )}
+                <div className="login">
+                  <NavLink to={"/login"}>
+                    <span>Log in </span>
+                    <FaSignInAlt />
+                  </NavLink>
+                </div>
+              )}
           </Container>
         </div>
 
@@ -190,7 +190,7 @@ class Header extends React.Component {
                         <DropdownItem>
                           <Link
                             onClick={this.toggleNav}
-                            to={"/news/epl/page/1"}
+                            to={"/leagues/epl/page/1"}
                           >
                             Premier League
                           </Link>
@@ -198,19 +198,19 @@ class Header extends React.Component {
                         <DropdownItem>
                           <Link
                             onClick={this.toggleNav}
-                            to={"/news/laliga/page/1"}
+                            to={"/leagues/laliga/page/1"}
                           >
                             La Liga
                           </Link>
                         </DropdownItem>
-                        <DropdownItem>
-                          <Link
-                            onClick={this.toggleNav}
-                            to={"/news/uefacl/page/1"}
-                          >
-                            Champions League
+                        {/* <DropdownItem> */}
+                        <Link
+                          // onClick={this.toggleNav}
+                          to={"/leagues/uefacl/page/1"}
+                        >
+                          Champions League
                           </Link>
-                        </DropdownItem>
+                        {/* </DropdownItem> */}
                       </DropdownMenu>
                     </Dropdown>
                   </ListGroupItem>
@@ -286,13 +286,13 @@ class Header extends React.Component {
                       </Button>
                     </div>
                   ) : (
-                    <div className="login">
-                      <NavLink to={"/login"}>
-                        <span>Log in </span>
-                        <FaSignInAlt />
-                      </NavLink>
-                    </div>
-                  )}
+                      <div className="login">
+                        <NavLink to={"/login"}>
+                          <span>Log in </span>
+                          <FaSignInAlt />
+                        </NavLink>
+                      </div>
+                    )}
                 </ListGroup>
               </Nav>
               <SearchForm />

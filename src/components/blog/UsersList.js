@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import $ from "jquery";
-
 import { withRouter } from "react-router-dom";
 import loading from "./../../../src/loading.gif";
 import { Link } from "react-router-dom";
+
 import {
   fetchPostsByCategory,
   fetchPostsBySubCategory,
@@ -77,9 +76,9 @@ class UsersList extends React.Component {
     return (
       <div id="aside" className="col-md-4">
         {this.props.postsReducer.loading ? (
-          <div className="col-md-12">
+          <aside>
             <img alt="Loading gif" src={loading} />
-          </div>
+          </aside>
         ) : (
           <div className="sidebar-list">
             <h2>Your Post</h2>

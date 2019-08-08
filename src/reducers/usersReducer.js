@@ -134,7 +134,6 @@ export const usersReducer = (state = initialState, action) => {
         loginError: false,
         signupError: false,
         signupSuccess: false,
-        loginError: false,
       };
 
     case LOGIN_FAILURE:

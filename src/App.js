@@ -36,7 +36,7 @@ class App extends React.Component {
             <Route exact path="/blog/page/:page_id" component={Bloglist} />
             <Route
               exact
-              path="/news/:subcat_name/page/:page_id"
+              path="/leagues/:subcat_name/page/:page_id"
               component={NewsCategories}
             />
             {/* <Route exact path="/news/:page_id" component={RelateNews} /> */}
