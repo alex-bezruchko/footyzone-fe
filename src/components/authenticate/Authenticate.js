@@ -82,7 +82,7 @@ class Authenticate extends React.Component {
                 path="/signup"
                 render={props => <SignUp {...this.state} {...props} />}
               />
-              <Route exact path="/*" render={props => <LoginForm {...this.state} {...props} />} />
+              {/* <Route exact path="/*" render={props => <LoginForm {...this.state} {...props} />} /> */}
             </div>
           )}
         </div>

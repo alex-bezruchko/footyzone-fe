@@ -190,7 +190,7 @@ class Header extends React.Component {
                         </DropdownItem>
                         <DropdownItem>
                           <Link
-                            // onClick={this.toggleNav}
+                            onClick={this.toggleNav}
                             to={"/leagues/epl/page/1"}
                           >
                             Premier League
@@ -198,7 +198,7 @@ class Header extends React.Component {
                         </DropdownItem>
                         <DropdownItem>
                           <Link
-                            // onClick={this.toggleNav}
+                            onClick={this.toggleNav}
                             to={"/leagues/laliga/page/1"}
                           >
                             La Liga
