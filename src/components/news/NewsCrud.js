@@ -186,6 +186,7 @@ class NewsCrud extends React.Component {
       fixedTag.tag_slug = tag.text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
       fixedTag.tag_name = tag.text;
       polishedTags.push(fixedTag);
+      return polishedTags;
     });
     console.log(polishedTags)
     currentNews.published = stamp;

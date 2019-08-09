@@ -26,7 +26,7 @@ const NewsPagination = ({
           <li key={number} id={`page-${number}`} className="page-item">
             <Link
               onClick={() => paginate(number)}
-              to={`/news/${number}`}
+              to={`/leagues/${number}`}
               className="page-link"
               id={`page-${number}`}
             >

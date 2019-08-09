@@ -50,7 +50,7 @@ const NewsCategories = props => {
     };
 
     fetchPosts();
-  }, [props.match.params.subcat_name]);
+  }, [props.match.params.subcat_name, props.match.params.page_id]);
   const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
