@@ -271,7 +271,7 @@ class Header extends React.Component {
                       <div className="hidden-xs">
                         <p>Hi, {this.props.user.username}!</p>
                         <img src={this.props.user.avatar} alt="avatar" />
-                        <NavLink to={"/posts/add"}>
+                        <NavLink onClick={this.toggleNav} to={`/${this.props.user.username}/create-post`}>
                           Add a Post
                           <FaPlusCircle />
                         </NavLink>
@@ -282,12 +282,7 @@ class Header extends React.Component {
                       </Button>
                     </div>
                   ) : (
-                      <div className="login">
-                        <NavLink to={"/login"}>
-                          <span>Log in </span>
-                          <FaSignInAlt />
-                        </NavLink>
-                      </div>
+                      <></>
                     )}
                 </ListGroup>
               </Nav>
