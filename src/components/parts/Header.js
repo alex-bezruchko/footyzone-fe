@@ -41,8 +41,8 @@ class Header extends React.Component {
     this.state = {
       dropdownOpen: false,
       dropdownSchool: false,
-      categories: [],
-      subcategories: [],
+      // categories: [],
+      // subcategories: [],
       isOpen: false,
     };
   }
@@ -60,22 +60,22 @@ class Header extends React.Component {
       this.props.history
     );
 
-    axios
-      .get("https://footyzone-be.herokuapp.com/api/news/categories")
-      .then(res => {
-        this.setState({ categories: res.data });
-      })
-      .catch(err => {
-        this.setState({ categories: [] });
-      });
-    axios
-      .get("https://footyzone-be.herokuapp.com/api/news/subcategories")
-      .then(res => {
-        this.setState({ subcategories: res.data });
-      })
-      .catch(err => {
-        this.setState({ subcategories: [] });
-      });
+    // axios
+    //   .get("https://footyzone-be.herokuapp.com/api/news/categories")
+    //   .then(res => {
+    //     this.setState({ categories: res.data });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ categories: [] });
+    //   });
+    // axios
+    //   .get("https://footyzone-be.herokuapp.com/api/news/subcategories")
+    //   .then(res => {
+    //     this.setState({ subcategories: res.data });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ subcategories: [] });
+    //   });
   }
   // $(".")
   toggleNews() {
@@ -190,7 +190,7 @@ class Header extends React.Component {
                         </DropdownItem>
                         <DropdownItem>
                           <Link
-                            onClick={this.toggleNav}
+                            // onClick={this.toggleNav}
                             to={"/leagues/epl/page/1"}
                           >
                             Premier League
@@ -198,7 +198,7 @@ class Header extends React.Component {
                         </DropdownItem>
                         <DropdownItem>
                           <Link
-                            onClick={this.toggleNav}
+                            // onClick={this.toggleNav}
                             to={"/leagues/laliga/page/1"}
                           >
                             La Liga

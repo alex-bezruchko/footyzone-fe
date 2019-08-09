@@ -9,8 +9,8 @@ const NewsCatList = ({ news, loading, subcat_name, props }) => {
   if (loading) {
     return (
       <div className="container">
-        <div className="col-sm-12 col-md-8">
-          <img src={imgLoading} alt="loading" />
+        <div className="col-sm-12 col-md-8 search">
+          <img src={imgLoading} alt="loading"/>
         </div>
       </div>
     );
