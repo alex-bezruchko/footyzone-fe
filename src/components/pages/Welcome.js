@@ -1,6 +1,8 @@
 import React from "react";
 import loading from "./../../../src/loading.gif";
 import axios from "axios";
+import WelcomeBloglist from "./../blog/WelcomeBloglist";
+
 import { withRouter, Link } from "react-router-dom";
 
 import {
@@ -120,6 +122,7 @@ class Welcome extends React.Component {
             <img className="loading" src={loading} alt="Loading gif" />
           </div>
         ) : (
+          <>
             <div className="container carousel-container">
               <h1 className="latest">Latest</h1>
               <Carousel
@@ -167,6 +170,9 @@ class Welcome extends React.Component {
                 })}
               </div>
             </div>
+            <WelcomeBloglist />
+
+          </>
           )}
       </div>
     );

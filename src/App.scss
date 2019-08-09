@@ -203,3 +203,13 @@ ul.pagination {
   background-color: $blue !important;
   color: $white !important;
 }
+.missing {
+  h2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  img {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}

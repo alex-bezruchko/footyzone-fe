@@ -7,6 +7,7 @@ import LoginForm from "./LoginForm";
 import Header from "./../parts/Header";
 import App from "./../../App.js";
 import axios from "axios";
+
 import Footer from "./../parts/Footer";
 
 class Authenticate extends React.Component {
@@ -81,6 +82,7 @@ class Authenticate extends React.Component {
                 path="/signup"
                 render={props => <SignUp {...this.state} {...props} />}
               />
+              <Route exact path="/*" render={props => <LoginForm {...this.state} {...props} />} />
             </div>
           )}
         </div>
