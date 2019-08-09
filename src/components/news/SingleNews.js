@@ -251,7 +251,7 @@ const SingleNews = props => {
                                 return (
                                   <li
                                     key={index}
-                                    className="category-tag col-md-6 col-xs-12"
+                                    className="category-tag"
                                   >
                                     <Link
                                       to={`/category/${tag.tag_slug}/`}

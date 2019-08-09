@@ -142,6 +142,10 @@ iframe .timeline-Widget {
     width: 30%;
     margin-top: 30px;
     height: 80%;
+    ul {
+      flex-direction: column;
+
+    }
   }
 
   .related h4 {
@@ -155,7 +159,6 @@ iframe .timeline-Widget {
       margin-top: 10px;
       font-family: $font_sans;
       font-size: 20px;
-      display: flex;
       padding-left: 0px;
     }
 
@@ -163,7 +166,6 @@ iframe .timeline-Widget {
       border: 1px solid $blue;
       border-radius: 30px;
       padding: 0px 10px 3px;
-      height: 100%;
       font-weight: 500;
       align-self: center;
       font-size: 18px;
@@ -178,6 +180,10 @@ iframe .timeline-Widget {
 
   aside ul li {
     min-width: 100%;
+      display: flex;
+    a {
+      height: 100%;
+    }
   }
 
   .single-body {
@@ -193,7 +199,6 @@ iframe .timeline-Widget {
 
   ul {
     display: flex;
-    flex-direction: column;
     margin-left: 0px;
     padding-left: 0px;
 
@@ -350,15 +355,16 @@ iframe .timeline-Widget {
       }
 
       ul {
-        display: inline;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
         // flex-direction: row;
         min-width: 100%;
         padding-right: 0px;
         margin: 10px 0px 22px;
 
         li {
-          display: inline;
-          margin-right: 0px;
+          margin-right: 15px;
+          margin-bottom: 5px;
         }
       }
     }
