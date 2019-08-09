@@ -82,7 +82,7 @@ const Newslist = props => {
             <div className="col-sm-12 col-md-8">
               {currentNews.length > 0 ? (
                 <div className="list-wrapper">
-                  <h1 className="category-header">Latest Scoop</h1>
+                  <h1 className="category-header">Latest</h1>
 
                   {currentNews.map((news, index) => {
                     return (
