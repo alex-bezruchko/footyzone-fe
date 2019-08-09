@@ -51,7 +51,6 @@ class SingleView extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.newComment.comment);
   };
   addCommentHandler = e => {
     e.preventDefault();
@@ -205,7 +204,6 @@ class SingleView extends React.Component {
                           <>
                             {this.props.postsReducer.comments.map(
                               (comment, index) => {
-                                console.log(comment);
                                 return (
                                   <div className="comment-body" key={index}>
                                     <div className="comment-avatar">
