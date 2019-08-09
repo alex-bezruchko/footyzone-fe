@@ -1,5 +1,5 @@
 .blog {
-  background: url("../src/img/blog.jpeg");
+  background: url("../src/img/brick2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -266,9 +266,9 @@ a {
     font-family: $font_bungee;
     text-align: center;
     padding: 20px 15px 25px;
-    margin: 33px 0px;
     background-color: #fff;
     align-self: center;
+    font-size: 4.4rem;
   }
   .category-blog {
     padding: 10px;
@@ -300,6 +300,10 @@ a {
     .category-header {
       margin-bottom: 50px !important;
     }
+    img {
+      min-height: 266px;
+      max-height: 266px;
+    }
   }
   .single {
     margin-top: 80px;
@@ -319,8 +323,8 @@ a {
     }
   }
   .blog-main-image {
-    max-height: 333px !important;
-    min-height: 333px !important;
-    height: 333px !important;
+    max-height: 266px !important;
+    min-height: 266px !important;
+    height: 266px !important;
   }
 }
