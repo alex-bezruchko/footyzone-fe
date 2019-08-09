@@ -127,9 +127,10 @@ a .carousel-control-next-icon {
     text-align: left;
     padding-bottom: 0px;
     padding-right: 15px;
-
+    z-index: 0;
     &:hover {
       color: $wheat;
+      
     }
 
     h3 {
