@@ -33,12 +33,12 @@ class WelcomeBloglist extends React.Component {
                       {/* <div className="body">{blog.body}</div> */}
                       <h2>{blog.title}</h2>
                       <div className="body">
+                        <p>
                         <img
                           src={blog.avatar}
                           alt="avatar"
                           className="avatar"
                         />
-                        <p>
                           De Ligt is yet to clarify his future but appears to
                           have his sights set on Juventus after revealing the
                           club are interested and a desire to play alongside
