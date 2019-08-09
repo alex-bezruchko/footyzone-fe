@@ -28,6 +28,7 @@ class NewsCrud extends React.Component {
       newsMainImg: "",
       suggestions: [],
       tags: [],
+      newTags: []
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleAddition = this.handleAddition.bind(this);
@@ -36,6 +37,30 @@ class NewsCrud extends React.Component {
     this.setState(state => ({
       tags: [...state.tags, tag],
     }));
+    let stateSuggestions = this.state.suggestions;
+    let isUnique = false;
+    for (let s=0; s < stateSuggestions.length; s++) {
+      // console.log(stateSuggestions[s].text)
+        // console.log(tag.text)
+        if (stateSuggestions[s].text === tag.text) {
+        
+        // console.log(stateSuggestions[s].text)
+        // console.log(tag.text)
+
+        isUnique = false;
+        break;
+      } else {
+        isUnique = true;
+      }
+      // return isUnique;
+    }
+    if (isUnique) {
+      let newTag = tag;
+      this.setState(state => ({
+        newTags: [...state.newTags, newTag],
+      }));
+    }
+    
   }
   handleDelete(i) {
     const { tags } = this.state;
@@ -121,87 +146,53 @@ class NewsCrud extends React.Component {
   };
   addNewsHandler = e => {
     e.preventDefault();
-    let stateTags = this.state.tags;
-    let stateSuggestions = this.state.suggestions;
-    let newTags = [];
-    // console.log(stateSuggestions);
-    // console.log(stateTags);
-    let allTags = [];
-    let counter = 0;
-    for (let t = 0; t < stateTags.length; t++) {
-      // console.log("Submitted tag: ");
-      counter = counter + 1;
-      // console.log(stateSuggestions[t]);
-      for (let c = 0; c < stateSuggestions.length; c++) {
-        if (
-          stateTags[t].text !== stateSuggestions[c].text &&
-          stateTags[t].text !== stateTags[counter - 1].text
-        ) {
-          let stateTag = {};
-          stateTag.text = stateTags[t].text;
-          allTags.push(stateTag);
-        }
-
-        // console.log("Current tag: ");
-        // console.log(stateSuggestions[c]);
-      }
-      // let allTags =
-      // console.log(lolo)
-      // }
+    const stateNewTags = this.state.newTags;
+    let updatedTags = [];
+    for (let u = 0; u < stateNewTags.length; u++) {
+      let polishedTag = {};
+      polishedTag.tag_slug = stateNewTags[u].text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+      polishedTag.tag_name = stateNewTags[u].text;
+      updatedTags.push(polishedTag)
     }
 
-    console.log(allTags);
     let headers = {
       "Content-Type": "application/x-www-form-urlencoded",
       "Access-Control-Allow-Origin": "*",
       Authorization: "M7938KD1Akyo8XBTmf7jF68jiHA",
     };
-    // axios
-    //   .post(
-    //     "https://footyzone-be.herokuapp.com/api/news/tags",
-    //     nondupTags,
-    //     headers
-    //   )
-    //   .then(response => {
-    //     // let currentSuggestions = [];
-    //     // for (let i = 0; i < response.data.length; i++) {
-    //     console.log(response.data);
-    //     //   let tagObject = {};
-    //     //   tagObject.id = response.data[i].subtag_name;
-    //     //   tagObject.text = response.data[i].subtag_name;
-    //     //   tagObject.subcat_id = response.data[i].tag_id;
-    //     //   tagObject.subtag_name = response.data[i].subtag_name;
-    //     //   tagObject.subtag_slug = response.data[i].subtag_slug;
+    let processedTags = [];
+    axios
+      .post(
+        "https://footyzone-be.herokuapp.com/api/news/tags",
+        updatedTags,
+        headers
+      )
+      .then(response => {
+        console.log(response.data);
+       processedTags = response.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-    //     //   currentSuggestions.push(tagObject);
-    //     // }
-    //     // this.setState({
-    //     //   suggestions: currentSuggestions,
-    //     // });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
-    // let stamp = new Date().toISOString();
-    // let currentNews = this.state.news;
-    // let tags = this.state.tags;
-    // let currentImage = this.state.newsMainImg;
-    // let polishedTags = [];
-    // tags.map(tag => {
-    //   console.log(tag);
-    //   let fixedTag = {};
-    //   fixedTag.subcat_id = tag.subcat_id;
-    //   fixedTag.subtag_name = tag.subtag_name;
-    //   fixedTag.subtag_slug = tag.subtag_slug;
-    //   polishedTags.push(fixedTag);
-    // });
-    // currentNews.subcat_id = 2;
-    // currentNews.published = stamp;
-    // currentNews.newsMainImg = currentImage;
-    // currentNews.tags = polishedTags;
-
-    // this.props.addNews(currentNews, this.props.history);
+    let stamp = new Date().toISOString();
+    let currentNews = this.state.news;
+    let tags = processedTags;
+    let currentImage = this.state.newsMainImg;
+    let polishedTags = [];
+    tags.map(tag => {
+      let fixedTag = {};
+      fixedTag.id = tag.id;
+      fixedTag.tag_slug = tag.text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
+      fixedTag.tag_name = tag.text;
+      polishedTags.push(fixedTag);
+    });
+    console.log(polishedTags)
+    currentNews.published = stamp;
+    currentNews.newsMainImg = currentImage;
+    currentNews.tags = polishedTags;
+    // console.log(currentNews)
+    this.props.addNews(currentNews, this.props.history);
   };
 
   render() {

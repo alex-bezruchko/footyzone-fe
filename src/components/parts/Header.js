@@ -24,6 +24,7 @@ import {
   FaPlusCircle,
   FaLockOpen,
   FaUserPlus,
+  FaArticle
 } from "react-icons/fa";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
@@ -203,14 +204,14 @@ class Header extends React.Component {
                             La Liga
                           </Link>
                         </DropdownItem>
-                        {/* <DropdownItem> */}
+                        <DropdownItem>
                         <Link
-                          // onClick={this.toggleNav}
+                          onClick={this.toggleNav}
                           to={"/leagues/uefacl/page/1"}
                         >
                           Champions League
                           </Link>
-                        {/* </DropdownItem> */}
+                        </DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
                   </ListGroupItem>
