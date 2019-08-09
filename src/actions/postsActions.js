@@ -51,7 +51,7 @@ export function searchTerm(term) {
   return dispatch => {
     dispatch({ type: FETCH_ALL_LOADING });
     axios
-      .get("https://footyzone-be.herokuapp.com/api/posts")
+      .get("https://footyzone-be.herokuapp.com/api/news")
       .then(response => {
         const lowercasedTerm = term.toLowerCase();
         const searchPosts = response.data.filter(post => {

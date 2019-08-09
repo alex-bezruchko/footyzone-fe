@@ -33,7 +33,9 @@ import {
   EDITED_SUCCESS,
   EDITED_FAILURE,
   EDITFORM,
+  SEARCH_LOADING,
   SEARCH_SUCCESS,
+  SEARCH_FAILURE,
   SET_SEARCH_TERM,
 } from "../actions/newsActions";
 
@@ -309,12 +311,28 @@ export const newsReducer = (state = initialState, action) => {
         error: "We couldn't delete this post",
       };
 
+    case SEARCH_LOADING:
+      return {
+        ...state,
+        news: [],
+        loading: true,
+        error: "",
+      };
+
     case SEARCH_SUCCESS:
       return {
         ...state,
         news: action.payload,
         loading: false,
         error: "",
+      };
+
+    case SEARCH_FAILURE:
+      return {
+        ...state,
+        news: [],
+        loading: false,
+        error: "Nothing found",
       };
 
     case SET_SEARCH_TERM:

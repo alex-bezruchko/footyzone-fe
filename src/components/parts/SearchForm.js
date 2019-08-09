@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { setSearchTerm } from '../../actions/postsActions';
+import { setSearchTerm } from '../../actions/newsActions';
 import { Input, Form, Button } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
 

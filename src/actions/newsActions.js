@@ -20,6 +20,7 @@ export const DELETED_SUCCESS = "DELETED_SUCCESS";
 export const DELETED_FAILURE = "DELETED_FAILURE";
 export const EDITFORM = "EDITFORM";
 export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
+export const SEARCH_LOADING = "SEARCH_LOADING";
 export const SEARCH_FAILURE = "SEARCH_FAILURE";
 export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
 export const FETCH_ALL_CATEGORIES_LOADING = "FETCH_ALL_CATEGORIES_LOADING";
@@ -232,5 +233,40 @@ export function setSearchTerm(term) {
       type: SET_SEARCH_TERM,
       payload: term,
     });
+  };
+}
+export function searchTerm(term) {
+  return dispatch => {
+    dispatch({ type: SEARCH_LOADING });
+    axios
+      .get("https://footyzone-be.herokuapp.com/api/news")
+      .then(response => {
+        console.log(response)
+        const lowercasedTerm = term.toLowerCase();
+        const searchNews = response.data.filter(post => {
+          const lowercasedTitle = post.title.toLowerCase();
+          const lowercasedBody = post.body ? post.body.toLowerCase() : "";
+
+          if (
+            lowercasedTitle.includes(lowercasedTerm) ||
+            lowercasedBody.includes(lowercasedTerm)
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        dispatch({
+          type: SEARCH_SUCCESS,
+          payload: searchNews,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: SEARCH_FAILURE,
+          payload: err,
+        });
+      });
   };
 }

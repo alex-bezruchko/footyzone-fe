@@ -263,12 +263,7 @@ class Header extends React.Component {
                     </Dropdown>
                   </ListGroupItem>
 
-                  <ListGroupItem>
-                    <Link onClick={this.toggleNav} to={"/contact"}>
-                      {" "}
-                      Contact
-                    </Link>
-                  </ListGroupItem>
+                  
                 </ListGroup>
                 <ListGroup className="visible-xs">
                   {this.props.isLoggedIn ? (

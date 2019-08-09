@@ -7,7 +7,7 @@ import NewsCategories from "./components/news/NewsCategories";
 import Bloglist from "./components/blog/Bloglist";
 
 import WelcomeBloglist from "./components/blog/WelcomeBloglist";
-// import SearchResultsList from "./components/pages/SearchResultsList";
+import SearchResultsList from "./components/pages/SearchResultsList";
 import Welcome from "./components/pages/Welcome";
 import Contact from "./components/pages/Contact";
 import Users from "./components/users/Users";
@@ -53,12 +53,12 @@ class App extends React.Component {
               exact
               path="/:category_name/:subcat_name/"
               component={RelatedPosts}
-            />
+            /> */}
             <Route
               exact
               path="/search"
               render={props => <SearchResultsList {...props} />}
-            /> */}
+            />
           </div>
         </section>
       </div>

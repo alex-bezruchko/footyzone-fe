@@ -3,7 +3,7 @@ import loading from './../../../src/loading.gif';
 import blank from './../../img/blank.jpeg';
 
 import { connect } from 'react-redux';
-import { searchTerm } from '../../actions/postsActions';
+import { searchTerm } from '../../actions/newsActions';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -33,24 +33,25 @@ class SearchResultsList extends React.Component {
     
     render() {
         return(
-            <div className="col-md-8 post-list">
+            <div className="container search">
+            <div className="col-md-8 search-list">
                 <div className="container">
-                <h1>Search results: </h1>
+                <h1 className="bungee">Results: </h1>
                 
                 {this.props.loading ? 
-                    <div><img alt='Loading gif' src={loading} /></div>
+                    <div className="col-md-6 text-center"><img alt='Loading gif' src={loading} /></div>
 
                     :
                     <div className="post-detail-card">
-                    {this.props.posts.length > 0 ? 
+                    {this.props.news.length > 0 ? 
                         <div>
-                            {this.props.posts.map((post, index) => {
+                            {this.props.news.map((post, index) => {
                                 return  <Link key={index} to={`/post/${post.id}`}>
                                             <div className="card-detail">
                                                 <h2>{post.title}</h2>
                                             </div>
                                             {post.postMainImg ? 
-                                                <img src={post.postMainImg} alt={post.title}/>
+                                                <img src={post.newsMainImg} alt={post.title}/>
                                                 :
                                                 <img src={blank} alt="blank" />
                                             }
@@ -74,13 +75,15 @@ class SearchResultsList extends React.Component {
                 </div>
                 
             </div>
+            </div>
+            
         )
     }
 }
 
-const mapStateToProps = ({ postsReducer: state }) => {
+const mapStateToProps = ({ newsReducer: state }) => {
     return {
-        posts: state.posts,
+        news: state.news,
         loading: state.loading,
         term: state.term
     }
