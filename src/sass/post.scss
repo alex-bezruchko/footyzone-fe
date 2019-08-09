@@ -141,3 +141,11 @@
     font-size: 18px;
   }
 }
+@media #{$mobile} {
+  .container.post-crud {
+    flex-direction: column;
+    form {
+      width: 100%;
+    }
+  }
+}

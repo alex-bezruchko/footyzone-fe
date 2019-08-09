@@ -90,7 +90,7 @@ class PostCrud extends React.Component {
           <img src={loading} alt="PostForm form is loading" />
         ) : (
           <>
-            <div className="col-md-8 post-crud">
+            <div className="col-xs-12 col-md-8 post-crud">
               <form onSubmit={this.addPostHandler}>
                 <h2 className="bungee">Add Post</h2>
 
