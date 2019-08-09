@@ -335,9 +335,8 @@ h1.latest {
   background: url("../src/img/blog.jpg");
   background-attachment: fixed;
   background-position: center;
-
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
 
   .container {
     display: flex;
