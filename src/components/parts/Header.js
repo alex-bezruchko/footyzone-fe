@@ -24,7 +24,7 @@ import {
   FaPlusCircle,
   FaLockOpen,
   FaUserPlus,
-  FaArticle
+  // FaArticle
 } from "react-icons/fa";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";

@@ -45,20 +45,20 @@ class SearchResultsList extends React.Component {
                     <div className="post-detail-card">
                     {this.props.news.length > 0 ? 
                         <div>
-                            {this.props.news.map((post, index) => {
-                                return  <Link key={index} to={`/post/${post.id}`}>
+                            {this.props.news.map((news, index) => {
+                                return  <Link key={index} to={`/news/${news.subcat_slug}/${news.id}`}>
                                             <div className="card-detail">
-                                                <h2>{post.title}</h2>
+                                                <h2>{news.title}</h2>
                                             </div>
-                                            {post.postMainImg ? 
-                                                <img src={post.newsMainImg} alt={post.title}/>
+                                            {news.newsMainImg ? 
+                                                <img src={news.newsMainImg} alt={news.title}/>
                                                 :
                                                 <img src={blank} alt="blank" />
                                             }
                                             
                                             <div className="post-detail-body">
-                                                {post.body ? 
-                                                    <div className="body">{post.body}</div>
+                                                {news.body ? 
+                                                    <div className="body">{news.body}</div>
                                                     :
                                                     <div className="body">Tottenham 'consider selling TWELVE players this summer' with Trippier, Eriksen and Alderweireld among. Tottenham 'consider selling TWELVE players this summer' with Trippier, Eriksen and Alderweireld among. Tottenham 'consider selling TWELVE players this summer' with Trippier, Eriksen and Alderweireld among</div>
                                                 }
