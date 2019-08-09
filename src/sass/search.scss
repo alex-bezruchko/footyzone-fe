@@ -1,0 +1,19 @@
+.search-list {
+    margin-top: 40px;
+    .bungee {
+        margin-bottom: 33px;
+    }
+}
+@media #{$desktop} {
+    // .search-list {
+        .container.search, .col-md-8.search-list {
+            padding-left: 0px;
+            padding-right: 0px;
+            .body {
+                font-family: $font_sans;
+                font-size: 22px;
+                line-height: 1.2;
+            }
+        }
+    // }
+}

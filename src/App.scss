@@ -102,6 +102,10 @@ a {
     width: 100%;
   }
 }
+
+  .form-control:focus {
+    outline: none !important;
+  }
 .bg-light,
 nav,
 .navbar-expand-md .navbar-collapse,
