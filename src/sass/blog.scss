@@ -307,6 +307,16 @@ a {
     h2 {
       padding-bottom: 10px;
     }
+    .comment-form {
+      flex-direction: column;
+      textarea {
+        width: 100%;
+        margin-bottom: 0px;
+      }
+      button {
+        margin-bottom: 15px;
+      }
+    }
   }
   .blog-main-image {
     max-height: 333px !important;

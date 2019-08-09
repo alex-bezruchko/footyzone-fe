@@ -118,6 +118,9 @@ class Header extends React.Component {
       avatar,
       this.props.history
     );
+    this.setState(prevState => ({
+      toggleNav: !prevState.toggleNav,
+    }));
   };
   render() {
     return (
@@ -155,7 +158,7 @@ class Header extends React.Component {
               </div>
             ) : (
                 <div className="login">
-                  <NavLink to={"/login"}>
+                  <NavLink to={"/login"} onClick={this.toggleNav}>
                     <span>Log in </span>
                     <FaSignInAlt />
                   </NavLink>
@@ -276,7 +279,7 @@ class Header extends React.Component {
                           <FaPlusCircle />
                         </NavLink>
                       </div>
-                      <Button color="black" onClick={this.logOutUser}>
+                      <Button color="black" onClick={this.toggleNav} onClick={this.logOutUser} >
                         Log Out
                         <FaLockOpen />
                       </Button>
