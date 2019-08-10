@@ -1,6 +1,6 @@
 footer {
   padding: 25px 0px 0px;
-  background-color: $grey;
+  background-color: $dark_grey;
 
   .nav {
     display: flex;
@@ -18,7 +18,7 @@ footer {
 
     &:focus {
       outline: none;
-      background-color: $grey;
+      background-color: $dark_grey;
     }
 
     &::placeholder {
@@ -117,7 +117,7 @@ footer {
     padding: 10px 0px 20px;
 
     path:hover {
-      fill: $black;
+      // fill: $dark_grey;
     }
 
     svg {
@@ -127,7 +127,8 @@ footer {
     }
 
     rect {
-      fill: $black;
+      fill: $dark_grey;
+      opacity: 0;
     }
 
     .btn.btn-white svg {}
