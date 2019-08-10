@@ -30,8 +30,8 @@
 
 @media #{$mobile} {
     .search-list img {
-        max-height: 250px;
-        min-height: 250px;
+        max-height: 250px !important;
+        min-height: 250px !important;
     }
 
     .search,
