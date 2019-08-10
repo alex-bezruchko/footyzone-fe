@@ -1,6 +1,7 @@
 .col-md-4 {
   padding-right: 0px !important;
   margin-right: 0px;
+
   .sidebar-list {
     min-width: 100%;
     display: flex;
@@ -15,18 +16,21 @@
       flex-direction: row;
       margin-bottom: 12px;
     }
+
     h2 {
       font-family: $font_bungee;
       margin-top: 20px;
       margin-bottom: 20px;
       font-size: 25px;
     }
+
     img {
       width: 33%;
       min-width: 34%;
       min-height: 68px;
       max-height: 68px;
     }
+
     p {
       text-align: left;
       color: $black;
@@ -37,9 +41,11 @@
       margin-bottom: 0px;
       align-self: center;
     }
+
     a {
       min-width: 100%;
     }
+
     a:hover {
       p {
         color: $blue;
@@ -47,6 +53,9 @@
     }
   }
 }
-.twitter-wrapper {
-  // min-width: 100%;
+
+@media #{$mobile} {
+  .twitter-wrapper {
+    max-width: 300px;
+  }
 }
