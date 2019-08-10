@@ -12,13 +12,12 @@ footer {
   }
 
   .nav-search-form input.form-control {
-    background: transparent;
     color: $white;
     border-bottom: 1.5px solid $white;
 
     &:focus {
       outline: none;
-      background-color: $dark_grey;
+      background-color: transparent !important;
     }
 
     &::placeholder {
@@ -44,7 +43,11 @@ footer {
     padding-left: 2px;
     padding-top: 15px;
     outline: none;
+    background: transparent;
 
+    &:focus {
+      background: transparent;
+    }
 
     button.btn.btn-white {
       width: 60px;
@@ -64,9 +67,6 @@ footer {
       padding-bottom: 3px;
       width: 80%;
 
-      &:focus {
-        outline: none;
-      }
 
       button.btn.btn-white {
         width: 60px;
