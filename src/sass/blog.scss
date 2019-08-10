@@ -192,7 +192,7 @@ a {
   color: $black !important;
 
   &:hover {
-    color: teal !important;
+    color: rgba(10, 143, 144, 0.9) !important;
   }
 }
 
@@ -241,7 +241,7 @@ a {
 }
 
 .single {
-  background-color: rgba(255, 199, 155, 0.98);
+  background-color: $old;
 }
 
 .single-blog-wrapper {
@@ -322,14 +322,14 @@ a {
     font-family: $font_bungee;
     text-align: center;
     padding: 20px 15px 25px;
-    background-color: rgba(255, 199, 155, 0.98);
+    background-color: $old;
     align-self: center;
     font-size: 3.3rem;
   }
 
   .category-blog {
     padding: 10px;
-    background-color: rgba(255, 199, 155, 0.98);
+    background-color: $old;
     margin-bottom: 40px;
 
     h2 {
