@@ -23,7 +23,7 @@ const NewsCatList = ({ news, loading, subcat_name, props }) => {
         {/* </div> */}
         <div news={news} className="category-news">
           {news.map(news => (
-            <Link to={`/leagues/${news.subcat_slug}/${news.id}`}>
+            <Link to={`/news/${news.subcat_slug}/${news.id}`}>
               <h2>{news.title}</h2>
               <img className="img-responsive" src={news.newsMainImg} alt="" />
               <div className="body">{news.body}</div>

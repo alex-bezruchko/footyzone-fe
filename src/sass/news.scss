@@ -28,7 +28,7 @@
       font-size: 2rem;
     }
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
   
@@ -129,7 +129,7 @@ iframe .timeline-Widget {
     margin-top: 15px;
     min-width: 100%;
     h2 {
-      font-size: 1.4rem;
+      // font-size: 1.4rem;
     }
   }
 }
@@ -320,12 +320,16 @@ iframe .timeline-Widget {
   .author {
     justify-content: space-between;
   }
-
+  .news-list {
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
   .news-list,
   .single-news {
     img {
-      max-height: 288px;
-      min-height: 288px;
+      max-height: 266px;
+      min-height: 266px;
     }
   }
 
