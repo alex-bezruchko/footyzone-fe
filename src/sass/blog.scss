@@ -254,6 +254,13 @@ a {
     font-weight: normal;
     font-size: 18px;
 
+    span {
+      font-family: $font_ubuntu;
+      text-transform: lowercase;
+      padding: 0px;
+      font-size: 1.1rem;
+    }
+
     .svg {
       margin-right: 15px;
     }
@@ -395,7 +402,7 @@ a {
     }
 
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       line-height: 1.2;
       margin-top: 15px;
     }
