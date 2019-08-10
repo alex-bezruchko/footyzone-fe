@@ -235,6 +235,10 @@
   }
 
   @media #{$mobile} {
+    .nav-search-form input {
+      width: 100%;
+    }
+
     .visible-xs.list-group {
       display: flex;
       width: 50%;
@@ -302,9 +306,13 @@
     }
 
     form#search-nav {
-      margin-left: 11px;
+      margin-left: 10px;
       display: flex;
       height: 60px;
+
+      .form-control {
+        padding-left: 3px;
+      }
     }
 
   }

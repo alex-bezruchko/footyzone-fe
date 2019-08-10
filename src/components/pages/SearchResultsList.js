@@ -10,9 +10,9 @@ import { Link } from 'react-router-dom';
 class SearchResultsList extends React.Component {
 
     componentDidMount() {
-        if(this.props.term) {
+        if (this.props.term) {
             this.props.searchTerm(this.props.term);
-        }else{
+        } else {
             this.props.history.push('/search');
         }
     }
@@ -22,61 +22,62 @@ class SearchResultsList extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // only update chart if the data has changed
         if (prevProps.term !== this.props.term) {
-            if(this.props.term) {
+            if (this.props.term) {
                 this.props.searchTerm(this.props.term);
-            }else{
+            } else {
                 this.props.history.push('/blog');
             }
         }
-      }
+    }
 
-    
+
     render() {
-        return(
+        let maxLenBody = 250;
+        return (
             <div className="container search">
-            <div className="col-md-8 search-list">
-                <div className="container">
-                <h1 className="bungee">Results: </h1>
-                
-                {this.props.loading ? 
-                    <div className="col-md-6 text-center"><img alt='Loading gif' src={loading} /></div>
+                <div className="col-md-8 search-list">
+                    <div className="container">
+                        <h1 className="bungee">Results: </h1>
 
-                    :
-                    <div className="post-detail-card">
-                    {this.props.news.length > 0 ? 
-                        <div>
-                            {this.props.news.map((news, index) => {
-                                return  <Link key={index} to={`/news/${news.subcat_slug}/${news.id}`}>
-                                            <div className="card-detail">
-                                                <h2>{news.title}</h2>
-                                            </div>
-                                            {news.newsMainImg ? 
-                                                <img src={news.newsMainImg} alt={news.title}/>
-                                                :
-                                                <img src={blank} alt="blank" />
-                                            }
-                                            
-                                            <div className="post-detail-body">
-                                                {news.body ? 
-                                                    <div className="body">{news.body}</div>
+                        {this.props.loading ?
+                            <div className="col-md-6 text-center"><img alt='Loading gif' src={loading} /></div>
+
+                            :
+                            <div className="post-detail-card">
+                                {this.props.news.length > 0 ?
+                                    <div>
+                                        {this.props.news.map((news, index) => {
+                                            return <Link key={index} to={`/news/${news.subcat_slug}/${news.id}`}>
+                                                <div className="card-detail">
+                                                    <h2>{news.title}</h2>
+                                                </div>
+                                                {news.newsMainImg ?
+                                                    <img src={news.newsMainImg} alt={news.title} />
                                                     :
-                                                    <div className="body">Tottenham 'consider selling TWELVE players this summer' with Trippier, Eriksen and Alderweireld among. Tottenham 'consider selling TWELVE players this summer' with Trippier, Eriksen and Alderweireld among. Tottenham 'consider selling TWELVE players this summer' with Trippier, Eriksen and Alderweireld among</div>
+                                                    <img src={blank} alt="blank" />
                                                 }
-                                            </div>
-                                        </Link>
-                            })} 
-                        </div>
-                        :
-                        <h2>No results found</h2>
-                    }
-                    
+
+                                                <div className="post-detail-body">
+                                                    {news.body ?
+                                                        <div className="body">{news.body.slice(0, maxLenBody).concat('...')}</div>
+                                                        :
+                                                        <></>
+                                                    }
+                                                </div>
+                                            </Link>
+                                        })}
+                                    </div>
+                                    :
+                                    <h2>No results found</h2>
+                                }
+
+                            </div>
+                        }
                     </div>
-                }
+
                 </div>
-                
             </div>
-            </div>
-            
+
         )
     }
 }
@@ -91,5 +92,5 @@ const mapStateToProps = ({ newsReducer: state }) => {
 
 export default withRouter(connect(
     mapStateToProps,
-    {searchTerm}
+    { searchTerm }
 )(SearchResultsList));
