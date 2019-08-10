@@ -4,6 +4,7 @@
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
+
   // p,
   .body {
     font-family: $font_sans;
@@ -11,13 +12,17 @@
     line-height: 1.1;
   }
 }
+
 .single p {
   margin-top: 20px;
 }
+
 .single {
+
   .comment-avatar,
   .commentator {
     margin-right: 25px;
+
     span {
       padding-top: 5px;
       font-family: $font_ubuntu;
@@ -25,19 +30,23 @@
       text-align: center;
     }
   }
+
   .new-comment {
     display: flex;
     flex-direction: row;
   }
+
   .commentator {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
+
   .comment-separator {
     width: 10%;
     border-color: $blue;
   }
+
   .comment-body {
     font-family: $font_sans;
     font-size: 19px;
@@ -48,9 +57,11 @@
     line-height: 1.3;
     border-bottom: 1px solid rgba(2, 2, 2, 0.1);
   }
+
   h4 {
     margin-bottom: 0px;
   }
+
   h4,
   .likes {
     font-family: $font_ubuntu;
@@ -59,15 +70,18 @@
     font-weight: 500;
     align-items: center;
     display: flex;
+
     svg {
       margin-right: 8px;
     }
   }
+
   .comment-form {
     display: flex;
     width: 100%;
     justify-content: space-between;
   }
+
   .comment-form textarea {
     height: 125px;
     width: 90%;
@@ -80,15 +94,18 @@
     font-family: $font_sans;
     font-size: 19px;
     outline: none;
+
     &:focus {
       border: 1px solid $blue;
     }
   }
+
   .post-interaction {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
+
   .comments {
     img {
       max-width: 85px;
@@ -99,28 +116,35 @@
       margin-bottom: 0px;
     }
   }
+
   .delete-comment {
     display: flex;
     justify-content: space-between;
+
     button {
       background: transparent;
       border: none;
+
       svg {
         font-size: 25px;
       }
+
       &:hover {
         color: coral;
       }
     }
   }
+
   .comment-avatar {
     display: flex;
     flex-direction: column;
   }
+
   .comment-text {
     align-self: start;
     display: flex;
     flex-direction: column;
+
     span {
       padding: 8px 0px 0px;
       font-size: 13px;
@@ -129,25 +153,31 @@
     }
   }
 }
+
 .single-info {
   display: flex;
   justify-content: space-between;
 }
+
 .single .single-share {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
 .category-list {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   h1 {
     padding-bottom: 8px;
   }
 }
+
 .category-header {
   align-self: center;
+
   h1 {
     margin: 33px 0px !important;
   }
@@ -157,24 +187,30 @@ h2 {
   font-family: $font_oswald;
   font-size: 40px;
 }
+
 a {
   color: $black !important;
+
   &:hover {
     color: teal !important;
   }
 }
+
 .col-md-8 {
   text-align: left;
   padding-left: 0px;
+
   .container {
     padding: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .post-detail-card {
     margin-bottom: 46px;
   }
+
   h1,
   h2 {
     font-weight: 400;
@@ -182,6 +218,7 @@ a {
     letter-spacing: -0.5pt;
     margin: 15px 0px;
   }
+
   img {
     min-width: 100%;
     width: 100%;
@@ -190,28 +227,34 @@ a {
     min-height: 400px;
   }
 }
+
 //
 .container.post {
   h1 {
     margin-bottom: 66px;
     font-family: $font_oswald;
   }
+
   img {
     margin-bottom: 33px;
   }
 }
+
 .single {
   background-color: #fff;
 }
+
 .single-blog-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .author {
     font-family: $font_sans !important;
     font-weight: normal;
     font-size: 18px;
   }
+
   .avatar {
     min-width: 100px;
     min-height: 100px;
@@ -219,11 +262,14 @@ a {
     max-height: 100px;
     border-radius: 50%;
   }
+
   .single-info {
     align-self: start;
+
     .socials {
       padding-bottom: 10px;
     }
+
     .avatar {
       margin-bottom: 10px;
     }
@@ -234,14 +280,17 @@ a {
   .single {
     margin: 100px auto 100px;
     padding-top: 30px;
+
     .single-info {
       display: flex;
       align-items: center;
     }
+
     .single-share {
       display: flex;
       justify-content: space-between;
     }
+
     .blog-main-image {
       min-width: 100%;
     }
@@ -251,10 +300,12 @@ a {
     }
   }
 }
+
 .blog-pagination {
   background-color: transparent !important;
   padding-bottom: 20px;
 }
+
 .blog-list {
   width: 60%;
   margin-left: auto;
@@ -262,6 +313,7 @@ a {
   display: flex;
   flex-direction: column;
   padding-top: 60px;
+
   h1 {
     font-family: $font_bungee;
     text-align: center;
@@ -270,10 +322,12 @@ a {
     align-self: center;
     font-size: 3.3rem;
   }
+
   .category-blog {
     padding: 10px;
     background-color: #fff;
     margin-bottom: 40px;
+
     h2 {
       line-height: 1;
       letter-spacing: 1;
@@ -281,57 +335,91 @@ a {
       font-size: 1.5rem;
       background-color: #fff;
     }
+
     .body {
       font-family: $font_sans;
       font-size: 22px;
       line-height: 1.1;
     }
   }
+
   img {
     width: 100%;
     max-height: 366px;
     min-height: 366px;
     margin: 5px 0px 15px;
   }
+
   text-align: left;
 }
+
 @media #{$mobile} {
   .blog {
     // background-size: auto;
   }
+
+  .single {
+    .single-info {
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      line-height: 1.2;
+      margin-top: 30px;
+    }
+  }
+
+  .single-blog-wrapper .avatar {
+    max-width: 70px;
+    min-width: 70px;
+    max-height: 70px;
+    min-height: 70px;
+  }
+
   .blog-list {
     padding-top: 33px;
+
     h1 {
       padding: 17px 15px 20px;
     }
+
     .category-header {
       margin-bottom: 50px !important;
     }
+
     img {
       min-height: 266px;
       max-height: 266px;
     }
   }
+
   .single {
     margin-top: 80px;
     margin-bottom: 80px;
+
     h2 {
       padding-bottom: 10px;
     }
+
     .comment-form {
       flex-direction: column;
+
       textarea {
         width: 100%;
         margin-bottom: 0px;
       }
+
       button {
         margin-bottom: 15px;
       }
     }
+
     .comment-body {
       font-size: 1.1rem;
     }
   }
+
   .article-cover {
     max-height: 266px !important;
     min-height: 266px !important;
