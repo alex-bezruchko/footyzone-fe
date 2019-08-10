@@ -27,10 +27,12 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 @import url("https://fonts.googleapis.com/css?family=Darker+Grotesque:400,500|Ubuntu:400,500,600,700|Literata:400,500,600|Elsie:900|Bungee+Shade");
 @import "./sass/variables.scss";
 @import "./sass/login.scss";
@@ -50,6 +52,7 @@ a {
     text-decoration: none !important;
   }
 }
+
 .content {
   // min-height: 1000px;
 }
@@ -61,13 +64,16 @@ a {
   margin-right: auto;
   padding: 100px 300px 300px;
 }
+
 .SocialMediaShareButton {
   outline: none;
 }
+
 .content.container {
   padding: 40px 0px 0px 0px !important;
   display: flex;
   align-items: center;
+
   // justify-content: center;
   .body {
     font-family: $font_sans;
@@ -78,6 +84,7 @@ a {
 .card {
   border: none !important;
 }
+
 .category-header {
   font-family: $font_bungee;
   // width: 75%;
@@ -87,6 +94,7 @@ a {
   margin: 14px 0px 66px !important;
   padding-bottom: 8px;
 }
+
 .form {
   display: flex;
   width: 80%;
@@ -94,38 +102,46 @@ a {
   margin-right: auto;
   flex-direction: column;
   justify-content: center;
+
   input,
   textarea {
     margin-bottom: 22px;
   }
+
   button {
     width: 100%;
   }
 }
 
-  .form-control:focus {
-    outline: none !important;
-  }
+.form-control:focus {
+  outline: none !important;
+}
+
 .bg-light,
 nav,
 .navbar-expand-md .navbar-collapse,
 .nav-search-form {
   background-color: #fff !important;
 }
+
 .navbar-expand-md .navbar-collapse {
   justify-content: space-between;
 }
+
 ul.pagination {
   justify-content: center;
 }
+
 @media #{$mobile} {
   .container {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
+
   .blog-list {
     width: 100%;
   }
+
   .carousel-caption.d-none.d-md-block {
     display: flex !important;
     flex-direction: column;
@@ -133,10 +149,11 @@ ul.pagination {
     right: 3px;
     left: 3px;
     justify-content: flex-end;
-    height: 300px;
+    height: 266px;
     text-align: left;
     padding-bottom: 0px;
     z-index: 0 !important;
+
     h3 {
       align-self: center;
       font-family: $font_oswald;
@@ -146,17 +163,21 @@ ul.pagination {
       font-size: 20px;
       color: $wheat;
     }
+
     p {
       display: none;
     }
   }
+
   .controllers {
     display: none !important;
   }
 }
+
 .bungee {
   font-family: $font_bungee;
 }
+
 .blue {
   align-self: start;
   margin-top: 15px;
@@ -170,15 +191,18 @@ ul.pagination {
   font-size: 12px;
   border-radius: 2px;
   letter-spacing: 1.2pt;
+
   &:hover {
     background-color: $white;
     color: $blue;
     border: 1px solid $blue;
   }
+
   &:focus {
     outline: none !important;
   }
 }
+
 @media #{$desktop} {
   .carousel-caption.d-none.d-md-block {
     width: 50%;
@@ -193,21 +217,25 @@ ul.pagination {
       margin-bottom: 0px;
     }
   }
+
   .carousel-indicators {
     width: 50%;
     margin-left: 50% !important;
     padding-bottom: 20px;
   }
 }
+
 .active-page {
   background-color: $blue !important;
   color: $white !important;
 }
+
 .missing {
   h2 {
     margin-top: 50px;
     margin-bottom: 50px;
   }
+
   img {
     min-width: 100%;
     max-width: 100%;

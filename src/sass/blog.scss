@@ -392,11 +392,14 @@ a {
     min-height: 70px;
   }
 
-  .blog-list {
+  .blog-list.col-xs-12.col-md-7 {
     padding-top: 33px;
+    padding-left: 8px;
+    padding-right: 8px;
 
     h1 {
       padding: 17px 15px 20px;
+      width: 100%;
     }
 
     .category-header {
