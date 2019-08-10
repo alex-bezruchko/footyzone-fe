@@ -268,7 +268,7 @@ a {
     padding: 20px 15px 25px;
     background-color: #fff;
     align-self: center;
-    font-size: 4rem;
+    font-size: 3.3rem;
   }
   .category-blog {
     padding: 10px;
@@ -301,6 +301,9 @@ a {
   }
   .blog-list {
     padding-top: 33px;
+    h1 {
+      padding: 17px 15px 20px;
+    }
     .category-header {
       margin-bottom: 50px !important;
     }
