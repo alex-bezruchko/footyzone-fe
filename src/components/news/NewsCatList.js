@@ -10,11 +10,12 @@ const NewsCatList = ({ news, loading, subcat_name, props }) => {
     return (
       <div className="container">
         <div className="col-sm-12 col-md-8 search">
-          <img src={imgLoading} alt="loading"/>
+          <img src={imgLoading} alt="loading" />
         </div>
       </div>
     );
   }
+  let maxLenBody = 250;
 
   return (
     <div className="news-list container">
@@ -26,7 +27,7 @@ const NewsCatList = ({ news, loading, subcat_name, props }) => {
             <Link to={`/news/${news.subcat_slug}/${news.id}`}>
               <h2>{news.title}</h2>
               <img className="img-responsive" src={news.newsMainImg} alt="" />
-              <div className="body">{news.body}</div>
+              <div className="body">{news.body.slice(0, maxLenBody).concat('...')}</div>
             </Link>
           ))}
         </div>

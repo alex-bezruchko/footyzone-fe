@@ -308,6 +308,23 @@ a {
 .blog-pagination {
   background-color: transparent !important;
   padding-bottom: 20px;
+
+  li.page-item a {
+    background-color: $old !important;
+  }
+
+  .page-link.active-page {
+    background-color: $blue !important;
+    color: $old !important;
+
+    &:hover {
+      color: $old !important;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }
 
 .blog-list {
