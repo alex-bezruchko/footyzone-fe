@@ -253,6 +253,10 @@ a .carousel-control-next-icon {
 @media #{$mobile} {
   .welcome-container .container {
     padding-bottom: 15px;
+    padding-top: 25px;
+  }
+  h1.latest {
+    display: none;
   }
   .welcome-blog {
     .body {
