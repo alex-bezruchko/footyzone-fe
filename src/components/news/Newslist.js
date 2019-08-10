@@ -68,6 +68,8 @@ const Newslist = props => {
       }
     }
   });
+  let maxLenBody = 250;
+
   return (
     <div className="container-row news">
       {loading ? (
@@ -99,7 +101,7 @@ const Newslist = props => {
                             src={news.newsMainImg}
                             alt=""
                           />
-                          <div className="body">{news.body}</div>
+                          <div className="body">{news.body.slice(0,maxLenBody).concat('...') }</div>
                         </Link>
                       </div>
                     );

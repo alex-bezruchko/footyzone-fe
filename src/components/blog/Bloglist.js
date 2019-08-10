@@ -43,6 +43,7 @@ const Bloglist = props => {
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  
   // render() {
   return (
     <div className="container-row blog">

@@ -11,6 +11,7 @@ const PostsList = ({ currentPage, posts, loading, props }) => {
       </div>
     );
   }
+  let maxLenBody = 266;
 
   return (
     <div className="blog-list col-xs-12 col-md-7">
@@ -21,7 +22,13 @@ const PostsList = ({ currentPage, posts, loading, props }) => {
           <Link to={`/blog/${post.id}`}>
             <h2>{post.title}</h2>
             <img className="img-responsive" src={post.postMainImg} alt="" />
-            <div className="body">{post.body}</div>
+            <div className="body">
+            {post.body && post.body.length ?
+              <p>{post.body.slice(0,maxLenBody).concat('...') }</p>
+              :
+              <p>
+              Kroenke's statement read: "While we understand, appreciate, and agree with concerns about our club failing to achieve our goal of qualifying for the 2019-20 Champions League, we respectfully disagree it is at a crossroads and things need to change because so much change has already occurred.</p>
+            }</div>
           </Link>
         </div>
       ))}
