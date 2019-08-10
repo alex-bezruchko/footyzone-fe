@@ -37,7 +37,7 @@ const SingleNews = props => {
     fetchSingle();
   }, [props.match.params.id, props.match.params.subcat_name]);
 
-  let client = document.getElementsByTagName("section");
+  let client = document.getElementsByTagName("body");
   if (client[0] && client[0].clientWidth > 992) {
     let element = document.getElementsByClassName("twitter");
     $.when(element).then(function () {
@@ -178,70 +178,8 @@ const SingleNews = props => {
                       </aside>
                       <div className="single-body">
                         <div className="body">
-                          {/* {singleNews.body} */}
-                          <p>
-                            <b>
-                              Arsenal are not at a crossroads according to
-                              director Josh Kroenke in a passionate response to an
-                              open letter from fans criticising his father's
-                              running of the club.
-                          </b>
-                          </p>
+                          {singleNews.body}
 
-                          <p>
-                            In a combined statement from 14 supporter groups,
-                            Arsenal fans told owner Stan Kroenke they felt
-                            marginalised and called for the US billionaire to
-                            reinvigorate the club.
-                        </p>
-
-                          <p>
-                            However, speaking on behalf of his father, director
-                            Kroenke rejected claims Arsenal desperately needed to
-                            restructure in order to achieve long-term success, and
-                            said the club already had "developed a modern
-                            infrastructure" following Arsene Wenger's departure
-                            from the club as manager last summer.
-                        </p>
-
-                          <p>
-                            Kroenke's statement read: "While we understand,
-                            appreciate, and agree with concerns about our club
-                            failing to achieve our goal of qualifying for the
-                            2019-20 Champions League, we respectfully disagree it
-                            is at a crossroads and things need to change because
-                            so much change has already occurred.
-                        </p>
-                          <img
-                            src={singleNews.newsMainImg}
-                            alt={singleNews.title}
-                          />
-                          <p>
-                            "Over the past year we have turned the page from our
-                            traditional model of football operations that included
-                            a Manager and CEO, to a new chapter of Arsenal
-                            Football Club that is led by a Head of Football and
-                            Managing Director.
-                        </p>
-                          <p>
-                            Arsenal are not at a crossroads according to director
-                            Josh Kroenke in a passionate response to an open
-                            letter from fans criticising his father's running of
-                            the club.
-                        </p>
-
-                          <p>
-                            In a combined statement from 14 supporter groups,
-                            Arsenal fans told owner Stan Kroenke they felt
-                            marginalised and called for the US billionaire to
-                            reinvigorate the club.
-                        </p>
-                          <p>
-                            In a combined statement from 14 supporter groups,
-                            Arsenal fans told owner Stan Kroenke they felt
-                            marginalised and called for the US billionaire to
-                            reinvigorate the club.
-                        </p>
                         </div>
                         <div className="related related-bottom">
                           <h4>Related Topics</h4>
