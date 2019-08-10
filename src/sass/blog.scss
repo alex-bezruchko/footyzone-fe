@@ -4,7 +4,7 @@
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
-  p,
+  // p,
   .body {
     font-family: $font_sans;
     font-size: 22px;
@@ -327,6 +327,9 @@ a {
       button {
         margin-bottom: 15px;
       }
+    }
+    .comment-body {
+      font-size: 1.1rem;
     }
   }
   .article-cover {
