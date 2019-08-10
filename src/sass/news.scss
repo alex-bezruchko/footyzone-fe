@@ -21,6 +21,9 @@
   .news .container {
     flex-direction: column;
     padding-bottom: 0px;
+    .col-sm-12 {
+      padding: 0px 8px;
+    }
     .category-header {
       font-size: 2rem;
     }
@@ -134,6 +137,7 @@ iframe .timeline-Widget {
 .news-list .body {
   font-size: 22px;
   line-height: 1.2;
+  margin-bottom: 15px;
 }
 
 .single-news {
