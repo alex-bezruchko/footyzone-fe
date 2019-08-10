@@ -38,17 +38,31 @@ const SingleNews = props => {
   }, [props.match.params.id, props.match.params.subcat_name]);
 
   let client = document.getElementsByTagName("body");
-  if (client[0] && client[0].clientWidth > 992) {
-    let element = document.getElementsByClassName("twitter");
-    $.when(element).then(function () {
-      let width = element[0].clientWidth;
-      $(".twitter").css("width", width);
-      $(".twitter .twitter-fixed").css("width", width);
-    });
-  } else {
-    $(".twitter").css("min-width", "100%");
-    $(".twitter .twitter-fixed").css("min-width", "100%");
-  }
+  $.when(client).then(function () {
+    if (client[0] && client[0].clientWidth > 992) {
+      let element = document.getElementsByClassName("twitter");
+      $.when(element).then(function () {
+        let width = element[0].clientWidth;
+        $(".twitter").css("width", width);
+        $(".twitter .twitter-fixed").css("width", width);
+      });
+    } else if (client[0] && client[0].clientWidth < 992) {
+      let element = document.getElementsByClassName("twitter");
+      $.when(element).then(function () {
+        let width = element[0].clientWidth;
+        $(".twitter").css("width", width);
+        $(".twitter .twitter-fixed").css("width", width);
+      });
+    } else {
+      let element = document.getElementsByClassName("twitter");
+      $.when(element).then(function () {
+        let width = element[0].clientWidth;
+        $(".twitter").css({ "width": width * 90 / 100, "margin-right": "auto", "margin-left": "auto" });
+        $(".twitter .twitter-fixed").css({ "width": width * 90 / 100, "margin-right": "auto", "margin-left": "auto" })
+      });
+    }
+  });
+
 
   $(window).scroll(function (e) {
     if ($(window).scrollTop() > 800) {
