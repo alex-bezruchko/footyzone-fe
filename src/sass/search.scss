@@ -29,7 +29,10 @@
 }
 
 @media #{$mobile} {
-    .body {}
+    .search-list img {
+        max-height: 250px;
+        min-height: 250px;
+    }
 
     .search,
     .search-list,
