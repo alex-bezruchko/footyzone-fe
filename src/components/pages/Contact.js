@@ -10,12 +10,12 @@ const Contact = props => {
       {props.loading ? (
         <img src={loading} alt="Contact form is loading gif" />
       ) : (
-        <FormGroup>
-          <Input placeholder="About You" />
-          <Input placeholder="Message" type="textarea" />
-          <Button color="success">Send</Button>
-        </FormGroup>
-      )}
+          <FormGroup>
+            <Input placeholder="About You" />
+            <Input placeholder="Message" type="textarea" />
+            <button className="blue">Send</button>
+          </FormGroup>
+        )}
     </div>
   );
 };

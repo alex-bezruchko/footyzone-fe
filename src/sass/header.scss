@@ -1,21 +1,25 @@
 .top-navbar {
   background-color: $blue;
+
   a {
     text-decoration: none;
     display: flex;
     color: $white;
     align-items: center;
   }
+
   .login {
     font-weight: bold;
     display: flex;
     align-items: center;
+
     span {
       padding-right: 15px;
       display: flex;
       flex-direction: row;
     }
   }
+
   .nav-account {
     align-self: center;
     font-family: $font_ubuntu;
@@ -24,35 +28,43 @@
     font-weight: 500;
     display: flex;
     align-items: center;
+
     span {
       display: flex;
       align-items: center;
+
       p {
         margin-bottom: 0px;
         margin-right: 9px;
       }
     }
+
     svg {
       color: $white;
       margin: 0px 0px 0px 10px;
     }
+
     .btn {
       padding: 0px;
       text-align: right;
+
       svg:hover {
         color: #000;
       }
     }
   }
+
   .container {
     display: flex;
     padding: 10px 0px;
     justify-content: space-between;
   }
+
   .nav {
     justify-content: space-between;
     display: flex;
     align-items: center;
+
     .container {
       display: flex;
       justify-content: space-between;
@@ -65,11 +77,16 @@
     // height: 150px;
     width: 100%;
   }
+
   .fanzone {
     font-family: $font_bungee;
-    color: $white;
-    font-size: 33px;
+    color: $black;
+    font-size: 2rem;
     padding-left: 15px;
+
+    &:hover {
+      color: #fff;
+    }
   }
 
   img {
@@ -85,10 +102,12 @@
     flex-direction: column;
     align-items: flex-end;
     padding: 15px 6px 0px 0px;
+
     p {
       padding-right: 8px;
     }
   }
+
   .bottom-navbar img {
     img {
       border-radius: 50%;
@@ -96,30 +115,37 @@
   }
 
   .top-navbar {
+
     .nav-account .hidden-xs,
     .nav-account .btn {
       display: none;
     }
+
     .container {
       padding: 15px 15px !important;
     }
+
     .nav-account {
       align-items: flex-end;
     }
+
     .fanzone {
-      font-size: 27px;
+      font-size: 1.66rem;
       padding-left: 10px;
     }
   }
 }
+
 .nav-search-form {
   margin-left: 0px;
   display: flex;
+
   input,
   svg {
     align-self: center;
     // color: black;
   }
+
   input {
     margin-bottom: 0px;
     width: 255px;
@@ -130,21 +156,26 @@
     font-family: $font_ubuntu;
     padding-left: 7px;
   }
+
   button {
     padding: 0px;
   }
+
   svg {
     font-size: 20px;
     color: black;
   }
 }
+
 .bottom-navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .dropdown-item {
     // .list-group-item {
     padding: 7px 0px !important;
+
     // }
     a {
       font-family: $font_sans !important;
@@ -153,14 +184,17 @@
       font-size: 23px;
     }
   }
+
   @media #{$desktop} {
     .list-group {
       flex-direction: row;
+
       .list-group-item {
         align-self: center;
         border: none;
         margin-bottom: 0px;
         padding: 6px 1.25rem;
+
         &:first-child {
           margin-left: 0px;
           padding-left: 0px;
@@ -172,47 +206,57 @@
   .visible-xs.list-group {
     display: none;
   }
+
   @media #{$mobile} {
     .visible-xs.list-group {
       display: flex;
       width: 50%;
       min-height: 100%;
+
       .nav-account {
         min-height: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         justify-content: space-between;
+
         .btn.btn-black {
           padding-right: 6px;
         }
       }
+
       img {
         min-height: 80px;
         max-width: 80px;
         border-radius: 50%;
         margin-bottom: 0px;
       }
+
       p {
         font-family: $font_ubuntu;
         text-transform: capitalize;
         font-weight: 500;
       }
+
       a {
         padding-top: 20px;
       }
+
       a,
       button {
         text-transform: capitalize;
+
         svg {
           margin-left: 8px;
         }
       }
     }
+
     .list-group {
       flex-direction: column;
       width: 50%;
     }
+
     .list-group-item {
       align-self: flex-start;
       margin-bottom: 0px;
@@ -222,31 +266,37 @@
       max-height: 60px;
       align-items: center;
       display: flex;
+
       &:first-child {
         padding-left: 10px;
         margin-bottom: 7px;
       }
     }
+
     form#search-nav {
       margin-left: 11px;
       display: flex;
       height: 60px;
     }
   }
+
   .dropdown-menu.show {
     z-index: 99999;
   }
+
   .btn .btn-secondary,
   .dropdown-toggle,
-  .show > .btn-secondary.dropdown-toggle {
+  .show>.btn-secondary.dropdown-toggle {
     background-color: $white;
     color: black;
     box-shadow: none;
+
     &:focus {
       background-color: $white;
       box-shadow: none;
     }
   }
+
   button,
   a {
     font-family: $font_ubuntu;
@@ -257,36 +307,44 @@
     letter-spacing: 0.5pt;
     color: $black;
     border: none;
+
     &:hover {
       text-decoration: none;
       color: $black;
     }
   }
+
   .active {
     border-bottom: 4px solid cadetblue;
     color: black;
   }
 }
+
 .top-navbar .container,
 .bottom-navbar.container {
   padding: 0px;
 }
+
 .navbar {
   width: 100%;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
 .disappear {
   opacity: 0;
   transition-duration: 0.3s;
 }
+
 .appear {
   opacity: 1;
   transition-duration: 0.3s;
 }
+
 .hidden {
   display: none;
 }
+
 .fixed-navbar {
   top: 0px;
   position: fixed;
@@ -294,6 +352,7 @@
   z-index: 999;
   background-color: $white;
 }
+
 .dropdown-menu.show {
   width: 333px;
   margin-left: -20px;
@@ -301,42 +360,51 @@
   padding-right: 15px;
   border-radius: 0px;
   left: 18px !important;
+
   .dropdown-item,
   .dropdown-item a:hover {
     background: #fff;
     color: $blue;
   }
 }
+
 @media #{$mobile} {
   .dropdown-menu.show {
     left: 18px !important;
   }
+
   .nav {
     justify-content: space-between;
   }
 }
+
 @media #{$desktop} {
   .navbar-toggler {
     display: none !important;
   }
+
   .navbar {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
   }
 }
+
 .navbar-toggler {
   border: 1.5px solid $black !important;
   padding: 0px 3px !important;
   margin-left: 6px;
+
   img {
     height: 35px;
     width: 35px;
     padding: 4px;
   }
+
   &:focus {
     outline: none;
   }
 }
+
 .button.dropdown-toggle.btn.btn-secondary.active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .btn.btn-secondary:hover,
@@ -349,17 +417,21 @@
   .top-navbar {
     padding: 15px 0px;
   }
+
   .navbar-toggler {
     display: none;
   }
+
   .collapse.navbar-collapse {
     display: flex;
     flex-direction: column;
   }
+
   .nav,
   .list-group {
     width: 100%;
   }
+
   .list-group {
     display: flex;
     flex-direction: row !important;
@@ -367,11 +439,14 @@
     margin-bottom: 0;
     align-items: center;
     justify-content: space-between;
+
     li {
       border: none;
+
       &:first-child {
         padding-left: 0px;
       }
+
       &:last-child {
         padding-right: 0px;
       }

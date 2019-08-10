@@ -95,13 +95,14 @@ class Footer extends React.Component {
               <Form
                 id="search-nav"
                 className="nav-search-form"
-                // onSubmit={this.searchTermHandler}
+              // onSubmit={this.searchTermHandler}
               >
                 <Input
                   placeholder="Subscribe"
                   // value={this.state.term}
+                  type="text"
                   name="subscribe"
-                  // onChange={this.changeHandler}
+                // onChange={this.changeHandler}
                 />
                 <Button type="submmit" color="white">
                   <FaEnvelope />
