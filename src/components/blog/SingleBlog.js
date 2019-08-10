@@ -118,7 +118,7 @@ class SingleView extends React.Component {
                 <img
                   src={this.props.postsReducer.post.postMainImg}
                   alt={this.props.postsReducer.post.title}
-                  className="article Cover"
+                  className="article-cover"
                 />
                 <div className="single-info">
                   <div className="single-share">
