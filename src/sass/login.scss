@@ -1,6 +1,7 @@
 .container.login {
   text-align: center;
 }
+
 .sign-up,
 .login-form {
   display: flex;
@@ -8,21 +9,33 @@
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  // min-width: 90%;
+  // width: 90%;
 }
+
 .sign-up {
   padding: 15px 0px 15px;
-  h4 {
+
+  .sign-wrapper {
     display: flex;
+
     justify-content: space-around;
-    align-items: center;
+
+    // align-items: center;
+    h4 {
+      text-align: left;
+    }
   }
+
   .btn {
     margin-left: 15px;
   }
 }
+
 .login-form {
   text-align: center;
   margin-top: 100px;
+
   .container {
     // width: 300px;
     padding-left: 0px;
@@ -30,17 +43,52 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   h1 {
     margin-bottom: 33px;
   }
+
   button.close {
     float: right;
     right: 0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     span {
       padding: 0px !important;
     }
   }
+}
+
+@media #{$mobile} {
+
+  .login-form,
+  .sign-up {
+    width: 90% !important;
+  }
+
+  .sign-wrapper {
+    min-width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+
+    h5 {
+      text-align: left;
+      margin-bottom: 0px;
+      ;
+    }
+
+    a {
+      margin-left: 0px;
+      min-width: 30%;
+
+      .btn {
+        width: 100%;
+        margin-left: 0px;
+      }
+    }
+  }
+
 }

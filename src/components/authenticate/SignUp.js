@@ -123,64 +123,64 @@ class SignUp extends React.Component {
             alt="PostForm form is loading gif"
           />
         ) : (
-          <>
-            <form className="form login-form" onSubmit={this.signupHandler}>
-              <h1>Sign Up</h1>
-              <Input
-                onChange={this.changeHandler}
-                placeholder="Username"
-                name="username"
-                type="text"
-                value={this.state.username}
-              />
-              {this.state.usernameError ? (
-                <Alert color="danger">Username is required.</Alert>
-              ) : null}
+            <>
+              <form className="form login-form" onSubmit={this.signupHandler}>
+                <h1>Sign Up</h1>
+                <Input
+                  onChange={this.changeHandler}
+                  placeholder="Username"
+                  name="username"
+                  type="text"
+                  value={this.state.username}
+                />
+                {this.state.usernameError ? (
+                  <Alert color="danger">Username is required.</Alert>
+                ) : null}
 
-              <Input
-                onChange={this.changeHandler}
-                placeholder="Password"
-                name="password"
-                type="password"
-                value={this.state.password}
-              />
-              {this.state.passwordError ? (
-                <Alert color="danger">Password is required.</Alert>
-              ) : null}
+                <Input
+                  onChange={this.changeHandler}
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                />
+                {this.state.passwordError ? (
+                  <Alert color="danger">Password is required.</Alert>
+                ) : null}
 
-              <Input
-                onChange={this.changeHandler}
-                placeholder="Confirm Password"
-                name="passRepeat"
-                type="password"
-                value={this.state.passRepeat}
-              />
-              {this.state.passRepeatError ? (
-                <Alert color="danger">Password repeat is required.</Alert>
-              ) : null}
+                <Input
+                  onChange={this.changeHandler}
+                  placeholder="Confirm Password"
+                  name="passRepeat"
+                  type="password"
+                  value={this.state.passRepeat}
+                />
+                {this.state.passRepeatError ? (
+                  <Alert color="danger">Password repeat is required.</Alert>
+                ) : null}
 
-              {this.state.notMatchingPassError === true ? (
-                <Alert color="danger">Passwords do not match.</Alert>
-              ) : null}
+                {this.state.notMatchingPassError === true ? (
+                  <Alert color="danger">Passwords do not match.</Alert>
+                ) : null}
 
 
-              {this.props.usersReducer.signupError === true ? (
-                <Alert color="danger">This username already exists.</Alert>
-              ) : null}
-              <button className="btn btn-info" type="submit">
-                Sign Up
+                {this.props.usersReducer.signupError === true ? (
+                  <Alert color="danger">This username already exists.</Alert>
+                ) : null}
+                <button className="btn btn-info" type="submit">
+                  Sign Up
               </button>
-            </form>
-            <div className="sign-up">
-              <h4>
-                Already have an account?
-                <Link to={"/login"}>
-                  <button className="btn btn-success">Log In</button>
-                </Link>
-              </h4>
-            </div>
-          </>
-        )}
+              </form>
+              <div className="sign-up">
+                <div className="sign-wrapper">
+                  <h5>Already have an account?</h5>
+                  <Link to={"/login"}>
+                    <button className="btn btn-success">Log In</button>
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
       </div>
     );
   }

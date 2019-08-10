@@ -61,56 +61,57 @@ class LoginForm extends React.Component {
             alt="PostForm form is loading gif"
           />
         ) : (
-          // </div>
-          <form className="form login-form" onSubmit={this.loginHandler}>
-            <div className="container">
-              {this.props.signupSuccess === true ? (
-                <UncontrolledAlert color="success">
-                  User was successfully registered.
+            // </div>
+            <form className="form login-form" onSubmit={this.loginHandler}>
+              <div className="container">
+                {this.props.signupSuccess === true ? (
+                  <UncontrolledAlert color="success">
+                    User was successfully registered.
                 </UncontrolledAlert>
+                ) : null}
+              </div>
+              <h1>Login</h1>
+              <Input
+                onChange={this.changeHandler}
+                placeholder="Username"
+                name="username"
+                type="text"
+                value={this.state.username}
+              />
+              {this.state.usernameError ? (
+                <Alert color="danger">Username is required.</Alert>
               ) : null}
-            </div>
-            <h1>Login</h1>
-            <Input
-              onChange={this.changeHandler}
-              placeholder="Username"
-              name="username"
-              type="text"
-              value={this.state.username}
-            />
-            {this.state.usernameError ? (
-              <Alert color="danger">Username is required.</Alert>
-            ) : null}
 
-            <Input
-              onChange={this.changeHandler}
-              placeholder="Password"
-              name="password"
-              type="password"
-              value={this.state.password}
-            />
-            {this.state.passwordError ? (
-              <Alert color="danger">Password is required.</Alert>
-            ) : null}
+              <Input
+                onChange={this.changeHandler}
+                placeholder="Password"
+                name="password"
+                type="password"
+                value={this.state.password}
+              />
+              {this.state.passwordError ? (
+                <Alert color="danger">Password is required.</Alert>
+              ) : null}
 
-            {this.props.loginError === true ? (
-              <Alert color="danger">
-                These credentials do not match our records.
+              {this.props.loginError === true ? (
+                <Alert color="danger">
+                  These credentials do not match our records.
               </Alert>
-            ) : null}
+              ) : null}
 
-            <button className="btn btn-info" type="submit">
-              LogIn
+              <button className="btn btn-info" type="submit">
+                LogIn
             </button>
-          </form>
-        )}
+            </form>
+          )}
         <div className="sign-up">
-          <h4>
-            Don't have an account?
+          <div className="sign-wrapper">
+            <h5>Don't have an account?</h5>
             <Link to={"/signup"}>
               <button className="btn btn-success btn-sm">Sign Up</button>
             </Link>
-          </h4>
+          </div>
+
         </div>
       </div>
     );
