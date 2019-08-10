@@ -266,6 +266,7 @@ a .carousel-control-next-icon {
   .welcome-blog {
     .container.header h1 {
       margin-top: 18px;
+      width: 100%;
     }
 
     .body {
@@ -410,14 +411,14 @@ h1.latest {
       text-align: center;
       padding: 5px 12px 10px;
       font-size: 60px;
-      background-color: white;
+      background-color: rgba(255, 199, 155, 0.98);
       color: black;
-      width: 100%;
+      // width: 100%;
     }
   }
 
   .category-blog {
-    background-color: #fff;
+    background-color: rgba(255, 199, 155, 0.98);
     margin-bottom: 27px;
 
     h2 {
@@ -432,7 +433,7 @@ h1.latest {
     max-width: 45%;
     padding: 10px 6px;
     margin-bottom: 100px;
-    border: 1px solid $wheat !important;
+    border: 1px solid rgba(255, 199, 155, 0.98) !important;
   }
 }
 
