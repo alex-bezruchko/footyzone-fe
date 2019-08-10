@@ -359,6 +359,14 @@ a {
   }
 
   .single {
+    .commentator {
+      margin-right: 15px;
+    }
+
+    .blue {
+      width: 100%;
+    }
+
     .single-info {
       margin-bottom: 13px;
     }
@@ -370,7 +378,8 @@ a {
     }
   }
 
-  .single-blog-wrapper .avatar {
+  .single-blog-wrapper .avatar,
+  .single .comments img {
     max-width: 70px;
     min-width: 70px;
     max-height: 70px;
