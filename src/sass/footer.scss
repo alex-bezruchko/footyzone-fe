@@ -1,9 +1,11 @@
 footer {
   padding: 25px 0px 0px;
+
   .nav {
     display: flex;
     justify-content: space-between;
   }
+
   .nav-search-form input.form-control {
     width: 200px;
     margin-right: 0px;
@@ -12,21 +14,26 @@ footer {
     padding-left: 2px;
     padding-top: 15px;
     outline: none;
+
     &:focus {
       outline: none;
     }
+
     button.btn.btn-white {
       width: 60px;
     }
   }
+
   @media #{$mobile} {
     .nav-search-form input.form-control {
       height: auto;
       padding-top: 5px;
       outline: none;
+
       &:focus {
         outline: none;
       }
+
       button.btn.btn-white {
         width: 60px;
       }
@@ -40,10 +47,12 @@ footer {
       justify-content: space-between;
     }
   }
+
   .nav-search-form svg {
     font-size: 50px;
     padding: 7px;
   }
+
   li,
   button,
   a {
@@ -51,19 +60,23 @@ footer {
     width: 100%;
     padding: 3px 0px;
     font-size: 21px;
+
     &:first-child {
       font-weight: 500;
     }
   }
+
   p {
     text-align: center;
     font-family: $font_sans;
     font-size: 20px;
+
     span {
       font-family: $font_bungee;
       font-size: 20px;
     }
   }
+
   .footer-socials {
     display: flex;
     flex-direction: row;
@@ -73,19 +86,26 @@ footer {
       fill: $white;
       border: 1px solid $grey;
     }
+
     rect {
       fill: $grey;
     }
   }
 }
+
 @media #{$mobile} {
   footer {
     .list-group {
       margin-right: 0px;
+      padding-left: 5px;
       padding-right: 0px;
       flex-wrap: wrap;
       width: 50%;
       margin-bottom: 13px;
+
+      a {
+        font-size: 1.2rem;
+      }
     }
   }
 }

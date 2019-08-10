@@ -253,6 +253,10 @@ a {
     font-family: $font_sans !important;
     font-weight: normal;
     font-size: 18px;
+
+    .svg {
+      margin-right: 15px;
+    }
   }
 
   .avatar {
@@ -358,7 +362,9 @@ a {
     // background-size: auto;
   }
 
-  .single {
+  .single.col-md-8 {
+    padding: 0px 6px;
+
     .commentator {
       margin-right: 15px;
     }
@@ -374,7 +380,7 @@ a {
     h2 {
       font-size: 1.4rem;
       line-height: 1.2;
-      margin-top: 30px;
+      margin-top: 15px;
     }
   }
 
@@ -398,8 +404,8 @@ a {
     }
 
     img {
-      min-height: 266px;
-      max-height: 266px;
+      min-height: 250px;
+      max-height: 250px;
     }
   }
 
@@ -430,8 +436,8 @@ a {
   }
 
   .article-cover {
-    max-height: 266px !important;
-    min-height: 266px !important;
-    height: 266px !important;
+    max-height: 250px !important;
+    min-height: 250px !important;
+    height: 250px !important;
   }
 }

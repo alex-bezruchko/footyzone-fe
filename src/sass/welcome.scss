@@ -128,9 +128,10 @@ a .carousel-control-next-icon {
     padding-bottom: 0px;
     padding-right: 15px;
     z-index: 0;
+
     &:hover {
       color: $wheat;
-      
+
     }
 
     h3 {
@@ -254,15 +255,24 @@ a .carousel-control-next-icon {
   .welcome-container .container {
     padding-bottom: 15px;
     padding-top: 25px;
+
+
   }
+
   h1.latest {
     display: none;
   }
+
   .welcome-blog {
+    .container.header h1 {
+      margin-top: 18px;
+    }
+
     .body {
       margin-top: 15px;
     }
   }
+
   .category-blog h2 {
     min-height: 40px;
   }
@@ -296,8 +306,14 @@ a .carousel-control-next-icon {
     }
   }
 
+  .post-wrapper,
+  .post-wrapper img {
+    min-height: 133px;
+    max-height: 133px;
+  }
+
   .small-carousel .small-carousel-post p {
-    font-size: 19px;
+    font-size: 1rem;
     margin-bottom: 0px;
     height: auto;
   }
@@ -351,8 +367,8 @@ h1.latest {
     img {
       max-width: 100%;
       min-width: 100%;
-      max-height: 266px;
-      min-height: 266px;
+      max-height: 250px;
+      min-height: 250px;
       margin-bottom: 10px;
     }
 
@@ -389,14 +405,14 @@ h1.latest {
     font-family: $font_bungee;
     justify-content: center;
     color: #fff;
-    padding: 54px 0px 45px;
 
     h1 {
-      align-self: center;
+      text-align: center;
       padding: 5px 12px 10px;
       font-size: 60px;
       background-color: white;
       color: black;
+      width: 100%;
     }
   }
 
@@ -414,7 +430,7 @@ h1.latest {
   .col-md-6 {
     flex: 0 0 45%;
     max-width: 45%;
-    padding: 10px;
+    padding: 10px 6px;
     margin-bottom: 100px;
     border: 1px solid $wheat !important;
   }
