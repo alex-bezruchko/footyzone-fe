@@ -80,21 +80,21 @@ class UsersList extends React.Component {
             <img alt="Loading gif" src={loading} />
           </aside>
         ) : (
-          <div className="sidebar-list">
-            <h2>Your Post</h2>
+            <div className="sidebar-list users-post">
+              <h2>Your Post</h2>
 
-            {this.props.postsReducer.posts.map((post, index) => {
-              return (
-                <Link key={index} to={`/blog/${post.id}`}>
-                  <div id={post.id} post={post} className="sidebar-list-post">
-                    <img src={post.postMainImg} alt="" />
-                    <p>{post.title}</p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        )}
+              {this.props.postsReducer.posts.map((post, index) => {
+                return (
+                  <Link key={index} to={`/blog/${post.id}`}>
+                    <div id={post.id} post={post} className="sidebar-list-post">
+                      <img src={post.postMainImg} alt="" />
+                      <p>{post.title}</p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
       </div>
     );
   }

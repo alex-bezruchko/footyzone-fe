@@ -96,6 +96,13 @@ iframe .timeline-Widget {
   flex-direction: column;
 }
 
+.users-post {
+  img {
+    min-height: 95px;
+    max-height: 95px;
+  }
+}
+
 .news,
 .news-list {
   .author {
