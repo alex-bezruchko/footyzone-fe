@@ -21,8 +21,14 @@
   .news .container {
     flex-direction: column;
     padding-bottom: 0px;
+    .category-header {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
   }
-
+  
   .news .container {
     .col-md-4.col-xs-12 {
       margin-top: 50px;
@@ -119,6 +125,9 @@ iframe .timeline-Widget {
   .category-news {
     margin-top: 15px;
     min-width: 100%;
+    h2 {
+      font-size: 1.4rem;
+    }
   }
 }
 
