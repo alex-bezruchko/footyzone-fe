@@ -277,10 +277,10 @@ class Header extends React.Component {
                       <div className="hidden-xs">
                         <p>Hi, {this.props.user.username}!</p>
                         <img src={this.props.user.avatar} alt="avatar" />
-                        <NavLink onClick={this.toggleNav} to={`/${this.props.user.username}/create-post`}>
+                        <Link onClick={this.toggleNav} to={`/${this.props.user.username}/create-post`}>
                           Add a Post
                           <FaPlusCircle />
-                        </NavLink>
+                        </Link>
                       </div>
                       <Button color="black" onClick={this.logOutUser} >
                         Log Out

@@ -13,12 +13,13 @@
     }
 
     .nav-search-form {
-        width: 95%;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
         display: flex;
         justify-content: space-between;
         margin-bottom: 33px;
+        padding-left: 8px;
     }
 
     .nav-search-form input,
@@ -29,19 +30,13 @@
     }
 }
 
-
 @media #{$desktop} {
 
-    // .search-list {
     .container.search,
     .col-md-8.search-list {
         padding-left: 0px;
         padding-right: 0px;
-
-
     }
-
-    // }
 }
 
 @media #{$mobile} {
@@ -55,5 +50,9 @@
     .search-list .container {
         padding-left: 0px !important;
         padding-right: 0px !important;
+    }
+
+    .search-list .post-detail-body {
+        margin-bottom: 33px;
     }
 }

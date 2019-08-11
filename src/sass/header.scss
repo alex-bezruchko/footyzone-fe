@@ -281,6 +281,8 @@
       a,
       button {
         text-transform: capitalize;
+        display: flex;
+        align-items: center;
 
         svg {
           margin-left: 8px;
