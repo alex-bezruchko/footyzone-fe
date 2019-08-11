@@ -160,6 +160,11 @@ iframe .timeline-Widget {
     margin-top: 15px;
   }
 
+  .socials .shares {
+    display: flex;
+    flex-direction: row;
+  }
+
   aside {
     display: flex;
     flex-direction: column;
@@ -298,6 +303,10 @@ iframe .timeline-Widget {
 }
 
 @media #{$desktop} {
+  .socials {
+    flex-direction: column;
+  }
+
   .socials .SocialMediaShareButton {
     svg {
       width: 28px;
@@ -311,6 +320,10 @@ iframe .timeline-Widget {
     margin-bottom: 0px;
     margin-top: 0px;
     border: none !important;
+  }
+
+  .socials {
+    flex-direction: column;
   }
 
   .socials .SocialMediaShareButton {
@@ -384,8 +397,12 @@ iframe .timeline-Widget {
     }
 
     .socials {
-      justify-content: center;
+      justify-content: space-between;
       padding-bottom: 10px;
+
+      .counts {
+        padding-right: 5px;
+      }
     }
 
     .related-bottom {

@@ -5,7 +5,7 @@ import imgLoading from "./../../../src/loading.gif";
 import $ from "jquery";
 import TwitterSidebar from "../parts/TwitterSidebar";
 import { Link } from "react-router-dom";
-
+import { FaThumbsUp } from "react-icons/fa";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -17,6 +17,7 @@ import {
   RedditIcon,
   PinterestShareButton,
   PinterestIcon,
+
 } from "react-share";
 
 const SingleNews = props => {
@@ -126,45 +127,56 @@ const SingleNews = props => {
                         <div className="socials">
                           {singleNews.title ? (
                             <>
-                              <FacebookShareButton
-                                url={window.location.href}
-                                media={singleNews.title}
-                                className="button"
-                              >
-                                <FacebookIcon size={32} round={false} />
-                              </FacebookShareButton>
-                              <TwitterShareButton
-                                url={window.location.href}
-                                media={singleNews.title}
-                                className="button"
-                              >
-                                <TwitterIcon size={32} round={false} />
-                              </TwitterShareButton>
-                              <PinterestShareButton
-                                url={window.location.href}
-                                media={singleNews.title}
-                                className="button"
-                              >
-                                <PinterestIcon size={32} round={false} />
-                              </PinterestShareButton>
-                              <WhatsappShareButton
-                                url={window.location.href}
-                                media={singleNews.title}
-                                className="button"
-                              >
-                                <WhatsappIcon size={32} round={false} />
-                              </WhatsappShareButton>
-                              <RedditShareButton
-                                url={window.location.href}
-                                media={singleNews.title}
-                                className="button"
-                              >
-                                <RedditIcon size={32} round={false} />
-                              </RedditShareButton>
+                              <div className="shares">
+
+                                <FacebookShareButton
+                                  url={window.location.href}
+                                  media={singleNews.title}
+                                  className="button"
+                                >
+                                  <FacebookIcon size={32} round={false} />
+                                </FacebookShareButton>
+                                <TwitterShareButton
+                                  url={window.location.href}
+                                  media={singleNews.title}
+                                  className="button"
+                                >
+                                  <TwitterIcon size={32} round={false} />
+                                </TwitterShareButton>
+                                <PinterestShareButton
+                                  url={window.location.href}
+                                  media={singleNews.title}
+                                  className="button"
+                                >
+                                  <PinterestIcon size={32} round={false} />
+                                </PinterestShareButton>
+                                <WhatsappShareButton
+                                  url={window.location.href}
+                                  media={singleNews.title}
+                                  className="button"
+                                >
+                                  <WhatsappIcon size={32} round={false} />
+                                </WhatsappShareButton>
+                                <RedditShareButton
+                                  url={window.location.href}
+                                  media={singleNews.title}
+                                  className="button"
+                                >
+                                  <RedditIcon size={32} round={false} />
+                                </RedditShareButton>
+
+                              </div>
+                              <div className="counts">
+                                <FaThumbsUp />{" "}
+                                {singleNews.likes.length}
+                                {/* {singleNews.comments.length} */}
+
+                              </div>
                             </>
                           ) : (
                               <></>
                             )}
+
                         </div>
                         <div className="related">
                           <h4>Related Topics</h4>

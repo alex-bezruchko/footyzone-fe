@@ -28,7 +28,7 @@ import {
 } from "react-icons/fa";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 
 class Header extends React.Component {
   constructor(props) {
@@ -101,6 +101,9 @@ class Header extends React.Component {
     }
   }
   logOutUser = e => {
+    // this.setState(prevState => ({
+    //   toggleNav: !prevState.toggleNav,
+    // }));
     e.preventDefault();
     localStorage.setItem("jwt", "");
     localStorage.setItem("username", "");
@@ -119,7 +122,7 @@ class Header extends React.Component {
       this.props.history
     );
     this.setState(prevState => ({
-      toggleNav: !prevState.toggleNav,
+      isOpen: !prevState.isOpen,
     }));
   };
   render() {
@@ -208,11 +211,11 @@ class Header extends React.Component {
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                        <Link
-                          onClick={this.toggleNav}
-                          to={"/leagues/uefacl/page/1"}
-                        >
-                          Champions League
+                          <Link
+                            onClick={this.toggleNav}
+                            to={"/leagues/uefacl/page/1"}
+                          >
+                            Champions League
                           </Link>
                         </DropdownItem>
                       </DropdownMenu>
@@ -266,7 +269,7 @@ class Header extends React.Component {
                     </Dropdown>
                   </ListGroupItem>
 
-                  
+
                 </ListGroup>
                 <ListGroup className="visible-xs">
                   {this.props.isLoggedIn ? (
@@ -279,7 +282,7 @@ class Header extends React.Component {
                           <FaPlusCircle />
                         </NavLink>
                       </div>
-                      <Button color="black" onClick={this.toggleNav} onClick={this.logOutUser} >
+                      <Button color="black" onClick={this.logOutUser} >
                         Log Out
                         <FaLockOpen />
                       </Button>

@@ -9,7 +9,6 @@ import { fetchPopular } from "../../actions/newsActions";
 class PopularNews extends React.Component {
   componentDidMount() {
     this.props.fetchPopular();
-    console.log(this.props.news);
   }
 
   render() {
@@ -20,33 +19,33 @@ class PopularNews extends React.Component {
             {/* <img alt="Loading gif" src={loading} /> */}
           </div>
         ) : (
-          <div className="sidebar-list">
-            <h2>Trending</h2>
-            {this.props.news.length > 0 ? (
-              <>
-                {this.props.news.map((news, index) => {
-                  return (
-                    <Link
-                      key={index}
-                      to={`/news/${news.subcat_slug}/${news.id}`}
-                    >
-                      <div
-                        id={news.id}
-                        news={news}
-                        className="sidebar-list-post"
+            <div className="sidebar-list">
+              <h2>Trending</h2>
+              {this.props.news.length > 0 ? (
+                <>
+                  {this.props.news.map((news, index) => {
+                    return (
+                      <Link
+                        key={index}
+                        to={`/news/${news.subcat_slug}/${news.id}`}
                       >
-                        <img src={news.newsMainImg} alt="" />
-                        <p>{news.title}</p>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
-        )}
+                        <div
+                          id={news.id}
+                          news={news}
+                          className="sidebar-list-post"
+                        >
+                          <img src={news.newsMainImg} alt="" />
+                          <p>{news.title}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </>
+              ) : (
+                  <></>
+                )}
+            </div>
+          )}
       </>
     );
   }

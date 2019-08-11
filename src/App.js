@@ -5,7 +5,6 @@ import SingleBlog from "./components/blog/SingleBlog";
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
 import Bloglist from "./components/blog/Bloglist";
-import missing from "./../src/img/missing.jpg";
 
 import SearchResultsList from "./components/pages/SearchResultsList";
 import Welcome from "./components/pages/Welcome";
@@ -64,7 +63,7 @@ class App extends React.Component {
               />
               <Route path="/" component={EmptyPage} />
             </Switch>
-            
+
           </div>
         </section>
       </div>
