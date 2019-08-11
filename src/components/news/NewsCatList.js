@@ -20,7 +20,10 @@ const NewsCatList = ({ news, loading, subcat_name, props }) => {
   return (
     <div className="news-list container">
       <div className="col-sm-12 col-md-8">
-        <h1 className="category-header">{props.match.params.subcat_name}</h1>
+        <div className="category-header">
+          {news[0] && <h1>{news[0].subcat_name}</h1>}
+          {news[0] && <img className="subcat_logo" alt="logo" src={news[0].logo} />}
+        </div>
         {/* </div> */}
         <div news={news} className="category-news">
           {news.map(news => (
