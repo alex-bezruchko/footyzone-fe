@@ -15,25 +15,28 @@ class SearchForm extends React.Component {
         }
     }
     changeHandler = e => {
-        this.setState({[e.target.name]: e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
     searchTermHandler = e => {
         e.preventDefault();
         this.props.setSearchTerm(this.state.term);
-        
+        if (this.props.isOpen === true) {
+            this.props.toggleNav();
+
+        }
         this.setState({ term: '', loading: false });
         this.props.history.push('/search')
     }
     render() {
-        return(
+        return (
             <Form id="search-nav" className="nav-search-form" onSubmit={this.searchTermHandler}>
-                <Input 
+                <Input
                     placeholder="Search"
                     value={this.state.term}
                     name="term"
                     onChange={this.changeHandler}
                 />
-                <Button type="submmit" color="white"><FaSearch/></Button>
+                <Button type="submmit" color="white"><FaSearch /></Button>
             </Form>
         )
     }
@@ -44,7 +47,7 @@ const mapStateToProps = ({ postsReducer: state }) => {
         posts: state.posts,
         loading: state.loading
     };
-  };
+};
 
-export default withRouter(connect(mapStateToProps, {setSearchTerm})(SearchForm));
+export default withRouter(connect(mapStateToProps, { setSearchTerm })(SearchForm));
 

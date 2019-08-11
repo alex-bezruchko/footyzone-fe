@@ -11,6 +11,22 @@
         font-size: 22px;
         line-height: 1.2;
     }
+
+    .nav-search-form {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 33px;
+    }
+
+    .nav-search-form input,
+    .nav-search-form input:focus {
+        width: 100%;
+
+        background-color: #fff !important;
+    }
 }
 
 

@@ -292,7 +292,7 @@ class Header extends React.Component {
                     )}
                 </ListGroup>
               </Nav>
-              <SearchForm />
+              <SearchForm isOpen={this.state.isOpen} toggleNav={this.toggleNav} />
             </Collapse>
           </Navbar>
         </div>

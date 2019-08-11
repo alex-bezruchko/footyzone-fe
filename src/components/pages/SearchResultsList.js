@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { searchTerm } from '../../actions/newsActions';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import SearchForm from "./../parts/SearchForm";
 class SearchResultsList extends React.Component {
 
     componentDidMount() {
@@ -36,6 +36,9 @@ class SearchResultsList extends React.Component {
         return (
             <div className="container search">
                 <div className="col-md-8 search-list">
+                    <div className="container">
+                        <SearchForm />
+                    </div>
                     <div className="container">
                         <h1 className="bungee">Results: </h1>
 
