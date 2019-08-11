@@ -11,8 +11,6 @@
 
   .col-md-8 {
     align-self: center;
-    text-align: center;
-    padding: 53px 0px 20px !important;
   }
 
   .category-header {
@@ -22,6 +20,25 @@
     width: 100%;
     justify-content: space-around;
     border-bottom: 0px;
+  }
+
+  .single-news {
+    .author {
+      flex-direction: column;
+      padding-bottom: 10px;
+
+      span {
+        padding: 0px;
+      }
+    }
+
+    .author,
+    h2,
+    .single-main {
+      align-items: flex-start;
+      padding-right: 8px;
+      padding-left: 8px;
+    }
   }
 }
 
@@ -37,9 +54,10 @@
     .category-header {
       h1 {
         margin: 0px;
+        margin-top: 50px;
       }
 
-      font-size: 2.3rem;
+      font-size: 1.6rem;
       display: flex;
 
       border-bottom: 0px;
@@ -109,6 +127,7 @@ iframe .timeline-Widget {
 .list-wrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 25px;
 }
 
 .users-post {
@@ -156,7 +175,7 @@ iframe .timeline-Widget {
   }
 
   .category-news {
-    margin-top: 15px;
+    // margin-top: 15px;
     min-width: 100%;
 
     h2 {
@@ -167,12 +186,7 @@ iframe .timeline-Widget {
 
 .news-list {
 
-  .body,
-  h2,
-  .category-header {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
+
 
   .body,
   h2 {
@@ -292,6 +306,18 @@ iframe .timeline-Widget {
 }
 
 @media #{$desktop} {
+
+  .news-list,
+  .single-news {
+
+    .body,
+    h2,
+    .category-header {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
   .twitter-fixed {
     margin-top: 33px;
     position: fixed !important;
@@ -314,6 +340,8 @@ iframe .timeline-Widget {
   .col-md-8 {
     position: relative;
     margin-right: 15px;
+    padding: 53px 0px 20px !important;
+
   }
 
   .col-md-4.col-xs-12 {
@@ -322,6 +350,8 @@ iframe .timeline-Widget {
 
   .single-news {
     position: relative;
+    padding-left: 8px;
+    padding-right: 8px;
 
     .single-body {
       padding-left: 0px;
