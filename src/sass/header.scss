@@ -475,6 +475,10 @@
     background-color: $old;
   }
 
+  .navbar-expand-md {
+    padding: 0px !important;
+  }
+
   .list-group {
     display: flex;
     flex-direction: row !important;
@@ -482,7 +486,11 @@
     margin-bottom: 0;
     align-items: center;
     justify-content: space-between;
-    background-color: $old;
+
+    .list-group-item {
+      background-color: $old;
+    }
+
 
     li {
       border: none;

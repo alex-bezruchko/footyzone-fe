@@ -250,12 +250,12 @@ a {
   align-items: center;
 
   .author {
-    font-family: $font_sans !important;
+    font-family: $font_ubuntu !important;
     font-weight: normal;
     font-size: 18px;
 
     span {
-      font-family: $font_ubuntu;
+      font-weight: 600;
       text-transform: lowercase;
       padding: 0px;
       font-size: 1.1rem;
@@ -308,6 +308,8 @@ a {
 
     .socials {
       justify-content: center;
+      flex-direction: row;
+      // .
     }
   }
 }
@@ -410,10 +412,10 @@ a {
 
   .single-blog-wrapper .avatar,
   .single .comments img {
-    max-width: 70px;
-    min-width: 70px;
-    max-height: 70px;
-    min-height: 70px;
+    max-width: 90px;
+    min-width: 90px;
+    max-height: 90px;
+    min-height: 90px;
     margin-right: 3px;
   }
 

@@ -19,6 +19,7 @@ import {
   PinterestIcon,
 
 } from "react-share";
+import { FaPrint, FaCalendar } from "react-icons/fa";
 
 const SingleNews = props => {
   // componentDidMount() {
@@ -114,11 +115,15 @@ const SingleNews = props => {
                       {" "}
                       <h2>{singleNews.title}</h2>
                       <div className="author">
-                        <p>
-                          Submitted on{" "}
-                          {new Date(singleNews.published).toDateString()}
-                        </p>
-                        <img alt="author" src={singleNews.avatar} />
+                        <div>
+                          <FaPrint /> <span> by <span>{singleNews.username}</span></span>
+                        </div>
+                        <div>
+                          <FaCalendar /> on {" "}
+                          {new Date(
+                            singleNews.published
+                          ).toDateString()}
+                        </div>
                       </div>
                       <img src={singleNews.newsMainImg} alt={singleNews.title} />
                     </div>

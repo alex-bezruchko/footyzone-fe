@@ -229,6 +229,10 @@ iframe .timeline-Widget {
     }
   }
 
+  .author {
+    font-family: $font_ubuntu;
+  }
+
   ul {
     display: flex;
     margin-left: 0px;
@@ -346,6 +350,26 @@ iframe .timeline-Widget {
 @media #{$mobile} {
   .author {
     justify-content: space-between;
+    // padding-top: 0px !important;
+    flex-direction: column;
+    align-items: start !important;
+    padding-bottom: 10px;
+
+    div {
+      display: flex;
+      align-items: center;
+      padding-bottom: 5px;
+    }
+
+    svg {
+      margin-right: 5px;
+      font-size: 1.4rem;
+    }
+
+    p {
+      align-self: flex-end;
+      padding-bottom: 8px;
+    }
   }
 
   .news-list {
@@ -373,6 +397,7 @@ iframe .timeline-Widget {
 
     .single-body {
       padding-left: 0px;
+      margin-top: 0px;
       width: 100%;
       font-size: 1.6rem;
       line-height: 1.2;
