@@ -1,4 +1,7 @@
 .search-list {
+    h1.bungee {
+        align-self: baseline;
+    }
 
     margin-top: 40px;
 
@@ -30,7 +33,19 @@
     }
 }
 
-@media #{$desktop} {
+@media #{$desktop, $tablet} {
+    .search {
+        display: flex;
+        flex-direction: row;
+
+        .nav-search-form {
+            display: none;
+        }
+
+        .popular {
+            margin-top: 30px;
+        }
+    }
 
     .container.search,
     .col-md-8.search-list {

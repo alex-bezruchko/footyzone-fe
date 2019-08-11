@@ -1,12 +1,14 @@
 import React from 'react';
 import loading from './../../../src/loading.gif';
 import blank from './../../img/blank.jpeg';
-
+import $ from "jquery";
 import { connect } from 'react-redux';
 import { searchTerm } from '../../actions/newsActions';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import SearchForm from "./../parts/SearchForm";
+import PopularNews from "./../../components/news/PopularNews";
+
 class SearchResultsList extends React.Component {
 
     componentDidMount() {
@@ -15,6 +17,35 @@ class SearchResultsList extends React.Component {
         } else {
             this.props.history.push('/search');
         }
+
+        let client = document.getElementsByTagName("section");
+        if (client[0] && client[0].clientWidth > 992) {
+            let element = document.getElementsByClassName("popular");
+            $.when(element).then(function () {
+                let width = element[0].clientWidth;
+                $(".popular").css("width", width);
+                $(".popular .twitter-fixed").css("width", width);
+            });
+        } else {
+            $(".popular").css("min-width", "100%");
+            $(".popular .twitter-fixed").css("min-width", "100%");
+        }
+
+        $(window).scroll(function (e) {
+            let article = document.getElementsByClassName("search");
+
+            if (article[0]) {
+                let height = article[0].clientHeight;
+                if (
+                    $(window).scrollTop() > 150 &&
+                    $(window).scrollTop() < (height * 8.5) / 10
+                ) {
+                    $(".col-md-4 .popular").addClass("twitter-fixed");
+                } else {
+                    $(".col-md-4 .popular").removeClass("twitter-fixed");
+                }
+            }
+        });
     }
 
 
@@ -78,6 +109,11 @@ class SearchResultsList extends React.Component {
                         }
                     </div>
 
+                </div>
+                <div className="col-md-4 col-xs-12">
+                    <div className="popular">
+                        <PopularNews />
+                    </div>
                 </div>
             </div>
 

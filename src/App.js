@@ -14,7 +14,6 @@ import UsersPosts from "./components/users/UsersPosts";
 import PostCrud from "./components/pages/PostCrud";
 import NewsCrud from "./components/news/NewsCrud";
 import EmptyPage from "./components/authenticate/EmptyPage";
-
 import "./App.scss";
 
 class App extends React.Component {
@@ -61,6 +60,7 @@ class App extends React.Component {
                 path="/search"
                 render={props => <SearchResultsList {...props} />}
               />
+
               <Route path="/" component={EmptyPage} />
             </Switch>
 

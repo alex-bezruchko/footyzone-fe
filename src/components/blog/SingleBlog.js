@@ -167,9 +167,9 @@ class SingleView extends React.Component {
                             )}
                         </div>
                         <div className="author">
-                          <FaPrint /> Submitted by <span>{this.props.postsReducer.post.username}</span>
+                          <FaPrint /> by<span> {this.props.postsReducer.post.username}</span>
                           <br></br>
-                          <FaCalendar /> on {" "}
+                          <FaCalendar /> {" "}
                           {new Date(
                             this.props.postsReducer.post.published
                           ).toDateString()}
