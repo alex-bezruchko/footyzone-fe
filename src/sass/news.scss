@@ -336,8 +336,19 @@ iframe .timeline-Widget {
   .col-md-8 {
     position: relative;
     margin-right: 15px;
-    padding: 53px 0px 20px !important;
+    padding: 0px 0px 20px !important;
 
+  }
+
+  .news-list {
+    .col-md-8 {
+      padding-top: 15px !important;
+
+      h1.category-header {
+        // padding-left: 15px;
+        padding-bottom: 25px;
+      }
+    }
   }
 
   .col-md-4.col-xs-12 {
