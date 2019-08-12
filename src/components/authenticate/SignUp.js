@@ -30,6 +30,8 @@ class SignUp extends React.Component {
       notMatchingPassError: false,
       signupError: false
     });
+    window.scrollTo(0, 0);
+
   }
   changeHandler = e => {
     this.setState({

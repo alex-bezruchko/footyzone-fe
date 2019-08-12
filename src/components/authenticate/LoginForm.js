@@ -16,6 +16,8 @@ class LoginForm extends React.Component {
     };
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     this.setState({
       usernameError: false,
       passwordError: false,
