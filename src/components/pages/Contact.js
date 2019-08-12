@@ -1,5 +1,5 @@
 import React from "react";
-import { FormGroup, Input, Button } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
 import loading from "./../../../src/loading.gif";
 
 const Contact = props => {

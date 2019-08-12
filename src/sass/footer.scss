@@ -19,11 +19,22 @@ footer {
     a {
       color: $white !important;
     }
+
+    .white {
+      background: transparent;
+      border: none;
+      padding-left: 15px;
+
+      svg {
+        color: $white;
+      }
+    }
   }
 
   .nav-search-form input.form-control {
     color: $white;
     border-bottom: 1.5px solid $white;
+    padding-bottom: 5px !important;
 
     &:focus {
       outline: none;
@@ -54,13 +65,6 @@ footer {
       background: transparent;
     }
 
-    button.btn.btn-white {
-      width: 60px;
-
-      svg {
-        color: $white;
-      }
-    }
   }
 
   @media #{$mobile} {
@@ -93,7 +97,6 @@ footer {
   }
 
   li,
-  button,
   a {
     font-family: $font_sans;
     width: 100%;

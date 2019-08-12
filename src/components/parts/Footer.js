@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, ListGroup, Input, Form, Button, Container } from "reactstrap";
+import { Nav, ListGroup, Input, Form, Container } from "reactstrap";
 import { FaEnvelope } from "react-icons/fa";
 
 import {
@@ -104,9 +104,9 @@ class Footer extends React.Component {
                   name="subscribe"
                 // onChange={this.changeHandler}
                 />
-                <Button type="submmit" color="white">
+                <button type="submmit" className="white">
                   <FaEnvelope />
-                </Button>
+                </button>
               </Form>
             </ListGroup>
           </Nav>
