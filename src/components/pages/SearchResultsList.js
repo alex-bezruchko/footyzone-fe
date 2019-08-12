@@ -33,14 +33,29 @@ class SearchResultsList extends React.Component {
 
         $(window).scroll(function (e) {
             let article = document.getElementsByClassName("search");
+            let result = document.getElementsByClassName("post-detail-cord");
 
             if (article[0]) {
                 let height = article[0].clientHeight;
+
+                console.log(height)
+                // if (result > 200) {
                 if (
-                    $(window).scrollTop() > 150 &&
+                    $(window).scrollTop() > 500 &&
                     $(window).scrollTop() < (height * 8.5) / 10
                 ) {
-                    $(".col-md-4 .popular").addClass("twitter-fixed");
+                    if (result[0] && result[0].clientHeight) {
+                        if (result[0].clientHeight < 20) {
+                            $(".col-md-4 .popular").removeClass("twitter-fixed");
+                        } else {
+                            $(".col-md-4 .popular").addClass("twitter-fixed");
+                        }
+                    } else {
+                        $(".col-md-4 .popular").addClass("twitter-fixed");
+                    }
+                    // let resultHeight = result[0].clientHeight;
+
+                    // }
                 } else {
                     $(".col-md-4 .popular").removeClass("twitter-fixed");
                 }
@@ -71,7 +86,7 @@ class SearchResultsList extends React.Component {
                         <SearchForm />
                     </div>
                     <div className="container">
-                        <h1 className="bungee">Results: </h1>
+                        <h1 className="bungee">Results{""}:</h1>
 
                         {this.props.loading ?
                             <div className="col-md-6 text-center"><img alt='Loading gif' src={loading} /></div>
@@ -102,7 +117,7 @@ class SearchResultsList extends React.Component {
                                         })}
                                     </div>
                                     :
-                                    <h2>No results found</h2>
+                                    <h2 className="bungee">No results</h2>
                                 }
 
                             </div>

@@ -41,6 +41,7 @@ import {
 
 const initialState = {
   news: [],
+  popular: [],
   categories: [],
   subcategories: [],
   loading: true,
@@ -158,7 +159,7 @@ export const newsReducer = (state = initialState, action) => {
     case FETCH_POPULAR_LOADING:
       return {
         ...state,
-        news: [],
+        popular: [],
         loading: true,
         error: "",
       };
@@ -166,7 +167,7 @@ export const newsReducer = (state = initialState, action) => {
     case FETCH_POPULAR_SUCCESS:
       return {
         ...state,
-        news: action.payload,
+        popular: action.payload,
         loading: false,
         error: "",
       };
@@ -174,7 +175,7 @@ export const newsReducer = (state = initialState, action) => {
     case FETCH_POPULAR_FAILURE:
       return {
         ...state,
-        news: [],
+        popular: [],
         loading: false,
         error: "There are no available posts",
       };

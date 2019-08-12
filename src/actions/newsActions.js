@@ -48,11 +48,12 @@ export function fetchPopular() {
     axios
       .get("https://footyzone-be.herokuapp.com/api/news")
       .then(response => {
-        let currentPopular = response.data.slice(0, 20);
+        const currentPopular = response.data.slice(0, 20);
         let bobo = currentPopular.sort(
           (a, b) => b.likes.length - a.likes.length
         );
         let mostest = bobo.slice(0, 5);
+        console.log(mostest)
         dispatch({
           type: FETCH_POPULAR_SUCCESS,
           payload: mostest,
@@ -168,7 +169,7 @@ export function addNews(newNews, history) {
         });
         history.push(
           `/news/${response.data.addedNews.subcat_slug}/${
-            response.data.addedNews.id
+          response.data.addedNews.id
           }`
         );
       })

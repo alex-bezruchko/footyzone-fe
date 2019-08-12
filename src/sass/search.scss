@@ -35,6 +35,11 @@
 
 @media #{$desktop, $tablet} {
     .search {
+        h2.bungee {
+            font-size: 2.3rem;
+            margin-top: 66px;
+        }
+
         display: flex;
         flex-direction: row;
 

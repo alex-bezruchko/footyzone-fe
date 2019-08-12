@@ -21,9 +21,9 @@ class PopularNews extends React.Component {
         ) : (
             <div className="sidebar-list">
               <h2>Trending</h2>
-              {this.props.news.length > 0 ? (
+              {this.props.popular.length > 0 ? (
                 <>
-                  {this.props.news.map((news, index) => {
+                  {this.props.popular.map((news, index) => {
                     return (
                       <Link
                         key={index}
@@ -52,7 +52,7 @@ class PopularNews extends React.Component {
 }
 const mapStateToProps = ({ newsReducer: state }) => {
   return {
-    news: state.news,
+    popular: state.popular,
     loading: state.loading,
   };
 };
