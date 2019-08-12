@@ -9,6 +9,12 @@ footer {
   .nav {
     display: flex;
     justify-content: space-between;
+    background-color: transparent;
+
+    .list-group {
+      background-color: transparent;
+
+    }
 
     a {
       color: $white !important;
@@ -33,12 +39,7 @@ footer {
     }
   }
 
-  @media #{$tablet} {
-    .nav-search-form input.form-control {
-      width: 200px;
-      font-size: 1.4rem;
-    }
-  }
+
 
   .nav-search-form input.form-control {
     margin-right: 0px;
@@ -172,6 +173,39 @@ footer {
       margin-bottom: 0px;
       padding-bottom: 15px;
       color: $white;
+    }
+  }
+}
+
+@media #{$tablet} {
+  footer .container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .nav-search-form input.form-control {
+    width: 200px;
+    font-size: 1.4rem;
+  }
+
+  footer .nav {
+    flex-wrap: initial;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+  }
+
+  footer .nav .list-group {
+    background-color: transparent;
+    flex-direction: column !important;
+    display: flex;
+    width: 50%;
+    align-items: flex-end;
+    padding-right: 5px;
+    justify-content: flex-start;
+    padding-right: 8px;
+
+    a {
+      font-size: 1rem !important;
     }
   }
 }
