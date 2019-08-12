@@ -18,7 +18,7 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom: 0px;
   }
 
@@ -52,20 +52,15 @@
     }
 
     .category-header {
+      display: flex;
+      border-bottom: 0px;
+
       h1 {
         margin: 0px;
         margin-top: 50px;
+        font-size: 2rem;
       }
-
-      font-size: 1.6rem;
-      display: flex;
-
-      border-bottom: 0px;
     }
-
-    // h2 {
-    //   font-size: 1.2rem;
-    // }
   }
 
   .news .container {
@@ -117,7 +112,7 @@ iframe .timeline-Widget {
 }
 
 .container.pagination .col-md-8 {
-  background-color: #fff;
+  background-color: none;
   display: flex;
   justify-content: center;
   padding-top: 25px;

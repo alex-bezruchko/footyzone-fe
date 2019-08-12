@@ -16,7 +16,7 @@ const NewsPagination = ({
     pageNumbers.push(i);
   }
   let link = document.getElementById(`page-${props.match.params.page_id}`);
-  $.when(link).then(function() {
+  $.when(link).then(function () {
     $(`#page-${props.match.params.page_id} a`).addClass("active-page");
   });
   return (
@@ -26,7 +26,7 @@ const NewsPagination = ({
           <li key={number} id={`page-${number}`} className="page-item">
             <Link
               onClick={() => paginate(number)}
-              to={`/leagues/${number}`}
+              to={`/news/${number}`}
               className="page-link"
               id={`page-${number}`}
             >
