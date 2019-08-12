@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.login a span {
+  font-family: $font_ubuntu;
+  font-weight: 500 !important;
+
+  &:hover {
+    color: $white;
+  }
+}
+
 .sign-up,
 .login-form {
   display: flex;
@@ -9,21 +18,31 @@
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  // min-width: 90%;
-  // width: 90%;
+
+  input {
+    border-radius: 2px;
+    border: 1px solid $blue;
+
+    &:focus {
+      outline: none !important;
+      border: 1px solid $blue;
+      box-shadow: none;
+    }
+  }
 }
 
 .sign-up {
   padding: 15px 0px 15px;
 
   .sign-wrapper {
+    margin-top: 15px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 66px;
 
-    justify-content: space-around;
-
-    // align-items: center;
-    h4 {
-      text-align: left;
+    h5 {
+      margin-bottom: 0px;
     }
   }
 
@@ -37,7 +56,6 @@
   margin-top: 100px;
 
   .container {
-    // width: 300px;
     padding-left: 0px;
     padding-right: 0px;
     margin-left: auto;
@@ -69,9 +87,9 @@
   }
 
   .sign-wrapper {
-    min-width: 90% !important;
-    margin-left: auto;
-    margin-right: auto;
+    // min-width: 90% !important;
+    // margin-left: auto;
+    // margin-right: auto;
     align-items: center;
 
     h5 {
@@ -82,7 +100,8 @@
 
     a {
       margin-left: 0px;
-      min-width: 30%;
+      // min-width: 50%;
+      align-self: flex-end;
 
       .btn {
         width: 100%;

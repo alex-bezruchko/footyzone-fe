@@ -70,7 +70,7 @@ class LoginForm extends React.Component {
                 </UncontrolledAlert>
                 ) : null}
               </div>
-              <h1>Login</h1>
+              <h1 className="bungee">Login</h1>
               <Input
                 onChange={this.changeHandler}
                 placeholder="Username"
@@ -99,7 +99,7 @@ class LoginForm extends React.Component {
               </Alert>
               ) : null}
 
-              <button className="btn btn-info" type="submit">
+              <button className="blue" type="submit">
                 LogIn
             </button>
             </form>
@@ -108,7 +108,7 @@ class LoginForm extends React.Component {
           <div className="sign-wrapper">
             <h5>Don't have an account?</h5>
             <Link to={"/signup"}>
-              <button className="btn btn-success btn-sm">Sign Up</button>
+              <button className="white">Sign Up</button>
             </Link>
           </div>
 

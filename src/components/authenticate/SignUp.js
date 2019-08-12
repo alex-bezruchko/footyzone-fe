@@ -125,7 +125,7 @@ class SignUp extends React.Component {
         ) : (
             <>
               <form className="form login-form" onSubmit={this.signupHandler}>
-                <h1>Sign Up</h1>
+                <h1 className="bungee">Sign Up</h1>
                 <Input
                   onChange={this.changeHandler}
                   placeholder="Username"
@@ -167,7 +167,7 @@ class SignUp extends React.Component {
                 {this.props.usersReducer.signupError === true ? (
                   <Alert color="danger">This username already exists.</Alert>
                 ) : null}
-                <button className="btn btn-info" type="submit">
+                <button className="blue" type="submit">
                   Sign Up
               </button>
               </form>
@@ -175,7 +175,7 @@ class SignUp extends React.Component {
                 <div className="sign-wrapper">
                   <h5>Already have an account?</h5>
                   <Link to={"/login"}>
-                    <button className="btn btn-success">Log In</button>
+                    <button className="white">Log In</button>
                   </Link>
                 </div>
               </div>
