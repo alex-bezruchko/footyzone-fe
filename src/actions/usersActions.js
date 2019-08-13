@@ -9,6 +9,37 @@ export const LOGIN_STATUS_FAILURE = "LOGIN_STATUS_FAILURE";
 export const SIGNUP_LOADING = "SIGNUP_LOADING";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+export const UPDATE_LOADING = "UPDATE_LOADING";
+export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
+export const UPDATE_FAILURE = "UPDATE_FAILURE";
+
+export function update(username) {
+  return dispatch => {
+    dispatch({ type: UPDATE_LOADING });
+
+    const endpoint = `https://footyzone-be.herokuapp.com/api/users/${username.username}`;
+    let updatedUser = {
+      username: username.username,
+      avatar: username.avatar,
+    };
+    axios
+      .put(endpoint, updatedUser)
+      .then(response => {
+        dispatch({
+          type: UPDATE_SUCCESS,
+          payload: response.data.updatedUser,
+        });
+        localStorage.setItem("avatar", response.data.updatedUser.avatar);
+
+      })
+      .catch(err => {
+        dispatch({
+          type: UPDATE_FAILURE,
+          payload: err,
+        });
+      });
+  };
+}
 
 export function signup(username, password, history) {
   return dispatch => {
@@ -51,7 +82,6 @@ export function login(username, password, history) {
     axios
       .post(endpoint, UserLogin)
       .then(response => {
-        console.log(response);
         localStorage.setItem("jwt", response.data.token);
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("user_id", response.data.user_id);
@@ -64,7 +94,6 @@ export function login(username, password, history) {
         history.push("/");
       })
       .catch(err => {
-        console.log(err)
         dispatch({
           type: LOGIN_FAILURE,
           payload: err,
@@ -97,7 +126,7 @@ export function loginStatus(username, token, user_id, avatar, history) {
       // if (history.location.pathname === "/signup") {
       //   history.push("/signup");
       // } else {
-        history.push("/login");
+      history.push("/login");
       // }
     }
   };

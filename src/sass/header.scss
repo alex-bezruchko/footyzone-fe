@@ -59,6 +59,10 @@
       }
     }
 
+    img:hover {
+      cursor: pointer;
+    }
+
     svg {
       color: $white;
       margin: 0px 0px 0px 10px;
@@ -152,6 +156,7 @@
 
     .nav-account {
       align-items: flex-end;
+
     }
 
     .fanzone {
@@ -526,4 +531,12 @@
 .btn.btn-secondary.active {
   background-color: $old;
   color: $blue !important;
+}
+
+button.blue {
+  margin-top: 0px;
+}
+
+.modal .alert {
+  margin-top: 15px;
 }

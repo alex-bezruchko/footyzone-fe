@@ -12,39 +12,41 @@ import {
   Navbar,
   Collapse,
   Button,
+  Modal, ModalHeader, ModalBody, ModalFooter, Alert
 } from "reactstrap";
-// import $ from "jquery";
+import axios from "axios";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import logo from "./../../img/logo.png";
 import burger from "./../../img/burger.png";
 
-import { loginStatus } from "./../../actions/usersActions";
+import { loginStatus, update } from "./../../actions/usersActions";
 import {
   FaSignInAlt,
   FaPlusCircle,
   FaLockOpen,
   FaUserPlus,
-  // FaArticle
 } from "react-icons/fa";
 import SearchForm from "./SearchForm";
 import { connect } from "react-redux";
-// import axios from "axios";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggleNews = this.toggleNews.bind(this);
-    this.toggleOld = this.toggleOld.bind(this);
-    this.toggleNav = this.toggleNav.bind(this);
-
     this.state = {
       dropdownOpen: false,
       dropdownSchool: false,
-      // categories: [],
-      // subcategories: [],
       isOpen: false,
+      modal: false,
+      newAvatar: "",
+      uploadStatus: ""
     };
+
+    this.toggleNews = this.toggleNews.bind(this);
+    this.toggleOld = this.toggleOld.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+
   }
 
   componentDidMount() {
@@ -59,25 +61,13 @@ class Header extends React.Component {
       avatar,
       this.props.history
     );
-
-    // axios
-    //   .get("https://footyzone-be.herokuapp.com/api/news/categories")
-    //   .then(res => {
-    //     this.setState({ categories: res.data });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ categories: [] });
-    //   });
-    // axios
-    //   .get("https://footyzone-be.herokuapp.com/api/news/subcategories")
-    //   .then(res => {
-    //     this.setState({ subcategories: res.data });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ subcategories: [] });
-    //   });
   }
-  // $(".")
+  toggleModal() {
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+      uploadStatus: ""
+    }));
+  }
   toggleNews() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen,
@@ -100,10 +90,63 @@ class Header extends React.Component {
       });
     }
   }
+  imageFileHandler = e => {
+    e.preventDefault();
+    this.setState({
+      uploadStatus: ""
+    })
+    const formData = new FormData();
+    let file = e.target.files[0];
+    formData.append("file", file);
+    formData.append("upload_preset", "sm7zid93");
+    formData.append("api_key", "915419188456665");
+
+    let headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: "M7938KD1Akyo8XBTmf7jF68jiHA",
+    };
+    axios
+      .post(
+        "https://api.cloudinary.com/v1_1/htg1iqq1p/upload",
+        formData,
+        headers
+      )
+      .then(response => {
+        console.log(response)
+        this.setState({
+          newAvatar: response.data.secure_url,
+          uploadStatus: "Uploaded successfully."
+        });
+        // this.props.loginStatus()
+
+      })
+      .catch(err => {
+        this.setState({
+          newAvatar: "",
+          uploadStatus: "Too big file."
+        });
+      });
+  };
+
+  updateHandler = e => {
+    this.setState({
+      uploadStatus: ""
+    })
+    e.preventDefault();
+    let updatedAvatar = this.state.newAvatar;
+    let updateInfo = {
+      username: this.props.user.username,
+      avatar: updatedAvatar
+    }
+    this.props.update(updateInfo)
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+    }));
+    // this.props.loginStatus()
+  }
   logOutUser = e => {
-    // this.setState(prevState => ({
-    //   toggleNav: !prevState.toggleNav,
-    // }));
+
     e.preventDefault();
     localStorage.setItem("jwt", "");
     localStorage.setItem("username", "");
@@ -128,6 +171,22 @@ class Header extends React.Component {
   render() {
     return (
       <div id="navigation" className="navbar-wrapper">
+        <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Add Avatar</ModalHeader>
+          <ModalBody>
+            <input
+              id="file-upload"
+              onChange={this.imageFileHandler}
+              type="file"
+              name="file"
+            />
+            {this.state.uploadStatus && this.state.uploadStatus.length > 0 && <Alert>{this.state.uploadStatus}</Alert>}
+          </ModalBody>
+          <ModalFooter>
+            <button className="blue" onClick={this.updateHandler}>Update</button>{' '}
+            <button className="white" onClick={this.toggleModal}>Cancel</button>
+          </ModalFooter>
+        </Modal>
         <div className="top-navbar">
           <Container>
             <Link to={"/"}>
@@ -138,7 +197,7 @@ class Header extends React.Component {
               <div className="nav-account">
                 <span className=" hidden-xs">
                   <p>Hi, {this.props.user.username}!</p>
-                  <img src={this.props.user.avatar} alt="avatar" />
+                  <img src={this.props.user.avatar} alt="avatar" onClick={this.toggleModal} />
                   <NavLink to={`/${this.props.user.username}/create-post`}>
                     <FaUserPlus />
                   </NavLink>
@@ -313,6 +372,6 @@ const MapStateToProps = ({ usersReducer: state }) => {
 export default withRouter(
   connect(
     MapStateToProps,
-    { loginStatus }
+    { loginStatus, update }
   )(Header)
 );

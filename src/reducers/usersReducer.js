@@ -8,6 +8,9 @@ import {
   SIGNUP_LOADING,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
+  UPDATE_LOADING,
+  UPDATE_SUCCESS,
+  UPDATE_FAILURE,
 } from "../actions/usersActions";
 
 const initialState = {
@@ -26,6 +29,34 @@ const initialState = {
 
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
+    case UPDATE_LOADING:
+      return {
+        ...state,
+        user: {
+          token: "",
+          username: "",
+          user_id: "",
+          avatar: "",
+        },
+      };
+
+    case UPDATE_SUCCESS:
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    case UPDATE_FAILURE:
+      return {
+        ...state,
+        user: {
+          token: "",
+          username: "",
+          user_id: "",
+          avatar: "",
+        },
+      };
+
     case SIGNUP_LOADING:
       return {
         ...state,
