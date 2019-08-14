@@ -76,15 +76,30 @@
     }
   }
 
-  .comment-form {
+  .comment-wrapper {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
+    .blue {
+      margin-top: 15px;
+    }
   }
 
-  .comment-form textarea {
+  .comment-form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    p.ubuntu {
+      margin-top: 10px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .comment-wrapper textarea {
     height: 125px;
-    width: 90%;
+    // width: 100%;
     display: flex;
     justify-content: flex-start;
     padding: 0px 15px 0px 6px;
@@ -456,7 +471,7 @@ a {
       padding-bottom: 10px;
     }
 
-    .comment-form {
+    .comment-wrapper {
       flex-direction: column;
 
       textarea {
@@ -478,5 +493,26 @@ a {
     max-height: 250px !important;
     min-height: 250px !important;
     height: 250px !important;
+  }
+}
+
+@media #{$tablet} {
+  .comment-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      padding-right: 0px !important;
+      margin-right: 0px !important;
+    }
+
+    .blue {
+      width: 100%;
+    }
+
+    p.ubuntu {
+      margin-top: 5px !important;
+      margin-bottom: 0px;
+    }
   }
 }

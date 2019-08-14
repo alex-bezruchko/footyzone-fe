@@ -83,7 +83,6 @@ export function searchTerm(term) {
 }
 
 export function deleteComment(id, post_id) {
-  console.log(id);
   return dispatch => {
     dispatch({ type: DELETE_COMMENT_LOADING });
 
@@ -175,7 +174,6 @@ export function fetchPostsByCategory(category_name) {
     axios
       .get(`https://footyzone-be.herokuapp.com/api/${category_name}`)
       .then(response => {
-        // console.log(response);
         dispatch({
           type: CATEGORY_SUCCESS,
           payload: response.data,

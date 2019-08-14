@@ -54,23 +54,43 @@ class SingleView extends React.Component {
   };
   addCommentHandler = e => {
     e.preventDefault();
+    this.setState({
+      commentError: false
+    })
+    // if (this.state.newComment.comment) {
+    let stateComment = this.state.newComment;
+    if (stateComment) {
+      if (stateComment.comment === undefined) {
+        this.setState({
+          commentError: true
+        })
+      } else if (stateComment.comment.length < 10) {
+        this.setState({
+          commentError: true
+        })
+      } else {
+        let sentComment = {};
+        sentComment.post_id = Number(this.props.match.params.id);
+        sentComment.user_id = Number(this.state.newComment.user_id);
+        sentComment.date = new Date().toISOString();
+        sentComment.comment = this.state.newComment.comment;
+        console.log(this.state.newComment.comment)
 
-    if (this.state.newComment.user_id) {
-      let sentComment = {};
-      sentComment.post_id = Number(this.props.match.params.id);
-      sentComment.user_id = Number(this.state.newComment.user_id);
-      sentComment.date = new Date().toISOString();
-      sentComment.comment = this.state.newComment.comment;
-      this.props.addComment(sentComment, this.props.history);
-      this.setState({
-        newComment: {
-          comment: "",
-          user_id: sentComment.user_id,
-          post_id: sentComment.post_id,
-          date: "",
-        },
-      });
+        this.props.addComment(sentComment, this.props.history);
+        this.setState({
+          newComment: {
+            comment: "",
+            user_id: sentComment.user_id,
+            post_id: sentComment.post_id,
+            date: "",
+          },
+          commentError: false
+        });
+      }
     }
+
+    // }
+
   };
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -270,18 +290,22 @@ class SingleView extends React.Component {
                                   <span>{this.props.usersReducer.user.username}</span>
                                 </div>
                                 <form
-                                  className="comment-form"
+                                  className="comment-wrapper"
                                   onSubmit={this.addCommentHandler}
                                 >
-                                  <textarea
-                                    placeholder="Add a comment"
-                                    name="comment"
-                                    value={this.state.newComment.comment}
-                                    onChange={this.newCommentOnChange}
-                                  />
+                                  <div className="comment-form">
+                                    <textarea
+                                      placeholder="Add a comment"
+                                      name="comment"
+                                      value={this.state.newComment.comment}
+                                      onChange={this.newCommentOnChange}
+                                    />
+                                    {this.state.commentError && <p className="ubuntu">Comment must be at least 10 characters long.</p>}
+                                  </div>
+
                                   <button className="blue" type="submit">
                                     Submit
-                            </button>
+                                  </button>
                                 </form>
                               </div>
                             </>

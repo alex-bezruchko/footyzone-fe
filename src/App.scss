@@ -176,6 +176,10 @@ ul.pagination {
   font-family: $font_bungee;
 }
 
+.ubuntu {
+  font-family: $font_ubuntu;
+}
+
 .blue {
   margin-top: 15px;
   background-color: $blue;
@@ -259,4 +263,9 @@ ul.pagination {
     min-width: 100%;
     max-width: 100%;
   }
+}
+
+.page-link:focus {
+  box-shadow: none !important;
+  outline: none !important;
 }
