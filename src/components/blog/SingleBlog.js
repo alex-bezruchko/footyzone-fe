@@ -42,6 +42,7 @@ class SingleView extends React.Component {
         comment: "",
       },
     });
+
   };
 
   newCommentOnChange = e => {
@@ -51,6 +52,11 @@ class SingleView extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
+    if (this.state.newComment.comment && this.state.newComment.comment.length > 10) {
+      this.setState({
+        commentError: false
+      });
+    }
   };
   addCommentHandler = e => {
     e.preventDefault();
