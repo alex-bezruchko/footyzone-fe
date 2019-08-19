@@ -255,8 +255,12 @@ a .carousel-control-next-icon {
   .welcome-container .container {
     padding-bottom: 15px;
     padding-top: 25px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 
-
+    img {
+      border: none !important;
+    }
   }
 
   h1.latest {
