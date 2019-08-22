@@ -6,14 +6,30 @@ import {
   // fetchAllCategories,
 } from "../../actions/newsActions";
 import { Link } from "react-router-dom";
+import $ from "jquery";
 
 class WelcomeOldschool extends React.Component {
   componentDidMount() {
     this.props.fetchLatestOldschool();
   }
   render() {
+    let body = document.getElementsByName('body')
     let maxLenBody = 250;
     let maxLenTitle = 50;
+    console.log(body[0])
+    $.when(body[0]).then(function () {
+      if (body[0] && body[0].clientWidth > 500) {
+        maxLenBody = 250;
+        console.log(body[0])
+        // console.log(maxLenBody)
+      } else {
+        maxLenBody = 100;
+        // console.log(maxLenBody)
+      }
+    })
+    console.log(body[0])
+
+
 
     return (
       <div className="container-row welcome-blog">
