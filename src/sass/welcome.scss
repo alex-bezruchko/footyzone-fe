@@ -92,6 +92,9 @@ a .carousel-control-next-icon {
 
   .container-row.welcome-blog,
   .container-row.new-blog {
+    p.sans.mobile {
+      display: none;
+    }
 
     h1 {
       font-size: 3.6rem;
@@ -438,12 +441,17 @@ a .carousel-control-next-icon {
     h2 {
       margin-bottom: 0px;
       padding-left: 8px;
+      padding-top: 8px;
     }
 
     p.sans,
     .published.bungee p,
     .header-title h2 {
       background-color: $light_green;
+    }
+
+    p.sans.large {
+      display: none;
     }
 
     .published.bungee {

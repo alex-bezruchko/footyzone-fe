@@ -13,10 +13,10 @@ class WelcomeBloglist extends React.Component {
         this.props.fetchLatestPosts();
     }
     render() {
-        let maxLenBody = 400;
         let maxLenTitle = 50;
 
         return (
+
             <div className="container-row new-blog">
 
                 <div className="col-md-10">
@@ -30,42 +30,45 @@ class WelcomeBloglist extends React.Component {
                                         <img src={this.props.posts[0].postMainImg} />
                                         <div className="header-info">
                                             <div className="header-title"><h2>{this.props.posts[0].title}</h2> <p className="published bungee">{moment(this.props.posts[0].published).format("LL")}</p></div>
-                                            <p className="sans">{this.props.posts[0].body.slice(0, 400).concat('...')}</p>
+                                            <p className="sans large">{this.props.posts[0].body.slice(0, 350).concat('...')}</p>
+                                            <p className="sans mobile">{this.props.posts[0].body.slice(0, 175).concat('...')}</p>
                                         </div>
                                     </Link>
                                 </div>
                             </div>
                             <div className="container">
                                 {this.props.posts.map((blog, index) => {
-                                    return (
-                                        <div
-                                            key={index}
-                                            id={blog.id}
-                                            blog={blog}
-                                            className="category-blog col-md-6 col-xs-12"
-                                        >
-                                            <Link to={`/blog/${blog.id}`}>
-                                                <div className="list-header">
-                                                    <img src={blog.postMainImg} alt="" />
-                                                    {blog.title.length < 50 && <h2>{blog.title}</h2>}
-                                                    {blog.title.length > 50 && <h2>{blog.title.slice(0, maxLenTitle).concat('...')}</h2>}
-                                                </div>
-                                                <div className="body">
-                                                    <p>
-                                                        <img
-                                                            src={blog.avatar}
-                                                            alt="avatar"
-                                                            className="avatar"
-                                                        />
-                                                        De Ligt is yet to clarify his future but appears to
-                                                        have his sights set on Juventus after revealing the
-                                                        club are interested and a desire to play alongside
-                                                        some of their defenders.
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    );
+                                    if (index !== 0) {
+                                        return (
+                                            <div
+                                                key={index}
+                                                id={blog.id}
+                                                blog={blog}
+                                                className="category-blog col-md-6 col-xs-12"
+                                            >
+                                                <Link to={`/blog/${blog.id}`}>
+                                                    <div className="list-header">
+                                                        <img src={blog.postMainImg} alt="" />
+                                                        {blog.title.length < 50 && <h2>{blog.title}</h2>}
+                                                        {blog.title.length > 50 && <h2>{blog.title.slice(0, maxLenTitle).concat('...')}</h2>}
+                                                    </div>
+                                                    <div className="body">
+                                                        <p>
+                                                            <img
+                                                                src={blog.avatar}
+                                                                alt="avatar"
+                                                                className="avatar"
+                                                            />
+                                                            De Ligt is yet to clarify his future but appears to
+                                                            have his sights set on Juventus after revealing the
+                                                            club are interested and a desire to play alongside
+                                                            some of their defenders.
+                                                            </p>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        );
+                                    }
                                 })}
                             </div>
 
