@@ -2,6 +2,9 @@ import {
   FETCH_ALL_LOADING,
   FETCH_ALL_SUCCESS,
   FETCH_ALL_FAILURE,
+  FETCH_OLDSCHOOL_LOADING,
+  FETCH_OLDSCHOOL_SUCCESS,
+  FETCH_OLDSCHOOL_FAILURE,
   FETCH_POPULAR_LOADING,
   FETCH_POPULAR_SUCCESS,
   FETCH_POPULAR_FAILURE,
@@ -149,6 +152,30 @@ export const newsReducer = (state = initialState, action) => {
       };
 
     case FETCH_ALL_FAILURE:
+      return {
+        ...state,
+        news: [],
+        loading: false,
+        error: "There are no available posts",
+      };
+
+    case FETCH_OLDSCHOOL_LOADING:
+      return {
+        ...state,
+        news: [],
+        loading: true,
+        error: "",
+      };
+
+    case FETCH_OLDSCHOOL_SUCCESS:
+      return {
+        ...state,
+        news: action.payload,
+        loading: false,
+        error: "",
+      };
+
+    case FETCH_OLDSCHOOL_FAILURE:
       return {
         ...state,
         news: [],

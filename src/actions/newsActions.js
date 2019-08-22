@@ -3,6 +3,9 @@ import axios from "axios";
 export const FETCH_ALL_SUCCESS = "FETCH_ALL_SUCCESS";
 export const FETCH_ALL_FAILURE = "FETCH_ALL_FAILURE";
 export const FETCH_ALL_LOADING = "FETCH_ALL_LOADING";
+export const FETCH_OLDSCHOOL_SUCCESS = "FETCH_OLDSCHOOL_SUCCESS";
+export const FETCH_OLDSCHOOL_FAILURE = "FETCH_OLDSCHOOL_FAILURE";
+export const FETCH_OLDSCHOOL_LOADING = "FETCH_OLDSCHOOL_LOADING";
 export const FETCH_POPULAR_SUCCESS = "FETCH_POPULAR_SUCCESS";
 export const FETCH_POPULAR_FAILURE = "FETCH_POPULAR_FAILURE";
 export const FETCH_POPULAR_LOADING = "FETCH_POPULAR_LOADING";
@@ -42,6 +45,26 @@ export const USERS_POSTS_LOADING = "USERS_POSTS_LOADING";
 export const USERS_POSTS_SUCCESS = "USERS_POSTS_SUCCESS";
 export const USERS_POSTS_FAILURE = "USERS_POSTS_FAILURE";
 
+export function fetchLatestOldschool() {
+  return dispatch => {
+    dispatch({ type: FETCH_OLDSCHOOL_LOADING });
+    axios
+      .get("https://footyzone-be.herokuapp.com/api/news/latest/old-school")
+      .then(response => {
+        dispatch({
+          type: FETCH_OLDSCHOOL_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCH_OLDSCHOOL_FAILURE,
+          payload: err,
+        });
+      });
+  };
+}
+
 export function fetchPopular() {
   return dispatch => {
     dispatch({ type: FETCH_POPULAR_LOADING });
@@ -68,25 +91,6 @@ export function fetchPopular() {
   };
 }
 
-export function fetchAllNews() {
-  return dispatch => {
-    dispatch({ type: FETCH_ALL_LOADING });
-    axios
-      .get("https://footyzone-be.herokuapp.com/api/news")
-      .then(response => {
-        dispatch({
-          type: FETCH_ALL_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: FETCH_ALL_FAILURE,
-          payload: err,
-        });
-      });
-  };
-}
 
 export function fetchNewsBySubCategory(subcat_name) {
   return dispatch => {

@@ -37,6 +37,7 @@ const NewsCategories = props => {
           props.history.push(`/leagues/${props.match.params.subcat_name}/page/1`);
           setCurrentPage(1);
           setLoading(false);
+
         } else {
           props.history.push(
             `/leagues/${props.match.params.subcat_name}/page/${
@@ -140,7 +141,7 @@ const NewsCategories = props => {
     /div> <
     /div> <
     /div>
-          );
-        };
-        
+                      );
+                    };
+                    
 export default NewsCategories;
