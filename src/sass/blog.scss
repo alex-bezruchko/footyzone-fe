@@ -126,15 +126,15 @@ a {
   padding-bottom: 20px;
 
   li.page-item a {
-    background-color: $old !important;
+    background-color: $light_green !important;
   }
 
   .page-link.active-page {
     background-color: $blue !important;
-    color: $old !important;
+    color: $light_green !important;
 
     &:hover {
-      color: $old !important;
+      color: $light_green !important;
     }
 
     &:focus {

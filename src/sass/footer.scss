@@ -18,6 +18,10 @@ footer {
 
     a {
       color: $white !important;
+
+      &:hover {
+        color: $old !important;
+      }
     }
 
     .white {
