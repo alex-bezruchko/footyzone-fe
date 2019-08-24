@@ -184,12 +184,19 @@ a {
 }
 
 @media #{$mobile} {
+  .blog {
+    background-size: cover !important;
+  }
 
   .single.col-md-8 {
     padding: 0px 6px;
 
     .commentator {
       margin-right: 15px;
+    }
+
+    img {
+      margin-bottom: 15px;
     }
 
     .blue {
@@ -238,7 +245,7 @@ a {
   }
 
   .single {
-    margin-top: 80px;
+    margin-top: 50px !important;
     margin-bottom: 80px;
 
     h2 {
