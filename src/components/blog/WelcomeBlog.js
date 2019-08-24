@@ -23,11 +23,11 @@ class WelcomeBloglist extends React.Component {
                     {this.props.posts.length > 0 ? (
 
                         <>
-                            <div className="container header">
-                                <div className="container new-blog header">
+                            <div className="col-md-8 header">
+                                <div className="new-blog header">
                                     <h1 className="bungee">Blog</h1>
                                     <Link to={`/blog/${this.props.posts[0].id}`}>
-                                        <img alt={this.props.posts[0].title} src={this.props.posts[0].postMainImg} />
+                                        <img className="col-md-8-img" alt={this.props.posts[0].title} src={this.props.posts[0].postMainImg} />
                                         <div className="header-info">
                                             <div className="header-title"><h2>{this.props.posts[0].title}</h2> <p className="published bungee">{moment(this.props.posts[0].published).format("LL")}</p></div>
                                             <p className="sans large">{this.props.posts[0].body.slice(0, 350).concat('...')}</p>

@@ -19,6 +19,22 @@
   }
 }
 
+.new-blog .col-md-8 {
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 33px;
+}
+
+.container-row.welcome-blog h1 {
+  padding: 15px;
+  color: $black;
+  margin-left: auto;
+  margin-right: auto;
+  ;
+}
+
 .carousel-indicators li {
   height: 18px !important;
   background-color: $blue !important;
@@ -92,11 +108,11 @@ a .carousel-control-next-icon {
   background-color: $light_green;
   padding-left: 5px;
   padding-right: 5px;
-  border: 5px solid $light_green;
+  border: 4px solid $light_green;
   transition: .77s;
 
   &:hover {
-    border: 5px solid rgba(22, 21, 21, 0.5);
+    border: 4px solid rgba(22, 21, 21, 0.5);
     color: rgba(22, 21, 21, 0.88) !important;
   }
 }
@@ -126,6 +142,7 @@ a .carousel-control-next-icon {
 
   .container-row.new-blog {
     background-size: cover !important;
+    padding-top: 100px;
   }
 
   .container-row.welcome-blog,
@@ -136,6 +153,8 @@ a .carousel-control-next-icon {
 
     h1 {
       font-size: 3.6rem;
+      margin-top: 15px;
+      margin-bottom: 10px;
     }
 
     h2 {
@@ -176,12 +195,18 @@ a .carousel-control-next-icon {
       height: 100%;
     }
 
-    .container.header h1 {
+    .col-md-8.header h1 {
       position: absolute;
       top: 1.66rem;
       left: 1.66rem;
       z-index: 7777;
       margin-top: 25px;
+    }
+
+    .col-md-8 img {
+      max-height: 500px;
+      min-height: 500px;
+      min-width: 100%;
     }
 
     .header-info {
@@ -211,7 +236,7 @@ a .carousel-control-next-icon {
       top: -60px;
     }
 
-    .container.new-blog.header {
+    .new-blog.header {
       position: relative;
       align-items: flex-end;
       padding-top: 0px;
@@ -289,10 +314,6 @@ a .carousel-control-next-icon {
 
   span {
     padding: 16px;
-  }
-
-  .category-blog h2 {
-    // min-height: 50px;
   }
 
   .carousel-indicators {
@@ -452,6 +473,7 @@ a .carousel-control-next-icon {
 
   .container-row.new-blog {
     background-size: cover !important;
+    padding-top: 60px;
 
     img {
       margin-bottom: 0px !important;
@@ -487,10 +509,7 @@ a .carousel-control-next-icon {
   }
 
   .new-blog {
-    .col-md-10 {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
+
 
     // .header
     h1 {
@@ -585,7 +604,7 @@ a .carousel-control-next-icon {
 
 
     h1 {
-      margin: 33px auto 0px;
+      margin: 3rem auto;
       padding: 25px !important;
     }
   }
@@ -764,7 +783,7 @@ h1.latest {
     }
   }
 
-  .container.header {
+  .col-md-8.header {
     display: flex;
     font-family: $font_bungee;
     justify-content: center;

@@ -21,7 +21,7 @@ class WelcomeOldschool extends React.Component {
     return (
       <div className="container-row welcome-blog">
         <div className="container header">
-          <h1>Old School</h1>
+          <h1 className="bungee">Old School</h1>
         </div>
         <div className="container">
           {this.props.news.length > 0 ? (
