@@ -58,13 +58,6 @@ a {
   // min-height: 1000px;
 }
 
-.loading {
-  width: 80%;
-  min-height: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 100px 300px 300px;
-}
 
 .SocialMediaShareButton {
   outline: none;
@@ -132,6 +125,14 @@ ul.pagination {
 }
 
 @media #{$mobile} {
+  .loading {
+    width: 90%;
+    min-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 90px;
+  }
+
   .container {
     padding-left: 10px !important;
     padding-right: 10px !important;
@@ -227,6 +228,17 @@ ul.pagination {
   border-radius: 2px;
   letter-spacing: 1.2pt;
   align-self: start;
+}
+
+@media #{$desktop, $tablet} {
+
+  .loading {
+    width: 80%;
+    min-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px 300px 300px;
+  }
 }
 
 @media #{$desktop} {
