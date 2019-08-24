@@ -471,9 +471,12 @@ a .carousel-control-next-icon {
     margin-bottom: 33px;
   }
 
+  .new-blog .col-md-8 {
+    padding: 0px;
+  }
+
   .container-row.new-blog {
     background-size: cover !important;
-    padding-top: 60px;
 
     img {
       margin-bottom: 0px !important;
@@ -510,14 +513,13 @@ a .carousel-control-next-icon {
 
   .new-blog {
 
-
-    // .header
-    h1 {
-      // margin-bottom: 30px;
+    .header {
+      display: flex;
+      flex-direction: column;
     }
 
+
     .header-info {
-      // background-color: $light_green;
       color: $grey;
       position: relative;
       margin-top: -45px;
@@ -536,8 +538,7 @@ a .carousel-control-next-icon {
     }
 
     h2 {
-      margin-bottom: 0px;
-      // padding-left: 8px;
+      margin: 0px !important;
       padding-top: 8px;
       padding-bottom: 10px;
     }
