@@ -19,7 +19,7 @@ class WelcomeBloglist extends React.Component {
 
             <div className="container-row new-blog">
 
-                <div className="col-md-10">
+                <div className="col-md-12">
                     {this.props.posts.length > 0 ? (
 
                         <>
@@ -36,7 +36,11 @@ class WelcomeBloglist extends React.Component {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="container">
+                            <div className="container pundits">
+                                <div className="container">
+                                    <h1 className="bungee">Pundits</h1>
+                                </div>
+
                                 {this.props.posts.map((blog, index) => {
                                     if (index !== 0) {
                                         return (
@@ -44,21 +48,21 @@ class WelcomeBloglist extends React.Component {
                                                 key={index}
                                                 id={blog.id}
                                                 blog={blog}
-                                                className="category-blog col-md-6 col-xs-12"
+                                                className="category-blog col-md-3 col-sm-6 col-xs-12"
                                             >
                                                 <Link to={`/blog/${blog.id}`}>
-                                                    <div className="list-header">
-                                                        <img src={blog.postMainImg} alt="" />
-                                                        {blog.title.length < 50 && <h2>{blog.title}</h2>}
-                                                        {blog.title.length > 50 && <h2>{blog.title.slice(0, maxLenTitle).concat('...')}</h2>}
-                                                    </div>
+                                                    <img
+                                                        src={blog.avatar}
+                                                        alt="avatar"
+                                                        className="avatar"
+                                                    />
                                                     <div className="body">
+                                                        <div className="list-header">
+                                                            {/* <img src={blog.postMainImg} alt="" /> */}
+                                                            {blog.title.length < 50 && <h2>{blog.title}</h2>}
+                                                            {blog.title.length > 50 && <h2>{blog.title.slice(0, maxLenTitle).concat('...')}</h2>}
+                                                        </div>
                                                         <p>
-                                                            <img
-                                                                src={blog.avatar}
-                                                                alt="avatar"
-                                                                className="avatar"
-                                                            />
                                                             De Ligt is yet to clarify his future but appears to
                                                             have his sights set on Juventus after revealing the
                                                             club are interested and a desire to play alongside

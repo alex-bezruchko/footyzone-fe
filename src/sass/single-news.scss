@@ -1,0 +1,211 @@
+.single-news {
+
+    padding: 5px;
+    background-color: $white;
+
+    .author {
+        flex-direction: column;
+        padding-bottom: 10px;
+        font-family: $font_ubuntu;
+        align-items: start !important;
+        padding-left: 8px;
+
+        span {
+            padding: 0px;
+        }
+    }
+
+    .single-main {
+        align-items: flex-start;
+        display: flex;
+        margin-top: 15px;
+    }
+
+    .socials .shares {
+        display: flex;
+        flex-direction: row;
+    }
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin-top: 30px;
+        height: 80%;
+        padding-left: 8px;
+
+        ul {
+            flex-direction: column;
+
+        }
+    }
+
+    .related h4 {
+        font-family: $font_oswald;
+    }
+
+    aside ul,
+    .related-bottom {
+        li {
+            margin-bottom: 0px;
+            margin-top: 10px;
+            font-family: $font_sans;
+            font-size: 20px;
+            padding-left: 0px;
+        }
+
+        a {
+            border: 1px solid $blue;
+            border-radius: 30px;
+            padding: 0px 10px 3px;
+            font-weight: 500;
+            align-self: center;
+            font-size: 18px;
+        }
+
+        a:hover {
+            background-color: $blue;
+            color: #fff !important;
+            border: 1px solid rgba(50, 200, 200, 0.8);
+        }
+    }
+
+    aside ul li {
+        min-width: 100%;
+        display: flex;
+
+        a {
+            height: 100%;
+        }
+    }
+
+    .single-body {
+        padding-left: 25px;
+        width: 70%;
+
+        // margin-left: 30%;
+        .body {
+            padding-top: 15px;
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+    }
+
+    ul {
+        display: flex;
+        margin-left: 0px;
+        padding-left: 0px;
+
+        li {
+            list-style: none;
+        }
+    }
+
+    .related-bottom {
+        display: none;
+    }
+}
+
+@media #{$desktop} {
+    .single-news {
+        position: relative;
+        padding-left: 8px;
+        padding-right: 8px;
+
+        .counts {
+            padding-top: 13px;
+        }
+
+        .single-body {
+            padding-left: 0px;
+        }
+
+        .aside-fixed {
+            margin-top: 33px;
+            width: 30%;
+            position: fixed;
+            top: 0;
+        }
+
+        .body-fixed {
+            width: 100%;
+            padding-left: 0px;
+            margin-left: 30%;
+        }
+    }
+
+}
+
+@media #{$tablet} {
+    .single-news aside ul li {
+        margin-bottom: 0px;
+        margin-top: 0px;
+        border: none !important;
+    }
+}
+
+@media #{$mobile} {
+    .single-news {
+        padding: 0px !important;
+
+        .single-body {
+            padding-left: 0px;
+            margin-top: 0px;
+            width: 100%;
+            font-size: 1.6rem;
+            line-height: 1.2;
+        }
+
+        .related {
+            display: none;
+        }
+
+        .single-main {
+            flex-direction: column;
+            margin-top: 5px;
+
+            .body {
+                padding-top: 0px;
+            }
+        }
+
+        aside {
+            margin-top: 0px;
+            width: 100%;
+            padding-left: 0px;
+        }
+
+        .socials {
+            justify-content: space-between;
+            padding-bottom: 10px;
+
+            .counts {
+                padding-right: 5px;
+            }
+        }
+
+        .related-bottom {
+            display: flex;
+            flex-direction: column;
+
+            h4 {
+                margin-bottom: 0px;
+                margin-top: 10px;
+            }
+
+            ul {
+                -webkit-flex-wrap: wrap;
+                flex-wrap: wrap;
+                // flex-direction: row;
+                min-width: 100%;
+                padding-right: 0px;
+                margin: 10px 0px 22px;
+
+                li {
+                    margin-right: 15px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}

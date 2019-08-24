@@ -66,13 +66,6 @@ a {
     margin: 15px 0px;
   }
 
-  img {
-    min-width: 100%;
-    width: 100%;
-    margin-bottom: 15px;
-    max-height: 400px;
-    min-height: 400px;
-  }
 }
 
 .container.post {
@@ -180,20 +173,17 @@ a {
     }
   }
 
-  img {
-    width: 100%;
-    max-height: 366px;
-    min-height: 366px;
-    margin: 5px 0px 15px;
-  }
+  // img {
+  //   width: 100%;
+  //   max-height: 366px;
+  //   min-height: 366px;
+  //   margin: 5px 0px 15px;
+  // }
 
   text-align: left;
 }
 
 @media #{$mobile} {
-  .blog {
-    // background-size: auto;
-  }
 
   .single.col-md-8 {
     padding: 0px 6px;

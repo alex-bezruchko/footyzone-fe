@@ -101,9 +101,9 @@ class SearchResultsList extends React.Component {
                                                     <h2>{news.title}</h2>
                                                 </div>
                                                 {news.newsMainImg ?
-                                                    <img src={news.newsMainImg} alt={news.title} />
+                                                    <img className="col-md-8-img" src={news.newsMainImg} alt={news.title} />
                                                     :
-                                                    <img src={blank} alt="blank" />
+                                                    <img className="col-md-8-img" src={blank} alt="blank" />
                                                 }
 
                                                 <div className="post-detail-body">

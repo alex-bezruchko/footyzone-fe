@@ -44,6 +44,7 @@
 @import "./sass/sidebar.scss";
 @import "./sass/blog.scss";
 @import "./sass/single-blog.scss";
+@import "./sass/single-news.scss";
 @import "./sass/news.scss";
 @import "./sass/post.scss";
 @import "./sass/contact.scss";
@@ -136,6 +137,14 @@ ul.pagination {
   .container {
     padding-left: 10px !important;
     padding-right: 10px !important;
+  }
+
+  .col-md-8-img {
+    min-width: 100%;
+    width: 100%;
+    // margin-bottom: 15px;
+    // max-height: 400px;
+    // min-height: 400px;
   }
 
   .blog-list {
@@ -231,6 +240,14 @@ ul.pagination {
 }
 
 @media #{$desktop, $tablet} {
+
+  .col-md-8-img {
+    min-width: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+    max-height: 400px;
+    min-height: 400px;
+  }
 
   .loading {
     width: 80%;
