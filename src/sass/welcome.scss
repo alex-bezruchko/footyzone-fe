@@ -481,6 +481,8 @@ a .carousel-control-next-icon {
 
   .container-row.new-blog {
     background-size: cover !important;
+    background: url("../src/img/stadium-small.jpg") !important;
+
 
     img {
       margin-bottom: 0px !important;
@@ -708,9 +710,9 @@ h1.latest {
 
 .container-row.new-blog {
   background: url("../src/img/stadium.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 
   // .category-blog,
   h1 {
