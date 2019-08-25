@@ -486,6 +486,7 @@ a .carousel-control-next-icon {
   .container-row.new-blog {
     background-size: cover !important;
     background: url("../src/img/stadium-small.jpg") !important;
+    background-attachment: fixed !important;
 
 
     img {
@@ -671,6 +672,7 @@ a .carousel-control-next-icon {
     font-size: 1rem;
     margin-bottom: 0px;
     height: auto;
+    min-height: 70px;
   }
 
   .small-carousel .small-carousel-post {
@@ -678,6 +680,9 @@ a .carousel-control-next-icon {
   }
 
   .small-carousel {
+    padding-left: 8px;
+    padding-right: 8px;
+
     .small-carousel-post:nth-child(1) {
       margin-right: 5px;
     }
@@ -810,7 +815,7 @@ h1.latest {
 
     h1 {
       text-align: center;
-      padding: 5px 12px 10px;
+      padding: 15px;
       color: black;
       // width: 100%;
     }
