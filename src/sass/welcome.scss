@@ -500,6 +500,9 @@ a .carousel-control-next-icon {
     background-attachment: scroll;
     background-repeat: repeat;
     background-position: center;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
 
     img {
       margin-bottom: 0px !important;
