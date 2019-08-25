@@ -185,11 +185,14 @@ a {
 
 @media #{$mobile} {
   .blog {
-    background-size: cover !important;
+    background-size: auto;
     background: url("../src/img/stadium-small.jpg");
-    background-attachment: fixed !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-position: center;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
 
   }
 
