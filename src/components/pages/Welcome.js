@@ -122,7 +122,7 @@ class Welcome extends React.Component {
         {this.state.loading ? (
           <div className="container carousel-container">
             <img className="loading" src={loading} alt="Loading gif" />
-            hello
+
           </div>
         ) : (
             <>
