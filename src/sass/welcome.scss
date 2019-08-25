@@ -495,10 +495,10 @@ a .carousel-control-next-icon {
   }
 
   .container-row.new-blog {
-    background-size: cover !important;
+    background-size: contain !important;
     background: url("../src/img/stadium-small.jpg") !important;
     background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
+    background-repeat: repeat !important;
     background-position: center !important;
 
     img {
