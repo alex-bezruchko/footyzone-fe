@@ -14,6 +14,7 @@ class WelcomeBloglist extends React.Component {
     }
     render() {
         let maxLenTitle = 50;
+        let maxLenBody = 200;
 
         return (
 
@@ -63,11 +64,8 @@ class WelcomeBloglist extends React.Component {
                                                             {blog.title.length > 50 && <h2>{blog.title.slice(0, maxLenTitle).concat('...')}</h2>}
                                                         </div>
                                                         <p>
-                                                            De Ligt is yet to clarify his future but appears to
-                                                            have his sights set on Juventus after revealing the
-                                                            club are interested and a desire to play alongside
-                                                            some of their defenders.
-                                                            </p>
+                                                            {blog.body.slice(0, maxLenBody).concat('...')}
+                                                        </p>
                                                     </div>
                                                 </Link>
                                             </div>

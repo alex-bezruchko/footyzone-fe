@@ -112,7 +112,8 @@ a .carousel-control-next-icon {
   transition: .77s;
 
   &:hover {
-    border: 4px solid rgba(22, 21, 21, 0.5);
+    border: 4px solid rgba(75, 144, 221, 0.5);
+    box-shadow: 0px -3px 11px rgba(55, 150, 200, .8);
     color: rgba(22, 21, 21, 0.88) !important;
   }
 }
@@ -121,7 +122,7 @@ a .carousel-control-next-icon {
   padding-bottom: 66px;
 
   .container {
-    padding-top: 20px !important;
+    padding-top: 0px !important;
     display: flex;
     justify-content: center !important;
     margin-bottom: 33px;
@@ -129,6 +130,7 @@ a .carousel-control-next-icon {
     h1 {
       padding: 15px;
       color: $black;
+      margin-bottom: 15px;
     }
   }
 }
@@ -190,7 +192,7 @@ a .carousel-control-next-icon {
   .container-row.new-blog {
     .body {
       margin-top: 15px;
-      justify-content: space-between;
+      // justify-content: space-between;
       flex-direction: column;
       height: 100%;
     }
@@ -200,7 +202,7 @@ a .carousel-control-next-icon {
       top: 1.66rem;
       left: 1.66rem;
       z-index: 7777;
-      margin-top: 25px;
+      margin-top: 0px;
     }
 
     .col-md-8 img {
@@ -210,10 +212,8 @@ a .carousel-control-next-icon {
     }
 
     .header-info {
-      // z-index: 9999;
       position: relative;
       background-color: $light_green;
-
       margin-top: -15px;
     }
 
@@ -282,7 +282,7 @@ a .carousel-control-next-icon {
 
 
     .avatar {
-      border-radius: 50%;
+      // border-radius: 50%;
       margin-top: 33px;
       min-height: 133px !important;
       min-width: 133px !important;
@@ -291,6 +291,10 @@ a .carousel-control-next-icon {
       margin-left: auto;
       margin-right: auto;
     }
+  }
+
+  .category-blog.col-md-3.col-sm-6.col-xs-12 .list-header {
+    min-height: 100px;
   }
 
   .controllers {
@@ -745,7 +749,7 @@ h1.latest {
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   .container {

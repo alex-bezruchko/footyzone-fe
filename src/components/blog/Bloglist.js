@@ -9,7 +9,7 @@ const Bloglist = props => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(7);
+  const [postsPerPage] = useState(5);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -43,7 +43,7 @@ const Bloglist = props => {
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
-  
+
   // render() {
   return (
     <div className="container-row blog">

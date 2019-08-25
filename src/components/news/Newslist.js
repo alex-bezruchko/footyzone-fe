@@ -11,7 +11,7 @@ const Newslist = props => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [newsPerPage] = useState(7);
+  const [newsPerPage] = useState(5);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -52,7 +52,13 @@ const Newslist = props => {
     $(".popular").css("min-width", "100%");
     $(".popular .twitter-fixed").css("min-width", "100%");
   }
+  function isPalindrome(str) {
+    str = str.replace(/\W/g, '').toLowerCase();
+    console.log(str)
+    console.log(str.split('').reverse().join(''))
 
+    return (str == str.split('').reverse().join(''));
+  }
   $(window).scroll(function (e) {
     let article = document.getElementsByClassName("news-list");
 
@@ -76,7 +82,6 @@ const Newslist = props => {
         <div className="container blog-list">
           <div className="col-md-8">
             <img className="loading" alt="Loading gif" src={imgLoading} />
-            hello
           </div>
         </div>
       ) : (
