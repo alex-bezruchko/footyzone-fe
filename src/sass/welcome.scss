@@ -561,6 +561,10 @@ a .carousel-control-next-icon {
       padding: 0px;
       display: flex;
       flex-direction: column-reverse;
+
+      h2 {
+        text-align: left;
+      }
     }
 
     .header-title {
