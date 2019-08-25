@@ -3,6 +3,9 @@ import axios from "axios";
 import NewsPagination from "./NewsPagination";
 import imgLoading from "./../../../src/loading.gif";
 import $ from "jquery";
+import {
+  FaRegNewspaper,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PopularNews from "./PopularNews";
 
@@ -52,13 +55,7 @@ const Newslist = props => {
     $(".popular").css("min-width", "100%");
     $(".popular .twitter-fixed").css("min-width", "100%");
   }
-  function isPalindrome(str) {
-    str = str.replace(/\W/g, '').toLowerCase();
-    console.log(str)
-    console.log(str.split('').reverse().join(''))
 
-    return (str == str.split('').reverse().join(''));
-  }
   $(window).scroll(function (e) {
     let article = document.getElementsByClassName("news-list");
 
@@ -90,7 +87,7 @@ const Newslist = props => {
               <div className="col-sm-12 col-md-8">
                 {currentNews.length > 0 ? (
                   <div className="list-wrapper">
-                    <h1 className="category-header">Latest</h1>
+                    <h1 className="category-header">Latest <FaRegNewspaper /> </h1>
 
                     {currentNews.map((news, index) => {
                       return (

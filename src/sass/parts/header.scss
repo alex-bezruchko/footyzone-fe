@@ -104,12 +104,12 @@
 
   .fanzone {
     font-family: $font_bungee;
-    color: $black;
+    color: $white;
     font-size: 2rem;
     padding-left: 15px;
 
     &:hover {
-      color: #fff;
+      color: $black;
     }
   }
 

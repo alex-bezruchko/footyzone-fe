@@ -36,12 +36,13 @@
 @import url("https://fonts.googleapis.com/css?family=Darker+Grotesque:400,500|Ubuntu:400,500,600,700|Literata:400,500,600|Elsie:900|Bungee+Shade");
 @import "./sass/variables.scss";
 @import "./sass/login.scss";
-@import "./sass/search.scss";
+@import "./sass/parts/search.scss";
 
-@import "./sass/header.scss";
-@import "./sass/footer.scss";
+@import "./sass/parts/header.scss";
+@import "./sass/parts/footer.scss";
 @import "./sass/welcome.scss";
-@import "./sass/sidebar.scss";
+@import "./sass/parts/sidebar.scss";
+@import "./sass/parts/carousel.scss";
 @import "./sass/blog.scss";
 @import "./sass/single-blog.scss";
 @import "./sass/single-news.scss";

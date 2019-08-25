@@ -122,7 +122,6 @@ class Welcome extends React.Component {
         {this.state.loading ? (
           <div className="container carousel-container">
             <img className="loading" src={loading} alt="Loading gif" />
-
           </div>
         ) : (
             <>
@@ -132,7 +131,6 @@ class Welcome extends React.Component {
                   activeIndex={activeIndex}
                   next={this.next}
                   previous={this.previous}
-                // interval={30000000}
                 >
                   <CarouselIndicators
                     items={this.state.news}

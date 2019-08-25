@@ -34,66 +34,11 @@
   margin-right: auto;
 }
 
-.carousel-indicators li {
-  height: 18px !important;
-  background-color: $blue !important;
-  border: 2px solid $wheat !important;
-}
-
-a .carousel-control-prev-icon,
-a .carousel-control-next-icon {
-  color: $blue !important;
-  font-size: 14px;
-}
 
 .post-wrapper:hover {
   color: $old;
 }
 
-.small-carousel {
-  display: flex;
-  justify-content: space-between;
-
-  .small-carousel-post:nth-child(1) {
-    margin-right: 10px;
-  }
-
-  .small-carousel-post:nth-child(2) {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .small-carousel-post:nth-child(3) {
-    margin-left: 10px;
-    margin-right: 0px;
-  }
-
-  .small-carousel-post {
-    width: 100%;
-    z-index: 9999;
-    margin: 33px 0px 5px;
-
-    &:hover {
-      p {
-        color: $wheat;
-        cursor: pointer;
-      }
-    }
-
-    img {
-      margin-bottom: 7px;
-    }
-
-    p {
-      font-size: 22px;
-      text-align: left;
-      font-family: $font_sans;
-      font-weight: lighter;
-      line-height: 1;
-      color: $white;
-    }
-  }
-}
 
 .header-title {
   font-family: $font_oswald;
@@ -324,148 +269,10 @@ a .carousel-control-next-icon {
     padding: 16px;
   }
 
-  .carousel-indicators {
-    margin-left: 67% !important;
-  }
-
-  .carousel-caption {
-    bottom: 0px !important;
-  }
-
-  .carousel-caption.d-none.d-md-block {
-    width: 50%;
-    left: 0;
-    color: $white;
-    height: 100%;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: left;
-    padding-bottom: 0px;
-    padding-right: 15px;
-    z-index: 0;
-
-    &:hover {
-      color: $old;
-
-    }
-
-    h3 {
-      line-height: 1.1;
-      font-family: $font_oswald;
-    }
-
-    p {
-      padding-top: 20px;
-      margin-bottom: 0px;
-      font-family: $font_sans;
-      font-size: 22px;
-      line-height: 1.1;
-    }
-  }
 }
 
-.carousel-item {
-  max-height: 388px;
-  min-height: 388px;
-  display: flex;
-  align-items: center;
-}
 
-.post-wrapper {
-  display: flex;
-  flex-direction: column;
-  border: 1.5px solid #ffffcd;
-  box-shadow: 1px 1px 3px #888888;
-  height: 100%;
-  z-index: 9999;
-  overflow: hidden;
-  min-height: 166px;
-  height: 166px;
-  max-height: 166px;
-}
 
-.small-carousel-post {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  z-index: 9999;
-  margin: 33px 0px;
-  display: flex;
-  flex-direction: column;
-  border: none;
-
-  &:hover {
-    color: $wheat;
-  }
-
-  &:hover img {
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-    max-height: 166px;
-    min-height: 166px;
-    overflow: hidden;
-    height: 166px;
-    max-width: 100%;
-  }
-
-  img {
-    max-width: 100%;
-    width: 100%;
-    -moz-transition: all 0.8s;
-    -webkit-transition: all 0.8s;
-    transition: all 0.8s;
-    overflow: hidden;
-    max-height: 166px;
-    min-height: 166px;
-  }
-
-  p {
-    margin-top: 10px;
-    font-size: 15px;
-  }
-}
-
-@media #{$desktop} {
-  .carousel-item .news-image {
-    position: relative;
-    overflow: hidden;
-    height: 388px;
-    max-height: 388px;
-    min-height: 388px;
-    width: 50%;
-    margin-left: 50%;
-    border: 1.5px solid $wheat !important;
-    box-shadow: 1px 1px 3px #888888;
-  }
-
-  .carousel-item .news-image img {
-    transition: all 0.8s;
-    overflow: hidden;
-    max-height: 388px;
-    min-height: 388px;
-    width: 100%;
-    margin-left: 0%;
-    border: none;
-  }
-}
-
-.carousel-item .news-image:hover {
-  overflow: hidden;
-  max-width: 100%;
-
-  img {
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-    max-height: 388px;
-    min-height: 388px;
-    overflow: hidden;
-    height: 388px;
-    max-width: 100%;
-  }
-}
 
 @media #{$mobile} {
 
@@ -658,74 +465,6 @@ a .carousel-control-next-icon {
     min-height: 40px;
   }
 
-  .container.carousel-container {
-    padding: 0px !important;
-  }
-
-  .carousel-item img,
-  .carousel-item {
-    max-height: 266px;
-    min-height: 266px;
-    width: 100%;
-  }
-
-  .carousel-item .news-image {
-    z-index: 1;
-    width: 100%;
-    margin-left: 0%;
-    height: 266px;
-    max-height: 266px;
-    min-height: 266px;
-  }
-
-  .carousel-item .news-image img {
-    max-height: 266px;
-    min-height: 266px;
-  }
-
-  .carousel-item .news-image:hover {
-    img {
-      max-height: 266px;
-      min-height: 266px;
-      height: 266px;
-    }
-  }
-
-  .post-wrapper,
-  .post-wrapper img {
-    min-height: 125px;
-    max-height: 125px;
-  }
-
-  .small-carousel .small-carousel-post p {
-    font-size: 1rem;
-    margin-bottom: 0px;
-    height: auto;
-    min-height: 90px;
-  }
-
-  .small-carousel .small-carousel-post {
-    margin-top: 20px;
-  }
-
-  .small-carousel {
-    padding-left: 5px;
-    padding-right: 5px;
-
-    .small-carousel-post:nth-child(1) {
-      margin-right: 5px;
-    }
-
-    .small-carousel-post:nth-child(2) {
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    .small-carousel-post:nth-child(3) {
-      margin-left: 5px;
-      margin-right: 0px;
-    }
-  }
 
   .navbar {
     padding: 0px !important;
@@ -819,7 +558,7 @@ h1.latest {
         min-height: 100px;
         margin-top: 15px;
         margin-right: 20px;
-        border-radius: 45%;
+        border-radius: 50%;
         align-self: baseline;
         float: left;
       }
@@ -828,7 +567,7 @@ h1.latest {
         font-family: $font_sans;
         margin: 0px;
         font-size: 22px;
-        line-height: 1.2;
+        line-height: 1.1;
         align-self: center;
         // display: flex;
         align-items: center;
@@ -857,47 +596,6 @@ h1.latest {
     font-size: 1rem;
   }
 
-  .carousel-caption {
-    width: 100%;
-    left: 0% !important;
-    right: 0% !important;
-    padding: 0px 2px;
-
-    h3 {
-      font-family: $font_oswald;
-      background: rgba(0, 0, 0, 0.8);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      color: $old;
-    }
-
-    p {
-      display: none;
-    }
-  }
-
-  .carousel-item .news-image {
-    z-index: 1;
-    width: 100%;
-    margin-left: 0%;
-    height: 388px;
-    max-height: 388px;
-    min-height: 388px;
-  }
-
-  .carousel-item .news-image img {
-    max-height: 388px;
-    min-height: 388px;
-    width: 100%;
-  }
-
-  .carousel-item .news-image:hover {
-    border: 1.5px solid $old !important;
-
-    img {
-      border: 1.5px solid $old !important;
-    }
-  }
 
   .col-md-6 {
     flex: 0 0 100% !important;
