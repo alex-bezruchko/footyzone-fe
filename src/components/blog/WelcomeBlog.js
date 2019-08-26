@@ -23,7 +23,7 @@ class WelcomeBloglist extends React.Component {
         $.when(container[0]).then(function () {
             //     console.log(container[0].clientWidth)
             console.log('small screen')
-            if (container[0] && container[0].clientWidth <= 500) {
+            if (container[0].clientWidth <= 500) {
                 container[0].style.background = `transparent url(${stadium}) no-repeat`;
                 container[0].style.backgroundSize = `cover`;
                 container[0].style.backgroundAttachment = `fixed`;
