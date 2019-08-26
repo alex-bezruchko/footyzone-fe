@@ -14,12 +14,16 @@ class WelcomeBloglist extends React.Component {
     componentDidMount() {
         this.props.fetchLatestPosts();
         let container = document.getElementsByClassName('container-row new-blog');
-        $.when(container[0]).then(function () {
-            if (container[0].clientWidth < 500) {
-                container[0].style.background = `url(${stadium}) no-repeat cover center center`;
-            }
-            console.log(container[0])
-        })
+        // $.when(container[0]).then(function () {
+        //     console.log(container[0].clientWidth)
+        if (container[0].clientWidth <= 500) {
+            container[0].style.background = `transparent url(${stadium}) no-repeat`;
+            container[0].style.backgroundSize = `contain`;
+            container[0].style.backgroundAttachment = `fixed`;
+
+
+        }
+        // })
     }
     render() {
         let maxLenTitle = 50;
