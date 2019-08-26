@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import moment from 'moment';
+import stadium from "./../../img/small-blog.jpg";
+import $ from "jquery";
 import {
     fetchLatestPosts,
     // fetchAllCategories,
@@ -11,6 +13,11 @@ import { Link } from "react-router-dom";
 class WelcomeBloglist extends React.Component {
     componentDidMount() {
         this.props.fetchLatestPosts();
+        let container = document.getElementsByClassName('container-row new-blog');
+        $.when(container[0]).then(function () {
+            container[0].style.background = `url(${stadium}) no-repeat cover center center`;
+            console.log(container[0])
+        })
     }
     render() {
         let maxLenTitle = 50;
