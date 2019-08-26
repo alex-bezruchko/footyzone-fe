@@ -30,6 +30,8 @@ class LoginForm extends React.Component {
   };
   loginHandler = e => {
     e.preventDefault();
+    window.scrollTo(0, 0);
+
     if (this.state.username.length === 0 && this.state.password.length === 0) {
       this.setState({ usernameError: true, passwordError: true });
     } else if (

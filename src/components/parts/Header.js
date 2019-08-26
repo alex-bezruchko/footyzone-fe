@@ -335,7 +335,7 @@ class Header extends React.Component {
                     <div className="nav-account">
                       <div className="hidden-xs">
                         <p>Hi, {this.props.user.username}!</p>
-                        <img src={this.props.user.avatar} alt="avatar" />
+                        <img src={this.props.user.avatar} alt="avatar" onClick={this.toggleModal} />
                         <Link onClick={this.toggleNav} to={`/${this.props.user.username}/create-post`}>
                           Add a Post
                           <FaPlusCircle />

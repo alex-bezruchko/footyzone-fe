@@ -8,6 +8,9 @@ import { connect } from "react-redux";
 // import Tr from "react-icons/fa";
 import loading from "./../../../src/loading.gif";
 import moment from "moment";
+import $ from "jquery";
+import stadium from "./../../img/small-blog.jpg";
+
 
 import {
   FacebookShareButton,
@@ -128,14 +131,36 @@ class SingleView extends React.Component {
     }
   }
   render() {
+    let blog = document.getElementsByClassName('container-row blog')
+
+    // let window_height = $(window).height();
+    $.when(blog[0]).then(function () {
+      let x = $(".container-row.blog").position();
+      $.when(x).then(function () {
+        $(window).scroll(function () {
+          if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < blog[0].clientHeight * 9 / 10)) {
+            this.console.log(blog[0].outerHeight)
+
+            $('.blog-bg').css({ "position": "fixed", "top": "0" });
+          }
+          else {
+            $('.blog-bg').css({ "position": "absolute", "top": "" });
+          }
+        });
+      })
+    })
     return (
       <div className="container-row blog">
+        <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
+
         {this.props.postsReducer.loading ? (
           <div className="container">
+
             <img className="loading" src={loading} alt="Post is loading" />
           </div>
         ) : (
             <div className="container single-blog-wrapper">
+
               {this.props.postsReducer.post &&
                 this.props.postsReducer.post.title ? (
                   <div className="single col-md-8">

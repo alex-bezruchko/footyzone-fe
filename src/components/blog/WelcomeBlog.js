@@ -19,21 +19,32 @@ class WelcomeBloglist extends React.Component {
     render() {
         let maxLenTitle = 50;
         let maxLenBody = 200;
-        let container = document.getElementsByClassName('container-row new-blog');
-        $.when(container[0]).then(function () {
-            //     console.log(container[0].clientWidth)
-            console.log('small screen')
-            if (container[0].clientWidth <= 500) {
-                container[0].style.background = `transparent url(${stadium}) repeat-y`;
-                container[0].style.backgroundSize = `cover`;
-                container[0].style.backgroundAttachment = `fixed`;
-                container[0].style.backgroundPosition = `center`;
-            }
+        let blog = document.getElementsByClassName('container-row new-blog')
+        let old_school = document.getElementsByClassName('container-row welcome-blog')
+
+        // let window_height = $(window).height();
+        $.when(blog[0]).then(function () {
+            let x = $(".container-row.new-blog").position();
+            console.log(x.top)
+            console.log(blog[0])
+            $.when(x).then(function () {
+                $(window).scroll(function () {
+                    // console.log(`scroll + ${$(window).position()}`)
+                    if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
+                        $('.blog-bg').css({ "position": "fixed", "top": "0" });
+                    }
+                    else {
+                        $('.blog-bg').css({ "position": "absolute", "top": "" });
+                    }
+                });
+            })
+
         })
+
         return (
 
             <div className="container-row new-blog">
-
+                <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
                 <div className="col-md-12">
                     {this.props.posts.length > 0 ? (
 

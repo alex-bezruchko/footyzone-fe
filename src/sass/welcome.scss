@@ -231,7 +231,6 @@
 
 
     .avatar {
-      // border-radius: 50%;
       margin-top: 33px;
       min-height: 133px !important;
       min-width: 133px !important;
@@ -331,7 +330,6 @@
     }
 
     .avatar {
-      border-radius: 50%;
       margin-top: 33px;
       margin-bottom: 20px !important;
       min-height: 133px !important;
@@ -366,7 +364,7 @@
     }
 
     .header-title {
-      font-size: 1.5rem;
+      // font-size: 1.5rem;
       line-height: 1.3;
       padding: 0px;
       display: flex;
@@ -374,6 +372,7 @@
 
       h2 {
         text-align: left;
+        font-size: 1.7rem !important;
         padding-top: 10px;
       }
     }

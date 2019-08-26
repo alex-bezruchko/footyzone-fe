@@ -1,3 +1,13 @@
+.blog-bg {
+  position: absolute;
+  display: none;
+}
+
+.blog-bg-fixed {
+  display: fixed;
+  top: 0;
+}
+
 .blog {
 
   .col-md-8 {
@@ -184,16 +194,17 @@ a {
 }
 
 @media #{$mobile} {
-  .blog {
-    background-size: auto;
-    background: url("../src/img/stadium-small.jpg");
-    background-attachment: fixed;
-    background-repeat: repeat;
-    background-position: center;
-    -webkit-background-size: auto;
-    -moz-background-size: auto;
-    -o-background-size: auto;
 
+
+  .blog-bg {
+    display: block;
+    width: 100%;
+    top: initial;
+    position: absolute;
+  }
+
+  .blog {
+    background-color: $dark_grey;
   }
 
   .single.col-md-8 {
