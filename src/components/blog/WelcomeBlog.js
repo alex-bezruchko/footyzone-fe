@@ -28,15 +28,17 @@ class WelcomeBloglist extends React.Component {
             console.log(x.top)
             console.log(blog[0])
             $.when(x).then(function () {
-                $(window).scroll(function () {
-                    // console.log(`scroll + ${$(window).position()}`)
-                    if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
-                        $('.blog-bg').css({ "position": "fixed", "top": "0" });
-                    }
-                    else {
-                        $('.blog-bg').css({ "position": "absolute", "top": "" });
-                    }
-                });
+                if (blog[0].clientWidth < 500) {
+                    $(window).scroll(function () {
+                        // console.log(`scroll + ${$(window).position()}`)
+                        if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
+                            $('.blog-bg').css({ "position": "fixed", "top": "0" });
+                        }
+                        else {
+                            $('.blog-bg').css({ "position": "absolute", "top": "" });
+                        }
+                    });
+                }
             })
 
         })

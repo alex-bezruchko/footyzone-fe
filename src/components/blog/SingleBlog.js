@@ -137,16 +137,18 @@ class SingleView extends React.Component {
     $.when(blog[0]).then(function () {
       let x = $(".container-row.blog").position();
       $.when(x).then(function () {
-        $(window).scroll(function () {
-          if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < blog[0].clientHeight * 9 / 10)) {
-            this.console.log(blog[0].outerHeight)
+        if (blog[0].clientWidth < 500) {
+          $(window).scroll(function () {
+            if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < blog[0].clientHeight * 9 / 10)) {
+              this.console.log(blog[0].outerHeight)
 
-            $('.blog-bg').css({ "position": "fixed", "top": "0" });
-          }
-          else {
-            $('.blog-bg').css({ "position": "absolute", "top": "" });
-          }
-        });
+              $('.blog-bg').css({ "position": "fixed", "top": "0" });
+            }
+            else {
+              $('.blog-bg').css({ "position": "absolute", "top": "" });
+            }
+          });
+        }
       })
     })
     return (
