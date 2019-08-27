@@ -66,7 +66,6 @@ class SingleView extends React.Component {
                 sentComment.user_id = Number(this.state.newComment.user_id);
                 sentComment.date = new Date().toISOString();
                 sentComment.comment = this.state.newComment.comment;
-                console.log(this.state.newComment.comment)
 
                 this.props.addComment(sentComment, this.props.history);
                 this.setState({
@@ -94,10 +93,6 @@ class SingleView extends React.Component {
         });
     }
 
-    componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-
-    }
     render() {
 
         return (

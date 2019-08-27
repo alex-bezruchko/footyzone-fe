@@ -18,8 +18,6 @@ class WelcomeBloglist extends React.Component {
         $.when(blog[0] && blog[0].length > 0 && position).then(function () {
             if (blog[0] && blog[0].clientWidth < 500) {
                 $(window).scroll(function () {
-                    // this.console.log(position)
-                    // this.console.log(position.top)
                     if (($(window).scrollTop() > $(carousel[0]).outerHeight(true)) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
                         $('.blog-bg').css({ "position": "fixed", "top": "0" });
                     }
