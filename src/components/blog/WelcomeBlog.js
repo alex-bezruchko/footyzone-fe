@@ -1,25 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import moment from 'moment';
 import stadium from "./../../img/small-blog.jpg";
 import $ from "jquery";
 import {
     fetchLatestPosts,
-    // fetchAllCategories,
 } from "../../actions/postsActions";
-import { Link } from "react-router-dom";
 
 class WelcomeBloglist extends React.Component {
     componentDidMount() {
         this.props.fetchLatestPosts();
         const blog = document.getElementsByClassName('container-row new-blog')
         const position = $(".container-row.new-blog").position();
+        const carousel = $(".container.carousel-container");
 
         $.when(blog[0] && blog[0].length > 0 && position).then(function () {
             if (blog[0] && blog[0].clientWidth < 500) {
                 $(window).scroll(function () {
-                    if (($(window).scrollTop() > position.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
+                    // this.console.log(position)
+                    // this.console.log(position.top)
+                    if (($(window).scrollTop() > $(carousel[0]).outerHeight(true)) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
                         $('.blog-bg').css({ "position": "fixed", "top": "0" });
                     }
                     else {
