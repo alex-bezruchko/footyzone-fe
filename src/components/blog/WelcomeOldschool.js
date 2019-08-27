@@ -1,15 +1,38 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import bricks from "./../../img/blog.jpg";
+import $ from "jquery";
 import {
   fetchLatestOldschool,
-  // fetchAllCategories,
 } from "../../actions/newsActions";
 import { Link } from "react-router-dom";
 
 class WelcomeOldschool extends React.Component {
   componentDidMount() {
     this.props.fetchLatestOldschool();
+
+    const old_school = document.getElementsByClassName('container-row welcome-blog')
+    const position = $(".container-row.welcome-blog").position();
+    const blog = document.getElementsByClassName('container-row new-blog');
+    const carousel = $(".container.carousel-container");
+
+    $.when(old_school[0] && old_school[0].length > 0 && position && blog[0]).then(function () {
+      if (old_school[0] && old_school[0].clientWidth < 500) {
+        $(window).scroll(function () {
+          if (($(window).scrollTop() > ($(blog[0]).outerHeight(true) + 80 + $(carousel[0]).outerHeight(true))) && ($(window).scrollTop() < ($(old_school[0]).outerHeight(true) * 8.33 / 10 + $(carousel[0]).outerHeight(true) + $(blog[0]).outerHeight(true) + 80))) {
+            $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
+          }
+          else {
+            $('.oldschool-bg').css({ "position": "absolute", "top": "" });
+          }
+        });
+      }
+    }).catch(function (err) {
+      console.log(err)
+      this.props.history.push(`/${this.props.location.pathname}`)
+    })
+
   }
   render() {
     let maxLenBody = 250;
@@ -20,6 +43,8 @@ class WelcomeOldschool extends React.Component {
 
     return (
       <div className="container-row welcome-blog">
+        <img src={bricks} alt="shiny photoshopped stadium" className="oldschool-bg" />
+
         <div className="container header">
           <h1 className="bungee">Old School</h1>
         </div>

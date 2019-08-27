@@ -8,6 +8,8 @@
   top: 0;
 }
 
+
+
 .blog {
 
   .col-md-8 {
@@ -91,6 +93,12 @@ a {
 
 
 @media #{$desktop, tablet} {
+
+  .oldschool-bg {
+    // position: absolute;
+    display: none;
+  }
+
   .blog {
     background: url("../src/img/stadium.jpg");
     background-attachment: fixed;
@@ -195,6 +203,18 @@ a {
 
 @media #{$mobile} {
 
+  .oldschool-bg {
+    display: block;
+    width: 100%;
+    top: initial;
+    position: absolute;
+    height: 100%;
+  }
+
+  .welcome-blog h1 {
+    z-index: 9999;
+
+  }
 
   .blog-bg {
     display: block;

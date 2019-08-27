@@ -96,6 +96,14 @@
 
   }
 
+  .container-row.welcome-blog {
+    background: url("../src/img/blog.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: contain;
+  }
+
   .container-row.welcome-blog,
   .container-row.new-blog {
     p.sans.mobile {
@@ -504,11 +512,7 @@ h1.latest {
 }
 
 .container-row.welcome-blog {
-  background: url("../src/img/blog.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: contain;
+
 
   h1,
   .category-blog {
