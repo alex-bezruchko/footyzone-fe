@@ -7,21 +7,9 @@ import {
 import { connect } from "react-redux";
 import loading from "./../../../src/loading.gif";
 import moment from "moment";
+import BlogSocials from "./BlogSocials";
+import { FaThumbsUp, FaComments, FaTrashAlt } from "react-icons/fa";
 
-
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  RedditShareButton,
-  RedditIcon,
-  PinterestShareButton,
-  PinterestIcon,
-} from "react-share";
-import { FaThumbsUp, FaComments, FaTrashAlt, FaPrint, FaCalendar } from "react-icons/fa";
 
 class SingleView extends React.Component {
   constructor(props) {
@@ -151,60 +139,7 @@ class SingleView extends React.Component {
                     // className="article-cover"
                     />
                     <div className="single-info">
-                      <div className="single-share">
-                        <div className="socials">
-                          {this.props.postsReducer.post.title &&
-                            this.props.postsReducer.post.title.length > 0 ? (
-                              <>
-                                <FacebookShareButton
-                                  url={window.location.href}
-                                  media={this.props.postsReducer.post.title}
-                                  className="button"
-                                >
-                                  <FacebookIcon size={32} round={false} />
-                                </FacebookShareButton>
-                                <TwitterShareButton
-                                  url={window.location.href}
-                                  media={this.props.postsReducer.post.title}
-                                  className="button"
-                                >
-                                  <TwitterIcon size={32} round={false} />
-                                </TwitterShareButton>
-                                <PinterestShareButton
-                                  url={window.location.href}
-                                  media={this.props.postsReducer.post.title}
-                                  className="button"
-                                >
-                                  <PinterestIcon size={32} round={false} />
-                                </PinterestShareButton>
-                                <WhatsappShareButton
-                                  url={window.location.href}
-                                  media={this.props.postsReducer.post.title}
-                                  className="button"
-                                >
-                                  <WhatsappIcon size={32} round={false} />
-                                </WhatsappShareButton>
-                                <RedditShareButton
-                                  url={window.location.href}
-                                  media={this.props.postsReducer.post.title}
-                                  className="button"
-                                >
-                                  <RedditIcon size={32} round={false} />
-                                </RedditShareButton>
-                              </>
-                            ) : (
-                              <></>
-                            )}
-                        </div>
-                        <div className="author">
-                          <FaPrint /> by<span> {this.props.postsReducer.post.username}</span>
-                          <br></br>
-                          <FaCalendar /> {" "}
-                          {new Date(
-                            this.props.postsReducer.post.published
-                          ).toDateString()}
-                        </div>
-                      </div>
+                      <BlogSocials props={this.props} />
                       <img
                         className="avatar"
                         src={this.props.postsReducer.post.avatar}
