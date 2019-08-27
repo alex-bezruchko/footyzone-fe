@@ -15,13 +15,10 @@ class WelcomeBloglist extends React.Component {
         this.props.fetchLatestPosts();
         const blog = document.getElementsByClassName('container-row new-blog')
         const position = $(".container-row.new-blog").position();
-        let old_school = document.getElementsByClassName('container-row welcome-blog')
 
-        // let window_height = $(window).height();
         $.when(blog[0] && blog[0].length > 0 && position).then(function () {
             if (blog[0] && blog[0].clientWidth < 500) {
                 $(window).scroll(function () {
-                    // console.log(`scroll + ${$(window).position()}`)
                     if (($(window).scrollTop() > position.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
                         $('.blog-bg').css({ "position": "fixed", "top": "0" });
                     }
@@ -34,13 +31,10 @@ class WelcomeBloglist extends React.Component {
             console.log(err)
             this.props.history.push(`/${this.props.location.pathname}`)
         })
-        // })
     }
     render() {
         let maxLenTitle = 50;
         let maxLenBody = 200;
-
-
 
         return (
 
@@ -114,7 +108,6 @@ const mapStateToProps = ({ postsReducer: state }) => {
     return {
         posts: state.posts,
         loading: state.loading,
-        //   categories: state.categories,
     };
 };
 

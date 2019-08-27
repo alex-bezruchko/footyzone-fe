@@ -1,6 +1,5 @@
 import loadingImage from "./../../../src/loading.gif";
 import React from "react";
-import $ from "jquery";
 import { Link } from "react-router-dom";
 
 const PostsList = ({ currentPage, posts, loading, props }) => {
@@ -35,7 +34,6 @@ const PostsList = ({ currentPage, posts, loading, props }) => {
         </div>
       ))}
     </div>
-
 
   );
 };

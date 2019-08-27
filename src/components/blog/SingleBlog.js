@@ -5,11 +5,8 @@ import {
   deleteComment,
 } from "../../actions/postsActions";
 import { connect } from "react-redux";
-// import Tr from "react-icons/fa";
 import loading from "./../../../src/loading.gif";
 import moment from "moment";
-import $ from "jquery";
-import stadium from "./../../img/small-blog.jpg";
 
 
 import {
