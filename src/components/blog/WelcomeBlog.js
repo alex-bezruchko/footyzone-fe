@@ -39,6 +39,8 @@ class WelcomeBloglist extends React.Component {
                         }
                     });
                 }
+            }).catch(function (err) {
+                console.log(err)
             })
 
         })

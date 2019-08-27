@@ -66,6 +66,8 @@ const Bloglist = props => {
         });
       }
 
+    }).catch(function (err) {
+      console.log(err)
     })
   })
   // render() {

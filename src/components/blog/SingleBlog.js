@@ -149,6 +149,8 @@ class SingleView extends React.Component {
             }
           });
         }
+      }).catch(function (err) {
+        console.log(err)
       })
     })
     return (
