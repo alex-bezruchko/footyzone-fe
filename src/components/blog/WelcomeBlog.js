@@ -13,37 +13,34 @@ import { Link } from "react-router-dom";
 class WelcomeBloglist extends React.Component {
     componentDidMount() {
         this.props.fetchLatestPosts();
+        const blog = document.getElementsByClassName('container-row new-blog')
+        const position = $(".container-row.new-blog").position();
+        let old_school = document.getElementsByClassName('container-row welcome-blog')
 
+        // let window_height = $(window).height();
+        $.when(blog[0] && blog[0].length > 0 && position).then(function () {
+            if (blog[0] && blog[0].clientWidth < 500) {
+                $(window).scroll(function () {
+                    // console.log(`scroll + ${$(window).position()}`)
+                    if (($(window).scrollTop() > position.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
+                        $('.blog-bg').css({ "position": "fixed", "top": "0" });
+                    }
+                    else {
+                        $('.blog-bg').css({ "position": "absolute", "top": "" });
+                    }
+                });
+            }
+        }).catch(function (err) {
+            console.log(err)
+            this.props.history.push(`/${this.props.location.pathname}`)
+        })
         // })
     }
     render() {
         let maxLenTitle = 50;
         let maxLenBody = 200;
-        let blog = document.getElementsByClassName('container-row new-blog')
-        let old_school = document.getElementsByClassName('container-row welcome-blog')
 
-        // let window_height = $(window).height();
-        $.when(blog[0]).then(function () {
-            let x = $(".container-row.new-blog").position();
-            console.log(x.top)
-            console.log(blog[0])
-            $.when(x).then(function () {
-                if (blog[0].clientWidth < 500) {
-                    $(window).scroll(function () {
-                        // console.log(`scroll + ${$(window).position()}`)
-                        if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true))) {
-                            $('.blog-bg').css({ "position": "fixed", "top": "0" });
-                        }
-                        else {
-                            $('.blog-bg').css({ "position": "absolute", "top": "" });
-                        }
-                    });
-                }
-            }).catch(function (err) {
-                console.log(err)
-            })
 
-        })
 
         return (
 

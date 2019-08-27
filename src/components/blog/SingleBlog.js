@@ -66,7 +66,6 @@ class SingleView extends React.Component {
     this.setState({
       commentError: false
     })
-    // if (this.state.newComment.comment) {
     let stateComment = this.state.newComment;
     if (stateComment) {
       if (stateComment.comment === undefined) {
@@ -98,7 +97,6 @@ class SingleView extends React.Component {
       }
     }
 
-    // }
 
   };
   componentDidMount() {
@@ -131,31 +129,10 @@ class SingleView extends React.Component {
     }
   }
   render() {
-    let blog = document.getElementsByClassName('container-row blog')
 
-    // let window_height = $(window).height();
-    $.when(blog[0]).then(function () {
-      let x = $(".container-row.blog").position();
-      $.when(x).then(function () {
-        if (blog[0].clientWidth < 500) {
-          $(window).scroll(function () {
-            if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < blog[0].clientHeight * 9 / 10)) {
-              this.console.log(blog[0].outerHeight)
-
-              $('.blog-bg').css({ "position": "fixed", "top": "0" });
-            }
-            else {
-              $('.blog-bg').css({ "position": "absolute", "top": "" });
-            }
-          });
-        }
-      }).catch(function (err) {
-        console.log(err)
-      })
-    })
     return (
-      <div className="container-row blog">
-        <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
+      <div className="container-row blog" >
+        {/* <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" /> */}
 
         {this.props.postsReducer.loading ? (
           <div className="container">
@@ -356,7 +333,7 @@ class SingleView extends React.Component {
                 )}
             </div>
           )}
-      </div>
+      </div >
     );
   }
 }

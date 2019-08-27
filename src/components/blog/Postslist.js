@@ -1,6 +1,6 @@
-import React from "react";
 import loadingImage from "./../../../src/loading.gif";
-
+import React from "react";
+import $ from "jquery";
 import { Link } from "react-router-dom";
 
 const PostsList = ({ currentPage, posts, loading, props }) => {
@@ -14,7 +14,9 @@ const PostsList = ({ currentPage, posts, loading, props }) => {
   let maxLenBody = 266;
 
   return (
+
     <div className="blog-list col-xs-12 col-md-8">
+
       <h1 className="category-header">Blog</h1>
 
       {posts.map(post => (
@@ -33,6 +35,8 @@ const PostsList = ({ currentPage, posts, loading, props }) => {
         </div>
       ))}
     </div>
+
+
   );
 };
 

@@ -3,8 +3,8 @@ import Pagination from "./Pagination";
 import axios from "axios";
 import Postslist from "./Postslist";
 import $ from "jquery";
-import stadium from "./../../img/small-blog.jpg";
 
+import stadium from "./../../img/small-blog.jpg";
 
 const Bloglist = props => {
   window.scrollTo(0, 0);
@@ -36,6 +36,27 @@ const Bloglist = props => {
     };
 
     fetchPosts();
+    const blog = document.getElementsByClassName('container-row list')
+    const position = $(".container-row.list").position();
+
+    // let window_height = $(window).height();
+    $.when(blog[0] && blog[0].length > 0 && position.top).then(function () {
+      if (blog[0] && blog[0].clientWidth < 500) {
+        $(window).scroll(function () {
+          // console.log(`scroll + ${$(window).position()}`)
+          if (($(window).scrollTop() > position.top) && ($(window).scrollTop() < $(blog[0]).outerHeight(true) * 8.7 / 10)) {
+            $('.blog-bg').css({ "position": "fixed", "top": "0" });
+          }
+          else {
+            $('.blog-bg').css({ "position": "absolute", "top": "" });
+          }
+        });
+      }
+    }).catch(function (err) {
+      console.log(err)
+      this.props.history.push(`/${this.props.location.pathname}`)
+    })
+
   }, [props.match.params.page_id]);
 
   //
@@ -46,36 +67,17 @@ const Bloglist = props => {
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
-  let blog = document.getElementsByClassName('container-row blog')
 
-  // let window_height = $(window).height();
-  $.when(blog[0]).then(function () {
-    let x = $(".container-row.blog").position();
-    $.when(x).then(function () {
-      if (blog[0].clientWidth < 500) {
-        $(window).scroll(function () {
-          // if (blo)
-          if (($(window).scrollTop() > x.top) && ($(window).scrollTop() < blog[0].clientHeight * 8.5 / 10)) {
-            this.console.log(blog[0].outerHeight)
-
-            $('.blog-bg').css({ "position": "fixed", "top": "0" });
-          }
-          else {
-            $('.blog-bg').css({ "position": "absolute", "top": "" });
-          }
-        });
-      }
-
-    }).catch(function (err) {
-      console.log(err)
-    })
-  })
   // render() {
   return (
     <div className="container-row blog">
-      <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
-
-      <Postslist posts={currentPosts} loading={loading} props={props} />
+      <div className="container-row list">
+        <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
+        <div className="container">
+          <Postslist posts={currentPosts} loading={loading} props={props} />
+        </div>
+      </div>
+      <br></br>
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
