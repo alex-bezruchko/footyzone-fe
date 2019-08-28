@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 
 import imgLoading from "./../../../src/loading.gif";
 import $ from "jquery";
 import TwitterSidebar from "../parts/TwitterSidebar";
 import { Link } from "react-router-dom";
+
 import { FaThumbsUp } from "react-icons/fa";
 import {
   FacebookShareButton,
@@ -19,12 +21,18 @@ import {
   PinterestIcon,
 
 } from "react-share";
+
 import { FaPrint, FaCalendar } from "react-icons/fa";
 
 const SingleNews = props => {
-  // componentDidMount() {
+
   const [singleNews, setSingleNews] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeId, setLikeId] = useState(null);
+  const [likeLength, setLikeLength] = useState(0);
   const [loading, setLoading] = useState(false);
+
+
   useEffect(() => {
     const fetchSingle = async () => {
       setLoading(true);
@@ -34,10 +42,76 @@ const SingleNews = props => {
         `https://footyzone-be.herokuapp.com/api/news/${subcat_name}/${id}`
       );
       setSingleNews(res.data);
+      console.log(res.data)
+      if (res.data.likes.length > 0 && props.usersReducer.user.user_id) {
+        const ifLiked = res.data.likes.filter(like => Number(like.user_id) === Number(props.usersReducer.user.user_id));
+
+        if (ifLiked.length > 0) {
+          setIsLiked(true)
+          setLikeId(ifLiked[0].id)
+          // setLikeLength(res)
+        } else {
+          setIsLiked(false)
+          setLikeId(null)
+
+        }
+      }
+      setLikeLength(res.data.likes.length)
       setLoading(false);
     };
+
     fetchSingle();
+    window.scrollTo(0, 0);
+
   }, [props.match.params.id, props.match.params.subcat_name]);
+
+  const likeNews = async () => {
+    const current_news_id = props.match.params.id;
+    const current_user_id = props.usersReducer.user.user_id;
+    if (isLiked === true) {
+      const deleted = await axios.delete(`https://footyzone-be.herokuapp.com/api/news/newslikes/${likeId}`)
+      if (deleted) {
+        setIsLiked(false);
+        setLikeId(null)
+        setLikeLength(likeLength - 1)
+        // like_button[0].childNodes[0].innerText
+      }
+    } else {
+
+      if (current_news_id && current_user_id) {
+        const newLike = {
+          user_id: current_user_id,
+          news_id: current_news_id
+        }
+        const result = await axios.post('https://footyzone-be.herokuapp.com/api/news/newslikes', newLike)
+        console.log(result.data)
+        if (Number(result.status) === 201) {
+          setIsLiked(true)
+          setLikeId(result.data.addedLike[0].id)
+          setLikeLength(likeLength + 1)
+
+        } else {
+          setIsLiked(false)
+          setLikeId(null)
+          setLikeLength(likeLength)
+
+        }
+      }
+    }
+  }
+
+  // Like Button JavaScript Css/ isLiked state
+  const like_button = document.getElementsByClassName('counts');
+  $.when(like_button[0] && like_button[0].length > 0).then(function () {
+    if (isLiked === true) {
+      like_button[0].childNodes[0].style.color = "#009fb7";
+      like_button[0].childNodes[0].style.borderColor = "#009fb7";
+    } else {
+      like_button[0].childNodes[0].style.color = "black";
+      like_button[0].childNodes[0].style.borderColor = "black";
+
+    }
+  })
 
   let client = document.getElementsByTagName("body");
   $.when(client).then(function () {
@@ -65,7 +139,6 @@ const SingleNews = props => {
     }
   });
 
-
   $(window).scroll(function (e) {
     if ($(window).scrollTop() > 800) {
       $(".single-main aside").addClass("aside-fixed");
@@ -75,6 +148,7 @@ const SingleNews = props => {
       $(".single-body").removeClass("body-fixed");
     }
   });
+
   $(window).scroll(function (e) {
     let article = document.getElementsByClassName("single-news");
 
@@ -93,7 +167,7 @@ const SingleNews = props => {
       }
     }
   });
-  window.scrollTo(0, 0);
+
 
   return (
     <div className="container-row news">
@@ -172,10 +246,8 @@ const SingleNews = props => {
 
                               </div>
                               <div className="counts">
-                                <FaThumbsUp />{" "}
-                                {singleNews.likes.length}
-                                {/* {singleNews.comments.length} */}
-
+                                <FaThumbsUp onClick={likeNews} />{" "}
+                                +{likeLength}
                               </div>
                             </>
                           ) : (
@@ -251,5 +323,15 @@ const SingleNews = props => {
     </div>
   );
 };
+const MapStateToProps = ({ newsReducer, usersReducer }) => {
+  return {
+    newsReducer,
+    usersReducer
+  };
+};
 
-export default SingleNews;
+
+export default connect(
+  MapStateToProps,
+  {}
+)(SingleNews);

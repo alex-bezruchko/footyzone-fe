@@ -11,78 +11,8 @@ import BlogComments from "./BlogComments";
 
 
 class SingleView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newComment: {
-        comment: "",
-        user_id: "",
-        post_id: "",
-      },
-      commentError: false,
-    };
-  }
-  submitCommentHandler = e => {
-    e.preventDefault();
-    this.setState({
-      newComment: {
-        comment: "",
-      },
-    });
-
-  };
-
-  newCommentOnChange = e => {
-    this.setState({
-      newComment: {
-        ...this.state.newComment,
-        [e.target.name]: e.target.value,
-      },
-    });
-    if (this.state.newComment.comment && this.state.newComment.comment.length > 10) {
-      this.setState({
-        commentError: false
-      });
-    }
-  };
-  addCommentHandler = e => {
-    e.preventDefault();
-    this.setState({
-      commentError: false
-    })
-    let stateComment = this.state.newComment;
-    if (stateComment) {
-      if (stateComment.comment === undefined) {
-        this.setState({
-          commentError: true
-        })
-      } else if (stateComment.comment.length < 10) {
-        this.setState({
-          commentError: true
-        })
-      } else {
-        let sentComment = {};
-        sentComment.post_id = Number(this.props.match.params.id);
-        sentComment.user_id = Number(this.state.newComment.user_id);
-        sentComment.date = new Date().toISOString();
-        sentComment.comment = this.state.newComment.comment;
-        console.log(this.state.newComment.comment)
-
-        this.props.addComment(sentComment, this.props.history);
-        this.setState({
-          newComment: {
-            comment: "",
-            user_id: sentComment.user_id,
-            post_id: sentComment.post_id,
-            date: "",
-          },
-          commentError: false
-        });
-      }
-    }
 
 
-  };
   componentDidMount() {
     window.scrollTo(0, 0);
     const id = this.props.match.params.id;

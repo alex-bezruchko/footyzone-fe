@@ -113,7 +113,26 @@
         padding-right: 8px;
 
         .counts {
-            padding-top: 13px;
+            padding-top: 20px;
+            align-items: center;
+            justify-content: flex-start;
+            display: flex;
+            font-family: $font_ubuntu;
+            font-weight: 600;
+            font-size: 1.3rem;
+
+            svg {
+                margin-right: 5px;
+                margin-left: 1px;
+                border: 2.5px solid $blue;
+                border-radius: 50%;
+                font-size: 33px;
+                padding: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
 
         .single-body {
