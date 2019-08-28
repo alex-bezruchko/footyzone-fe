@@ -200,7 +200,22 @@
 
             .counts {
                 padding-right: 5px;
+                font-family: $font_ubuntu;
+                font-weight: bold;
+                font-size: 1.4rem;
+                display: flex;
+                align-items: center;
             }
+        }
+
+        .counts svg {
+            margin-right: 5px;
+            margin-left: 1px;
+            border: 2.5px solid $blue;
+            border-radius: 50%;
+            font-size: 33px;
+            padding: 5px;
+
         }
 
         .related-bottom {
