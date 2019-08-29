@@ -83,7 +83,6 @@
         padding-left: 25px;
         width: 70%;
 
-        // margin-left: 30%;
         .body {
             padding-top: 15px;
             font-size: 1.5rem;
@@ -164,8 +163,18 @@
 }
 
 @media #{$mobile} {
+
     .single-news {
         padding: 0px !important;
+
+        h2 {
+            line-height: 1.1 !important;
+            font-size: 1.7rem;
+        }
+
+        .author {
+            padding-left: 0px;
+        }
 
         .single-body {
             padding-left: 0px;
@@ -221,6 +230,7 @@
         .related-bottom {
             display: flex;
             flex-direction: column;
+            margin-top: 15px;
 
             h4 {
                 margin-bottom: 0px;
@@ -230,10 +240,9 @@
             ul {
                 -webkit-flex-wrap: wrap;
                 flex-wrap: wrap;
-                // flex-direction: row;
                 min-width: 100%;
                 padding-right: 0px;
-                margin: 10px 0px 22px;
+                margin: 10px 0px 0px;
 
                 li {
                     margin-right: 15px;

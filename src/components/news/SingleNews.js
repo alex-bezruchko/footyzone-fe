@@ -49,7 +49,6 @@ const SingleNews = props => {
         if (ifLiked.length > 0) {
           setIsLiked(true)
           setLikeId(ifLiked[0].id)
-          // setLikeLength(res)
         } else {
           setIsLiked(false)
           setLikeId(null)
@@ -58,6 +57,22 @@ const SingleNews = props => {
       }
       setLikeLength(res.data.likes.length)
       setLoading(false);
+      let page_path = props.match.path;
+      if (page_path.includes('old-school')) {
+        let row = document.getElementsByClassName('container-row news')
+        let container = document.getElementsByClassName('col-md-8')
+        let widget = document.getElementsByClassName('timeline-Widget')
+        $.when(row[0] && container[0] && widget[0]).then(function () {
+          if (row[0].clientWidth < 500) {
+            row[0].style.backgroundColor = "rgba(255, 222, 194, 1)";
+
+          }
+          container[0].style.backgroundColor = "rgba(255, 222, 194, 1)";
+          $('.timeline-Widget, .timeline-Widget body').css("background-color", "rgba(255, 222, 194, 1)")
+          widget[0].childNodes[0].style.backgroundColor = "rgba(255, 222, 194, 1) !important";
+
+        })
+      }
     };
 
     fetchSingle();
@@ -247,7 +262,7 @@ const SingleNews = props => {
                               </div>
                               <div className="counts">
                                 <FaThumbsUp onClick={likeNews} />{" "}
-                                +{likeLength}
+                                {likeLength > 0 && likeLength + "+"}
                               </div>
                             </>
                           ) : (
@@ -256,9 +271,9 @@ const SingleNews = props => {
 
                         </div>
                         <div className="related">
-                          <h4>Related Topics</h4>
-                          {singleNews.tags ? (
+                          {singleNews.tags && singleNews.tags.length > 0 ? (
                             <ul>
+                              <h4>Related Topics</h4>
                               {singleNews.tags.map((tag, index) => {
                                 return (
                                   <li
@@ -275,7 +290,7 @@ const SingleNews = props => {
                               })}
                             </ul>
                           ) : (
-                              <></>
+                              <>none</>
                             )}
                         </div>
                       </aside>
@@ -285,9 +300,9 @@ const SingleNews = props => {
 
                         </div>
                         <div className="related related-bottom">
-                          <h4>Related Topics</h4>
-                          {singleNews.tags ? (
+                          {singleNews.tags && singleNews.tags.length > 0 ? (
                             <ul>
+                              <h4>Related Topics</h4>
                               {singleNews.tags.map((tag, index) => {
                                 return (
                                   <li

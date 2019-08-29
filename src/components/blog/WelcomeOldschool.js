@@ -59,7 +59,7 @@ class WelcomeOldschool extends React.Component {
                     old_school={old_school}
                     className="category-blog col-md-6 col-xs-12"
                   >
-                    <Link to={`/old-school/${old_school.subcat_name}/${old_school.id}`}>
+                    <Link to={`/old-school/${old_school.subcat_slug}/${old_school.id}`}>
                       <div className="list-header">
                         <img src={old_school.newsMainImg} alt="" />
                         {old_school.title.length < 50 && <h2>{old_school.title}</h2>}
