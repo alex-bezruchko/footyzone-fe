@@ -17,8 +17,7 @@ import {
 import axios from "axios";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import logo from "./../../img/logo.png";
-import burger from "./../../img/burger.png";
-
+import $ from "jquery";
 import { loginStatus, update } from "./../../actions/usersActions";
 import {
   FaSignInAlt,
@@ -61,6 +60,14 @@ class Header extends React.Component {
       avatar,
       this.props.history
     );
+
+    $(".navbar-toggler").click(function () {
+      if ($(this).css("transform") === 'none') {
+        $(this).css("transform", "rotate(180deg)");
+      } else {
+        $(this).css("transform", "rotate(-180deg)");
+      }
+    });
   }
   toggleModal() {
     this.setState(prevState => ({
@@ -190,7 +197,6 @@ class Header extends React.Component {
         <div className="top-navbar">
           <Container>
             <Link to={"/"}>
-              <img src={logo} alt="logo" />
               <span className="fanzone">Fanzone</span>
             </Link>
             {this.props.isLoggedIn ? (
@@ -214,7 +220,9 @@ class Header extends React.Component {
                   aria-controls="basic-navbar-nav"
                   onClick={this.toggleNav}
                 >
-                  <img onClick={this.toggleNav} src={burger} alt="toggle" />
+                  <img onClick={this.toggleNav} src={logo} alt="logo" />
+
+                  {/* <img  src={burger} alt="toggle" /> */}
                 </NavbarToggler>
                 {/* </button> */}
               </div>

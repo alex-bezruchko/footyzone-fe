@@ -144,6 +144,10 @@
   }
 
   .top-navbar {
+    img {
+      width: 40px;
+      height: 40px;
+    }
 
     .nav-account .hidden-xs,
     .nav-account .btn {
@@ -151,7 +155,7 @@
     }
 
     .container {
-      padding: 15px 15px !important;
+      padding: 15px 0px !important;
     }
 
     .nav-account {
@@ -443,19 +447,26 @@
 }
 
 .navbar-toggler {
-  border: 1.5px solid $black !important;
+  // border: 1.5px solid $black !important;
   padding: 0px 3px !important;
   margin-left: 6px;
 
   img {
-    height: 35px;
-    width: 35px;
-    padding: 4px;
+    // height: 35px;
+    // width: 35px;
+    // padding: 4px;
   }
 
   &:focus {
     outline: none;
   }
+}
+
+.navbar-toggler:active {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transition: transform 1s;
 }
 
 .button.dropdown-toggle.btn.btn-secondary.active,

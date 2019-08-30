@@ -76,6 +76,14 @@ const SingleNews = props => {
     };
 
     fetchSingle();
+    if (singleNews.tags && singleNews.tags.length === 0) {
+
+      let list = document.getElementsByClassName('category-tag');
+      $.when(list && list[0]).then(function () {
+        console.log(list[0])
+        list[0].style.display = "none";
+      })
+    }
     window.scrollTo(0, 0);
 
   }, [props.match.params.id, props.match.params.subcat_name]);
@@ -187,6 +195,8 @@ const SingleNews = props => {
     }
   });
 
+  singleNews.tags && console.log(singleNews.tags[0])
+
 
   return (
     <div className="container-row news">
@@ -275,7 +285,7 @@ const SingleNews = props => {
 
                         </div>
                         <div className="related">
-                          {singleNews.tags && singleNews.tags.length > 0 ? (
+                          {singleNews.tags && singleNews.tags[0].tag_name ? (
                             <ul>
                               <h4>Related Topics</h4>
                               {singleNews.tags.map((tag, index) => {
@@ -285,7 +295,7 @@ const SingleNews = props => {
                                     className="category-tag col-md-6 col-xs-12"
                                   >
                                     <Link
-                                      to={`/category/${tag.tag_slug}/`}
+                                      to={`#`}
                                     >
                                       {tag.tag_name}
                                     </Link>
@@ -294,7 +304,11 @@ const SingleNews = props => {
                               })}
                             </ul>
                           ) : (
-                              <>none</>
+                              <ul>
+                                <li><Link to="/leagues/laliga/page/1">La Liga</Link></li>
+                                <li><Link to="/leagues/epl/page/1">EPL</Link></li>
+                                <li><Link to="/leagues/uefacl/page/1">Uefa Cl</Link></li>
+                              </ul>
                             )}
                         </div>
                       </aside>
@@ -304,9 +318,10 @@ const SingleNews = props => {
 
                         </div>
                         <div className="related related-bottom">
-                          {singleNews.tags && singleNews.tags.length > 0 ? (
+                          {singleNews.tags && singleNews.tags[0].tag_name ? (
                             <ul>
                               <h4>Related Topics</h4>
+                              {/* {singleNews.tags[0].tag_name} */}
                               {singleNews.tags.map((tag, index) => {
                                 return (
                                   <li
@@ -314,7 +329,7 @@ const SingleNews = props => {
                                     className="category-tag"
                                   >
                                     <Link
-                                      to={`/category/${tag.tag_slug}/`}
+                                      to={`#`}
                                     >
                                       {tag.tag_name}
                                     </Link>
@@ -323,7 +338,11 @@ const SingleNews = props => {
                               })}
                             </ul>
                           ) : (
-                              <></>
+                              <ul>
+                                <li><Link to="/leagues/laliga/page/1">La Liga</Link></li>
+                                <li><Link to="/leagues/epl/page/1">EPL</Link></li>
+                                <li><Link to="/leagues/uefacl/page/1">Uefa Cl</Link></li>
+                              </ul>
                             )}
                         </div>
                       </div>
