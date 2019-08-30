@@ -150,7 +150,7 @@ const SingleNews = props => {
       $.when(element[0]).then(function () {
         $(".col-md-4.col-md-12").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" });
         // $(".twitter .twitter-fixed").css("width", width);
-        $(".twitter .twitter-fixed").css({ "max-width": "95%", "margin-right": "auto", "margin-left": "auto" })
+        // $(".twitter .twitter-fixed").css({ "max-width": "95%", "margin-right": "auto", "margin-left": "auto" })
         // $(".twitter-wrapper").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
 
       });
