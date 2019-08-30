@@ -131,13 +131,14 @@ const SingleNews = props => {
   let client = document.getElementsByTagName("body");
   $.when(client).then(function () {
     if (client[0] && client[0].clientWidth > 992) {
+
       let element = document.getElementsByClassName("twitter");
       $.when(element).then(function () {
         let width = element[0].clientWidth;
         $(".twitter").css("width", width);
         $(".twitter .twitter-fixed").css("width", width);
       });
-    } else if (client[0] && client[0].clientWidth < 992) {
+    } else if ((client[0] && client[0].clientWidth < 992) && (client[0] && client[0].clientWidth < 600)) {
       let element = document.getElementsByClassName("twitter");
       $.when(element).then(function () {
         let width = element[0].clientWidth;
@@ -148,8 +149,8 @@ const SingleNews = props => {
       let element = document.getElementsByClassName("twitter");
       $.when(element).then(function () {
         let width = element[0].clientWidth;
-        $(".twitter").css({ "width": width * 90 / 100, "margin-right": "auto", "margin-left": "auto" });
-        $(".twitter .twitter-fixed").css({ "width": width * 90 / 100, "margin-right": "auto", "margin-left": "auto" })
+        $(".twitter").css({ "width": "95% !important", "margin-right": "auto", "margin-left": "auto" });
+        $(".twitter .twitter-fixed").css({ "width": "95% !important", "margin-right": "auto", "margin-left": "auto" })
       });
     }
   });
