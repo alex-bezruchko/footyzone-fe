@@ -148,8 +148,9 @@ const SingleNews = props => {
     } else {
       let element = document.getElementsByName("body");
       $.when(element[0]).then(function () {
-        $(".col-md-4.col-md-12").css({ "width": ((element[0] * 9.5) / 10), "margin-right": "auto", "margin-left": "auto", "right": "0" });
-        // $(".twitter .twitter-fixed").css("width", width);
+        $(".col-md-4.col-md-12").css({ "width": element[0].clientWidth, "margin-right": "auto", "margin-left": "auto", "right": "0" });
+
+        $(".twitter .twitter-fixed").css("width", ((element[0].clientWidth * 9.5) / 10));
         // $(".twitter .twitter-fixed").css({ "max-width": "95%", "margin-right": "auto", "margin-left": "auto" })
         // $(".twitter-wrapper").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
 
