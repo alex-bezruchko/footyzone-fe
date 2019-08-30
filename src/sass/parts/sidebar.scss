@@ -2,6 +2,10 @@
   padding-right: 0px !important;
   margin-right: 0px;
 
+  .twitter {
+    width: 100%;
+  }
+
   .sidebar-list {
     min-width: 100%;
     display: flex;
@@ -54,9 +58,17 @@
   }
 }
 
+@media #{$desktop} {
+  .col-md-4.col-xs-12 {
+    padding-right: 15px !important;
+  }
+}
+
 @media #{$mobile} {
   .twitter-wrapper {
-    max-width: 95%;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }

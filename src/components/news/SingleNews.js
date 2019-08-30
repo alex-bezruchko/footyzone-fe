@@ -128,33 +128,34 @@ const SingleNews = props => {
     }
   })
 
-  // let client = document.getElementsByTagName("body");
-  // $.when(client).then(function () {
-  //   if (client[0] && client[0].clientWidth > 992) {
+  let client = document.getElementsByTagName("body");
+  $.when(client).then(function () {
+    if (client[0] && client[0].clientWidth > 992) {
 
-  //     let element = document.getElementsByClassName("twitter");
-  //     $.when(element).then(function () {
-  //       let width = element[0].clientWidth;
-  //       $(".twitter").css("width", width);
-  //       $(".twitter .twitter-fixed").css("width", width);
-  //     });
-  //   } else if ((client[0] && client[0].clientWidth < 992) && (client[0] && client[0].clientWidth > 600)) {
-  //     let element = document.getElementsByClassName("twitter");
-  //     $.when(element).then(function () {
-  //       let width = element[0].clientWidth;
-  //       $(".twitter").css("width", width);
-  //       $(".twitter .twitter-fixed").css("width", width);
-  //     });
-  //   } else {
-  //     let element = document.getElementsByClassName("twitter");
-  //     $.when(element).then(function () {
-  //       $(".twitter").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" });
-  //       $(".twitter .twitter-fixed").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
-  //       $(".twitter-wrapper").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
+      let element = document.getElementsByClassName("twitter");
+      $.when(element).then(function () {
+        let width = element[0].clientWidth;
+        $(".twitter").css("width", width);
+        $(".twitter .twitter-fixed").css("width", width);
+      });
+    } else if ((client[0] && client[0].clientWidth < 992) && (client[0] && client[0].clientWidth > 600)) {
+      let element = document.getElementsByClassName("twitter");
+      $.when(element).then(function () {
+        let width = element[0].clientWidth;
+        $(".twitter").css("width", width);
+        $(".twitter .twitter-fixed").css("width", width);
+      });
+    } else {
+      let element = document.getElementsByClassName("twitter");
+      $.when(element[0]).then(function () {
+        $(".col-md-4.col-md-12").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" });
+        // $(".twitter .twitter-fixed").css("width", width);
+        $(".twitter .twitter-fixed").css({ "max-width": "95%", "margin-right": "auto", "margin-left": "auto" })
+        // $(".twitter-wrapper").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
 
-  //     });
-  //   }
-  // });
+      });
+    }
+  });
 
   $(window).scroll(function (e) {
     if ($(window).scrollTop() > 800) {
