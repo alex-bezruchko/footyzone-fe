@@ -21,7 +21,7 @@ class TwitterSidebar extends React.Component {
       });
     } else {
       this.setState({
-        profile: this.props.props.match.params.subcat_name,
+        profile: "OldFootball11",
       });
     }
   }
