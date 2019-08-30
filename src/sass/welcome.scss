@@ -430,7 +430,8 @@
     }
 
     p.sans {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+      line-height: 1.2;
       padding: 8px;
 
     }
@@ -494,7 +495,7 @@
   .container-row.welcome-blog {
     .col-md-6 {
       min-width: 100%;
-      margin-bottom: 66px !important;
+      margin-bottom: 33px !important;
       border: 1px solid rgba(255, 199, 155, 0.98) !important;
 
     }

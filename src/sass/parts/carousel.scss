@@ -206,6 +206,10 @@ a .carousel-control-next-icon {
         width: 100% !important;
     }
 
+    .carousel-caption.d-none.d-md-block h3 {
+        width: 100%;
+    }
+
     .carousel-item img,
     .carousel-item {
         max-height: 266px;
