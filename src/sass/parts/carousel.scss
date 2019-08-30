@@ -203,6 +203,7 @@ a .carousel-control-next-icon {
 @media #{$mobile} {
     .container.carousel-container {
         padding: 0px !important;
+        width: 100% !important;
     }
 
     .carousel-item img,
