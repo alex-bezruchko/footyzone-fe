@@ -148,8 +148,8 @@ const SingleNews = props => {
     } else {
       let element = document.getElementsByClassName("twitter");
       $.when(element).then(function () {
-        $(".twitter").css({ "width": "95% !important", "margin-right": "auto", "margin-left": "auto" });
-        $(".twitter .twitter-fixed").css({ "width": "95% !important", "margin-right": "auto", "margin-left": "auto" })
+        $(".twitter").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" });
+        $(".twitter .twitter-fixed").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
       });
     }
   });
