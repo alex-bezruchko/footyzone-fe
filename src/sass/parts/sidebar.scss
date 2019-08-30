@@ -56,6 +56,8 @@
 
 @media #{$mobile} {
   .twitter-wrapper {
-    max-width: 100%;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

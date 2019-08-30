@@ -150,6 +150,8 @@ const SingleNews = props => {
       $.when(element).then(function () {
         $(".twitter").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" });
         $(".twitter .twitter-fixed").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
+        $(".twitter-wrapper").css({ "width": "95%", "margin-right": "auto", "margin-left": "auto" })
+
       });
     }
   });

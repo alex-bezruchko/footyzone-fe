@@ -303,6 +303,12 @@ iframe .timeline-Widget {
 }
 
 @media #{$mobile} {
+  .col-md-4 .col-xs-12 {
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   .author {
     justify-content: space-between;
     flex-direction: column;
