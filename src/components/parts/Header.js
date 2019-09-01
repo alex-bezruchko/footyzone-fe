@@ -297,43 +297,10 @@ class Header extends React.Component {
                   </ListGroupItem>
 
                   <ListGroupItem>
-                    <Dropdown
-                      isOpen={this.state.dropdownSchool}
-                      toggle={this.toggleOld}
-                    >
-                      <DropdownToggle caret>Old School</DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>
-                          <Link onClick={this.toggleNav} to={"/old-school"}>
-                            Latest
-                          </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Link
-                            onClick={this.toggleNav}
-                            to={"/old-school/players"}
-                          >
-                            Players
-                          </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Link
-                            onClick={this.toggleNav}
-                            to={"/old-school/teams"}
-                          >
-                            Teams
-                          </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Link
-                            onClick={this.toggleNav}
-                            to={"/old-school/coaches"}
-                          >
-                            Coaches
-                          </Link>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
+                    <Link onClick={this.toggleNav} to={"/old-school"}>
+                      {" "}
+                      Old School
+                    </Link>
                   </ListGroupItem>
 
 

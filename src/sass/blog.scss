@@ -8,7 +8,15 @@
   top: 0;
 }
 
-
+.blog-share {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  float: right;
+  padding-left: 4px;
+  padding-top: 10px;
+  padding-bottom: 3px;
+}
 
 .blog {
 
@@ -202,15 +210,7 @@ a {
 }
 
 @media #{$mobile} {
-  .blog-share {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    float: right;
-    padding-left: 4px;
-    padding-top: 10px;
-    padding-bottom: 3px;
-  }
+
 
   .oldschool-bg {
     display: block;

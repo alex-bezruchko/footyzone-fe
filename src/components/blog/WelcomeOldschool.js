@@ -47,6 +47,7 @@ class WelcomeOldschool extends React.Component {
 
         <div className="container header">
           <h1 className="bungee">Old School</h1>
+          {/* hello */}
         </div>
         <div className="container">
           {this.props.news.length > 0 ? (

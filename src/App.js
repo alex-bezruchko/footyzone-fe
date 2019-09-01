@@ -5,6 +5,8 @@ import SingleBlog from "./components/blog/SingleBlog";
 import Newslist from "./components/news/Newslist";
 import NewsCategories from "./components/news/NewsCategories";
 import Bloglist from "./components/blog/Bloglist";
+import OldSchoolList from "./components/oldschool/OldSchoolList";
+
 
 import SearchResultsList from "./components/pages/SearchResultsList";
 import Welcome from "./components/pages/Welcome";
@@ -42,7 +44,7 @@ class App extends React.Component {
               <Route
                 exact
                 path="/old-school/"
-                component={NewsCategories}
+                component={OldSchoolList}
               />
               <Route exact path="/blog/:id" component={SingleBlog} />
               <Route exact path="/:username/create-post" component={PostCrud} />

@@ -259,6 +259,8 @@ a .carousel-control-next-icon {
     .small-carousel {
         padding-left: 5px;
         padding-right: 5px;
+        min-height: 250px;
+        max-height: 250px;
 
         .small-carousel-post:nth-child(1) {
             margin-right: 5px;

@@ -49,7 +49,7 @@ export function fetchLatestOldschool() {
   return dispatch => {
     dispatch({ type: FETCH_OLDSCHOOL_LOADING });
     axios
-      .get("https://footyzone-be.herokuapp.com/api/news/latest/old-school")
+      .get("https://footyzone-be.herokuapp.com/api/old-school/latest/old-school")
       .then(response => {
         dispatch({
           type: FETCH_OLDSCHOOL_SUCCESS,

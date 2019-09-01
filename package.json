@@ -26,6 +26,7 @@
     "react-scripts": "2.1.8",
     "react-share": "^3.0.0",
     "react-tag-input": "^6.4.0",
+    "react-throttle": "^0.3.0",
     "react-transition-group": "^4.0.0",
     "react-twitter-embed": "^2.0.8",
     "reactstrap": "^7.1.0",
