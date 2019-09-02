@@ -111,8 +111,8 @@ a {
     background: url("../src/img/stadium.jpg");
     background-attachment: fixed;
     background-position: center;
-    background-repeat: repeat;
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .single.col-md-8 {

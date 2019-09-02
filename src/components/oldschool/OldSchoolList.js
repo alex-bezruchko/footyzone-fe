@@ -60,36 +60,24 @@ class OldSchoolList extends React.Component {
 
     // OLD SCHOOL MOBILE FIXED SCROLLABLE BACKGROUND
     const old_school = document.getElementsByClassName('container-row welcome-blog')
-    const position = $(".container-row.welcome-blog").position();
-    // const old_school_container = document.getElementById('old-school-list');
-    // const carousel = $(".container.carousel-container");
-    // console.log(link_height)
-    // let 
-    const link_height = $("#old-school-list a").height();
+
     $.when(old_school[0]).then(function () {
-      // let old_school = this.state.news;
-      old_school[0].style.background = `url(${bricks})`;
-      old_school[0].style.backgroundRepeat = "repeat";
-      old_school[0].style.backgroundSize = "container";
 
-
-      // let old_school_list_height = link_height * old_school.length;
-      // console.log(this.state.news.length)
-      // console.log(old_school_list_height)
       if (old_school[0] && old_school[0].clientWidth < 500) {
+
+        old_school[0].style.background = `url(${bricks})`;
+        old_school[0].style.backgroundRepeat = "repeat";
+        old_school[0].style.backgroundSize = "container";
+
         $(window).scroll(function () {
-          // if (this.state.news && this.state.news.length > 0) {
           if (($(window).scrollTop() > 50) && (($(window).scrollTop() < old_school[0].clientHeight - 500))) {
             $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
           } else if (($(window).scrollTop() > old_school[0].clientHeight + 100)) {
             $('.oldschool-bg').css({ "position": "absolute", "top": "" });
-
           }
           else {
             $('.oldschool-bg').css({ "position": "absolute", "top": "" });
           }
-          // } 
-
         });
       }
     }).catch(function (err) {
@@ -142,13 +130,13 @@ class OldSchoolList extends React.Component {
   }
 
   fetchMore(e) {
-    // console.log(h)
+
     let scrollTop = $(window).scrollTop()
     let currentCount = this.state.counter;
     let height = this.state.current_height;
-    // if ()
     let currentCart = [];
     let currentNews = [];
+
     if (this.state) {
       currentCart = this.state.cart;
       currentNews = this.state.news
@@ -161,42 +149,34 @@ class OldSchoolList extends React.Component {
         current_height: scrollTop
       })
 
-      // if ((this.state.current_height && scrollTop) && (this.state.current_height < scrollTop)) {
-
-
-
-      // height = scrollTop;
-      // setCounter(newCounter)
       if ((currentCart && currentCart.length > 0) && (currentNews && currentNews.length > 0)) {
-        // let currentCart = this.state.cart;
 
-        // let allNews = this.state.news;
         let link = document.createElement("A");
         let h2 = document.createElement("H2");
         let img = document.createElement("IMG");
         let div = document.createElement("DIV");
         div.className = "body";
 
-
         let list = document.getElementsByClassName('category-news');
 
         if (list[0] && link) {
 
           if (currentNews && currentNews.length > 0 && (currentNews.length - 1 > this.state.counter)) {
+
             link.href = `/old-school/${currentNews[this.state.counter].subcat_slug}/${currentNews[this.state.counter].id}`;
-            // link.href = `/old-school/${currentNews[this.state.counter].id}`;
             h2.innerText = currentNews[this.state.counter].title;
             img.src = currentNews[this.state.counter].newsMainImg;
             div.innerText = currentNews[this.state.counter].body.slice(0, 250).concat('...');
+
             link.appendChild(img)
             link.appendChild(h2)
             link.appendChild(div)
             list[0].appendChild(link)
+
             currentCart.push(currentNews[this.state.counter])
-            // console
+
             this.setState({
               moreLoading: false,
-              // current_height: scrollTop
             })
 
           };
@@ -213,10 +193,6 @@ class OldSchoolList extends React.Component {
     }
   }
 
-
-
-  // }
-  // })
   render() {
 
 
@@ -233,7 +209,6 @@ class OldSchoolList extends React.Component {
             </div>
           </div>
         ) : (
-            // <Throttle handler="onScroll">
             <div onScroll={this.fetchMore} className="container-row">
               <div className="blog-list container">
                 <h1 className="category-header">Old School <FaRegNewspaper /> </h1>
@@ -242,7 +217,6 @@ class OldSchoolList extends React.Component {
                     <div className="list-wrapper">
                       <div className="category-news">
 
-                        {/* <Link to={`/old-school/${this.state.news[0].id}`}> */}
                         <Link to={`/old-school/${this.state.news[1].subcat_slug}/${this.state.news[0].id}`}>
                           <img
                             src={this.state.news[0].newsMainImg}
@@ -251,7 +225,6 @@ class OldSchoolList extends React.Component {
                           <h2>{this.state.news[0].title}</h2>
                           <div className="body">{this.state.news[0].body.slice(0, maxLenBody).concat('...')}</div>
                         </Link>
-                        {/* <Link to={`/old-school/${this.state.news[1].id}`}> */}
 
                         <Link to={`/old-school/${this.state.news[1].subcat_slug}/${this.state.news[1].id}`}>
                           <img
@@ -284,7 +257,6 @@ class OldSchoolList extends React.Component {
               </div>
 
             </div>
-            // </Throttle>
           )}
       </div>
     );

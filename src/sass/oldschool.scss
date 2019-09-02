@@ -49,6 +49,18 @@
 }
 
 @media #{$desktop, $tablet} {
+    .more-loading {
+        padding: 60px !important;
+    }
+
+    .welcome-blog {
+        background: url("../src/img/blog.jpg");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
     .welcome-blog .col-sm-8 {
         img {
             min-height: 333px !important;

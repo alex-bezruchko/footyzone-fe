@@ -10,6 +10,9 @@
     background-color: $old;
   }
 
+  .logo {
+    display: block;
+  }
 
 }
 
@@ -430,9 +433,20 @@
     left: 18px !important;
   }
 
+  .logo {
+    display: none !important;
+  }
+
+  span.fanzone {
+    padding-left: 0px !important;
+  }
+
   .nav {
     justify-content: space-between;
+
+
   }
+
 }
 
 @media #{$desktop} {
@@ -525,6 +539,10 @@
         padding-right: 0px;
       }
     }
+  }
+
+  .nav-search-form {
+    margin-bottom: .66rem;
   }
 }
 
