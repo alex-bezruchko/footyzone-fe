@@ -62,6 +62,7 @@ class WelcomeBloglist extends React.Component {
                                 </div>
 
                                 {this.props.posts.map((blog, index) => {
+                                    console.log(blog)
                                     if (index !== 0) {
                                         return (
                                             <div
@@ -71,17 +72,22 @@ class WelcomeBloglist extends React.Component {
                                                 className="category-blog col-md-6 col-xs-12"
                                             >
                                                 <Link to={`/blog/${blog.id}`}>
-                                                    <img
-                                                        src={blog.avatar}
-                                                        alt="avatar"
-                                                        className="avatar"
-                                                    />
-                                                    <div className="body">
+                                                    <div className="authors">
                                                         <div className="list-header">
                                                             {/* <img src={blog.postMainImg} alt="" /> */}
                                                             {blog.title.length < 50 && <h2>{blog.title}</h2>}
                                                             {blog.title.length > 50 && <h2>{blog.title.slice(0, maxLenTitle).concat('...')}</h2>}
+                                                            <p className="ubuntu">{new Date().toDateString()}</p>
                                                         </div>
+                                                        <img
+                                                            src={blog.avatar}
+                                                            alt="avatar"
+                                                            className="avatar"
+                                                        />
+                                                    </div>
+
+                                                    <div className="body">
+
                                                         <p>
                                                             {blog.body.slice(0, maxLenBody).concat('...')}
                                                         </p>
