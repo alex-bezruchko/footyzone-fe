@@ -159,6 +159,10 @@ a .carousel-control-next-icon {
 }
 
 @media #{$desktop, $tablet} {
+    .welcome-container .carousel-container {
+        min-height: 715px;
+    }
+
     .carousel-indicators {
         margin-left: 67% !important;
     }
