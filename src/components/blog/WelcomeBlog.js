@@ -68,7 +68,7 @@ class WelcomeBloglist extends React.Component {
                                                 key={index}
                                                 id={blog.id}
                                                 blog={blog}
-                                                className="category-blog col-md-3 col-sm-6 col-xs-12"
+                                                className="category-blog col-md-6 col-xs-12"
                                             >
                                                 <Link to={`/blog/${blog.id}`}>
                                                     <img
