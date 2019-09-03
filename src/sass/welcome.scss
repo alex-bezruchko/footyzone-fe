@@ -384,7 +384,7 @@
   .container-row.welcome-blog,
   .container-row.new-blog {
     .col-md-6.col-xs-12 {
-      padding: 8px
+      padding: 8px;
     }
 
   }
@@ -474,11 +474,21 @@
   }
 
   .container.pundits {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    // padding-left: 10px !important;
+    // padding-right: 10px !important;
 
     .category-blog.col-md-6.col-xs-12 a {
       padding: 5px !important
+    }
+
+    .authors h2 {
+      text-align: left;
+      padding: 0px 0px 10px;
+    }
+
+
+    .authors img {
+      display: flex;
     }
   }
 
@@ -507,6 +517,7 @@
     h1 {
       margin: 3rem auto;
       padding: 25px !important;
+      text-align: center;
     }
   }
 
