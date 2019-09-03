@@ -59,29 +59,6 @@ class OldSchoolList extends React.Component {
       });
 
     // OLD SCHOOL MOBILE FIXED SCROLLABLE BACKGROUND
-    const old_school = document.getElementsByClassName('container-row old-school')
-
-    $.when(old_school[0] && old_school[0].clientHeight).then(function () {
-
-      if (old_school[0] && old_school[0].clientWidth < 500) {
-
-        old_school[0].style.background = `url(${bricks})`;
-        old_school[0].style.backgroundRepeat = "repeat";
-        old_school[0].style.backgroundSize = "container";
-
-        $(window).scroll(function () {
-          if (($(window).scrollTop() > 50) && (($(window).scrollTop() < $('footer').position().top))) {
-            $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
-          }
-          else {
-            $('.oldschool-bg').css({ "position": "absolute", "top": "" });
-          }
-        });
-      }
-    }).catch(function (err) {
-      console.log(err)
-      this.props.history.push(`/${this.props.location.pathname}`)
-    })
   }
 
   componentDidMount() {
@@ -89,20 +66,20 @@ class OldSchoolList extends React.Component {
     this.loadOldSchool();
 
     // MOBILE / DESKTOP EDGECASE FOR SIDEBAR FIX/RELATIVE POSITIONS
-    let client = document.getElementsByTagName("section");
+    const element = document.getElementsByClassName("popular");
+    const client = document.getElementsByTagName("section");
+    $.when(element[0]).then(function () {
 
-    if (client[0] && client[0].clientWidth > 992) {
-      let element = document.getElementsByClassName("popular");
-      $.when(element).then(function () {
-        let width = element[0].clientWidth;
+      if (client[0] && client[0].clientWidth > 992) {
+        const width = element[0].clientWidth;
         $(".popular").css("width", width);
         $(".popular .twitter-fixed").css("width", width);
-      });
-    } else {
-      $(".popular").css("min-width", "100%");
-      $(".popular .twitter-fixed").css("min-width", "100%");
-    }
+      } else {
+        $(".popular").css("min-width", "100%");
+        $(".popular .twitter-fixed").css("min-width", "100%");
+      }
 
+    });
 
     // NEWSLIST SIDEBAR FIX/RELATIVE POSITION EDGECASE ON SCROLL
 
@@ -124,6 +101,32 @@ class OldSchoolList extends React.Component {
     });
     console.log(window)
     if (window.location.pathname === "/old-school") {
+      const body = document.getElementsByTagName('body')
+      const old_school = document.getElementsByClassName('container-row old-school')
+
+      $.when(body[0] && body[0].clientHeight && old_school[0] && old_school[0].clientHeight).then(function () {
+
+        if (body[0] && body[0].clientWidth < 500) {
+
+          old_school[0].style.background = `url(${bricks})`;
+          old_school[0].style.backgroundRepeat = "repeat";
+          old_school[0].style.backgroundSize = "container";
+
+          $(window).scroll(function () {
+            if ($(window).scrollTop() > 50) {
+              $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
+            } else if ($(window).scrollTop() > old_school[0].clientHeight) {
+              $('.oldschool-bg').css({ "position": "absolute", "top": "" });
+            }
+            else {
+              $('.oldschool-bg').css({ "position": "absolute", "top": "" });
+            }
+          });
+        }
+      }).catch(function (err) {
+        console.log(err)
+        this.props.history.push(`/${this.props.location.pathname}`)
+      })
       $(window).on("scroll", _.throttle(this.fetchMore, 2000))
     }
 
