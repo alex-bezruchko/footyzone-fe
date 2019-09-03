@@ -197,7 +197,7 @@ class Header extends React.Component {
         <div className="top-navbar">
           <Container>
             <Link to={"/"}>
-              <img src={logo} className="logo" />
+              <img alt="logo" src={logo} className="logo" />
               <span className="fanzone">Fanzone</span>
             </Link>
             {this.props.isLoggedIn ? (

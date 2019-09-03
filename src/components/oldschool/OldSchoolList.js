@@ -70,10 +70,8 @@ class OldSchoolList extends React.Component {
         old_school[0].style.backgroundSize = "container";
 
         $(window).scroll(function () {
-          if (($(window).scrollTop() > 50) && (($(window).scrollTop() < old_school[0].clientHeight - 500))) {
+          if (($(window).scrollTop() > 50) && (($(window).scrollTop() < $('footer').position().top))) {
             $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
-          } else if (($(window).scrollTop() > old_school[0].clientHeight + 100)) {
-            $('.oldschool-bg').css({ "position": "absolute", "top": "" });
           }
           else {
             $('.oldschool-bg').css({ "position": "absolute", "top": "" });
@@ -198,11 +196,9 @@ class OldSchoolList extends React.Component {
 
   render() {
 
-
-    console.log(this.state.cart)
     let maxLenBody = 250;
     return (
-      <div onScroll={this.fetchMore} className="container-row old-school">
+      <div className="container-row old-school">
         <img src={bricks} alt="shiny photoshopped stadium" className="oldschool-bg" />
 
         {this.state.initLoading ? (
