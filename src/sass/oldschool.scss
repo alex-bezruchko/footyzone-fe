@@ -13,10 +13,7 @@
         display: block;
         background-color: $old;
 
-        h2 {
-            font-size: 1.8rem;
-            line-height: 1.1;
-        }
+
 
         h2,
         img {
@@ -73,6 +70,11 @@
     }
 
     .old-school .col-sm-8 {
+        h2 {
+            font-size: 1.8rem;
+            line-height: 1.1;
+        }
+
         img {
             min-height: 333px !important;
             max-height: 333px !important;
