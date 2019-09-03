@@ -170,7 +170,8 @@ a {
   }
 }
 
-.blog-list {
+.blog-list,
+.oldschool-list {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
@@ -253,12 +254,8 @@ a {
       margin-bottom: 50px !important;
       font-size: 2.3rem;
     }
-
-    img {
-      min-height: 250px;
-      max-height: 250px;
-    }
   }
+
 
   .article-cover {
     max-height: 250px !important;

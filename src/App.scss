@@ -146,6 +146,14 @@ ul.pagination {
     // min-height: 400px;
   }
 
+  .blog-list,
+  .oldschool-list {
+    img {
+      min-height: 250px;
+      max-height: 250px;
+    }
+  }
+
   .blog-list {
     width: 100%;
   }

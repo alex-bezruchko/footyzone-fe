@@ -59,9 +59,9 @@ class OldSchoolList extends React.Component {
       });
 
     // OLD SCHOOL MOBILE FIXED SCROLLABLE BACKGROUND
-    const old_school = document.getElementsByClassName('container-row welcome-blog')
+    const old_school = document.getElementsByClassName('container-row old-school')
 
-    $.when(old_school[0]).then(function () {
+    $.when(old_school[0] && old_school[0].clientHeight).then(function () {
 
       if (old_school[0] && old_school[0].clientWidth < 500) {
 
@@ -199,7 +199,7 @@ class OldSchoolList extends React.Component {
     console.log(this.state.cart)
     let maxLenBody = 250;
     return (
-      <div className="container-row welcome-blog">
+      <div className="container-row old-school">
         <img src={bricks} alt="shiny photoshopped stadium" className="oldschool-bg" />
 
         {this.state.initLoading ? (
@@ -210,7 +210,7 @@ class OldSchoolList extends React.Component {
           </div>
         ) : (
             <div onScroll={this.fetchMore} className="container-row">
-              <div className="blog-list container">
+              <div className="oldschool-list container">
                 <h1 className="category-header">Old School <FaRegNewspaper /> </h1>
                 <div id="old-school-list" className="col-sm-8">
                   {this.state.news.length > 0 ? (
