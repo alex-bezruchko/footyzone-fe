@@ -124,7 +124,10 @@ class OldSchoolList extends React.Component {
       }
 
     });
-    $(window).on("scroll", _.throttle(this.fetchMore, 2000))
+    console.log(window)
+    if (window.location.pathname === "/old-school") {
+      $(window).on("scroll", _.throttle(this.fetchMore, 2000))
+    }
 
 
   }
@@ -199,7 +202,7 @@ class OldSchoolList extends React.Component {
     console.log(this.state.cart)
     let maxLenBody = 250;
     return (
-      <div className="container-row old-school">
+      <div onScroll={this.fetchMore} className="container-row old-school">
         <img src={bricks} alt="shiny photoshopped stadium" className="oldschool-bg" />
 
         {this.state.initLoading ? (
@@ -209,7 +212,7 @@ class OldSchoolList extends React.Component {
             </div>
           </div>
         ) : (
-            <div onScroll={this.fetchMore} className="container-row">
+            <div className="container-row">
               <div className="oldschool-list container">
                 <h1 className="category-header">Old School <FaRegNewspaper /> </h1>
                 <div id="old-school-list" className="col-sm-8">
