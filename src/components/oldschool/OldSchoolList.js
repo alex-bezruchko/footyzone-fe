@@ -103,8 +103,10 @@ class OldSchoolList extends React.Component {
     if (window.location.pathname === "/old-school") {
       const body = document.getElementsByTagName('body')
       const old_school = document.getElementsByClassName('container-row old-school')
+      const links = document.getElementsByClassName('oldschool-list-link')
 
-      $.when(body[0] && body[0].clientHeight && old_school[0] && old_school[0].clientHeight).then(function () {
+
+      $.when(body[0].clientHeight && old_school[0] && old_school[0].clientHeight).then(function () {
 
         if (body[0] && body[0].clientWidth < 500) {
 
@@ -112,16 +114,6 @@ class OldSchoolList extends React.Component {
           old_school[0].style.backgroundRepeat = "repeat";
           old_school[0].style.backgroundSize = "container";
 
-          $(window).scroll(function () {
-            if ($(window).scrollTop() > 50) {
-              $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
-            } else if ($(window).scrollTop() > old_school[0].clientHeight) {
-              $('.oldschool-bg').css({ "position": "absolute", "top": "" });
-            }
-            else {
-              $('.oldschool-bg').css({ "position": "absolute", "top": "" });
-            }
-          });
         }
       }).catch(function (err) {
         console.log(err)
@@ -143,7 +135,20 @@ class OldSchoolList extends React.Component {
 
     if (this.state) {
       currentCart = this.state.cart;
-      currentNews = this.state.news
+      currentNews = this.state.news;
+
+      $(window).scroll(function () {
+        const links = document.getElementsByClassName('oldschool-list-link')
+
+        if (($(window).scrollTop() > 0) && ($(window).scrollTop() < links[0].clientHeight * (currentNews.length - 4))) {
+
+          $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
+        }
+        else {
+          $('.oldschool-bg').css({ "position": "absolute", "top": "" });
+        }
+      });
+
     }
 
     if (height < scrollTop) {
@@ -160,6 +165,7 @@ class OldSchoolList extends React.Component {
         let img = document.createElement("IMG");
         let div = document.createElement("DIV");
         div.className = "body";
+        link.className = "oldschool-list-link";
 
         let list = document.getElementsByClassName('category-news');
 
@@ -192,9 +198,9 @@ class OldSchoolList extends React.Component {
     } else {
       e.preventDefault()
       e.stopPropagation();
-
-
     }
+
+
   }
 
   render() {
@@ -219,7 +225,7 @@ class OldSchoolList extends React.Component {
                     <div className="list-wrapper">
                       <div className="category-news">
 
-                        <Link to={`/old-school/${this.state.news[1].subcat_slug}/${this.state.news[0].id}`}>
+                        <Link className="oldschool-list-link" to={`/old-school/${this.state.news[1].subcat_slug}/${this.state.news[0].id}`}>
                           <img
                             src={this.state.news[0].newsMainImg}
                             alt=""
@@ -228,7 +234,7 @@ class OldSchoolList extends React.Component {
                           <div className="body">{this.state.news[0].body.slice(0, maxLenBody).concat('...')}</div>
                         </Link>
 
-                        <Link to={`/old-school/${this.state.news[1].subcat_slug}/${this.state.news[1].id}`}>
+                        <Link className="oldschool-list-link" to={`/old-school/${this.state.news[1].subcat_slug}/${this.state.news[1].id}`}>
                           <img
                             src={this.state.news[1].newsMainImg}
                             alt=""
