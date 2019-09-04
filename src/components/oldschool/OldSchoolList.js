@@ -141,7 +141,6 @@ class OldSchoolList extends React.Component {
         const links = document.getElementsByClassName('oldschool-list-link')
         if (links[0] && links[0].clientHeight) {
           if (($(window).scrollTop() > 0) && ($(window).scrollTop() < links[0].clientHeight * (currentNews.length - 4))) {
-
             $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
           }
           else {
