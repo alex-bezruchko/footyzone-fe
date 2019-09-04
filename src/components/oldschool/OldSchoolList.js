@@ -139,14 +139,16 @@ class OldSchoolList extends React.Component {
 
       $(window).scroll(function () {
         const links = document.getElementsByClassName('oldschool-list-link')
+        if (links[0] && links[0].clientHeight) {
+          if (($(window).scrollTop() > 0) && ($(window).scrollTop() < links[0].clientHeight * (currentNews.length - 4))) {
 
-        if (($(window).scrollTop() > 0) && ($(window).scrollTop() < links[0].clientHeight * (currentNews.length - 4))) {
+            $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
+          }
+          else {
+            $('.oldschool-bg').css({ "position": "absolute", "top": "" });
+          }
+        }
 
-          $('.oldschool-bg').css({ "position": "fixed", "top": "0" });
-        }
-        else {
-          $('.oldschool-bg').css({ "position": "absolute", "top": "" });
-        }
       });
 
     }
