@@ -68,7 +68,11 @@
 
     svg {
       color: $white;
-      margin: 0px 0px 0px 10px;
+      margin-left: 10px;
+    }
+
+    .hidden-xs .btn-black svg {
+      margin-left: 10px;
     }
 
     .btn {

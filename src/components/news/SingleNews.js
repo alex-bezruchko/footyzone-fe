@@ -203,11 +203,13 @@ const SingleNews = props => {
       <div className="container single-news-wrapper">
         {loading ? (
           <div className="container">
-            <img
-              className="loading"
-              src={imgLoading}
-              alt="Post is loading gif"
-            />
+            <div className="col-md-8">
+              <img
+                className="loading"
+                src={imgLoading}
+                alt="Post is loading gif"
+              />
+            </div>
           </div>
         ) : (
             <>
