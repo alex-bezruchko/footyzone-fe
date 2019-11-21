@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import moment from 'moment';
-import stadium from "./../../img/small-blog.jpg";
 import $ from "jquery";
 import {
     fetchLatestPosts,
@@ -38,7 +37,7 @@ class WelcomeBloglist extends React.Component {
         return (
 
             <div className="container-row new-blog">
-                <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
+                <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1574377567/tdbc8baih5kl6nuy2ccd.jpg" alt="shiny photoshopped stadium" className="blog-bg" />
                 <div className="col-md-12">
                     {this.props.posts.length > 0 ? (
 

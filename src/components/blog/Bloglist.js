@@ -3,7 +3,7 @@ import Pagination from "./Pagination";
 import axios from "axios";
 import Postslist from "./Postslist";
 import $ from "jquery";
-import stadium from "./../../img/small-blog.jpg";
+// import stadium from "./../../img/small-blog.jpg";
 
 const Bloglist = props => {
   window.scrollTo(0, 0);
@@ -71,7 +71,7 @@ const Bloglist = props => {
   return (
     <div className="container-row blog">
       <div className="container-row list">
-        <img src={stadium} alt="shiny photoshopped stadium" className="blog-bg" />
+        <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1574377567/tdbc8baih5kl6nuy2ccd.jpg" alt="shiny photoshopped stadium" className="blog-bg" />
         <div className="container">
           <Postslist posts={currentPosts} loading={loading} props={props} />
         </div>

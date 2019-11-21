@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import bricks from "./../../img/blog.jpg";
 import $ from "jquery";
 import {
   fetchLatestOldschool,
@@ -43,7 +42,7 @@ class WelcomeOldschool extends React.Component {
 
     return (
       <div className="container-row welcome-blog">
-        <img src={bricks} alt="shiny photoshopped stadium" className="oldschool-bg" />
+        <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1574378670/ml3fhfoqmlumhlbrbtcx.png" alt="shiny photoshopped stadium" className="oldschool-bg" />
 
         <div className="container header">
           <h1 className="bungee">Old School</h1>
