@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import imgLoading from "./../../../src/loading.gif";
-import bricks from "./../../img/blog.jpg";
+// import bricks from "./../../img/blog.jpg";
 
 import $ from "jquery";
 import _ from "lodash";
@@ -110,7 +110,7 @@ class OldSchoolList extends React.Component {
 
         if (body[0] && body[0].clientWidth < 500) {
 
-          old_school[0].style.background = `url(${bricks})`;
+          old_school[0].style.background = `url("https://res.cloudinary.com/htg1iqq1p/image/upload/v1574378960/o7wiv3inokl5zbgv70pe.png")`;
           old_school[0].style.backgroundRepeat = "repeat";
           old_school[0].style.backgroundSize = "container";
 
@@ -209,7 +209,7 @@ class OldSchoolList extends React.Component {
     let maxLenBody = 250;
     return (
       <div className="container-row old-school">
-        <img src={bricks} alt="shiny photoshopped stadium" className="oldschool-bg" />
+        <img src="https://res.cloudinary.com/htg1iqq1p/image/upload/v1574378960/o7wiv3inokl5zbgv70pe.png" alt="shiny photoshopped stadium" className="oldschool-bg" />
 
         {this.state.initLoading ? (
           <div className="container">
