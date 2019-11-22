@@ -59,6 +59,10 @@ export function signup(username, password, history) {
           payload: response.data,
         });
         history.push("/login");
+        let registerBox = document.getElementsByClassName('register-box')
+        if (registerBox[0]) {
+          registerBox[0].style.display = "none"
+        }
       })
       .catch(err => {
         dispatch({
@@ -126,7 +130,7 @@ export function loginStatus(username, token, user_id, avatar, history) {
       // if (history.location.pathname === "/signup") {
       //   history.push("/signup");
       // } else {
-      history.push("/login");
+      history.push("/signup");
       // }
     }
   };
