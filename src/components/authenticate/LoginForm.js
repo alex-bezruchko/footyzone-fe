@@ -1,6 +1,7 @@
 import React from "react";
 import { Input, Alert, UncontrolledAlert } from "reactstrap";
 import { connect } from "react-redux";
+import { FaWindowClose } from "react-icons/fa"
 import { login } from "./../../actions/usersActions";
 import { withRouter, Link } from "react-router-dom";
 import loading from "./../../../src/loading.gif";
@@ -22,12 +23,20 @@ class LoginForm extends React.Component {
       usernameError: false,
       passwordError: false,
     });
+
+    // let button = document.
   }
   changeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
+  hideRegister = () => {
+    let registerBox = document.getElementsByClassName('register-box')
+    if (registerBox[0]) {
+      registerBox[0].style.display = "none"
+    }
+  }
   loginHandler = e => {
     e.preventDefault();
     window.scrollTo(0, 0);
@@ -52,6 +61,7 @@ class LoginForm extends React.Component {
         this.props.history
       );
     }
+
   };
 
   render() {
@@ -114,6 +124,14 @@ class LoginForm extends React.Component {
             <Link to={"/signup"}>
               <button className="white">Sign Up</button>
             </Link>
+
+            <div className="register-box">
+              <button className="close" onClick={this.hideRegister}><FaWindowClose /></button>
+              <h3>Please register to view site</h3>
+              <Link to={"/signup"}>
+                <button className="white">Sign Up</button>
+              </Link>
+            </div>
           </div>
 
         </div>

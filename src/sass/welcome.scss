@@ -100,7 +100,65 @@
 
 }
 
+.register-box {
+  position: fixed;
+  font-family: $font_ubuntu;
+
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid $blue;
+  border-radius: 10px;
+  z-index: 9999;
+  background-color: $white;
+
+  .close {
+    position: absolute;
+    // border: 1px solid $blue;
+    top: 5%;
+    right: 5%;
+    border-radius: 0%;
+    padding: .25rem;
+
+    svg {
+      border-radius: 33%;
+      height: 20px;
+      width: 20px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    path {
+      fill: $blue;
+    }
+  }
+
+  button {
+    background: transparent;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin: 1rem 0px;
+    padding: 0px;
+  }
+}
+
 @media #{$desktop, $tablet} {
+
+  .register-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+  }
+
 
   .container-row.new-blog {
     background-size: cover !important;
